@@ -1,22 +1,31 @@
-Projeto SimulaGP
+Projeto SimulaEDP - Simulador de Escalonamento de Disco e Processos
 ====================================================================
 
-… um aplicativo que simula o comportamento dos principais algoritmos
-de escalonamento de processos concorrentes (FC-FS, Round Robin, SJF, SRT) 
-implementados em qualquer sistema operacional.
-Totalmente modelado em Java e sua interface gr·fica foi escrita em JavaFX
-utilizando a IDE Netbeans 6.9.
+√â um aplicativo que simula o comportamento dos principais algoritmos
+de escalonamento de processos concorrentes (FC-FS, Prioridade, Round Robin, SJF, SRT) 
+que s√£o implementados em um sistema operacional.
 
-O Objetivo principal desse projeto È disponibilizar uma ferramenta de apoio web,
-para estudos sobre a disciplina de Sistema Operacionais, de forma que o projeto
-seja facilmente integrado a qualquer Sistema de ensino a dist‚ncia (EAD).
+O projeto utiliza o seguintes frameworks:
 
-Este projeto È o nosso trabalho de conclus„o de curso que ser· contribuÌdo
-para a Universidade CatÛlica de Santos - www.unisantos.br.
++ Java 6 - Linguagem principal respons√°vel pelo desenvolvimento dos algoritmos de escalonamento.
++ JUnit 4.8 - Testes unit√°rio para classes java.
++ VRaptor 3.2.0 - Framework Controller Brasileiro (vraptor.caelum.com.br), que prov√™ uma √≥tima infra estrutura para desenvolver projetos MVC.
++ JSTL 1.2 - Tags Java para manipula√ß√£o de html.
++ JQuery 1.5 - Biblioteca Javascript Cross-browser para manipula√ß√£o de elementos HTML.
++ Canvas do HTML 5 - Elemento principal do projeto, que permite renderizar elementos 2D e 3D.
++ CSS 3 - Para estiliza√ß√£o do site.
+
+O objetivo principal desse projeto √© disponibilizar um aplicativo que se torne uma ferramenta 
+de ensino web, para servir de base nos estudos da disciplina de Sistema Operacionais, fazendo
+com que o projeto seja facilmente integrado a qualquer Sistema de Ensino a Dist√¢ncia (EAD).
+
+Este projeto ser√° o nosso trabalho de conclus√£o de curso para o curso sistemas de informa√ß√£o 2011 
+e ser√° contribu√≠do para a Universidade Cat√≥lica de Santos - www.unisantos.br.
 
 Emails: 
-Orientador: Prof. AndrÈ LuÌz Vizine Pereira - vizine@unisantos.br
+Orientador: Prof. Andr√© Lu√≠z Vizine Pereira - vizine@unisantos.br
 Autor: Caio Ribeiro Pereira - caio.ribeiro.pereira@gmail.com
-Co-autor: AndrÈ de Ara˙jo Rodrigues - and.arodrigues@gmail.com
+Co-autor: Andr√© de Ara√∫jo Rodrigues - and.arodrigues@gmail.com
 
+*Projeto se encontra em desenvolvimento.
 *Em breve disponibilizaremos o artigo e slides sobre o projeto.
