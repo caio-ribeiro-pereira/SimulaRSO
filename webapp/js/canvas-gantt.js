@@ -14,8 +14,8 @@ var TOTAL = 10;
 var CTX;
 $(function(){
 	
+	setupCanvas();
 	
-	draw();
 	draw_background(CTX, WIDTH, HEIGHT, SPACING);
 	$("#run").hide();
 	$("#process_setup").hide();
@@ -38,11 +38,16 @@ $(function(){
 	});
 })
 
-function draw() {
-	var canvas = document.getElementById("canvas");
+function setupCanvas(){
+	//CORRIGIR
+	$("canvas").attr("width", screen.width - 50);
+	$("canvas").attr("height", 600);
+	
+	var canvas = document.getElementByTag("canvas");
 	WIDTH = canvas.width;
 	HEIGHT = canvas.height;
-	CTX = canvas.getContext('2d');
+	CTX = canvas.getContext('2d');	
+	
 }
 
 function draw_background(ctx, width, height, spacing) {

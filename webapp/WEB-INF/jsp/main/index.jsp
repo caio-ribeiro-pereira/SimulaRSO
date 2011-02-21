@@ -3,12 +3,13 @@
 <!DOCTYPE html>
 <fmt:setLocale value="pt-BR"/>
 <html lang="pt-BR">
-<head>
+  <head>
     <title>Canvas tutorial</title>
+    
   </head>
   <body>
   	<h2>SimulaEDP - Simulador de Escalonamento de Disco e Processos</h2>
-    <canvas id="canvas" width="1080" height="500"></canvas>
+    <canvas></canvas>
 
 	<p>Total de processos: 
 		<input type="text" id="process_total" maxlength="2" size="4">
