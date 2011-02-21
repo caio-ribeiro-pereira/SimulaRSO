@@ -20,11 +20,13 @@ public class SJF extends EscalonadorBase implements Escalonador {
 		otimizarFilaDeProcessos();
 		for (int i = 0; i < totalDeProcessos(); i++) {
 			Processo processo = buscarProcesso(i);
+			processo.executar();
 			processo.setTempoEspera(tempoTotal());
 			processo.setBurstAtual(processo.getBurstTotal());
 			atualizarTempoTotal(processo.getBurstTotal());
 			processo.setTempoResposta(tempoTotal());
 			processo.setTurnAround(tempoTotal());
+			processo.finalizar();
 			adicionarResultado(processo);
 			adicionarResultadoGrafico(processo);
 		}

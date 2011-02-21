@@ -5,6 +5,7 @@ import java.util.ArrayList;
 import br.com.simulaedp.exception.NegativoQuantumException;
 import br.com.simulaedp.logic.Escalonador;
 import br.com.simulaedp.logic.EscalonadorBase;
+import br.com.simulaedp.model.Estado;
 import br.com.simulaedp.model.Processo;
 
 public class RoundRobin extends EscalonadorBase implements Escalonador {
@@ -60,6 +61,7 @@ public class RoundRobin extends EscalonadorBase implements Escalonador {
 
 	private void executarProcesso() {
 		Processo processo = buscarProcesso(index);
+		processo.executar();
 		processo.setTempoResposta(atualizarTempoResposta(processo));
 		processo.setBurstAtual(atualizarBurstAtual(processo));
 		processo.setBurstTotal(atualizarBurstTotal(processo));
@@ -70,15 +72,17 @@ public class RoundRobin extends EscalonadorBase implements Escalonador {
 	}
 
 	private void atualizarProcessos(Processo processo) {
-		adicionarResultadoGrafico(processo);
 		if (processo.getBurstTotal() == 0) {
+			processo.finalizar();
 			removerProcesso(index);
 			otimizarFilaDeProcessos();
 			atualizarIndex();
 		} else {
+			processo.esperar();
 			atualizarProcesso(index, processo);
 			avancarIndex();
 		}
+		adicionarResultadoGrafico(processo);
 	}
 
 	private void atualizarResultado() {
@@ -88,7 +92,10 @@ public class RoundRobin extends EscalonadorBase implements Escalonador {
 	}
 
 	private Processo buscarUltimaOcorrencia(int id) {
-		int index = resultadoGrafico().lastIndexOf(new Processo(id));
+		Processo processoFinalizado = new Processo();
+		processoFinalizado.setId(id);
+		processoFinalizado.setEstado(Estado.FINALIZADO);
+		int index = resultadoGrafico().lastIndexOf(processoFinalizado);
 		return resultadoGrafico().get(index).clone();
 	}
 

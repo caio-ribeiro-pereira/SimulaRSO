@@ -35,7 +35,7 @@ public class FCFSTest extends InitialCase {
 				BURSTS, null, null));
 		fcfs.executar();
 		ArrayList<Processo> resultado = fcfs.resultadoFinal();
-		List<Processo> resultadoGrafico = fcfs.resultadoGraficoFinal();
+		ArrayList<Processo> resultadoGrafico = fcfs.resultadoGraficoFinal();
 		checarResultado(resultado);
 		checarResultado(resultadoGrafico);
 	}

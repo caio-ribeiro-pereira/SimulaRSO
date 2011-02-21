@@ -17,9 +17,27 @@ public class MainController {
 		
 	}
 	
-	@Path("/executar")
+	@Path("/escalonamento-processo")
+	@Get
+	public void escalonamentoProcesso(){
+		
+	}
+	
+	@Path("/escalonamento-disco")
+	@Get
+	public void escalonamentoDisco(){
+		
+	}
+	
+	@Path("/executar-escalonamento-processo")
 	@Post
-	public void executar(List<Processo> processos){
+	public void executarEscalonamentoProcesso(List<Processo> processos){
+		
+	}
+
+	@Path("/executar-escalonamento-disco")
+	@Post
+	public void executarEscalonamentoDisco(List<Processo> processos){
 		
 	}
 	

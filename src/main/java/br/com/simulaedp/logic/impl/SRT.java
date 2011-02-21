@@ -7,6 +7,7 @@ import br.com.simulaedp.logic.Escalonador;
 import br.com.simulaedp.logic.EscalonadorBase;
 import br.com.simulaedp.model.Processo;
 
+//TODO - IMPLEMENTAR LOGICA COM ESTADOS DE PROCESSOS
 public class SRT extends EscalonadorBase implements Escalonador {
 
 	private boolean executando;
