@@ -15,6 +15,16 @@ O projeto utiliza o seguintes frameworks:
 + Canvas do HTML 5 - Elemento principal do projeto, que permite renderizar elementos 2D e 3D.
 + CSS 3 - Para estilização do site.
 
+Funcionalidades principais do projeto:
+
++ Simulação dos principais algoritmos de escalonamento de processos.
++ Simulação dos principais algoritmos de escalonamento de disco.
++ Simulação comparativa entre dois algoritmos distintos.
++ Simulação de até 20 processos em simultâneo, para o escalonamento de processos.
++ Simulação de até 30 requisições de setores, para o escalonamento de disco.
++ Internacionalização do projeto contribuindo com os idiomas Português e Inglês;
++ Exibição do comportamento do algoritmo através de gráficos intuitivos.
+
 O objetivo principal desse projeto é disponibilizar um aplicativo que se torne uma ferramenta 
 de ensino web, para servir de base nos estudos da disciplina de Sistema Operacionais, fazendo
 com que o projeto seja facilmente integrado a qualquer Sistema de Ensino a Distância (EAD).
