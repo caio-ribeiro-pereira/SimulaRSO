@@ -41,6 +41,34 @@ public class SRTTest extends InitialCase {
 		}
 	}
 	
+	private static final int[] BURSTS_MEDIO = { 8, 4, 9, 5 };
+	private static final int[] CHEGADAS_MEDIO = {0,1,2,3};
+	private static final int[] ID_COM_BURSTS_MEDIO = { 1, 2, 4, 1, 3};
+	private static final int[] TEMPO_ESPERA_COM_BURSTS_MEDIO = { 9, 1, 5, 17};
+	private static final int[] TEMPO_RESPOSTA_COM_BURSTS_MEDIO = { 0, 1, 6, 18};
+	private static final int[] TURN_AROUND_COM_BURSTS_MEDIO = {17,4,24,7};
+	
+	@Test
+	public void deveRealizarUmEscalonamentoMedio(){
+		Escalonador srt = new SRT(gerarArrayListDeProcessos(BURSTS_MEDIO.length, BURSTS_MEDIO, CHEGADAS_MEDIO, null));
+		srt.executar();
+		ArrayList<Processo> resultado = srt.resultadoFinal();
+		ArrayList<Processo> resultadoGrafico = srt.resultadoGraficoFinal();
+		Assert.assertThat(resultado, Matchers.notNullValue());
+		Assert.assertThat(resultado.size(), Matchers.is(BURSTS_MEDIO.length));
+		Assert.assertThat(resultadoGrafico, Matchers.notNullValue());
+		Assert.assertThat(resultadoGrafico.size(), Matchers.is(ID_COM_BURSTS_MEDIO.length));
+		for(int i = 0 ; i < resultadoGrafico.size(); i++){
+			Assert.assertThat(resultadoGrafico.get(i).getId(), Matchers.is(ID_COM_BURSTS_MEDIO[i]));
+		}
+		for(int i = 0 ; i < resultado.size(); i++){
+			Assert.assertThat(resultado.get(i).getTempoEspera(), Matchers.is(TEMPO_ESPERA_COM_BURSTS_MEDIO[i]));
+			Assert.assertThat(resultado.get(i).getTempoResposta(), Matchers.is(TEMPO_RESPOSTA_COM_BURSTS_MEDIO[i]));
+			Assert.assertThat(resultado.get(i).getTurnAround(), Matchers.is(TURN_AROUND_COM_BURSTS_MEDIO[i]));
+		}
+	}
+	
+	
 	@Test
 	public void deveEscalonarComDoisAMilProcesso() {
 		for (int i = 2; i <= 1000; i++) {

@@ -110,7 +110,6 @@ public class Processo implements Comparable<Processo>, Cloneable {
 	public int hashCode() {
 		final int prime = 31;
 		int result = 1;
-		result = prime * result + ((estado == null) ? 0 : estado.hashCode());
 		result = prime * result + id;
 		return result;
 	}
@@ -124,8 +123,6 @@ public class Processo implements Comparable<Processo>, Cloneable {
 		if (!(obj instanceof Processo))
 			return false;
 		Processo other = (Processo) obj;
-		if (estado != other.estado)
-			return false;
 		if (id != other.id)
 			return false;
 		return true;

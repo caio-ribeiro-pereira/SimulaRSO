@@ -1,20 +1,17 @@
 package br.com.simulaedp.logic.impl;
 
 import java.util.ArrayList;
-import java.util.LinkedList;
 
 import br.com.simulaedp.logic.Escalonador;
 import br.com.simulaedp.logic.EscalonadorBase;
 import br.com.simulaedp.model.Processo;
 
-//TODO - IMPLEMENTAR LOGICA COM ESTADOS DE PROCESSOS
 public class SRT extends EscalonadorBase implements Escalonador {
 
 	private boolean executando;
 	private int index;
 	private int tempoDeCorte;
 	private int totalIDs;
-	private LinkedList<Processo> filaDeEspera;
 
 	public SRT(ArrayList<Processo> processos) {
 		super();
@@ -27,7 +24,7 @@ public class SRT extends EscalonadorBase implements Escalonador {
 	public void executar() {
 		iniciar();
 		while (estiverEmExecucao()) {
-			if (existirProcessoVivo()) {
+			if (totalDeProcessos() > 0) {
 				executarProcesso();
 			} else {
 				atualizarResultado();
@@ -38,7 +35,8 @@ public class SRT extends EscalonadorBase implements Escalonador {
 
 	private void executarProcesso() {
 		definirTempoDeCorte();
-		Processo processo = definirProximoProcesso();
+		Processo processo = buscarProcesso(index);
+		processo.executar();
 		processo.setTempoResposta(atualizarTempoResposta(processo));
 		processo.setBurstAtual(atualizarBurstAtual(processo));
 		processo.setBurstTotal(atualizarBurstTotal(processo));
@@ -47,18 +45,6 @@ public class SRT extends EscalonadorBase implements Escalonador {
 		processo.setTempoEspera(atualizarTempoEspera(processo));
 		atualizarProcessos(processo);
 	}
-	
-	private Processo definirProximoProcesso(){
-		Processo processoAtual = buscarProcesso(index);
-		if(!filaDeEspera.isEmpty()){
-			int burstAtual = processoAtual.getBurstTotal();
-			int burstEmEspera = buscarPrimeiroDaFila().getBurstTotal(); 
-			if(burstEmEspera <= burstAtual)
-				return removerPrimeiroDaFila();
-		}
-		return processoAtual;
-	}
-	
 
 	private void definirTempoDeCorte() {
 		Processo processoAtual = buscarProcesso(index);
@@ -67,39 +53,28 @@ public class SRT extends EscalonadorBase implements Escalonador {
 		atualizarTempoDeCorte(burstAtual);
 		if (processoFuturo != null) {
 			int burstFuturo = processoFuturo.getBurstTotal();
-			if(burstFuturo < burstAtual){
+			if (burstFuturo < burstAtual) {
 				int tempoChegadaAtual = processoAtual.getTempoChegada();
 				int tempoChegadaFuturo = processoFuturo.getTempoChegada();
-				int diferencaTempoChegada = tempoChegadaFuturo - tempoChegadaAtual;
-				if(tempoDeCorte > diferencaTempoChegada){
-					atualizarTempoDeCorte(diferencaTempoChegada);
+				int diferenca = tempoChegadaFuturo - tempoChegadaAtual;
+				if (tempoDeCorte > diferenca) {
+					atualizarTempoDeCorte(diferenca);
 				}
-			}
-		}else if(validarFilaDeEspera()){
-			Processo processoEmEspera = buscarPrimeiroDaFila();
-			int burstEmEspera = processoEmEspera.getBurstTotal();
-			if(burstEmEspera <= burstAtual){
-				atualizarIndex(recuperarIndex(processoEmEspera));
-				atualizarTempoDeCorte(processoEmEspera.getBurstTotal());	
 			}
 		}
 	}
 
 	private void atualizarProcessos(Processo processo) {
-		adicionarResultadoGrafico(processo);
 		if (processo.terminou()) {
-			removerProcesso(index);
-			otimizarFilaDeProcessos();
-			atualizarIndex();
+			processo.finalizar();
 		} else {
-			atualizarProcesso(index, processo);
-			adicionarPrimeiroDaFila(processo);
-			avancarIndex();
+			processo.esperar();
+			atualizarProcesso(processo);
 		}
-	}
-	
-	private boolean existirProcessoVivo(){
-		return (totalDeProcessos() > 0 && this.filaDeEspera != null);
+		removerProcesso(index);
+		otimizarFilaDeProcessos();
+		atualizarIndex();
+		adicionarResultadoGrafico(processo);
 	}
 
 	private int atualizarTurnAround() {
@@ -126,9 +101,8 @@ public class SRT extends EscalonadorBase implements Escalonador {
 		int tempoResposta = processo.getTempoResposta();
 		return firstRun ? tempoTotal() : tempoResposta;
 	}
-	
+
 	private void iniciar() {
-		this.filaDeEspera = new LinkedList<Processo>();
 		this.executando = true;
 		this.index = 0;
 		this.totalIDs = totalDeProcessos();
@@ -136,7 +110,6 @@ public class SRT extends EscalonadorBase implements Escalonador {
 	}
 
 	private void finalizar() {
-		this.filaDeEspera = null;
 		this.executando = false;
 		otimizarFilaDeResultados();
 	}
@@ -144,16 +117,8 @@ public class SRT extends EscalonadorBase implements Escalonador {
 	private void atualizarIndex() {
 		index = (index >= totalDeProcessos()) ? (0) : (index);
 	}
-	
-	private void atualizarIndex(int val){
-		index = val;
-	}
 
-	private void avancarIndex() {
-		index = (index + 1 >= totalDeProcessos()) ? (0) : (index + 1);
-	}
-	
-	private void atualizarTempoDeCorte(int val){
+	private void atualizarTempoDeCorte(int val) {
 		tempoDeCorte = val;
 	}
 
@@ -161,22 +126,6 @@ public class SRT extends EscalonadorBase implements Escalonador {
 		return this.executando;
 	}
 
-	private Processo buscarPrimeiroDaFila(){
-		return filaDeEspera.getFirst().clone();
-	}
-	
-	private Processo removerPrimeiroDaFila(){
-		return filaDeEspera.removeFirst().clone();
-	}
-	
-	private void adicionarPrimeiroDaFila(Processo processo){
-		filaDeEspera.addFirst(processo);
-	}
-	
-	private boolean validarFilaDeEspera(){
-		return (filaDeEspera != null && !filaDeEspera.isEmpty());
-	}
-	
 	private void atualizarResultado() {
 		for (int i = 1; i <= totalIDs; i++) {
 			adicionarResultado(buscarUltimaOcorrencia(i));

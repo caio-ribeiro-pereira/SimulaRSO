@@ -53,8 +53,21 @@ public abstract class EscalonadorBase {
 	protected void atualizarProcesso(int index, Processo processo) {
 		if (processo.isFirstRun()) {
 			processo.setFirstRun(false);
-		}
+		}		
 		processos.set(index, processo);
+	}
+	
+	protected void atualizarProcesso(Processo processo){
+		if (processo.isFirstRun()) {
+			processo.setFirstRun(false);
+		}
+		int index = 0;
+		for(int i = 0; i < processos.size();i++){
+			if(processo.getBurstTotal() > processos.get(i).getBurstTotal()){
+				index = i;
+			}
+		}
+		processos.add(++index, processo);
 	}
 
 	protected void removerProcesso(int index) {
