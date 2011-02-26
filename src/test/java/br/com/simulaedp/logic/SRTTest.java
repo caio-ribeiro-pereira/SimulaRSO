@@ -41,12 +41,12 @@ public class SRTTest extends InitialCase {
 		}
 	}
 	
-	private static final int[] BURSTS_MEDIO = { 8, 4, 9, 5 };
-	private static final int[] CHEGADAS_MEDIO = {0,1,2,3};
-	private static final int[] ID_COM_BURSTS_MEDIO = { 1, 2, 4, 1, 3};
-	private static final int[] TEMPO_ESPERA_COM_BURSTS_MEDIO = { 9, 1, 5, 17};
-	private static final int[] TEMPO_RESPOSTA_COM_BURSTS_MEDIO = { 0, 1, 6, 18};
-	private static final int[] TURN_AROUND_COM_BURSTS_MEDIO = {17,4,24,7};
+	private static final int[] BURSTS_MEDIO = { 100, 30, 70, 95, 85 };
+	private static final int[] CHEGADAS_MEDIO = {0,100, 120, 140, 140};
+	private static final int[] ID_COM_BURSTS_MEDIO = { 1, 2,3,5,4};
+	private static final int[] TEMPO_ESPERA_COM_BURSTS_MEDIO = { 0, 100, 130, 285, 200};
+	private static final int[] TEMPO_RESPOSTA_COM_BURSTS_MEDIO = { 0, 100, 130, 285, 200};
+	private static final int[] TURN_AROUND_COM_BURSTS_MEDIO = {100,130,200,380,285};
 	
 	@Test
 	public void deveRealizarUmEscalonamentoMedio(){
