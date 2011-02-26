@@ -2,15 +2,15 @@ Projeto SimulaEDP - Simulador de Escalonamento de Disco e Processos
 ====================================================================
 
 É um aplicativo que simula o comportamento dos principais algoritmos
-de escalonamento de processos concorrentes (FC-FS, Prioridade, Round Robin, SJF, SRT) 
-que são implementados em um sistema operacional.
+de escalonamento de processos e disco que são implementados em um sistema operacional.
 
 O projeto utiliza o seguintes frameworks:
 
 + Java 6 - Linguagem principal responsável pelo desenvolvimento dos algoritmos de escalonamento.
 + JUnit 4.8 - Testes unitário para classes java.
-+ VRaptor 3.2.0 - Framework Controller Brasileiro (vraptor.caelum.com.br), que provê uma ótima infra estrutura para desenvolver projetos MVC.
++ VRaptor 3.2.0 - Framework Controller Brasileiro (vraptor.caelum.com.br), que provê uma ótima infra estrutura para desenvolver projetos web em MVC.
 + JSTL 1.2 - Tags Java para manipulação de html.
++ Sitemesh - Modelador de Template HTML.
 + JQuery 1.5 - Biblioteca Javascript Cross-browser para manipulação de elementos HTML.
 + Canvas do HTML 5 - Elemento principal do projeto, que permite renderizar elementos 2D e 3D.
 + CSS 3 - Para estilização do site.
