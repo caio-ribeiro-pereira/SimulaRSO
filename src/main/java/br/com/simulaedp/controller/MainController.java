@@ -17,6 +17,12 @@ public class MainController {
 		
 	}
 	
+	@Path("/sobre")
+	@Get
+	public void sobre(){
+		
+	}
+	
 	@Path("/escalonamento-processo")
 	@Get
 	public void escalonamentoProcesso(){
