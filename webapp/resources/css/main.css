@@ -1,0 +1,37 @@
+/* ---------------------------------------------------------------------------
+ JFinance
+ Style Sheet
+ http://github.com/caio-ribeiro-pereira/jfinance
+ 
+ Autor: Caio Ribeiro Pereira
+ Twitter: @crp_underground
+
+/* = Template
+--------------------------------------------------------------------------- */
+html {
+	font-size: 100.01%;
+	font-family: segoe ui, Arial, sans-serif;
+	color: #000;
+}
+
+body {
+	background-color: #000;
+}
+
+header,section,footer {
+	margin-top: 10px;
+}
+
+div.main {
+	margin-top: 25px;
+	padding: 25px;
+	background-color: #FFF;
+	border-radius: 7px;
+	-moz-border-radius: 7px;
+	-webkit-border-radius: 7px;
+	-ms-border-radius: 7px;
+}
+
+canvas {
+	margin-left: 10px;
+}
