@@ -17,7 +17,6 @@ public class Prioridade extends EscalonadorBase implements Escalonador {
 
 	@Override
 	public void executar() {
-		otimizarFilaDeProcessos();
 		for (int i = 0; i < totalDeProcessos(); i++) {
 			Processo processo = buscarProcesso(i);
 			processo.executar();

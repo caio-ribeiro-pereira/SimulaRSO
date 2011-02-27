@@ -35,7 +35,6 @@ public class RoundRobin extends EscalonadorBase implements Escalonador {
 	}
 
 	private void iniciar() {
-		otimizarFilaDeProcessos();
 		this.index = 0;
 		this.executando = true;
 		this.totalIds = totalDeProcessos();
@@ -75,7 +74,6 @@ public class RoundRobin extends EscalonadorBase implements Escalonador {
 		if (processo.getBurstTotal() == 0) {
 			processo.finalizar();
 			removerProcesso(index);
-			otimizarFilaDeProcessos();
 			atualizarIndex();
 		} else {
 			processo.esperar();

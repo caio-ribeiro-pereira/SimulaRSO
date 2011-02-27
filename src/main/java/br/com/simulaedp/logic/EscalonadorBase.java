@@ -35,10 +35,6 @@ public abstract class EscalonadorBase {
 		Collections.sort(processos);
 	}
 
-	protected void otimizarFilaDeProcessos() {
-		processos.trimToSize();
-	}
-
 	protected void otimizarFilaDeResultados() {
 		resultadoGrafico.trimToSize();
 	}

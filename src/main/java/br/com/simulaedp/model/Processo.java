@@ -1,7 +1,11 @@
 package br.com.simulaedp.model;
 
-public class Processo implements Comparable<Processo>, Cloneable {
-	
+import java.io.Serializable;
+
+public class Processo implements Comparable<Processo>, Cloneable, Serializable {
+
+	private static final long serialVersionUID = 7347973842793705305L;
+
 	private int id;
 	private int burst;
 	private int burstAtual;
@@ -13,73 +17,105 @@ public class Processo implements Comparable<Processo>, Cloneable {
 	private int turnAround;
 	private boolean firstRun;
 	private Estado estado;
-	
-	public Processo(){
+
+	public Processo() {
+		this(1, 0, 0, 0);
+	}
+
+	public Processo(int id) {
+		this(id, 0, 0, 0);
+	}
+
+	public Processo(int id, int burst) {
+		this(id, burst, 0, 0);
+	}
+
+	public Processo(int id, int burst, int tempoChegada) {
+		this(id, burst, tempoChegada, 0);
+	}
+
+	public Processo(int id, int burst, int tempoChegada, int prioridade) {
 		this.firstRun = true;
 		this.estado = Estado.EM_ESPERA;
-	}
-	
-	public Processo(int id){
-		this();
 		this.id = id;
+		this.burst = burst;
+		this.tempoChegada = tempoChegada;
+		this.prioridade = prioridade;
 	}
-	
+
 	public void setId(int id) {
 		this.id = id;
 	}
+
 	public int getId() {
 		return id;
 	}
+
 	public void setBurst(int burst) {
 		this.burst = burst;
 		setBurstTotal(burst);
 	}
+
 	public int getBurst() {
 		return burst;
 	}
+
 	public void setBurstAtual(int burstAtual) {
 		this.burstAtual = burstAtual;
 	}
+
 	public int getBurstAtual() {
 		return burstAtual;
 	}
-	public void setBurstTotal(int burstTotal){
+
+	public void setBurstTotal(int burstTotal) {
 		this.burstTotal = burstTotal;
 	}
-	public int getBurstTotal(){
+
+	public int getBurstTotal() {
 		return this.burstTotal;
 	}
+
 	public void setTempoEspera(int tempoEspera) {
 		this.tempoEspera = tempoEspera;
 	}
+
 	public int getTempoEspera() {
 		return tempoEspera;
 	}
+
 	public void setTempoResposta(int tempoResposta) {
 		this.tempoResposta = tempoResposta;
 	}
+
 	public int getTempoResposta() {
 		return tempoResposta;
 	}
+
 	public void setTempoChegada(int tempoChegada) {
 		this.tempoChegada = tempoChegada;
 	}
+
 	public int getTempoChegada() {
 		return tempoChegada;
 	}
+
 	public void setPrioridade(int prioridade) {
 		this.prioridade = prioridade;
 	}
+
 	public int getPrioridade() {
 		return prioridade;
 	}
+
 	public void setTurnAround(int turnAround) {
 		this.turnAround = turnAround;
 	}
+
 	public int getTurnAround() {
 		return turnAround;
 	}
-	
+
 	public void setFirstRun(boolean firstRun) {
 		this.firstRun = firstRun;
 	}
@@ -87,25 +123,25 @@ public class Processo implements Comparable<Processo>, Cloneable {
 	public boolean isFirstRun() {
 		return firstRun;
 	}
-	
-	public void setEstado(Estado estado){
+
+	public void setEstado(Estado estado) {
 		this.estado = estado;
 	}
-	
-	public Estado getEstado(){
+
+	public Estado getEstado() {
 		return this.estado;
 	}
 
 	@Override
 	public Processo clone() {
-		try{
-			return (Processo) super.clone();	
-		}catch(CloneNotSupportedException e){
+		try {
+			return (Processo) super.clone();
+		} catch (CloneNotSupportedException e) {
 			return null;
 		}
-		
+
 	}
-	
+
 	@Override
 	public int hashCode() {
 		final int prime = 31;
@@ -149,34 +185,34 @@ public class Processo implements Comparable<Processo>, Cloneable {
 	}
 
 	public int compareTo(Processo processo) {
-		if(this.getPrioridade() < processo.getPrioridade())
+		if (this.getPrioridade() < processo.getPrioridade())
 			return -1;
-		if(this.getPrioridade() > processo.getPrioridade())
+		if (this.getPrioridade() > processo.getPrioridade())
 			return 1;
-		if(this.getTempoChegada() < processo.getTempoChegada())
+		if (this.getTempoChegada() < processo.getTempoChegada())
 			return -1;
-		if(this.getTempoChegada() > processo.getTempoChegada())
+		if (this.getTempoChegada() > processo.getTempoChegada())
 			return 1;
-		if(this.getBurst() < processo.getBurst())
+		if (this.getBurst() < processo.getBurst())
 			return -1;
-		if(this.getBurst() > processo.getBurst())
+		if (this.getBurst() > processo.getBurst())
 			return 1;
 		return 0;
 	}
-	
-	public boolean terminou(){
+
+	public boolean terminou() {
 		return (this.burstTotal == 0);
 	}
-	
-	public void executar(){
+
+	public void executar() {
 		this.estado = Estado.EXECUTANDO;
 	}
-	
-	public void finalizar(){
+
+	public void finalizar() {
 		this.estado = Estado.FINALIZADO;
 	}
-	
-	public void esperar(){
+
+	public void esperar() {
 		this.estado = Estado.EM_ESPERA;
 	}
 }

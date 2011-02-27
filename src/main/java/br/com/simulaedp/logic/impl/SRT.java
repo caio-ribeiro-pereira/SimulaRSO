@@ -72,7 +72,6 @@ public class SRT extends EscalonadorBase implements Escalonador {
 			atualizarProcesso(processo);
 		}
 		removerProcesso(index);
-		otimizarFilaDeProcessos();
 		atualizarIndex();
 		adicionarResultadoGrafico(processo);
 	}
@@ -106,7 +105,6 @@ public class SRT extends EscalonadorBase implements Escalonador {
 		this.executando = true;
 		this.index = 0;
 		this.totalIDs = totalDeProcessos();
-		otimizarFilaDeProcessos();
 	}
 
 	private void finalizar() {

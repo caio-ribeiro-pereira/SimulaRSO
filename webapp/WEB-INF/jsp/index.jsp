@@ -25,6 +25,7 @@
 				<a href="<c:url value="/sobre" />">Sobre</a>
 			</nav>
 	  	</header>
+	  	<hr>
 	  	<section class="clearfix">
 	  		<c:if test="${not empty errors}">
 				<c:forEach var="error" items="${errors}">
@@ -36,8 +37,8 @@
 			</c:if>
 			<decorator:body />
 	  	</section>
+	  	<hr>
 		<footer class="clearfix">
-			<hr>
             <h3>Criadores do projeto:</h3>
 	  		<p><strong>Orientador:</strong> André Luiz Vizine Pereira - <a href="mailto:vizine@unisantos.br">vizine@unisantos.br</a></p>
 	  		<p><strong>Autor:</strong> André de Araújo Rodrigues - <a href="mailto:and.arodrigues@gmail.com">and.arodrigues@gmail.com</a></p>
