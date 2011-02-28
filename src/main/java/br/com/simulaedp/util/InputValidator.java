@@ -1,7 +1,7 @@
 package br.com.simulaedp.util;
 
 import br.com.caelum.vraptor.ioc.Component;
-import br.com.simulaedp.model.Algoritmo;
+import br.com.simulaedp.model.AlgoritmoProcesso;
 
 @Component
 public class InputValidator {
@@ -9,7 +9,7 @@ public class InputValidator {
 	public InputValidator() {
 	}
 
-	public void validar(int total, Algoritmo algoritmo, int[] bursts,
+	public void validar(int total, AlgoritmoProcesso algoritmo, int[] bursts,
 			int[] chegadas, int[] prioridades, int quantum) {
 		if (!validarTotal(total))
 			throw new IllegalArgumentException();
@@ -33,11 +33,11 @@ public class InputValidator {
 		return (quantum >= 10 || quantum <= 100);
 	}
 
-	private boolean validarAlgoritmo(Algoritmo algoritmo) {
+	private boolean validarAlgoritmo(AlgoritmoProcesso algoritmo) {
 		if (algoritmo == null) {
 			return false;
 		}
-		for (Algoritmo algoritmos : Algoritmo.values()) {
+		for (AlgoritmoProcesso algoritmos : AlgoritmoProcesso.values()) {
 			if (algoritmo == algoritmos) {
 				return true;
 			}

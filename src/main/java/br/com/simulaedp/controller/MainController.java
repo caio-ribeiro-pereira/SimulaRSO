@@ -10,7 +10,7 @@ import br.com.caelum.vraptor.Resource;
 import br.com.caelum.vraptor.Result;
 import br.com.caelum.vraptor.view.Results;
 import br.com.simulaedp.logic.EscalonadorExecutor;
-import br.com.simulaedp.model.Algoritmo;
+import br.com.simulaedp.model.AlgoritmoProcesso;
 import br.com.simulaedp.model.ModelGenerator;
 import br.com.simulaedp.model.Processo;
 import br.com.simulaedp.util.InputValidator;
@@ -57,7 +57,7 @@ public class MainController {
 
 	@Path("/executar-escalonamento-processo")
 	@Get
-	public void executarEscalonamentoProcesso(int total, Algoritmo algoritmo,
+	public void executarEscalonamentoProcesso(int total, AlgoritmoProcesso algoritmo,
 			int[] bursts, int[] chegadas, int[] prioridades, int quantum) {
 
 		inputValidator.validar(total, algoritmo, bursts, chegadas, prioridades,

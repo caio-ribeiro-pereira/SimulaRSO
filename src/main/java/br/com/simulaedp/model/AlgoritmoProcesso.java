@@ -1,16 +1,16 @@
 package br.com.simulaedp.model;
 
-public enum Algoritmo {
+public enum AlgoritmoProcesso {
 
 	FCFS("FC-FS"), SJF("SJF"), PRIORIDADE("Prioridade"), SRT("SRT"), ROUNDROBIN("Round Robin");
 	
-	private String tipo;
+	private String algortimo;
 	
-	Algoritmo(String tipo){
-		this.tipo = tipo;
+	AlgoritmoProcesso(String algortimo){
+		this.algortimo = algortimo;
 	}
 	
 	public String getAlgoritmo(){
-		return this.tipo;
+		return this.algortimo;
 	}
 }

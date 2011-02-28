@@ -10,7 +10,7 @@ import br.com.simulaedp.logic.impl.Prioridade;
 import br.com.simulaedp.logic.impl.RoundRobin;
 import br.com.simulaedp.logic.impl.SJF;
 import br.com.simulaedp.logic.impl.SRT;
-import br.com.simulaedp.model.Algoritmo;
+import br.com.simulaedp.model.AlgoritmoProcesso;
 import br.com.simulaedp.model.Processo;
 
 @Component
@@ -23,18 +23,18 @@ public class EscalonadorExecutor implements Serializable {
 	public EscalonadorExecutor() {
 	}
 
-	public void executar(final Algoritmo algortimo,
+	public void executar(final AlgoritmoProcesso algortimo,
 			final ArrayList<Processo> processos, final int quantum) {
 		Escalonador escalonador = null;
-		if (algortimo == Algoritmo.FCFS) {
+		if (algortimo == AlgoritmoProcesso.FCFS) {
 			escalonador = new FCFS(processos);
-		} else if (algortimo == Algoritmo.SJF) {
+		} else if (algortimo == AlgoritmoProcesso.SJF) {
 			escalonador = new SJF(processos);
-		} else if (algortimo == Algoritmo.PRIORIDADE) {
+		} else if (algortimo == AlgoritmoProcesso.PRIORIDADE) {
 			escalonador = new Prioridade(processos);
-		} else if (algortimo == Algoritmo.ROUNDROBIN) {
+		} else if (algortimo == AlgoritmoProcesso.ROUNDROBIN) {
 			escalonador = new RoundRobin(processos, quantum);
-		} else if (algortimo == Algoritmo.SRT) {
+		} else if (algortimo == AlgoritmoProcesso.SRT) {
 			escalonador = new SRT(processos);
 		} else {
 			throw new IllegalArgumentException();
