@@ -10,13 +10,22 @@
 	<canvas id="processo-canvas" width="940" height="400"></canvas>
 	<div class="process-menu">
 		<p>
-			<strong>Número de processos: </strong>
-			<select id="numero-processos">
+			<strong>Total de processos: </strong>
+			<select name="total" id="total">
 				<c:forEach begin="2" end="20" step="1" var="p">
 					<option value="${p}">${p}</option>
 				</c:forEach>
 			</select>
 		</p>
 	</div>
-	<script type="text/javascript" src="<c:url value="/resources/js/escalonameno-processo-canvas.js" />"></script>		
+	<script type="text/javascript" src="<c:url value="/resources/js/escalonameno-processo-canvas.js" />"></script>
+	<script type="text/javascript">
+		$(function(){
+			var procCanvas = new ProcessoCanvas();
+			procCanvas.setup();
+			procCanvas.timeLine();
+			procCanvas.background();
+			procCanvas.resultado();
+		});
+	</script>
 </body>
