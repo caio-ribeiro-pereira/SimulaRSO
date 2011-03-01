@@ -6,24 +6,23 @@ de escalonamento de processos e disco que s√£o implementados em um sistema opera
 
 O projeto utiliza o seguintes frameworks:
 
-+ Java 6 - Linguagem principal respons√°vel pelo desenvolvimento dos algoritmos de escalonamento.
-+ JUnit 4.8 - Testes unit√°rio para classes java.
-+ VRaptor 3.2.0 - Framework Controller Brasileiro (vraptor.caelum.com.br), que prov√™ uma √≥tima infra estrutura para desenvolver projetos web em MVC.
-+ JSTL 1.2 - Tags Java para manipula√ß√£o de html.
-+ Sitemesh - Modelador de Template HTML.
-+ JQuery 1.5 - Biblioteca Javascript Cross-browser para manipula√ß√£o de elementos HTML.
-+ Canvas do HTML 5 - Elemento principal do projeto, que permite renderizar elementos 2D e 3D.
-+ CSS 3 - Para estiliza√ß√£o do site.
++ Java 6 - Linguagem principal do projeto.
++ JUnit 4.8 - Framework para realizar testes unitário nos algoritmos.
++ VRaptor 3.2.0 - Framework MVC Brasileiro desenvolvido pela equipe da Caelum.
++ JSTL 1.2 - Tags Java para incorporar funcionalidades em um jsp.
++ Sitemesh 2.4.2 - Framework para modelar templates web.
++ JQuery 1.5 - Biblioteca Javascript Cross-browser para manipulação de elementos DOM HTML.
++ HTML 5 - Estrutura do projeto utilizando as boas práticas de HTML 5 de acordo com as normas W3C.
++ CSS 3 - Para estilização do layout do projeto, também seguindo as normas W3C.
++ Canvas - Elemento principal do projeto, que permite renderizar elementos gráficos em 2D.
 
 Funcionalidades principais do projeto:
 
-+ Simula√ß√£o dos principais algoritmos de escalonamento de processos.
-+ Simula√ß√£o dos principais algoritmos de escalonamento de disco.
-+ Simula√ß√£o comparativa entre dois algoritmos distintos.
-+ Simula√ß√£o de at√© 20 processos em simult√¢neo, para o escalonamento de processos.
-+ Simula√ß√£o de at√© 30 requisi√ß√µes de setores, para o escalonamento de disco.
-+ Internacionaliza√ß√£o do projeto contribuindo com os idiomas Portugu√™s e Ingl√™s;
-+ Exibi√ß√£o do comportamento do algoritmo atrav√©s de gr√°ficos intuitivos.
++ Simular os principais algoritmos de escalonamento de processos com até 10 processos.
++ Simular os principais algoritmos de escalonamento de disco com até 30 requisições de (I/O) em disco.
++ Realizar simulação comparativa para analisar o comportamento de dois algoritmos distintos.
++ Exibição comportamental dos algoritmos através de gráficos intuitivos.
++ Projeto internacionalizado em i18n com suporte aos idiomas inglês e português.
 
 O objetivo principal desse projeto √© disponibilizar um aplicativo que se torne uma ferramenta 
 de ensino web, para servir de base nos estudos da disciplina de Sistema Operacionais, fazendo

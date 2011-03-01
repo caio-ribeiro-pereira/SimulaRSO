@@ -19,10 +19,10 @@
 	  	<header class="clearfix">
 	  		<h1>SimulaEDP - Simulador de Escalonamento de Disco e Processos</h1>
 	  		<nav>
-	  			<a href="<c:url value="/" />">Home</a>
+	  			<a class="left" href="<c:url value="/" />">Home</a>
 				<a href="<c:url value="/escalonamento-processo" />">Escalonamento de Processos</a>
 				<a href="<c:url value="/escalonamento-disco" />">Escalonamento de Disco</a>
-				<a href="<c:url value="/sobre" />">Sobre</a>
+				<a class="right" href="<c:url value="/sobre" />">Sobre</a>
 			</nav>
 	  	</header>
 	  	<hr>
@@ -44,7 +44,7 @@
 	  		<p><strong>Autor:</strong> André de Araújo Rodrigues - <a href="mailto:and.arodrigues@gmail.com">and.arodrigues@gmail.com</a></p>
 	  		<p><strong>Autor:</strong> Caio Ribeiro Pereira - <a href="mailto:caio.ribeiro.pereira@gmail.com">caio.ribeiro.pereira@gmail.com</a></p>
 	  		<p><strong>Curso:</strong> Sistemas de Informação</p>
-	  		<p><strong>Universidade Católica de Santos</strong></p>
+	  		<p><strong><a href="http://www.unisantos.br" target="_blank">Universidade Católica de Santos</a></strong></p>
 	  	</footer>
   	</div>
   </body>
