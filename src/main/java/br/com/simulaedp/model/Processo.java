@@ -2,6 +2,8 @@ package br.com.simulaedp.model;
 
 import java.io.Serializable;
 
+import br.com.simulaedp.model.enumerator.Estado;
+
 public class Processo implements Comparable<Processo>, Cloneable, Serializable {
 
 	private static final long serialVersionUID = 7347973842793705305L;

@@ -1,13 +1,14 @@
-package br.com.simulaedp.model;
+package br.com.simulaedp.util;
 
 import java.util.ArrayList;
 
 import br.com.caelum.vraptor.ioc.Component;
+import br.com.simulaedp.model.Processo;
 
 @Component
-public class ModelGenerator {
+public class Generator {
 
-	public ModelGenerator() {
+	public Generator() {
 	}
 
 	public ArrayList<Processo> gerarListaDeProcessos(int total, int[] bursts,

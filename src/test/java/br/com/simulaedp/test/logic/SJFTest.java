@@ -1,4 +1,4 @@
-package br.com.simulaedp.logic;
+package br.com.simulaedp.test.logic;
 
 import java.util.List;
 
@@ -8,6 +8,7 @@ import org.junit.Test;
 
 import br.com.simulaedp.exception.NegativoBurstException;
 import br.com.simulaedp.exception.ProcessosNaoCarregadosException;
+import br.com.simulaedp.logic.Escalonador;
 import br.com.simulaedp.logic.impl.SJF;
 import br.com.simulaedp.model.Processo;
 import br.com.simulaedp.test.InitialCase;

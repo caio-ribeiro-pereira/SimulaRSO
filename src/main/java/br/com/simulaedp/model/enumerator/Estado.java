@@ -1,4 +1,4 @@
-package br.com.simulaedp.model;
+package br.com.simulaedp.model.enumerator;
 
 public enum Estado {
 

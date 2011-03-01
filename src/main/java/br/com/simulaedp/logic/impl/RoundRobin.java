@@ -5,8 +5,8 @@ import java.util.ArrayList;
 import br.com.simulaedp.exception.NegativoQuantumException;
 import br.com.simulaedp.logic.Escalonador;
 import br.com.simulaedp.logic.EscalonadorBase;
-import br.com.simulaedp.model.Estado;
 import br.com.simulaedp.model.Processo;
+import br.com.simulaedp.model.enumerator.Estado;
 
 public class RoundRobin extends EscalonadorBase implements Escalonador {
 

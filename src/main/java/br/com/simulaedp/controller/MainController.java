@@ -9,25 +9,25 @@ import br.com.caelum.vraptor.Path;
 import br.com.caelum.vraptor.Resource;
 import br.com.caelum.vraptor.Result;
 import br.com.caelum.vraptor.view.Results;
-import br.com.simulaedp.logic.EscalonadorExecutor;
-import br.com.simulaedp.model.AlgoritmoProcesso;
-import br.com.simulaedp.model.ModelGenerator;
+import br.com.simulaedp.logic.SchedulerExecutor;
 import br.com.simulaedp.model.Processo;
-import br.com.simulaedp.util.InputValidator;
+import br.com.simulaedp.model.enumerator.AlgoritmoProcesso;
+import br.com.simulaedp.util.Generator;
+import br.com.simulaedp.util.Validator;
 
 @Resource
 public class MainController {
 
-	private EscalonadorExecutor executor;
+	private SchedulerExecutor executor;
 	private final Result result;
-	private final InputValidator inputValidator;
-	private final ModelGenerator generator;
+	private final Validator validator;
+	private final Generator generator;
 
-	public MainController(Result result, EscalonadorExecutor executor,
-			InputValidator inputValidator, ModelGenerator generator) {
+	public MainController(Result result, SchedulerExecutor executor,
+			Validator validator, Generator generator) {
 		this.result = result;
 		this.executor = executor;
-		this.inputValidator = inputValidator;
+		this.validator = validator;
 		this.generator = generator;
 	}
 
@@ -60,7 +60,7 @@ public class MainController {
 	public void executarEscalonamentoProcesso(int total, AlgoritmoProcesso algoritmo,
 			int[] bursts, int[] chegadas, int[] prioridades, int quantum) {
 
-		inputValidator.validar(total, algoritmo, bursts, chegadas, prioridades,
+		validator.validar(total, algoritmo, bursts, chegadas, prioridades,
 				quantum);
 
 		ArrayList<Processo> processos = generator.gerarListaDeProcessos(total,

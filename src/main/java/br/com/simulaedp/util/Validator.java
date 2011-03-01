@@ -1,12 +1,12 @@
 package br.com.simulaedp.util;
 
 import br.com.caelum.vraptor.ioc.Component;
-import br.com.simulaedp.model.AlgoritmoProcesso;
+import br.com.simulaedp.model.enumerator.AlgoritmoProcesso;
 
 @Component
-public class InputValidator {
+public class Validator {
 
-	public InputValidator() {
+	public Validator() {
 	}
 
 	public void validar(int total, AlgoritmoProcesso algoritmo, int[] bursts,

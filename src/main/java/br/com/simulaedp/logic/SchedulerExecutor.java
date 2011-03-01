@@ -10,17 +10,17 @@ import br.com.simulaedp.logic.impl.Prioridade;
 import br.com.simulaedp.logic.impl.RoundRobin;
 import br.com.simulaedp.logic.impl.SJF;
 import br.com.simulaedp.logic.impl.SRT;
-import br.com.simulaedp.model.AlgoritmoProcesso;
 import br.com.simulaedp.model.Processo;
+import br.com.simulaedp.model.enumerator.AlgoritmoProcesso;
 
 @Component
-public class EscalonadorExecutor implements Serializable {
+public class SchedulerExecutor implements Serializable {
 
 	private static final long serialVersionUID = 1799220478831103578L;
 	
 	private TreeMap<String, Object> resultado;
 
-	public EscalonadorExecutor() {
+	public SchedulerExecutor() {
 	}
 
 	public void executar(final AlgoritmoProcesso algortimo,
