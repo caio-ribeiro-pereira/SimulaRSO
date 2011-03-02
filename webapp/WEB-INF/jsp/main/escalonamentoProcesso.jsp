@@ -7,17 +7,32 @@
 </head>	
 <body>
 	<h2 class="grid_12">Escalonamento de Processos</h2>
-	<canvas id="processo-canvas" width="940" height="400"></canvas>
-	<div class="process-menu">
+	<div id="main-menu">
 		<p>
+			<strong>Modo: </strong>
+			<select name="modo" id="modo">
+				<c:forEach var="modoSimulacao" items="${modosDeSimulacao}">
+					<option value="${modoSimulacao}">${modoSimulacao.modo}</option>
+				</c:forEach>
+			</select>
+			<strong>Algoritmo: </strong>
+			<select name="algoritmo" id="algoritmo">
+				<c:forEach var="algoritmo" items="${algoritmosDeProcesso}">
+					<option value="${algoritmo}">${algoritmo.nome}</option>
+				</c:forEach>
+			</select>
 			<strong>Total de processos: </strong>
 			<select name="total" id="total">
-				<c:forEach begin="2" end="20" step="1" var="p">
+				<c:forEach begin="2" end="10" step="1" var="p">
 					<option value="${p}">${p}</option>
 				</c:forEach>
 			</select>
+			<button>Preparar processos</button>
 		</p>
 	</div>
+	<div id="process-menu">
+	</div>
+	<canvas id="processo-canvas" width="940" height="400"></canvas>
 	<script type="text/javascript" src="<c:url value="/resources/js/escalonameno-processo-canvas.js" />"></script>
 	<script type="text/javascript">
 		$(function(){

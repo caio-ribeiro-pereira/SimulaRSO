@@ -4,13 +4,13 @@ public enum AlgoritmoProcesso {
 
 	FCFS("FC-FS"), SJF("SJF"), PRIORIDADE("Prioridade"), SRT("SRT"), ROUNDROBIN("Round Robin");
 	
-	private String algortimo;
+	private String nome;
 	
-	AlgoritmoProcesso(String algortimo){
-		this.algortimo = algortimo;
+	AlgoritmoProcesso(String nome){
+		this.nome = nome;
 	}
 	
-	public String getAlgoritmo(){
-		return this.algortimo;
+	public String getNome(){
+		return this.nome;
 	}
 }

@@ -1,8 +1,10 @@
 package br.com.simulaedp.util;
 
+import br.com.caelum.vraptor.ioc.ApplicationScoped;
 import br.com.caelum.vraptor.ioc.Component;
 import br.com.simulaedp.model.enumerator.AlgoritmoProcesso;
 
+@ApplicationScoped
 @Component
 public class Validator {
 

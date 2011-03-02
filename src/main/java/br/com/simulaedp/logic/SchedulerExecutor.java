@@ -5,6 +5,7 @@ import java.util.ArrayList;
 import java.util.TreeMap;
 
 import br.com.caelum.vraptor.ioc.Component;
+import br.com.caelum.vraptor.ioc.RequestScoped;
 import br.com.simulaedp.logic.impl.FCFS;
 import br.com.simulaedp.logic.impl.Prioridade;
 import br.com.simulaedp.logic.impl.RoundRobin;
@@ -13,6 +14,7 @@ import br.com.simulaedp.logic.impl.SRT;
 import br.com.simulaedp.model.Processo;
 import br.com.simulaedp.model.enumerator.AlgoritmoProcesso;
 
+@RequestScoped
 @Component
 public class SchedulerExecutor implements Serializable {
 

@@ -24,6 +24,7 @@ header,section,footer {
 
 div.main {
 	margin-top: 25px;
+	margin-bottom: 25px;
 	padding: 25px;
 	background-color: #FFF;
 	border-radius: 7px;

@@ -12,6 +12,7 @@ import br.com.caelum.vraptor.view.Results;
 import br.com.simulaedp.logic.SchedulerExecutor;
 import br.com.simulaedp.model.Processo;
 import br.com.simulaedp.model.enumerator.AlgoritmoProcesso;
+import br.com.simulaedp.model.enumerator.ModoSimulacao;
 import br.com.simulaedp.util.Generator;
 import br.com.simulaedp.util.Validator;
 
@@ -46,7 +47,8 @@ public class MainController {
 	@Path("/escalonamento-processo")
 	@Get
 	public void escalonamentoProcesso() {
-
+		result.include("modosDeSimulacao", ModoSimulacao.values());
+		result.include("algoritmosDeProcesso", AlgoritmoProcesso.values());
 	}
 
 	@Path("/escalonamento-disco")

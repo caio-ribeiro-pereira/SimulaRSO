@@ -2,9 +2,11 @@ package br.com.simulaedp.util;
 
 import java.util.ArrayList;
 
+import br.com.caelum.vraptor.ioc.ApplicationScoped;
 import br.com.caelum.vraptor.ioc.Component;
 import br.com.simulaedp.model.Processo;
 
+@ApplicationScoped
 @Component
 public class Generator {
 
