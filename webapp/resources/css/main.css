@@ -45,10 +45,12 @@ a {
 	text-decoration: none;
 	color: #000;
 }
+
 a:hover {
 	text-decoration: underline;
 	color: #555;
 }
+
 a:active {
 	color: #000;
 }
@@ -77,6 +79,7 @@ nav a.left {
 	-webkit-border-radius: 5px 0px 0px 5px;
 	-ms-border-radius: 5px 0px 0px 5px;
 }
+
 nav a.right {
 	border-radius: 0px 5px 5px 0px;
 	-moz-border-radius: 0px 5px 5px 0px;
@@ -86,4 +89,23 @@ nav a.right {
 
 ul {
 	margin-left: 20px;
+}
+
+div.menu {
+	margin-top: 15px;
+}
+
+div.input-box {
+	float: left;
+	padding: 3px;
+	margin-left: 6px; 
+	border-radius: 5px;
+	-moz-border-radius: 5px;
+	-webkit-border-radius: 5px;
+	-ms-border-radius: 5px;
+	border: solid 1px #000;
+}
+
+div.input-box p:first-child {
+	text-align: center;
 }

@@ -35,7 +35,8 @@ function ProcessoCanvas() {
 	this.width = canvas.width;
 	this.height = canvas.height;
 	this.espaco = 20;
-	this.inicio = (this.espaco * 2);
+	this.inicio_x = 10;
+	this.inicio_y = 40;
 	this.cores = new ProcessoCores();
 	this.labels = new ProcessoLabels();
 	this.total = document.getElementById('total').value;
@@ -57,19 +58,20 @@ ProcessoCanvas.prototype.timeLine = function() {
 	}
 };
 
+// REFAZER GRAFICO
 ProcessoCanvas.prototype.background = function() {
 	this.ctx.beginPath();
 	this.strokeStyle = this.cores['font'];
 	var folga_inicial = 3;
 	var folga_final = folga_inicial * 2;
 	// linhas
-	for ( var y = this.inicio; y < this.height; y += this.espaco) {
-		this.ctx.moveTo(this.inicio, y + folga_inicial);
+	for ( var y = this.inicio_y; y < this.height; y += this.espaco) {
+		this.ctx.moveTo(this.inicio_y, y + folga_inicial);
 		this.ctx.lineTo((this.width - this.espaco) + folga_final, y
 				+ folga_inicial);
 		// colunas
-		for ( var x = this.inicio; x < this.width; x += this.espaco) {
-			this.ctx.moveTo(x + folga_inicial, this.inicio);
+		for ( var x = this.inicio_x; x < this.width; x += this.espaco) {
+			this.ctx.moveTo(x + folga_inicial, this.inicio_x);
 			this.ctx.lineTo(x + folga_inicial, (this.height - this.espaco)
 					+ folga_final);
 		}
