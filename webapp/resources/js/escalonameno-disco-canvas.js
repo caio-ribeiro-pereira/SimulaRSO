@@ -18,7 +18,7 @@ $(function(){
 	HEIGHT = canvas.height;
 	CTX = canvas.getContext('2d');
 	draw_background(CTX,WIDTH,HEIGHT,SPACING);
-})
+});
 
 function draw_background(ctx, width, height, spacing) {
 	ctx.clearRect(0, 0, width, height);

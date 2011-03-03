@@ -6,7 +6,7 @@
 	<title>SimulaEDP - Escalonamento de Processos</title>
 </head>	
 <body>
-	<h2 class="clearfix">Escalonamento de Processos</h2>
+	<h1 class="clearfix">Escalonamento de Processos</h1>
 	<div id="main-menu" class="clearfix menu">
 		<p>
 			<strong>Modo: </strong>
@@ -31,9 +31,9 @@
 		</p>
 	</div>
 	<div id="process-menu" class="clearfix menu">
-		<!--<p id="line-1">
+		<script id="videosTemplate" type="text/x-jquery-tmpl"> 		
 			<div id="processo-1" class="input-box">
-				<p><small>Processo 1</small></p>
+				<p><small>Processo ${id}</small></p>
 				<p>
 					<label class="grid_1" for="burst"><small>Burst: </small></label>
 					<select class="grid_1" name="burst[0]" id="burst">
@@ -59,51 +59,66 @@
 					</select>
 				</p>
 			</div>
-		</p>-->
+			<br>
+		</script>
 	</div>
-	<canvas id="processo-canvas" class="clearfix" width="940" height="400"></canvas>
+	<div class="graphic-panel clearfix">
+		<canvas id="processo-canvas" class="clearfix" width="1900" height="400"></canvas>
+	</div>
 	<script type="text/javascript" src="<c:url value="/resources/js/escalonameno-processo-canvas.js" />"></script>
 	<script type="text/javascript">
 		$(function(){
 			
 			$('#preparar').click(function(){
+				$('#process-menu').empty();
 				var bursts = [5,10,15,20,25,30,35,40,45,50,55,60,65,70,75,80,85,90,95,100];
 				var chegadas = [0,5,10,15,20,25,30,35,40,45,50,55,60,65,70,75,80,85,90,95,100];
 				var prioridades = [0,1,2,3,4,5,6,7,8,9,10];
-				
-				$('#process-menu').empty();
 				var total = $('#total').val();
 				var limit = 5;
 				var line = 0;
 				for(var i = 0; i < total; i++){
 					if(i % limit == 0){
-						$('#process-menu').append('<p id="line-'+(++line)+'">');
+						$('#process-menu').append('<br>');
+						++line;
 					}
 					var processoID = 'processo-'+(i+1);
 					var processoLabel = 'Processo '+(i+1)+' :';
+					
 					// Append da div + processo label
-					$('#line-'+line).html('<div id="'+processoID+'" class="input-box"></div>');
-					$('#'+processoID).html('<p><small>'+processoLabel+'</small></p>');
-					// Append label burst + select burst
-					$('#'+processoID).html('<label for="burst"><small>Burst: </small></label>');
-					$('#'+processoID).html('<select class="grid_1" name="burst['+i+']" id="select-burst">');
+					var divProcesso = $('<div />', {
+						id : processoID,
+						'class' : 'input-box'
+					});
+					
+					divProcesso.append($('<small />').text(processoLabel));
+					divProcesso.append('<label for="burst-'+processoID+'" /a').text('Burst: ');
+					divProcesso.append('<select class="grid_1" name="burst['+i+']" id="burst-'+processoID+'" />');
 					for(var b = 0; b < bursts.length; b++){
-						$('#select-burst').html('<option value="'+bursts[b]+'">'+bursts[b]+' ms</option>');
+						$('select#burst-'+processoID).append('<option />').val(bursts[b]).text(bursts[b]+' ms');
 					}
-					// Append label chegada + select chegada
-					$('#'+processoID).html('<label for="chegada"><small>Chegada: </small></label>');
-					$('#'+processoID).html('<select class="grid_1" name="chegada['+i+']" id="select-chegada">');
-					for(var b = 0; b < chegadas.length; b++){
-						$('#select-chegada').html('<option value="'+chegadas[b]+'">'+chegadas[b]+' ms</option>');
+					// Append label burst + select burst
+					divProcesso.append('<label for="chegada-'+processoID+'" />').text('Chegada: ');
+					divProcesso.append('<select class="grid_1" name="chegada['+i+']" id="chegada-'+processoID+'" />');
+					for(var c = 0; c < chegadas.length; c++){
+						$('select#chegada-'+processoID).append('<option />').val(chegadas[c]).text(chegadas[c]+' ms');
 					}
 					// Append label prioridade + select prioridade
-					$('#'+processoID).html('<label for="prioridade"><small>Prioridade: </small></label>');
-					$('#'+processoID).html('<select class="grid_1" name="prioridade['+i+']" id="select-prioridade">');
-					for(var b = 0; b < prioridades.length; b++){
-						$('#select-prioridade').html('<option value="'+prioridades[b]+'">'+prioridades[b]+'</option>');
+					divProcesso.append('<label for="prioridade-'+processoID+'" />').text('Prioridade: ');
+					divProcesso.append('<select class="grid_1" name="prioridade['+i+']" id="prioridade-'+processoID+'" />');
+					
+					$('p#line-'+line).append(divProcesso);
+					for(var p = 0; p < prioridades.length; p++){
+						$('select#prioridade-'+processoID).append('<option />').val(prioridades[p]).text(prioridades[p]);
 					}
 				}
 			});
+			
+			// FAZER JSON COM TEMPLATE JQUERY
+			
+			// INCLUIR LIMITE 5 DIVS POR LINHA
+			
+			$('body').append($('#videosTemplate').tmpl(json));
 			
 			
 			

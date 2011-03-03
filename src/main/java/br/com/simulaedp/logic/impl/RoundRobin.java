@@ -23,7 +23,7 @@ public class RoundRobin extends EscalonadorBase implements Escalonador {
 	}
 
 	private void definirTempoQuantum(int tempoQuantum) {
-		if (tempoQuantum > 0) {
+		if (tempoQuantum >= 10) {
 			this.tempoQuantum = tempoQuantum;
 		} else {
 			throw new NegativoQuantumException();
@@ -110,8 +110,7 @@ public class RoundRobin extends EscalonadorBase implements Escalonador {
 	}
 
 	private int atualizarBurstAtual(Processo processo) {
-		return (processo.getBurstTotal() < tempoQuantum) ? processo
-				.getBurstTotal() : tempoQuantum;
+		return (processo.getBurstTotal() < tempoQuantum) ? processo.getBurstTotal() : tempoQuantum;
 	}
 
 	private int atualizarBurstTotal(Processo processo) {
@@ -125,8 +124,7 @@ public class RoundRobin extends EscalonadorBase implements Escalonador {
 	}
 
 	private int atualizarTempoResposta(Processo processo) {
-		return (processo.isFirstRun()) ? tempoTotal() : processo
-				.getTempoResposta();
+		return (processo.isFirstRun()) ? tempoTotal() : processo.getTempoResposta();
 	}
 
 	@Override
