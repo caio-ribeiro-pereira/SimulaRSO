@@ -49,17 +49,17 @@ public abstract class EscalonadorBase {
 	protected void atualizarProcesso(int index, Processo processo) {
 		if (processo.isFirstRun()) {
 			processo.setFirstRun(false);
-		}		
+		}
 		processos.set(index, processo);
 	}
-	
-	protected void atualizarProcesso(Processo processo){
+
+	protected void atualizarProcesso(Processo processo) {
 		if (processo.isFirstRun()) {
 			processo.setFirstRun(false);
 		}
 		int index = 0;
-		for(int i = 0; i < processos.size();i++){
-			if(processo.getBurstTotal() > processos.get(i).getBurstTotal()){
+		for (int i = 0; i < processos.size(); i++) {
+			if (processo.getBurstTotal() > processos.get(i).getBurstTotal()) {
 				index = i;
 			}
 		}
@@ -73,8 +73,8 @@ public abstract class EscalonadorBase {
 	protected void definirProcessos(ArrayList<Processo> processos) {
 		this.processos = processos;
 	}
-	
-	protected int recuperarIndex(Processo processo){
+
+	protected int recuperarIndex(Processo processo) {
 		return processos.indexOf(processo);
 	}
 
@@ -95,7 +95,7 @@ public abstract class EscalonadorBase {
 	}
 
 	protected void validarProcessos(ArrayList<Processo> processos) {
-		if (null != processos && !processos.isEmpty()) {
+		if (processos != null && !processos.isEmpty()) {
 			for (Processo processo : processos) {
 				if (processo.getBurstTotal() <= 0) {
 					throw new NegativoBurstException();
