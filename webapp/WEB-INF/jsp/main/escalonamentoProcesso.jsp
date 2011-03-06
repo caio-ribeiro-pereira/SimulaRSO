@@ -32,20 +32,20 @@
 		</p>
 	</div>
 	<div id="process-menu" class="clearfix menu">
-		<script id="processoTemplate" type="text/x-jquery-tmpl">		
-			<div id="processo-${id}" class="input-box">
-				<p><small>Processo ${id}</small></p>
+		<script id="processTemplate" type="text/x-jquery-tmpl">
+			<div id="processo-\${id}" class="input-box">
+				<p><small>Processo \${id}</small></p>
 				<p>
-					<label class="grid_1" for="burst-${id}"><small>Burst: </small></label>
-					<input type="text" class="grid_1" name="${processoBurst}" id="burst-${id}" maxlength="2">
+					<label class="grid_1" for="burst-\${id}"><small>Burst: </small></label>
+					<input type="text" class="grid_1" name=\${burst} id="burst-\${id}" maxlength="2">
 				</p>
 				<p>
-					<label class="grid_1" for="chegada-${id}"><small>Chegada: </small></label>
-					<input type="text" class="grid_1" name="${processoTempoChegada}" id="chegada-${id}" maxlength="2">					
+					<label class="grid_1" for="chegada-\${id}"><small>Chegada: </small></label>
+					<input type="text" class="grid_1" name=\${tempoChegada} id="chegada-\${id}" maxlength="2">
 				</p>
 				<p>
-					<label class="grid_1" for="prioridade-${id}"><small>Prioridade: </small></label>
-					<input type="text" class="grid_1" name="${processoPrioridade}" id="prioridade-${id}" maxlength="2">
+					<label class="grid_1" for="prioridade-\${id}"><small>Prioridade: </small></label>
+					<input type="text" class="grid_1" name=\${prioridade} id="prioridade-\${id}" maxlength="2">
 				</p>
 			</div>
 		</script>
@@ -53,23 +53,26 @@
 	<div class="graphic-panel clearfix">
 		<canvas id="processo-canvas" class="clearfix" width="1900" height="400"></canvas>
 	</div>
+	<script type="text/javascript" src="<c:url value="/resources/js/jquery-tmpl.min.js" />"></script>
 	<script type="text/javascript" src="<c:url value="/resources/js/escalonameno-processo-canvas.js" />"></script>
 	<script type="text/javascript">
 		$(function(){
 			$('#preparar').click(function(){
-				var content = $('#process-menu').empty().hide();
+				$('#process-menu').empty();
 				var total = $('#total').val();
-				var processos = [];
-				for(var i = 0; i < total; i++){
+				var processos = [
+					{id : "1", burst : "processo[0].burst", tempoChegada : "processo[0].tempoChegada", prioridade : "processo[0].prioridade"}                 
+				];
+				/*for(var i = 0; i < total; i++){
 				    processos.push({
 				        id : (i+1),
-				        processoBurst : 'processo['+i+'].burst',
-				        processoTempoChegada : 'processo['+i+'].tempoChegada',
-				        processoPrioridade : 'processo['+i+'].prioridade'
+				        burst : "processo['+i+'].burst",
+				        tempoChegada : "processo['+i+'].tempoChegada",
+				        prioridade : "processo['+i+'].prioridade"
 				    });
-				}
-				var template = $("script#processoTemplate").tmpl(processos);
-				content.append(template).fadeIn();
+				}*/
+				var tmpl = $.tmpl('#processTemplate',processos);
+				$('#process-menu').append(tmpl);
 			});
 			/*
 			var procCanvas = new ProcessoCanvas();

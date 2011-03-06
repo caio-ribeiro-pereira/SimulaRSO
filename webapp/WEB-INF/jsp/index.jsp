@@ -11,8 +11,7 @@
     <link rel="stylesheet" type="text/css" href="<c:url value="/resources/css/reset.css" />">
 	<link rel="stylesheet" type="text/css" href="<c:url value="/resources/css/grid.css" />">
 	<link rel="stylesheet" type="text/css" href="<c:url value="/resources/css/main.css" />">
-	<script type="text/javascript" src="<c:url value="/resources/js/jquery-1.5.min.js" />"></script>
-    <script type="text/javascript" src="<c:url value="/resources/js/jquery-tmpl.min.js" />"></script>
+	<script type="text/javascript" src="<c:url value="/resources/js/jquery.min.js" />"></script>
     <!--[if lt IE 9]><script type="text/javascript" src="<c:url value="/resources/js/html5.js" />"></script><![endif]-->
     <decorator:head />
   </head>
