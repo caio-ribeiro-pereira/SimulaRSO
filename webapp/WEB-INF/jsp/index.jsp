@@ -8,10 +8,12 @@
   <head>
     <title><decorator:title default="Projeto SimulaEDP"></decorator:title></title>
     <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
+    <link rel="shortcut icon" href="<c:url value="/resources/img/favicon.ico" />"></link>
     <link rel="stylesheet" type="text/css" href="<c:url value="/resources/css/reset.css" />">
 	<link rel="stylesheet" type="text/css" href="<c:url value="/resources/css/grid.css" />">
 	<link rel="stylesheet" type="text/css" href="<c:url value="/resources/css/main.css" />">
 	<script type="text/javascript" src="<c:url value="/resources/js/jquery.min.js" />"></script>
+	<script type="text/javascript" src="<c:url value="/resources/js/json2.js" />"></script>
     <!--[if lt IE 9]><script type="text/javascript" src="<c:url value="/resources/js/html5.js" />"></script><![endif]-->
     <decorator:head />
   </head>
