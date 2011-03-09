@@ -2,7 +2,7 @@ package appspot.simulaedp.logic.impl;
 
 import java.util.ArrayList;
 
-import appspot.simulaedp.exception.NegativoQuantumException;
+import appspot.simulaedp.exception.TempoQuantumException;
 import appspot.simulaedp.logic.Escalonador;
 import appspot.simulaedp.logic.EscalonadorBase;
 import appspot.simulaedp.model.Processo;
@@ -26,7 +26,7 @@ public class RoundRobin extends EscalonadorBase implements Escalonador {
 		if (tempoQuantum >= 10) {
 			this.tempoQuantum = tempoQuantum;
 		} else {
-			throw new NegativoQuantumException();
+			throw new TempoQuantumException();
 		}
 	}
 

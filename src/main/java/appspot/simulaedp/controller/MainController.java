@@ -4,19 +4,18 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.TreeMap;
 
-import appspot.simulaedp.exception.NegativoBurstException;
-import appspot.simulaedp.exception.NegativoQuantumException;
 import appspot.simulaedp.exception.ProcessosNaoCarregadosException;
+import appspot.simulaedp.exception.TempoQuantumException;
 import appspot.simulaedp.logic.Escalonador.ModoSimulacao;
 import appspot.simulaedp.logic.Executor;
 import appspot.simulaedp.model.Processo;
 import appspot.simulaedp.model.Processo.AlgoritmoProcesso;
 import br.com.caelum.vraptor.Get;
+import br.com.caelum.vraptor.Post;
 import br.com.caelum.vraptor.Resource;
 import br.com.caelum.vraptor.Result;
 import br.com.caelum.vraptor.Validator;
 import br.com.caelum.vraptor.validator.ValidationMessage;
-import br.com.caelum.vraptor.view.Results;
 
 @Resource
 public class MainController {
@@ -47,29 +46,40 @@ public class MainController {
 		result.include("algoritmosDeProcesso", AlgoritmoProcesso.values());
 	}
 
+	@Post("/executar-escalonamento-processo")
+	public void executarEscalonamentoProcesso(ArrayList<AlgoritmoProcesso> alg, ArrayList<Processo> pr, int qt) {
+		try {
+
+			TreeMap<String, Object> resultadoProcesso = executor.executar(alg, pr, qt);
+			result.include("algoritmo", alg);
+			result.include("resultadoProcesso", resultadoProcesso);
+			result.redirectTo(this).resultadoEscalonamentoProcesso();
+
+		} catch (ProcessosNaoCarregadosException e) {
+			validator.add(new ValidationMessage("Alguns processos não foram carregados corretamente.", ""));
+			validator.onErrorRedirectTo(this).escalonamentoProcesso();
+
+		} catch (TempoQuantumException e) {
+			validator.add(new ValidationMessage("Não definido um tempo de corte para o algoritmo.", ""));
+			validator.onErrorRedirectTo(this).escalonamentoProcesso();
+
+		} catch (IllegalArgumentException e) {
+			validator.add(new ValidationMessage("Nenhum algoritmo foi selecionado.", ""));
+			validator.onErrorRedirectTo(this).escalonamentoProcesso();
+		}
+	}
+
+	@Get("/resultado-escalonamento-processo")
+	public void resultadoEscalonamentoProcesso() {
+		if (!result.included().containsKey("resultadoProcesso")) {
+			validator.add(new ValidationMessage("Configure um algoritmo para simular um escalonamento.", ""));
+			validator.onErrorRedirectTo(this).escalonamentoProcesso();
+		}
+	}
+
 	@Get("/escalonamento-disco")
 	public void escalonamentoDisco() {
 
-	}
-
-	@Get("/executar-escalonamento-processo")
-	public void executarEscalonamentoProcesso(List<AlgoritmoProcesso> alg, ArrayList<Processo> pr, int qt) {
-		try {
-			TreeMap<String, Object> resultadoMap = executor.executar(alg.get(0), pr, qt);
-			result.use(Results.json()).from(resultadoMap, "resultadoMap").serialize();
-		} catch (NegativoBurstException e) {
-			validator.add(new ValidationMessage("Algum dos processos possui um Burst com valor negativo.", ""));
-			validator.onErrorUse(Results.json()).from(null, "resultadoMap").serialize();
-		} catch (NegativoQuantumException e) {
-			validator.add(new ValidationMessage("Foi definido um valor negativo no tempo quantum do algoritmo.", ""));
-			validator.onErrorUse(Results.json()).from(null, "resultadoMap").serialize();
-		} catch (ProcessosNaoCarregadosException e) {
-			validator.add(new ValidationMessage("Nenhum processo foi carregado.", ""));
-			validator.onErrorUse(Results.json()).from(null, "resultadoMap").serialize();
-		} catch (Exception e) {
-			validator.add(new ValidationMessage("Ocorreu um erro inesperado no aplicativo.", ""));
-			validator.onErrorUse(Results.json()).from(null, "resultadoMap").serialize();
-		}
 	}
 
 	@Get("/executar-escalonamento-disco")

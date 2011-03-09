@@ -6,7 +6,6 @@ import org.hamcrest.Matchers;
 import org.junit.Assert;
 import org.junit.Test;
 
-import appspot.simulaedp.exception.NegativoBurstException;
 import appspot.simulaedp.exception.ProcessosNaoCarregadosException;
 import appspot.simulaedp.logic.Escalonador;
 import appspot.simulaedp.logic.impl.Prioridade;
@@ -66,7 +65,7 @@ public class PrioridadeTest extends InitialCase {
 		}
 	}
 
-	@Test(expected = NegativoBurstException.class)
+	@Test(expected = ProcessosNaoCarregadosException.class)
 	public void naoDeveEscalonarProcessosComBurstNegativo() {
 		new Prioridade(gerarListaDeProcessos(3, INVALIDO));
 	}

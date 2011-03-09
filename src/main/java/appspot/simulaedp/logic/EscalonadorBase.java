@@ -3,7 +3,6 @@ package appspot.simulaedp.logic;
 import java.util.ArrayList;
 import java.util.Collections;
 
-import appspot.simulaedp.exception.NegativoBurstException;
 import appspot.simulaedp.exception.ProcessosNaoCarregadosException;
 import appspot.simulaedp.model.Processo;
 
@@ -129,7 +128,7 @@ public abstract class EscalonadorBase {
 		if (processos != null && !processos.isEmpty()) {
 			for (Processo processo : processos) {
 				if (processo.getBurstTotal() <= 0) {
-					throw new NegativoBurstException();
+					throw new ProcessosNaoCarregadosException();
 				}
 			}
 		} else {

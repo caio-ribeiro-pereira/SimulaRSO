@@ -21,19 +21,23 @@ public class Executor implements Serializable {
 	public Executor() {
 	}
 
-	public TreeMap<String, Object> executar(final AlgoritmoProcesso algortimo, final ArrayList<Processo> processos,
-			final int quantum) {
+	public TreeMap<String, Object> executar(final ArrayList<AlgoritmoProcesso> algortimo,
+			final ArrayList<Processo> processos, final int quantum) {
 		Escalonador escalonador = null;
-		if (algortimo == AlgoritmoProcesso.FCFS) {
-			escalonador = new FCFS(processos);
-		} else if (algortimo == AlgoritmoProcesso.SJF) {
-			escalonador = new SJF(processos);
-		} else if (algortimo == AlgoritmoProcesso.PRIORIDADE) {
-			escalonador = new Prioridade(processos);
-		} else if (algortimo == AlgoritmoProcesso.ROUNDROBIN) {
-			escalonador = new RoundRobin(processos, quantum);
-		} else if (algortimo == AlgoritmoProcesso.SRT) {
-			escalonador = new SRT(processos);
+		if (algortimo != null && !algortimo.isEmpty()) {
+			if (algortimo.get(0) == AlgoritmoProcesso.FCFS) {
+				escalonador = new FCFS(processos);
+			} else if (algortimo.get(0) == AlgoritmoProcesso.SJF) {
+				escalonador = new SJF(processos);
+			} else if (algortimo.get(0) == AlgoritmoProcesso.PRIORIDADE) {
+				escalonador = new Prioridade(processos);
+			} else if (algortimo.get(0) == AlgoritmoProcesso.ROUNDROBIN) {
+				escalonador = new RoundRobin(processos, quantum);
+			} else if (algortimo.get(0) == AlgoritmoProcesso.SRT) {
+				escalonador = new SRT(processos);
+			} else {
+				throw new IllegalArgumentException();
+			}
 		} else {
 			throw new IllegalArgumentException();
 		}

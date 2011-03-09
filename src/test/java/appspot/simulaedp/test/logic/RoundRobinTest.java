@@ -6,9 +6,8 @@ import org.hamcrest.Matchers;
 import org.junit.Assert;
 import org.junit.Test;
 
-import appspot.simulaedp.exception.NegativoBurstException;
-import appspot.simulaedp.exception.NegativoQuantumException;
 import appspot.simulaedp.exception.ProcessosNaoCarregadosException;
+import appspot.simulaedp.exception.TempoQuantumException;
 import appspot.simulaedp.logic.Escalonador;
 import appspot.simulaedp.logic.impl.RoundRobin;
 import appspot.simulaedp.model.Processo;
@@ -103,12 +102,12 @@ public class RoundRobinTest extends InitialCase {
 		}
 	}
 
-	@Test(expected = NegativoQuantumException.class)
+	@Test(expected = TempoQuantumException.class)
 	public void naoDeveEscalonarProcessosComTempoQuantumNegativo() {
 		new RoundRobin(gerarListaDeProcessos(3, VALIDO), QUANTUM_INVALIDO);
 	}
 
-	@Test(expected = NegativoBurstException.class)
+	@Test(expected = ProcessosNaoCarregadosException.class)
 	public void naoDeveEscalonarProcessosComBurstNegativo() {
 		new RoundRobin(gerarListaDeProcessos(3, INVALIDO), QUANTUM_VALIDO);
 	}

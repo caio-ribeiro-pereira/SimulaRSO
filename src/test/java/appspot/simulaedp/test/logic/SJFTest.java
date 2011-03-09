@@ -6,7 +6,6 @@ import org.hamcrest.Matchers;
 import org.junit.Assert;
 import org.junit.Test;
 
-import appspot.simulaedp.exception.NegativoBurstException;
 import appspot.simulaedp.exception.ProcessosNaoCarregadosException;
 import appspot.simulaedp.logic.Escalonador;
 import appspot.simulaedp.logic.impl.SJF;
@@ -95,7 +94,7 @@ public class SJFTest extends InitialCase {
 		new SJF(null);
 	}
 
-	@Test(expected = NegativoBurstException.class)
+	@Test(expected = ProcessosNaoCarregadosException.class)
 	public void naoDeveEscalonarProcessosComBurstNegativo() {
 		new SJF(gerarListaDeProcessos(3, INVALIDO));
 	}
