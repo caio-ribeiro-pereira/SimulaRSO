@@ -109,7 +109,10 @@ div.menu {
 div.input-box {
 	float: left;
 	padding: 3px;
-	margin-left: 6px; 
+	margin-right: 20px;
+	margin-left: 0px;
+	margin-top: 5px;
+	margin-bottom: 10px; 
 	border-radius: 5px;
 	-moz-border-radius: 5px;
 	-webkit-border-radius: 5px;
