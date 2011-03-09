@@ -1,7 +1,3 @@
-<%@ taglib prefix="decorator" uri="http://www.opensymphony.com/sitemesh/decorator" %>
-<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
-<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
-<%@ page isELIgnored="false" %>
 <!DOCTYPE html>
 <fmt:setLocale value="pt-BR"/>
 <html lang="pt-BR">
@@ -13,7 +9,6 @@
 	<link rel="stylesheet" type="text/css" href="<c:url value="/resources/css/grid.css" />">
 	<link rel="stylesheet" type="text/css" href="<c:url value="/resources/css/main.css" />">
 	<script type="text/javascript" src="<c:url value="/resources/js/jquery.min.js" />"></script>
-	<script type="text/javascript" src="<c:url value="/resources/js/json2.js" />"></script>
     <!--[if lt IE 9]><script type="text/javascript" src="<c:url value="/resources/js/html5.js" />"></script><![endif]-->
     <decorator:head />
   </head>
