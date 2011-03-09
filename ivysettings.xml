@@ -1,8 +1,0 @@
-<ivysettings>
-  <settings defaultResolver="myRepositories" checkUpToDate="true" />
-  <resolvers>
-    <chain name="myRepositories">
-      <ibiblio name="google-gson" m2compatible="true" root="http://google-gson.googlecode.com/svn/mavenrepo"  pattern="[organisation]/[module]/[revision]/[artifact]-[revision](-[classifier]).[ext]" />
-    </chain>
-  </resolvers>
-</ivysettings>
