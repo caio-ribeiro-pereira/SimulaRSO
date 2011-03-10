@@ -8,7 +8,7 @@ public interface Escalonador {
 
 	public enum ModoSimulacao {
 
-		UNICO("Simulação única"), COMPARATIVO("Simulação comparativa");
+		UNICO("Única"), COMPARATIVO("Comparativa");
 
 		String modo;
 

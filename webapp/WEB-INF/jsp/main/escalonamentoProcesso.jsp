@@ -8,7 +8,7 @@
 	<form id="process-form" action="<c:url value="/executar-escalonamento-processo"/>" method="post">
 		<div id="main-menu" class="clearfix menu">
 			<div class="grid_3">
-				<strong>Modo: </strong>
+				<strong>Simulação: </strong>
 				<select id="modo">
 					<c:forEach var="modoSimulacao" items="${modosDeSimulacao}">
 						<option value="${modoSimulacao}">${modoSimulacao.modo}</option>

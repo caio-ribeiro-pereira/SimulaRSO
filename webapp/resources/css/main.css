@@ -1,7 +1,7 @@
 /* ---------------------------------------------------------------------------
  JFinance
  Style Sheet
- http://github.com/caio-ribeiro-pereira/jfinance
+ http://github.com/caio-ribeiro-pereira/SimulaEDP
  
  Autor: Caio Ribeiro Pereira
  Twitter: @crp_underground
@@ -26,7 +26,7 @@ h1 {
 	font-size: 1.6em;
 }
 
-h1, h2, h3 {
+h1,h2,h3 {
 	line-height: 1.8em;
 }
 
@@ -45,7 +45,7 @@ div.graphic-panel {
 	overflow-x: scroll;
 	overflow-y: hidden;
 	width: 960px;
-	height: 420px; 
+	height: 420px;
 }
 
 small {
@@ -109,10 +109,7 @@ div.menu {
 div.input-box {
 	float: left;
 	padding: 3px;
-	margin-right: 20px;
-	margin-left: 0px;
-	margin-top: 5px;
-	margin-bottom: 10px; 
+	margin: 5px 18px 10px 0px;
 	border-radius: 5px;
 	-moz-border-radius: 5px;
 	-webkit-border-radius: 5px;
@@ -121,5 +118,25 @@ div.input-box {
 }
 
 div.input-box p:first-child {
+	text-align: center;
+}
+
+table.result-panel {
+	margin: 20px 5px 20px 5px;
+	border-radius: 5px;
+	-moz-border-radius: 5px;
+	-webkit-border-radius: 5px;
+	-ms-border-radius: 5px;
+	border: solid 1px #000;
+}
+
+table.result-panel tr.result-line:nth-child(odd) {
+	background-color: #DDD;
+}
+table.result-panel tr.result-line:nth-child(even) {
+	background-color: #CCC;
+}
+table.result-panel td {
+	padding: 5px 14px;
 	text-align: center;
 }
