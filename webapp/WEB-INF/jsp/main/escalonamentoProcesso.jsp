@@ -28,7 +28,6 @@
 			<div id="alg1" class="grid_3">
 				<strong>Algoritmo 1: </strong>
 				<select name="alg[0]" id="algoritmo1">
-					<option value="" selected>Selecione...</option>
 					<c:forEach var="algoritmo" items="${algoritmosDeProcesso}">
 						<option value="${algoritmo}">${algoritmo.nome}</option>
 					</c:forEach>

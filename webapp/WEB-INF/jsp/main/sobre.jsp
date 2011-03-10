@@ -18,7 +18,7 @@
 	<hr>
 	<h1>Funcionalidades do projeto:</h1>
 	<ul>
-		<li><small>Simular os principais algoritmos de escalonamento de processos com até 10 processos.</small></li>
+		<li><small>Simular os principais algoritmos de escalonamento de processos com até 20 processos.</small></li>
 		<li><small>Simular os principais algoritmos de escalonamento de disco com até 30 requisições de (I/O) em disco.</small></li>
 		<li><small>Realizar simulação comparativa para analisar o comportamento de dois algoritmos distintos.</small></li>
 		<li><small>Exibição comportamental dos algoritmos através de gráficos intuitivos.</small></li>

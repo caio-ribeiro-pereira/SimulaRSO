@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <head>
-	<title>SimulaEDP - Escalonamento de Processos</title>
+	<title>Simulação do Algoritmo ${algoritmo[0].nome}</title>
 	<c:set var="resultadoFinal" value="${resultadoProcesso.resultadoFinal}" />
 	<c:set var="resultadoGrafico" value="${resultadoProcesso.resultadoGrafico}" />
 	<c:set var="esperaMedia" value="${resultadoProcesso.tempoEsperaMedia}" />
@@ -64,9 +64,10 @@
 	<script type="text/javascript" src="<c:url value="/resources/js/processo-chart.js" />"></script>
 	<script type="text/javascript">
 		$(function(){
-			$('#processo-chart').attr('width', (${tempoTotal} * 10) + 50);
-			var chart = new ProcessoChart(${totalProcessos});
-			chart.setup();
+			var total = ${totalProcessos};
+			var espaco = 20;
+			$('#processo-chart').attr('width', ((${tempoTotal} + 1) * espaco));
+			var chart = new ProcessoChart(total, espaco);
 			chart.background();
 		});
 	</script>

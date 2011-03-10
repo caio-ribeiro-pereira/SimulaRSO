@@ -5,27 +5,23 @@
  * escalonamento de processos.
  * 
  */
-function ProcessoChart(total) {
+function ProcessoChart(total,espaco) {
 	var canvas = document.getElementById('processo-chart');
 	this.ctx = canvas.getContext('2d');
 	this.width = canvas.width;
 	this.height = canvas.height;
-	this.espaco = 10;
-	this.inicio_x = 10;
-	this.inicio_y = 40;
-	this.cores = new ProcessoCores();
+	this.inicio_x = 0;
+	this.inicio_y = 0;
 	this.total = total;
-};
-
-ProcessoChart.prototype.setup = function() {
+	this.espaco = espaco;
 	this.ctx.clearRect(0, 0, this.width, this.height);
 };
 
 ProcessoChart.prototype.background = function() {
 	this.ctx.beginPath();
 	this.strokeStyle = '#000000';
-	var folga_inicial = 3;
-	var folga_final = folga_inicial * 2;
+	var folga_inicial = 0;
+	var folga_final = 1;
 	// linhas
 	for ( var y = this.inicio_y; y < this.height; y += this.espaco) {
 		this.ctx.moveTo(this.inicio_y, y + folga_inicial);
@@ -38,7 +34,20 @@ ProcessoChart.prototype.background = function() {
 					+ folga_final);
 		}
 	}
+	this.ctx.font = "9px Arial";
+	this.ctx.fillStyle = '#000000';
+	var tempo = 0;
+	for(var t = this.inicio_x; t < (this.width - this.espaco); t += this.espaco){
+		this.ctx.fillText(tempo++, t + 3, 15);
+	}
 	this.ctx.stroke();
+};
+
+ProcessoChart.prototype.draw_result = function(p) {
+	for(var i = 0; i < p.length; i++){
+		this.ctx.fillStyle = p[i].color;
+		this.ctx.fillRect(p[i].x, p[i].y, p[i].w, p[i].h);
+	}
 };
 
 function ProcessoCores() {

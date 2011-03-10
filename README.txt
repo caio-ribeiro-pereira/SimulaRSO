@@ -18,7 +18,7 @@ O projeto utiliza o seguintes frameworks:
 
 Funcionalidades principais do projeto:
 
-+ Simular os principais algoritmos de escalonamento de processos com ate 10 processos.
++ Simular os principais algoritmos de escalonamento de processos com ate 20 processos.
 + Simular os principais algoritmos de escalonamento de disco com ate 30 requisicoes de (I/O) em disco.
 + Realizar simulacao comparativa para analisar o comportamento de dois algoritmos distintos.
 + Exibi�‹o comportamental dos algoritmos atraves de graficos intuitivos.

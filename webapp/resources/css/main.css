@@ -42,10 +42,10 @@ div.main {
 }
 
 div.graphic-panel {
+	padding: 10px 0px 0px 10px;
 	overflow-x: scroll;
 	overflow-y: hidden;
 	width: 960px;
-	height: 420px;
 }
 
 small {
