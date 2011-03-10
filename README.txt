@@ -8,7 +8,7 @@ O projeto utiliza o seguintes frameworks:
 
 + Java 6 - Linguagem principal do projeto.
 + JUnit 4.8 - Framework para realizar testes unitario nos algoritmos.
-+ VRaptor 3.2.0 - Framework MVC Brasileiro desenvolvido pela equipe da Caelum.
++ VRaptor 3.3.1 - Framework MVC Brasileiro desenvolvido pela equipe da Caelum.
 + JSTL 1.2 - Tags Java para incorporar funcionalidades em um jsp.
 + Sitemesh 2.4.2 - Framework para modelar templates web.
 + JQuery 1.5 - Biblioteca Javascript Cross-browser para manipulacao de elementos DOM HTML.

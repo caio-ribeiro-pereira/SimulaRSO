@@ -31,7 +31,7 @@
 		<li><small><a href="http://www.github.com" target="_blank"><strong>GitHub</strong></a> - Repositório para projetos open-source.</small></li>
 		<li><small><a href="http://code.google.com/appengine/" target="_blank"><strong>Google App Engine</strong></a> - Host para aplicações web open-source Java ou Python.</small></li>
 		<li><small><a href="http://www.junit.org" target="_blank"><strong>JUnit 4.8</strong></a> - Framework para realizar testes unitário nos algoritmos.</small></li>
-		<li><small><a href="http://vraptor.caelum.com.br" target="_blank"><strong>VRaptor 3.2.0</strong></a> - Framework MVC Brasileiro desenvolvido pela equipe da <a href="http://www.caelum.com.br">Caelum</a>.</small></li>
+		<li><small><a href="http://vraptor.caelum.com.br" target="_blank"><strong>VRaptor 3.3.1</strong></a> - Framework MVC Brasileiro desenvolvido pela equipe da <a href="http://www.caelum.com.br">Caelum</a>.</small></li>
 		<li><small><a href="http://jstl.java.net" target="_blank"><strong>JSTL 1.2</strong></a> - Tags Java para incorporar funcionalidades em um jsp.</small></li>
 		<li><small><a href="http://www.opensymphony.com/sitemesh/" target="_blank"><strong>Sitemesh 2.4.2</strong></a> - Framework para modelar templates web.</small></li>
 		<li><small><a href="http://jquery.com/" target="_blank"><strong>JQuery 1.5</strong></a> - Biblioteca Javascript Cross-browser para manipulação de elementos DOM HTML.</small></li>
