@@ -45,12 +45,14 @@ public class MainController {
 	}
 
 	@Post("/executar-escalonamento-processo")
-	public void executarEscalonamentoProcesso(ArrayList<AlgoritmoProcesso> alg, ArrayList<Processo> pr, int qt) {
+	public void executarEscalonamentoProcesso(ArrayList<AlgoritmoProcesso> algs, ArrayList<Processo> pr, int qt) {
 		try {
-
-			TreeMap<String, Object> resultadoProcesso = executor.executar(alg, pr, qt);
-			result.include("algoritmo", alg);
-			result.include("resultadoProcesso", resultadoProcesso);
+			List<TreeMap<String, Object>> resultadosDosAlgoritmos = new ArrayList<TreeMap<String, Object>>();
+			for (AlgoritmoProcesso alg : algs) {
+				TreeMap<String, Object> resultado = executor.executar(alg, pr, qt);
+				resultadosDosAlgoritmos.add(resultado);
+			}
+			result.include("resultadosDosAlgoritmos", resultadosDosAlgoritmos);
 			result.redirectTo(this).resultadoEscalonamentoProcesso();
 
 		} catch (ProcessosNaoCarregadosException e) {
@@ -69,7 +71,7 @@ public class MainController {
 
 	@Get("/resultado-escalonamento-processo")
 	public void resultadoEscalonamentoProcesso() {
-		if (!result.included().containsKey("resultadoProcesso")) {
+		if (!result.included().containsKey("resultadosDosAlgoritmos")) {
 			validator.add(new ValidationMessage("Configure um algoritmo para simular um escalonamento.", ""));
 			validator.onErrorRedirectTo(this).escalonamentoProcesso();
 		}

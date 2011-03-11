@@ -65,4 +65,9 @@ public class FCFS extends EscalonadorBase implements Escalonador {
 	public int totalProcessos() {
 		return totalProcessosExecutados();
 	}
+
+	@Override
+	public String algoritmoNome() {
+		return "FC-FS";
+	}
 }

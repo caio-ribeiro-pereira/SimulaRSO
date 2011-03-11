@@ -5,11 +5,11 @@
  * escalonamento de processos.
  * 
  */
-function ProcessoChart(total) {
-	var canvas = document.getElementById('processo-chart');
-	this.ctx = canvas.getContext('2d');
-	this.width = canvas.width;
-	this.height = canvas.height;
+function ProcessoChart(total, canvas) {
+	this.canvas = canvas;
+	this.ctx = this.canvas.getContext('2d');
+	this.width = this.canvas.width;
+	this.height = this.canvas.height;
 	this.inicio_x = 0;
 	this.inicio_y = 0;
 	this.total = total;

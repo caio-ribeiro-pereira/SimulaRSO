@@ -25,7 +25,7 @@
 		<div id="algoritmo-menu" class="clearfix menu">
 			<div id="alg1" class="grid_3">
 				<strong>Algoritmo 1: </strong>
-				<select name="alg[0]" id="algoritmo1">
+				<select name="algs[0]" id="algoritmo1">
 					<option value="" selected>Selecione...</option>
 					<c:forEach var="alg" items="${algoritmoProcesso}">
 						<option value="${alg}">${alg.nome}</option>	
@@ -34,7 +34,7 @@
 			</div>
 			<div id="alg2" class="grid_3">
 				<strong>Algoritmo 2: </strong>
-				<select name="alg[1]" id="algoritmo2">
+				<select name="algs[1]" id="algoritmo2">
 					<option value="" selected>Selecione...</option>
 					<c:forEach var="alg" items="${algoritmoProcesso}">
 						<option value="${alg}">${alg.nome}</option>	

@@ -65,4 +65,11 @@ public interface Escalonador {
 	 * @return ArrayList com resultados para grafico.
 	 */
 	ArrayList<Processo> resultadoGraficoFinal();
+
+	/**
+	 * Retorna o nome do Algoritmo de escalonamento que foi executado.
+	 * 
+	 * @return String nome do algoritmo escalonador.
+	 */
+	String algoritmoNome();
 }
