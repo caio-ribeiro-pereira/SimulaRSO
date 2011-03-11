@@ -52,7 +52,7 @@
 				</tfoot>
 			</table>
 		<script type="text/javascript">
-			$(function(){
+			head.ready(function(){
 				var processos = new Array();
 				<c:set var="x" value="0" />
 				<c:set var="h" value="20" />
@@ -75,6 +75,5 @@
 	<div class="clearfix">
 		<a href="<c:url value="/escalonamento-processo" />">Realizar nova simulação...</a>
 	</div>
-	<script type="text/javascript" src="<c:url value="/resources/js/processo-chart.js" />"></script>
 </body>
 </html>

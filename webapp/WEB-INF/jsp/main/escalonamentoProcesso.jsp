@@ -61,15 +61,15 @@
 				</p>
 				<p>
 					<label class="grid_1" for="\${inputBurst}"><small>Burst: </small></label>
-					<input type="text" class="grid_1" name="\${prBurstName}" id="\${inputBurst}" maxlength="2">
+					<input type="text" class="grid_1 burst" name="\${prBurstName}" id="\${inputBurst}" value="10" maxlength="2">
 				</p>
 				<p>
 					<label class="grid_1" for="\${inputChegada}"><small>Chegada: </small></label>
-					<input type="text" class="grid_1" name="\${prChegadaName}" id="\${inputChegada}" maxlength="2">
+					<input type="text" class="grid_1 chegada" name="\${prChegadaName}" id="\${inputChegada}" maxlength="2">
 				</p>
 				<p>
 					<label class="grid_1" for="\${inputPrioridade}"><small>Prioridade: </small></label>
-					<input type="text" class="grid_1" name="\${prPrioridadeName}" id="\${inputPrioridade}" maxlength="2">
+					<input type="text" class="grid_1 prioridade" name="\${prPrioridadeName}" id="\${inputPrioridade}" maxlength="2">
 				</p>
 			</div>
 		</script>
@@ -77,12 +77,13 @@
 			<button type="submit">Executar</button>
 		</div>
 	</form>
-	<script type="text/javascript" src="<c:url value="/resources/js/jquery-tmpl.min.js" />"></script>
-	<script type="text/javascript" src="<c:url value="/resources/js/colors.js" />"></script>
 	<script type="text/javascript">
-		$(function(){
-			$('#quantum').hide();
+		head.ready(function(){
+			
+			$('button').button();
+			
 			$('#alg2').hide();
+			$('#quantum').hide();
 			
 			$('#process-form').submit(function(){
 				$('div.executar button').attr('disabled','disabled');
@@ -90,27 +91,31 @@
 			
 			$('#modo').change(function(){
 				if(this.value == 'COMPARATIVO'){
-					$('#alg2').show();
+					$('#alg2').fadeIn(750);
 				}else{
-					$('#alg2').hide();
+					if($('#algoritmo1').val() != 'ROUNDROBIN' && $('#algoritmo2').val() == 'ROUNDROBIN'){
+						$('#quantum').fadeOut();
+						$('#quantum select option:first-child').attr('selected','selected');
+					}
+					$('#alg2').fadeOut();
 					$('#alg2 select option:first-child').attr('selected','selected');
 				}
 			}).trigger('change');
 			
 			$('#algoritmo1').change(function(){
-				if(this.value == 'ROUNDROBIN'){
-					$('#quantum').show();
+				if(this.value == 'ROUNDROBIN' || $('#algoritmo2').val() == 'ROUNDROBIN'){
+					$('#quantum').fadeIn(750);
 				}else{
-					$('#quantum').hide();
+					$('#quantum').fadeOut();
 					$('#quantum select option:first-child').attr('selected','selected');
 				}
 			}).trigger('change');
 			
 			$('#algoritmo2').change(function(){
-				if(this.value == 'ROUNDROBIN'){
-					$('#quantum').show();
+				if(this.value == 'ROUNDROBIN' || $('#algoritmo1').val() == 'ROUNDROBIN'){
+					$('#quantum').fadeIn(750);
 				}else{
-					$('#quantum').hide();
+					$('#quantum').fadeOut();
 					$('#quantum select option:first-child').attr('selected','selected');
 				}
 			}).trigger('change');
@@ -137,7 +142,10 @@
 				    );
 				}
 				var template = $('#processTemplate').tmpl(processos);
-				content.append(template).show();
+				content.append(template).fadeIn(750);
+				$('input[type="text"].burst').spinner({ min: 1, max: 99, showOn: 'both' });
+				$('input[type="text"].chegada').spinner({ min: 0, max: 99, showOn: 'both' });
+				$('input[type="text"].prioridade').spinner({ min: 0, max: 10, showOn: 'both' });
 			}).trigger('change');
 		});
 	</script>

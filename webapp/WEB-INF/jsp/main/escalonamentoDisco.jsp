@@ -7,5 +7,4 @@
 	<div class="graphic-panel clearfix">
 		<canvas id="disco-canvas" class="clearfix" width="1900" height="400"></canvas>
 	</div>
-	<script type="text/javascript" src="<c:url value="/resources/js/escalonameno-disco-canvas.js" />"></script>
 </body>

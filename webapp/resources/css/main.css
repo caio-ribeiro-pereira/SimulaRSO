@@ -25,6 +25,12 @@ header,section,footer {
 h1 {
 	font-size: 1.6em;
 }
+h2 {
+	font-size: 1.4em;
+}
+h3 {
+	font-size: 1.2em;
+}
 
 h1,h2,h3 {
 	line-height: 1.8em;

@@ -2,20 +2,22 @@
 <fmt:setLocale value="pt-BR"/>
 <html lang="pt-BR">
   <head>
-    <title><decorator:title default="Projeto SimulaEDP"></decorator:title></title>
+    <title><decorator:title default="Projeto SimulaEDP 0.5"></decorator:title></title>
     <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
     <link rel="shortcut icon" href="<c:url value="/resources/img/favicon.ico" />"></link>
     <link rel="stylesheet" type="text/css" href="<c:url value="/resources/css/reset.css" />">
 	<link rel="stylesheet" type="text/css" href="<c:url value="/resources/css/grid.css" />">
 	<link rel="stylesheet" type="text/css" href="<c:url value="/resources/css/main.css" />">
-	<script type="text/javascript" src="<c:url value="/resources/js/jquery.min.js" />"></script>
-    <!--[if lt IE 9]><script type="text/javascript" src="<c:url value="/resources/js/html5.js" />"></script><![endif]-->
+	<link rel="stylesheet" type="text/css" href="<c:url value="/resources/css/smoothness/jquery-ui.css" />">
+	<!--[if IE]><script type="text/javascript" src="<c:url value="/resources/js/html5.js" />"></script><![endif]-->
+    <!--[if IE]><script type="text/javascript" src="<c:url value="/resources/js/excanvas.min.js" />"></script><![endif]-->
+	<script type="text/javascript" src="<c:url value="/resources/js/head.min.js" />"></script>
     <decorator:head />
   </head>
   <body>
   	<div class="container_12 main">
 	  	<header class="clearfix">
-	  		<h1>SimulaEDP - Simulador de Escalonamento de Disco e Processos</h1>
+	  		<h1>Projeto SimulaEDP 0.5</h1>
 	  		<nav>
 	  			<a class="left" href="<c:url value="/" />">Home</a>
 				<a href="<c:url value="/escalonamento-processo" />">Escalonamento de Processos</a>
@@ -45,5 +47,14 @@
 	  		<p><strong><a href="http://www.unisantos.br" target="_blank">Universidade Católica de Santos</a></strong></p>
 	  	</footer>
   	</div>
+  	<script type="text/javascript">
+  		head.js('<c:url value="/resources/js/jquery.min.js" />',
+  				'<c:url value="/resources/js/jquery-ui.min.js" />',
+  				'<c:url value="/resources/js/jquery-ui.spinner.min.js" />',
+  				'<c:url value="/resources/js/jquery-tmpl.min.js" />',
+  				'<c:url value="/resources/js/colors.js" />',
+  				'<c:url value="/resources/js/processo-chart.js" />'
+  		);
+  	</script>
   </body>
 </html>
