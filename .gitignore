@@ -1,4 +1,2 @@
 build
-lib/default
-webapp/WEB-INF/lib
 webapp/WEB-INF/classes
