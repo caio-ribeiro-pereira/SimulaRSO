@@ -10,6 +10,8 @@ import appspot.simulaedp.model.Processo.Estado;
 
 public class RoundRobin extends EscalonadorBase implements Escalonador {
 
+	private static final int MIN_QUANTUM = 5;
+	private static final int MAX_QUANTUM = 100;
 	private int tempoQuantum;
 	private int totalIds;
 	private int index;
@@ -23,7 +25,7 @@ public class RoundRobin extends EscalonadorBase implements Escalonador {
 	}
 
 	private void definirTempoQuantum(int tempoQuantum) {
-		if (tempoQuantum >= 10) {
+		if (tempoQuantum >= MIN_QUANTUM && tempoQuantum <= MAX_QUANTUM) {
 			this.tempoQuantum = tempoQuantum;
 		} else {
 			throw new TempoQuantumException();
@@ -164,6 +166,6 @@ public class RoundRobin extends EscalonadorBase implements Escalonador {
 
 	@Override
 	public String algoritmoNome() {
-		return "Round Robin";
+		return AlgoritmoProcesso.ROUNDROBIN.getNome();
 	}
 }

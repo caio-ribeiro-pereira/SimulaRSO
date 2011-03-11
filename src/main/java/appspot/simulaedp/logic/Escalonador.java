@@ -6,6 +6,20 @@ import appspot.simulaedp.model.Processo;
 
 public interface Escalonador {
 
+	public enum AlgoritmoProcesso {
+		FCFS("FCFS"), SJF("SJF"), PRIORIDADE("Prioridade"), SRT("SRT"), ROUNDROBIN("RoundRobin");
+
+		private String nome;
+
+		AlgoritmoProcesso(String nome) {
+			this.nome = nome;
+		}
+
+		public String getNome() {
+			return this.nome;
+		}
+	}
+
 	/**
 	 * Executa um algoritmo de escalonamento.
 	 * 

@@ -172,6 +172,6 @@ public class SRT extends EscalonadorBase implements Escalonador {
 
 	@Override
 	public String algoritmoNome() {
-		return "SRT";
+		return AlgoritmoProcesso.SRT.getNome();
 	}
 }

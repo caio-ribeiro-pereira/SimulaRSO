@@ -69,6 +69,6 @@ public class SJF extends EscalonadorBase implements Escalonador {
 
 	@Override
 	public String algoritmoNome() {
-		return "SJF";
+		return AlgoritmoProcesso.SJF.getNome();
 	}
 }

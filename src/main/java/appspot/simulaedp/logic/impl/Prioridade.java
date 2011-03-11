@@ -69,6 +69,6 @@ public class Prioridade extends EscalonadorBase implements Escalonador {
 
 	@Override
 	public String algoritmoNome() {
-		return "Prioridade";
+		return AlgoritmoProcesso.PRIORIDADE.getNome();
 	}
 }

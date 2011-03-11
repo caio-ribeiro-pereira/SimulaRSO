@@ -46,7 +46,7 @@
 		<li><small><a href="http://code.google.com/p/explorercanvas/" target="_blank"><strong>Explorer Canvas</strong></a> - Plugin Javascript que permite renderizar os elementos canvas no Internet Explorer.</small></li>
 	</ul>
 	<hr>
-	<h2>Compatibilidade com os Browsers</h2>
+	<h2>Compatibilidade com os navegadores:</h2>
 	<ul>
 		<li>Mozilla Firefox 3+</li>
 		<li>Google Chrome 5+</li>

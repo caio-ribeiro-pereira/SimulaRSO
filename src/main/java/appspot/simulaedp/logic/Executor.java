@@ -4,25 +4,24 @@ import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.TreeMap;
 
+import appspot.simulaedp.logic.Escalonador.AlgoritmoProcesso;
 import appspot.simulaedp.logic.impl.FCFS;
 import appspot.simulaedp.logic.impl.Prioridade;
 import appspot.simulaedp.logic.impl.RoundRobin;
 import appspot.simulaedp.logic.impl.SJF;
 import appspot.simulaedp.logic.impl.SRT;
 import appspot.simulaedp.model.Processo;
-import appspot.simulaedp.model.Processo.AlgoritmoProcesso;
 import br.com.caelum.vraptor.ioc.Component;
 
 @Component
 public class Executor implements Serializable {
 
-	private static final long serialVersionUID = -1275343850239840523L;
+	private static final long serialVersionUID = 3546621661055816896L;
 
 	public Executor() {
 	}
 
-	public TreeMap<String, Object> executar(final AlgoritmoProcesso algortimo, final ArrayList<Processo> processos,
-			final int quantum) {
+	public TreeMap<String, Object> executar(final AlgoritmoProcesso algortimo, final ArrayList<Processo> processos, final int quantum) {
 		Escalonador escalonador = null;
 		if (algortimo != null) {
 			if (algortimo == AlgoritmoProcesso.FCFS) {

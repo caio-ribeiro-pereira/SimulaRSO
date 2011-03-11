@@ -9,9 +9,18 @@
 	<link rel="stylesheet" type="text/css" href="<c:url value="/resources/css/grid.css" />">
 	<link rel="stylesheet" type="text/css" href="<c:url value="/resources/css/main.css" />">
 	<link rel="stylesheet" type="text/css" href="<c:url value="/resources/css/smoothness/jquery-ui.css" />">
-	<!--[if IE]><script type="text/javascript" src="<c:url value="/resources/js/html5.js" />"></script><![endif]-->
-    <!--[if IE]><script type="text/javascript" src="<c:url value="/resources/js/excanvas.min.js" />"></script><![endif]-->
+	<!--[if IE]><script type="text/javascript" src="<c:url value="/resources/js/ie/html5.js" />"></script><![endif]-->
+    <!--[if IE]><script type="text/javascript" src="<c:url value="/resources/js/ie/excanvas.min.js" />"></script><![endif]-->
 	<script type="text/javascript" src="<c:url value="/resources/js/head.min.js" />"></script>
+	<script type="text/javascript">
+  		head.js('<c:url value="/resources/js/jquery/jquery.min.js" />',
+  				'<c:url value="/resources/js/jquery/jquery-ui.min.js" />',
+  				'<c:url value="/resources/js/jquery/jquery-ui.spinner.min.js" />',
+  				'<c:url value="/resources/js/jquery/jquery-tmpl.min.js" />',
+  				'<c:url value="/resources/js/canvas/colors.js" />',
+  				'<c:url value="/resources/js/canvas/processo-chart.js" />'
+  		);
+  	</script>
     <decorator:head />
   </head>
   <body>
@@ -47,14 +56,5 @@
 	  		<p><strong><a href="http://www.unisantos.br" target="_blank">Universidade Católica de Santos</a></strong></p>
 	  	</footer>
   	</div>
-  	<script type="text/javascript">
-  		head.js('<c:url value="/resources/js/jquery.min.js" />',
-  				'<c:url value="/resources/js/jquery-ui.min.js" />',
-  				'<c:url value="/resources/js/jquery-ui.spinner.min.js" />',
-  				'<c:url value="/resources/js/jquery-tmpl.min.js" />',
-  				'<c:url value="/resources/js/colors.js" />',
-  				'<c:url value="/resources/js/processo-chart.js" />'
-  		);
-  	</script>
   </body>
 </html>

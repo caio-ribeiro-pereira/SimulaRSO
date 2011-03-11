@@ -68,6 +68,6 @@ public class FCFS extends EscalonadorBase implements Escalonador {
 
 	@Override
 	public String algoritmoNome() {
-		return "FC-FS";
+		return AlgoritmoProcesso.FCFS.getNome();
 	}
 }
