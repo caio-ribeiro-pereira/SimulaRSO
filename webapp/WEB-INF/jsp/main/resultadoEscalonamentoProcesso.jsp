@@ -12,7 +12,7 @@
 <body>
 	<h1 class="clearfix">Simulação do Algoritmo ${algoritmo[0].nome}</h1>
 	<div class="graphic-panel clearfix">
-		<canvas id="processo-chart" height="300"></canvas>
+		<canvas id="processo-chart" height="440"></canvas>
 	</div>
 		<table class="grid_12 result-panel">
 			<thead>
@@ -64,11 +64,20 @@
 	<script type="text/javascript" src="<c:url value="/resources/js/processo-chart.js" />"></script>
 	<script type="text/javascript">
 		$(function(){
-			var total = ${totalProcessos};
-			var espaco = 20;
-			$('#processo-chart').attr('width', ((${tempoTotal} + 1) * espaco));
-			var chart = new ProcessoChart(total, espaco);
+			var processos = new Array();
+			<c:set var="x" value="0" />
+			<c:set var="h" value="20" />
+			<c:forEach items="${resultadoGrafico}" var="pr">
+				<c:set var="w" value="${pr.burstAtual * 20}" />
+				<c:set var="y" value="${pr.id * 20}" />
+			processos.push({x : ${x}, y : ${y}, w : ${w}, h : ${h}, cor: '${pr.cor}'});
+				<c:set var="x" value="${x+w}" />
+			</c:forEach>
+			$('#processo-chart').attr('width', ((${tempoTotal} + 1) * ${h}));
+			
+			var chart = new ProcessoChart(${totalProcessos});
 			chart.background();
+			chart.draw(processos);
 		});
 	</script>
 </body>

@@ -6,7 +6,6 @@ import java.util.TreeMap;
 
 import appspot.simulaedp.exception.ProcessosNaoCarregadosException;
 import appspot.simulaedp.exception.TempoQuantumException;
-import appspot.simulaedp.logic.Escalonador.ModoSimulacao;
 import appspot.simulaedp.logic.Executor;
 import appspot.simulaedp.model.Processo;
 import appspot.simulaedp.model.Processo.AlgoritmoProcesso;
@@ -42,8 +41,7 @@ public class MainController {
 
 	@Get("/escalonamento-processo")
 	public void escalonamentoProcesso() {
-		result.include("modosDeSimulacao", ModoSimulacao.values());
-		result.include("algoritmosDeProcesso", AlgoritmoProcesso.values());
+		result.include("algoritmoProcesso", AlgoritmoProcesso.values());
 	}
 
 	@Post("/executar-escalonamento-processo")

@@ -1,7 +1,6 @@
 <!DOCTYPE html>
 <head>
 	<title>SimulaEDP - Escalonamento de Processos</title>
-	<script type="text/javascript" src="<c:url value="/resources/js/jquery-tmpl.min.js" />"></script>
 </head>	
 <body>
 	<h1 class="clearfix">Escalonamento de Processos</h1>
@@ -10,9 +9,8 @@
 			<div class="grid_3">
 				<strong>Simulação: </strong>
 				<select id="modo">
-					<c:forEach var="modoSimulacao" items="${modosDeSimulacao}">
-						<option value="${modoSimulacao}">${modoSimulacao.modo}</option>
-					</c:forEach>
+					<option value="UNICO">Única</option>
+					<option value="COMPARATIVO">Comparativa</option>
 				</select>
 			</div>
 			<div class="grid_3">
@@ -28,8 +26,9 @@
 			<div id="alg1" class="grid_3">
 				<strong>Algoritmo 1: </strong>
 				<select name="alg[0]" id="algoritmo1">
-					<c:forEach var="algoritmo" items="${algoritmosDeProcesso}">
-						<option value="${algoritmo}">${algoritmo.nome}</option>
+					<option value="" selected>Selecione...</option>
+					<c:forEach var="alg" items="${algoritmoProcesso}">
+						<option value="${alg}">${alg.nome}</option>	
 					</c:forEach>
 				</select>
 			</div>
@@ -37,14 +36,14 @@
 				<strong>Algoritmo 2: </strong>
 				<select name="alg[1]" id="algoritmo2">
 					<option value="" selected>Selecione...</option>
-					<c:forEach var="algoritmo" items="${algoritmosDeProcesso}">
-						<option value="${algoritmo}">${algoritmo.nome}</option>
+					<c:forEach var="alg" items="${algoritmoProcesso}">
+						<option value="${alg}">${alg.nome}</option>	
 					</c:forEach>
 				</select>			
 			</div>
 			<div id="quantum" class="grid_4">
 				<strong>Tempo de corte: </strong>
-				<select>
+				<select name="qt">
 					<option value="">Selecione...</option>
 					<c:forEach begin="5" end="100" step="5" var="q">
 						<option value="${q}">${q} ms</option>
@@ -58,6 +57,7 @@
 				<p>
 					<small>\${prLabel}: </small>
 					<input type="hidden" name="\${prIdName}" value="\${prId}">
+					<input type="hidden" name="\${prCorName}" value="\${prCor}">
 				</p>
 				<p>
 					<label class="grid_1" for="\${inputBurst}"><small>Burst: </small></label>
@@ -77,6 +77,8 @@
 			<button type="submit">Executar</button>
 		</div>
 	</form>
+	<script type="text/javascript" src="<c:url value="/resources/js/jquery-tmpl.min.js" />"></script>
+	<script type="text/javascript" src="<c:url value="/resources/js/colors.js" />"></script>
 	<script type="text/javascript">
 		$(function(){
 			$('#quantum').hide();
@@ -117,18 +119,21 @@
 				var content = $('#process-menu').empty().hide();
 				var total = $('#total').val();
 				var processos = new Array();
+				var colors = new Colors();
 				for(var i = 0; i < total; i++){
 				    processos.push(
 				    	{inputBurst : "burst-"+(i+1),
 						 inputChegada : "chegada-"+(i+1),
 						 inputPrioridade : "prioridade-"+(i+1),
+						 prCor : colors[i],
 						 prDivId : "processo-"+(i+1),
 						 prLabel : "Processo: "+(i+1),
 						 prId : (i+1),
 						 prIdName : "pr["+i+"].id",
 						 prBurstName : "pr["+i+"].burst", 
 						 prChegadaName : "pr["+i+"].tempoChegada", 
-						 prPrioridadeName : "pr["+i+"].prioridade"}
+						 prPrioridadeName : "pr["+i+"].prioridade",
+						 prCorName : "pr["+i+"].cor"}
 				    );
 				}
 				var template = $('#processTemplate').tmpl(processos);

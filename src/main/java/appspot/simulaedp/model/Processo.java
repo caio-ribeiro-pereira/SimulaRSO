@@ -4,14 +4,13 @@ import java.io.Serializable;
 
 public class Processo implements Comparable<Processo>, Cloneable, Serializable {
 
-	private static final long serialVersionUID = 93209467708362377L;
+	private static final long serialVersionUID = 6110475007219847923L;
 
 	public enum Estado {
 		EM_ESPERA, EXECUTANDO, FINALIZADO
 	}
 
 	public enum AlgoritmoProcesso {
-
 		FCFS("FC-FS"), SJF("SJF"), PRIORIDADE("Prioridade"), SRT("SRT"), ROUNDROBIN("Round Robin");
 
 		private String nome;
@@ -35,6 +34,7 @@ public class Processo implements Comparable<Processo>, Cloneable, Serializable {
 	private int prioridade;
 	private int turnAround;
 	private boolean firstRun;
+	private String cor;
 	private Estado estado;
 
 	public Processo() {
@@ -143,6 +143,14 @@ public class Processo implements Comparable<Processo>, Cloneable, Serializable {
 		return firstRun;
 	}
 
+	public void setCor(String cor) {
+		this.cor = cor;
+	}
+
+	public String getCor() {
+		return cor;
+	}
+
 	public void setEstado(Estado estado) {
 		this.estado = estado;
 	}
@@ -198,6 +206,7 @@ public class Processo implements Comparable<Processo>, Cloneable, Serializable {
 		sb.append(", burst=").append(burst);
 		sb.append(", prioridade=").append(prioridade);
 		sb.append(", firstRun=").append(firstRun);
+		sb.append(", cor=").append(cor);
 		sb.append("]\n");
 		sb.trimToSize();
 		return sb.toString();

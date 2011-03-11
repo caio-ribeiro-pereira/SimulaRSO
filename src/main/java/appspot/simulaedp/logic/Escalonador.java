@@ -6,21 +6,6 @@ import appspot.simulaedp.model.Processo;
 
 public interface Escalonador {
 
-	public enum ModoSimulacao {
-
-		UNICO("Única"), COMPARATIVO("Comparativa");
-
-		String modo;
-
-		ModoSimulacao(String modo) {
-			this.modo = modo;
-		}
-
-		public String getModo() {
-			return this.modo;
-		}
-	}
-
 	/**
 	 * Executa um algoritmo de escalonamento.
 	 * 
