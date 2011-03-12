@@ -30,6 +30,7 @@ ProcessoChart.prototype.background = function() {
 			this.ctx.lineTo(x, (this.height - this.espaco) + 1);
 		}
 	}
+	// Imprimindo Linha do tempo
 	this.ctx.font = "9px Arial";
 	this.ctx.fillStyle = '#000000';
 	var tempo = 0;

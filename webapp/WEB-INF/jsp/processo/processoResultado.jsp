@@ -1,13 +1,19 @@
 <!DOCTYPE html>
 <head>
 	<title>Simulação dos Algoritmos de Escalonamento de Processos</title>
+	<script type="text/javascript">
+		head.ready(function(){
+			$('table.result-panel tr.result-line:odd').css('background-color','#DDD');
+			$('table.result-panel tr.result-line:even').css('background-color','#CCC');
+		});
+	</script>
 </head>	
 <body>
 	<h1 class="clearfix">Simulação dos Algoritmos de Escalonamento de Processos</h1>
 	<c:forEach var="resultList" items="${resultadosDosAlgoritmos}">
 		<h2 class="clearfix">Resultado da simulação: ${resultList.algoritmoNome}</h2>
 		<div class="graphic-panel clearfix">
-			<canvas id="processo-chart-${resultList.algoritmoNome}" height="440"></canvas>
+			<canvas id="processo-chart-${resultList.algoritmoNome}"></canvas>
 		</div>
 		<table class="grid_12 result-panel">
 			<thead>
@@ -50,7 +56,6 @@
 				</tr>
 			</tfoot>
 		</table>
-		<hr>
 		<script type="text/javascript">
 			head.ready(function(){
 				var processos = new Array();
@@ -63,6 +68,7 @@
 					<c:set var="x" value="${x+w}" />
 				</c:forEach>
 				$('#processo-chart-${resultList.algoritmoNome}').attr('width', ((${resultList.tempoTotal} + 1) * ${h}));
+				$('#processo-chart-${resultList.algoritmoNome}').attr('height', ((${resultList.totalProcessos} + 2) * ${h}));
 				var canvas = document.getElementById('processo-chart-${resultList.algoritmoNome}');
 				var chart = new ProcessoChart(${resultList.totalProcessos}, canvas);
 				chart.background();
@@ -74,4 +80,3 @@
 		<a href="<c:url value="/escalonamento-processo" />">Realizar nova simulação...</a>
 	</div>
 </body>
-</html>

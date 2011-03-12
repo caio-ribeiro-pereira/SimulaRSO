@@ -9,8 +9,8 @@
 	<link rel="stylesheet" type="text/css" href="<c:url value="/resources/css/grid.css" />">
 	<link rel="stylesheet" type="text/css" href="<c:url value="/resources/css/main.css" />">
 	<link rel="stylesheet" type="text/css" href="<c:url value="/resources/css/smoothness/jquery-ui.css" />">
-	<!--[if IE]><script type="text/javascript" src="<c:url value="/resources/js/ie/html5.js" />"></script><![endif]-->
-    <!--[if IE]><script type="text/javascript" src="<c:url value="/resources/js/ie/excanvas.min.js" />"></script><![endif]-->
+	<!--[if lt-IE9]><script type="text/javascript" src="<c:url value="/resources/js/ie/html5.js" />"></script><![endif]-->
+    <!--[if lt-IE9]><script type="text/javascript" src="<c:url value="/resources/js/ie/excanvas.min.js" />"></script><![endif]-->
 	<script type="text/javascript" src="<c:url value="/resources/js/head.min.js" />"></script>
 	<script type="text/javascript">
   		head.js('<c:url value="/resources/js/jquery/jquery.min.js" />',

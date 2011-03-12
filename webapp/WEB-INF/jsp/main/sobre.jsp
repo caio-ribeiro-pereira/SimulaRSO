@@ -5,7 +5,7 @@
 </head>
 <body>
 	<h1>Detalhes sobre o projeto:</h1>
-	<h2>SimulaEDP 0.9 Beta</h2>
+	<h2>SimulaEDP 0.5</h2>
 	<p><small>O objetivo deste trabalho é o desenvolvimento de uma aplicação web
 	   a ser utilizado como ferramenta de apoio para a disciplina de 
 	   sistemas operacionais ou semelhantes que abordem os assuntos de 
