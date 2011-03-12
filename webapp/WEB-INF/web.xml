@@ -9,7 +9,8 @@
 	<jsp-config>
 		<jsp-property-group>
 			<url-pattern>*.jsp</url-pattern>
-			<page-encoding>ISO-8859-1</page-encoding>
+			<page-encoding>UTF-8</page-encoding>
+			<!-- <page-encoding>ISO-8859-1</page-encoding> -->
 			<scripting-invalid>true</scripting-invalid>
 			<include-prelude>/WEB-INF/jsp/prelude.jspf</include-prelude>
 			<trim-directive-whitespaces>true</trim-directive-whitespaces>
@@ -27,12 +28,7 @@
 
 	<context-param>
 		<param-name>br.com.caelum.vraptor.encoding</param-name>
-		<param-value>ISO-8859-1</param-value>
-	</context-param>
-
-	<context-param>
-		<param-name>br.com.caelum.vraptor.packages</param-name>
-		<param-value>br.com.caelum.vraptor.serialization.gson</param-value>
+		<param-value>UTF-8</param-value>
 	</context-param>
 
 	<context-param>

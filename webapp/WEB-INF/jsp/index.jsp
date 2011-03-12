@@ -3,14 +3,12 @@
 <html lang="pt-BR">
   <head>
     <title><decorator:title default="Projeto SimulaEDP 0.5"></decorator:title></title>
-    <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
     <link rel="shortcut icon" href="<c:url value="/resources/img/favicon.ico" />"></link>
     <link rel="stylesheet" type="text/css" href="<c:url value="/resources/css/reset.css" />">
 	<link rel="stylesheet" type="text/css" href="<c:url value="/resources/css/grid.css" />">
 	<link rel="stylesheet" type="text/css" href="<c:url value="/resources/css/main.css" />">
 	<link rel="stylesheet" type="text/css" href="<c:url value="/resources/css/smoothness/jquery-ui.css" />">
-	<!--[if lt-IE9]><script type="text/javascript" src="<c:url value="/resources/js/ie/html5.js" />"></script><![endif]-->
-    <!--[if lt-IE9]><script type="text/javascript" src="<c:url value="/resources/js/ie/excanvas.min.js" />"></script><![endif]-->
 	<script type="text/javascript" src="<c:url value="/resources/js/head.min.js" />"></script>
 	<script type="text/javascript">
   		head.js('<c:url value="/resources/js/jquery/jquery.min.js" />',
@@ -18,7 +16,12 @@
   				'<c:url value="/resources/js/jquery/jquery-ui.spinner.min.js" />',
   				'<c:url value="/resources/js/jquery/jquery-tmpl.min.js" />',
   				'<c:url value="/resources/js/canvas/colors.js" />',
-  				'<c:url value="/resources/js/canvas/processo-chart.js" />'
+  				'<c:url value="/resources/js/canvas/processo-chart.js" />',
+  				'<c:url value="/resources/js/ie/jooscript.js" />',
+  				'<c:url value="/resources/js/ie/fxcanvas.js" />',
+  				'<c:url value="/resources/js/ie/flash_backend.js" />',
+  				'<c:url value="/resources/js/ie/canvas_backend.js" />',
+  				'<c:url value="/resources/js/ie/html5.js" />'
   		);
   	</script>
     <decorator:head />
@@ -48,12 +51,12 @@
 	  	</section>
 	  	<hr>
 		<footer class="clearfix">
-            <h3>Criadores do projeto:</h3>
-	  		<p><strong>Orientador:</strong> André Luiz Vizine Pereira - <a href="mailto:vizine@unisantos.br">vizine@unisantos.br</a></p>
-	  		<p><strong>Autor:</strong> André de Araújo Rodrigues - <a href="mailto:and.arodrigues@gmail.com">and.arodrigues@gmail.com</a></p>
-	  		<p><strong>Autor:</strong> Caio Ribeiro Pereira - <a href="mailto:caio.ribeiro.pereira@gmail.com">caio.ribeiro.pereira@gmail.com</a></p>
-	  		<p><strong>Curso:</strong> Sistemas de Informação</p>
-	  		<p><strong><a href="http://www.unisantos.br" target="_blank">Universidade Católica de Santos</a></strong></p>
+            <h3>Autores do projeto:</h3>
+	  		<p><strong>Orientador:</strong> AndrÃ© Luiz Vizine Pereira - <a href="mailto:vizine@unisantos.br">vizine@unisantos.br</a></p>
+	  		<p><strong>Aluno:</strong> AndrÃ© de AraÃºjo Rodrigues - <a href="mailto:and.arodrigues@gmail.com">and.arodrigues@gmail.com</a></p>
+	  		<p><strong>Aluno:</strong> Caio Ribeiro Pereira - <a href="mailto:caio.ribeiro.pereira@gmail.com">caio.ribeiro.pereira@gmail.com</a></p>
+	  		<p><strong>Curso:</strong> Sistemas de InformaÃ§Ã£o</p>
+	  		<p><strong><a href="http://www.unisantos.br" target="_blank">Universidade CatÃ³lica de Santos</a></strong></p>
 	  	</footer>
   	</div>
   </body>
