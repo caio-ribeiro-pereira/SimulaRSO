@@ -23,22 +23,21 @@ public class SRTTest extends InitialCase {
 
 	@Test
 	public void deveRealizarUmEscalonamentoSimples() {
-		Escalonador srt = new SRT(gerarArrayListDeProcessos(BURSTS_SIMPLES.length, BURSTS_SIMPLES, CHEGADAS_SIMPLES,
-				null));
+		Escalonador srt = new SRT(gerarArrayListDeProcessos(BURSTS_SIMPLES.length, BURSTS_SIMPLES, CHEGADAS_SIMPLES, null));
 		srt.executar();
 		ArrayList<Processo> resultado = srt.resultadoFinal();
 		ArrayList<Processo> resultadoGrafico = srt.resultadoGraficoFinal();
 		Assert.assertThat(resultado, Matchers.notNullValue());
-		Assert.assertThat(resultado.size(), Matchers.is(BURSTS_SIMPLES.length));
+		Assert.assertThat(resultado.size(), Matchers.equalTo(BURSTS_SIMPLES.length));
 		Assert.assertThat(resultadoGrafico, Matchers.notNullValue());
-		Assert.assertThat(resultadoGrafico.size(), Matchers.is(ID_COM_BURSTS_SIMPLES.length));
+		Assert.assertThat(resultadoGrafico.size(), Matchers.equalTo(ID_COM_BURSTS_SIMPLES.length));
 		for (int i = 0; i < resultadoGrafico.size(); i++) {
-			Assert.assertThat(resultadoGrafico.get(i).getId(), Matchers.is(ID_COM_BURSTS_SIMPLES[i]));
+			Assert.assertThat(resultadoGrafico.get(i).getId(), Matchers.equalTo(ID_COM_BURSTS_SIMPLES[i]));
 		}
 		for (int i = 0; i < resultado.size(); i++) {
-			Assert.assertThat(resultado.get(i).getEspera(), Matchers.is(TEMPO_ESPERA_COM_BURSTS_SIMPLES[i]));
-			Assert.assertThat(resultado.get(i).getResposta(), Matchers.is(TEMPO_RESPOSTA_COM_BURSTS_SIMPLES[i]));
-			Assert.assertThat(resultado.get(i).getTurnAround(), Matchers.is(TURN_AROUND_COM_BURSTS_SIMPLES[i]));
+			Assert.assertThat(resultado.get(i).getEspera(), Matchers.equalTo(TEMPO_ESPERA_COM_BURSTS_SIMPLES[i]));
+			Assert.assertThat(resultado.get(i).getResposta(), Matchers.equalTo(TEMPO_RESPOSTA_COM_BURSTS_SIMPLES[i]));
+			Assert.assertThat(resultado.get(i).getTurnAround(), Matchers.equalTo(TURN_AROUND_COM_BURSTS_SIMPLES[i]));
 		}
 		double esperaMedia = srt.tempoEsperaMedia();
 		double respostaMedia = srt.tempoRespostaMedia();
@@ -63,16 +62,16 @@ public class SRTTest extends InitialCase {
 		ArrayList<Processo> resultado = srt.resultadoFinal();
 		ArrayList<Processo> resultadoGrafico = srt.resultadoGraficoFinal();
 		Assert.assertThat(resultado, Matchers.notNullValue());
-		Assert.assertThat(resultado.size(), Matchers.is(BURSTS_MEDIO.length));
+		Assert.assertThat(resultado.size(), Matchers.equalTo(BURSTS_MEDIO.length));
 		Assert.assertThat(resultadoGrafico, Matchers.notNullValue());
-		Assert.assertThat(resultadoGrafico.size(), Matchers.is(ID_COM_BURSTS_MEDIO.length));
+		Assert.assertThat(resultadoGrafico.size(), Matchers.equalTo(ID_COM_BURSTS_MEDIO.length));
 		for (int i = 0; i < resultadoGrafico.size(); i++) {
-			Assert.assertThat(resultadoGrafico.get(i).getId(), Matchers.is(ID_COM_BURSTS_MEDIO[i]));
+			Assert.assertThat(resultadoGrafico.get(i).getId(), Matchers.equalTo(ID_COM_BURSTS_MEDIO[i]));
 		}
 		for (int i = 0; i < resultado.size(); i++) {
-			Assert.assertThat(resultado.get(i).getEspera(), Matchers.is(TEMPO_ESPERA_COM_BURSTS_MEDIO[i]));
-			Assert.assertThat(resultado.get(i).getResposta(), Matchers.is(TEMPO_RESPOSTA_COM_BURSTS_MEDIO[i]));
-			Assert.assertThat(resultado.get(i).getTurnAround(), Matchers.is(TURN_AROUND_COM_BURSTS_MEDIO[i]));
+			Assert.assertThat(resultado.get(i).getEspera(), Matchers.equalTo(TEMPO_ESPERA_COM_BURSTS_MEDIO[i]));
+			Assert.assertThat(resultado.get(i).getResposta(), Matchers.equalTo(TEMPO_RESPOSTA_COM_BURSTS_MEDIO[i]));
+			Assert.assertThat(resultado.get(i).getTurnAround(), Matchers.equalTo(TURN_AROUND_COM_BURSTS_MEDIO[i]));
 		}
 		double esperaMedia = srt.tempoEsperaMedia();
 		double respostaMedia = srt.tempoRespostaMedia();
@@ -94,7 +93,7 @@ public class SRTTest extends InitialCase {
 			srt.executar();
 			ArrayList<Processo> resultado = srt.resultadoFinal();
 			Assert.assertThat(resultado, Matchers.notNullValue());
-			Assert.assertThat(resultado.size(), Matchers.is(i));
+			Assert.assertThat(resultado.size(), Matchers.equalTo(i));
 		}
 	}
 

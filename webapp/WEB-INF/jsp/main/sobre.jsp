@@ -1,11 +1,11 @@
 <!DOCTYPE html>
 <head>
-	<title>Sobre o projeto SimulaEDP</title>
+	<title>Detalhes sobre o projeto</title>
 	<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
 </head>
 <body>
 	<h1>Detalhes sobre o projeto:</h1>
-	<h2>SimulaEDP 0.9 Beta</h2>
+	<h2>SimulaEDP 0.5 Alpha</h2>
 	<p><small>O objetivo deste trabalho é o desenvolvimento de uma aplicação web
 	   a ser utilizado como ferramenta de apoio para a disciplina de 
 	   sistemas operacionais ou semelhantes que abordem os assuntos de 
@@ -48,10 +48,10 @@
 	<hr>
 	<h2>Compatibilidade com os navegadores:</h2>
 	<ul>
-		<li>Mozilla Firefox 3+</li>
-		<li>Google Chrome 5+</li>
-		<li>Opera 9+</li>
-		<li>Internet Explorer 8+</li>
-		<li>Safari 4+</li>
+		<li><a href="http://br.mozdev.org/" target="_blank"><strong>Mozilla Firefox 3+</strong></a></li>
+		<li><a href="http://www.google.com/chrome/" target="_blank"><strong>Google Chrome 5+</strong></a></li>
+		<li><a href="http://www.opera.com/" target="_blank"><strong>Opera 9+</strong></a></li>
+		<li><a href="http://www.microsoft.com/brasil/windows/internet-explorer/" target="_blank"><strong>Internet Explorer 8+ (Ainda em testes!)</strong></a></li>
+		<li><a href="http://www.apple.com/br/safari/" target="_blank"><strong>Safari 4+</strong></a></li>
 	</ul>
 </body>
