@@ -7,9 +7,9 @@
 	<form id="process-form" action="<c:url value="/executar-escalonamento-processo"/>" method="post">
 		<div id="main-menu" class="clearfix menu">
 			<div class="grid_3">
-				<strong>Simulação: </strong>
+				<strong>SimulaÃ§Ã£o: </strong>
 				<select id="modo">
-					<option value="UNICO">Única</option>
+					<option value="UNICO">Ãšnica</option>
 					<option value="COMPARATIVO">Comparativa</option>
 				</select>
 			</div>
@@ -91,31 +91,31 @@
 			
 			$('#modo').change(function(){
 				if(this.value == 'COMPARATIVO'){
-					$('#alg2').fadeIn(750);
+					$('#alg2').show();
 				}else{
 					if($('#algoritmo1').val() != 'ROUNDROBIN' && $('#algoritmo2').val() == 'ROUNDROBIN'){
-						$('#quantum').fadeOut();
+						$('#quantum').hide();
 						$('#quantum select option:first-child').attr('selected','selected');
 					}
-					$('#alg2').fadeOut();
+					$('#alg2').hide();
 					$('#alg2 select option:first-child').attr('selected','selected');
 				}
 			}).trigger('change');
 			
 			$('#algoritmo1').change(function(){
 				if(this.value == 'ROUNDROBIN' || $('#algoritmo2').val() == 'ROUNDROBIN'){
-					$('#quantum').fadeIn(750);
+					$('#quantum').show();
 				}else{
-					$('#quantum').fadeOut();
+					$('#quantum').hide();
 					$('#quantum select option:first-child').attr('selected','selected');
 				}
 			}).trigger('change');
 			
 			$('#algoritmo2').change(function(){
 				if(this.value == 'ROUNDROBIN' || $('#algoritmo1').val() == 'ROUNDROBIN'){
-					$('#quantum').fadeIn(750);
+					$('#quantum').show();
 				}else{
-					$('#quantum').fadeOut();
+					$('#quantum').hide();
 					$('#quantum select option:first-child').attr('selected','selected');
 				}
 			}).trigger('change');
@@ -142,7 +142,7 @@
 				    );
 				}
 				var template = $('#processTemplate').tmpl(processos);
-				content.append(template).fadeIn(750);
+				content.append(template).show();
 				$('input[type="text"].burst').spinner({ min: 1, max: 99, showOn: 'both' });
 				$('input[type="text"].chegada').spinner({ min: 0, max: 99, showOn: 'both' });
 				$('input[type="text"].prioridade').spinner({ min: 0, max: 10, showOn: 'both' });

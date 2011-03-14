@@ -1,48 +1,48 @@
 <!DOCTYPE html>
 <head>
 	<title>Detalhes sobre o projeto</title>
-	<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 </head>
 <body>
 	<h1>Detalhes sobre o projeto:</h1>
 	<h2>SimulaEDP 0.5 Alpha</h2>
-	<p><small>O objetivo deste trabalho é o desenvolvimento de uma aplicação web
+	<p><small>O objetivo deste trabalho Ã© o desenvolvimento de uma aplicaÃ§Ã£o web
 	   a ser utilizado como ferramenta de apoio para a disciplina de 
 	   sistemas operacionais ou semelhantes que abordem os assuntos de 
 	   Escalonamento de Disco e Escalonamento de Processos.
-	   O foco principal do projeto é simular graficamente e de forma intuitiva
+	   O foco principal Ã© simular graficamente e de forma intuitiva
 	   como funcionam os principais algoritmos de escalonadores de processos 
-	   <strong>(FCFS, SJF, SRT, Prioridade, Round Robin)</strong> que são utilizados no gerenciamento
-	   de processos concorrentes presentes e também simular o comportamento
-	   dos algoritmos que escalonam as requisições de entrada e saída <strong>(I/O)</strong> de um 
-	   disco rígido <strong>(FCFS, SSTF, SCAN, C-SCAN, C-LOOK).</strong></small></p>
+	   <strong>(FCFS, SJF, SRT, Prioridade, Round Robin)</strong> que sÃ£o utilizados no gerenciamento
+	   de processos concorrentes presentes e tambÃ©m simular o comportamento
+	   dos algoritmos que escalonam as requisiÃ§Ãµes de entrada e saÃ­da <strong>(I/O)</strong> de um 
+	   disco rÃ­gido <strong>(FCFS, SSTF, SCAN, C-SCAN, C-LOOK).</strong></small></p>
 	<hr>
 	<h2>Funcionalidades do projeto:</h2>
 	<ul>
-		<li><small>Simular os principais algoritmos de escalonamento de processos com até 20 processos.</small></li>
-		<li><small>Simular os principais algoritmos de escalonamento de disco com até 30 requisições de (I/O) em disco.</small></li>
-		<li><small>Realizar simulação comparativa para analisar o comportamento de dois algoritmos distintos.</small></li>
-		<li><small>Exibição comportamental dos algoritmos através de gráficos intuitivos.</small></li>
-		<li><small>Projeto internacionalizado com suporte aos idiomas inglês e português.</small></li> 
+		<li><small>Simular os principais algoritmos de escalonamento de processos com atÃ© 20 processos.</small></li>
+		<li><small>Simular os principais algoritmos de escalonamento de disco com atÃ© 30 requisiÃ§Ãµes de (I/O) em disco.</small></li>
+		<li><small>Realizar simulaÃ§Ã£o comparativa para analisar o comportamento de dois algoritmos distintos.</small></li>
+		<li><small>ExibiÃ§Ã£o comportamental dos algoritmos atravÃ©s de grÃ¡ficos intuitivos.</small></li>
+		<li><small>Projeto internacionalizado com suporte aos idiomas inglÃªs e portuguÃªs.</small></li> 
 	</ul>
 	<hr>
 	<h2>Tecnologias utilizadas:</h2>
 	<ul>
 		<li><small><a href="http://www.oracle.com/br/technologies/java/index.html" target="_blank"><strong>Java 6</strong></a> - Linguagem principal do projeto.</small></li>
-		<li><small><a href="http://www.github.com" target="_blank"><strong>GitHub</strong></a> - Repositório para projetos open-source.</small></li>
-		<li><small><a href="http://code.google.com/appengine/" target="_blank"><strong>Google App Engine</strong></a> - Host para aplicações web open-source Java ou Python.</small></li>
-		<li><small><a href="http://www.junit.org" target="_blank"><strong>JUnit 4.8</strong></a> - Framework para realizar testes unitário nos algoritmos.</small></li>
+		<li><small><a href="http://www.github.com" target="_blank"><strong>GitHub</strong></a> - RepositÃ³rio para projetos open-source.</small></li>
+		<li><small><a href="http://code.google.com/appengine/" target="_blank"><strong>Google App Engine</strong></a> - Cloud Host para aplicaÃ§Ãµes web open-source Java ou Python.</small></li>
+		<li><small><a href="http://www.junit.org" target="_blank"><strong>JUnit 4.8</strong></a> - Framework para realizar testes unitÃ¡rio nos algoritmos.</small></li>
 		<li><small><a href="http://vraptor.caelum.com.br" target="_blank"><strong>VRaptor 3.3.1</strong></a> - Framework MVC Brasileiro desenvolvido pela equipe da <a href="http://www.caelum.com.br">Caelum</a>.</small></li>
 		<li><small><a href="http://jstl.java.net" target="_blank"><strong>JSTL 1.2</strong></a> - Tags Java para incorporar funcionalidades em um jsp.</small></li>
 		<li><small><a href="http://www.opensymphony.com/sitemesh/" target="_blank"><strong>Sitemesh 2.4.2</strong></a> - Framework para modelar templates web.</small></li>
-		<li><small><a href="http://jquery.com/" target="_blank"><strong>JQuery 1.5</strong></a> - Biblioteca Javascript Cross-browser para manipulação de elementos DOM HTML.</small></li>
-		<li><small><a href="http://jqueryui.com/" target="_blank"><strong>JQuery-UI 1.8.10</strong></a> - Conjunto de interfaces gráficas prontas e totalmente compatível com JQuery.</small></li>
+		<li><small><a href="http://jquery.com/" target="_blank"><strong>JQuery 1.5</strong></a> - Biblioteca Javascript Cross-browser para manipulaÃ§Ã£o de elementos DOM HTML.</small></li>
+		<li><small><a href="http://jqueryui.com/" target="_blank"><strong>JQuery-UI 1.8.10</strong></a> - Conjunto de interfaces grÃ¡ficas prontas e totalmente compatÃ­vel com JQuery.</small></li>
 		<li><small><a href="http://www.jgeppert.com/jquery-spinner/" target="_blank"><strong>JQuery-UI Spinner Plugin</strong></a> - Plugin JQuery para implementar um spinner control.</small></li>
-		<li><small><a href="http://headjs.com/" target="_blank"><strong>Head JS 0.9</strong></a> - Script para carregamento rápido de arquivos javascript.</small>
+		<li><small><a href="http://headjs.com/" target="_blank"><strong>Head JS 0.9</strong></a> - Script para carregamento rÃ¡pido de arquivos javascript.</small>
 		<li><small><a href="http://960.gs/" target="_blank"><strong>960 Grid System</strong></a> - Framework CSS para posicionamento de objetos DOM Cross-Browser em formato de grid.</small>
-		<li><small><a href="http://www.w3schools.com/html5/default.asp" target="_blank"><strong>HTML 5</strong></a> - Estrutura do projeto utilizando as boas práticas de HTML 5 de acordo com as normas <a href="http://www.w3schools.com" target="_blank">W3C</a>.</small></li>
-		<li><small><a href="http://www.w3schools.com/css3/default.asp" target="_blank"><strong>CSS 3</strong></a> - Para estilização do layout do projeto, também seguindo as normas <a href="http://www.w3schools.com" target="_blank">W3C</a>.</small></li>
-		<li><small><a href="http://developer.mozilla.org/en/Canvas_tutorial" target="_blank"><strong>Canvas</strong></a> - Elemento principal do projeto, que permite renderizar elementos gráficos em 2D.</small></li>
+		<li><small><a href="http://www.w3schools.com/html5/default.asp" target="_blank"><strong>HTML 5</strong></a> - Estrutura do projeto utilizando as boas prÃ¡ticas de HTML 5 de acordo com as normas <a href="http://www.w3schools.com" target="_blank">W3C</a>.</small></li>
+		<li><small><a href="http://www.w3schools.com/css3/default.asp" target="_blank"><strong>CSS 3</strong></a> - Para estilizaÃ§Ã£o do layout do projeto, tambÃ©m seguindo as normas <a href="http://www.w3schools.com" target="_blank">W3C</a>.</small></li>
+		<li><small><a href="http://developer.mozilla.org/en/Canvas_tutorial" target="_blank"><strong>Canvas</strong></a> - Elemento principal do projeto, que permite renderizar elementos grÃ¡ficos em 2D.</small></li>
 		<li><small><a href="http://code.google.com/p/explorercanvas/" target="_blank"><strong>Explorer Canvas</strong></a> - Plugin Javascript que permite renderizar os elementos canvas no Internet Explorer.</small></li>
 	</ul>
 	<hr>

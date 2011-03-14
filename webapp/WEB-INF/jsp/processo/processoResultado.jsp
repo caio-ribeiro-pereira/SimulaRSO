@@ -1,18 +1,24 @@
 <!DOCTYPE html>
 <head>
-	<title>Simulação dos Algoritmos de Escalonamento de Processos</title>
+	<title>SimulaÃ§Ã£o dos Algoritmos de Escalonamento de Processos</title>
+	<script type="text/javascript">
+		head.ready(function(){
+			$('table.result-panel tr.result-line:odd').css('background-color','#DDD');
+			$('table.result-panel tr.result-line:even').css('background-color','#CCC');
+		});
+	</script>
 </head>	
 <body>
-	<h1 class="clearfix">Simulação dos Algoritmos de Escalonamento de Processos</h1>
+	<h1 class="clearfix">SimulaÃ§Ã£o dos Algoritmos de Escalonamento de Processos</h1>
 	<c:forEach var="resultList" items="${resultadosDosAlgoritmos}">
-		<h2 class="clearfix">Resultado da simulação: ${resultList.algoritmoNome}</h2>
+		<h2 class="clearfix">Resultado do escalonamento: ${resultList.algoritmoNome}</h2>
 		<div class="graphic-panel clearfix">
-			<canvas id="processo-chart-${resultList.algoritmoNome}" height="440"></canvas>
+			<canvas id="processo-chart-${resultList.algoritmoNome}"></canvas>
 		</div>
 		<table class="grid_12 result-panel">
 			<thead>
 				<tr>
-					<td colspan="5"><strong>Informações relevantes</strong></td>
+					<td colspan="5"><strong>InformaÃ§Ãµes relevantes</strong></td>
 				</tr>
 				<tr>
 					<td><strong>Processo</strong></td>
@@ -36,10 +42,10 @@
 			<tfoot>
 				<tr>
 					<td><strong>Total de Processos</strong></td>
-					<td><strong>Tempo de Execução</strong></td>
-					<td><strong>Tempo de Espera Médio</strong></td>
-					<td><strong>Tempo de Resposta Médio</strong></td>
-					<td><strong>Turn Around Médio</strong></td>
+					<td><strong>Tempo de ExecuÃ§Ã£o</strong></td>
+					<td><strong>Tempo de Espera MÃ©dio</strong></td>
+					<td><strong>Tempo de Resposta MÃ©dio</strong></td>
+					<td><strong>Turn Around MÃ©dio</strong></td>
 				</tr>
 				<tr class="result-line">
 					<td>${resultList.totalProcessos}</td>
@@ -50,7 +56,6 @@
 				</tr>
 			</tfoot>
 		</table>
-		<hr>
 		<script type="text/javascript">
 			head.ready(function(){
 				var processos = new Array();
@@ -63,6 +68,7 @@
 					<c:set var="x" value="${x+w}" />
 				</c:forEach>
 				$('#processo-chart-${resultList.algoritmoNome}').attr('width', ((${resultList.tempoTotal} + 1) * ${h}));
+				$('#processo-chart-${resultList.algoritmoNome}').attr('height', ((${resultList.totalProcessos} + 2) * ${h}));
 				var canvas = document.getElementById('processo-chart-${resultList.algoritmoNome}');
 				var chart = new ProcessoChart(${resultList.totalProcessos}, canvas);
 				chart.background();
@@ -71,7 +77,6 @@
 		</script>
 	</c:forEach>
 	<div class="clearfix">
-		<a href="<c:url value="/escalonamento-processo" />">Realizar nova simulação...</a>
+		<a href="<c:url value="/escalonamento-processo" />">Realizar nova simulaÃ§Ã£o...</a>
 	</div>
 </body>
-</html>

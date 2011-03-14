@@ -135,13 +135,6 @@ table.result-panel {
 	-ms-border-radius: 5px;
 	border: solid 1px #000;
 }
-
-table.result-panel tr.result-line:nth-child(odd) {
-	background-color: #DDD;
-}
-table.result-panel tr.result-line:nth-child(even) {
-	background-color: #CCC;
-}
 table.result-panel td {
 	padding: 5px 14px;
 	text-align: center;
