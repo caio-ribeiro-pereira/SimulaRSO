@@ -1,8 +1,7 @@
 package appspot.simulaedp.controller;
 
 import java.util.ArrayList;
-import java.util.List;
-import java.util.TreeMap;
+import java.util.HashMap;
 
 import appspot.simulaedp.exception.ProcessosNaoCarregadosException;
 import appspot.simulaedp.exception.TempoQuantumException;
@@ -37,16 +36,17 @@ public class ProcessoController {
 	@Post("/executar-escalonamento-processo")
 	public void processoExecutar(ArrayList<AlgoritmoProcesso> algs, ArrayList<Processo> pr, int qt) {
 		try {
-			List<TreeMap<String, Object>> resultadosDosAlgoritmos = new ArrayList<TreeMap<String, Object>>();
+			ArrayList<HashMap<String, Object>> resultadosDosAlgoritmos = new ArrayList<HashMap<String, Object>>();
 			for (AlgoritmoProcesso alg : algs) {
-				TreeMap<String, Object> resultado = executor.executar(alg, pr, qt);
+				HashMap<String, Object> resultado = executor.executar(alg, pr, qt);
 				resultadosDosAlgoritmos.add(resultado);
 			}
+			resultadosDosAlgoritmos.trimToSize();
 			result.include("resultadosDosAlgoritmos", resultadosDosAlgoritmos);
 			result.redirectTo(this).processoResultado();
 
 		} catch (ProcessosNaoCarregadosException e) {
-			validator.add(new ValidationMessage("Alguns processos não foram carregados corretamente.", ""));
+			validator.add(new ValidationMessage("Alguns processos nï¿½o foram carregados corretamente.", ""));
 			validator.onErrorRedirectTo(this).processoInicio();
 
 		} catch (TempoQuantumException e) {

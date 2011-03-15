@@ -1,6 +1,8 @@
 package appspot.simulaedp.logic.impl;
 
 import java.util.ArrayList;
+import java.util.LinkedList;
+import java.util.SortedSet;
 
 import appspot.simulaedp.logic.Escalonador;
 import appspot.simulaedp.logic.EscalonadorBase;
@@ -18,10 +20,10 @@ public class SRT extends EscalonadorBase implements Escalonador {
 		validarProcessos(processos);
 		enfileirarProcessos(processos);
 		ordernarProcessos();
+		executar();
 	}
 
-	@Override
-	public void executar() {
+	private void executar() {
 		iniciar();
 		while (estiverEmExecucao()) {
 			if (totalDeProcessos() > 0) {
@@ -109,7 +111,6 @@ public class SRT extends EscalonadorBase implements Escalonador {
 
 	private void finalizar() {
 		this.executando = false;
-		otimizarFilaDeResultados();
 	}
 
 	private void atualizarIndex() {
@@ -141,12 +142,12 @@ public class SRT extends EscalonadorBase implements Escalonador {
 	}
 
 	@Override
-	public ArrayList<Processo> resultadoFinal() {
+	public SortedSet<Processo> resultadoFinal() {
 		return resultado();
 	}
 
 	@Override
-	public ArrayList<Processo> resultadoGraficoFinal() {
+	public LinkedList<Processo> resultadoGraficoFinal() {
 		return resultadoGrafico();
 	}
 

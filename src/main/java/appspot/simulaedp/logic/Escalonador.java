@@ -1,6 +1,7 @@
 package appspot.simulaedp.logic;
 
-import java.util.ArrayList;
+import java.util.LinkedList;
+import java.util.SortedSet;
 
 import appspot.simulaedp.model.Processo;
 
@@ -19,12 +20,6 @@ public interface Escalonador {
 			return this.nome;
 		}
 	}
-
-	/**
-	 * Executa um algoritmo de escalonamento.
-	 * 
-	 */
-	void executar();
 
 	/**
 	 * 
@@ -66,19 +61,19 @@ public interface Escalonador {
 
 	/**
 	 * 
-	 * Retorna um ArrayList com os resultados reais de um escalonamento.
+	 * Retorna um HashSet com os resultados reais de um escalonamento.
 	 * 
-	 * @return ArrayList com resultados reais.
+	 * @return HashSet com resultados reais.
 	 */
-	ArrayList<Processo> resultadoFinal();
+	SortedSet<Processo> resultadoFinal();
 
 	/**
-	 * Retorna um ArrayList com os resultados graficos para simular o
+	 * Retorna um LinkedList com os resultados graficos para simular o
 	 * comportamento do algoritmo em graficos de gantt ou linha.
 	 * 
-	 * @return ArrayList com resultados para grafico.
+	 * @return LinkedList com resultados para grafico.
 	 */
-	ArrayList<Processo> resultadoGraficoFinal();
+	LinkedList<Processo> resultadoGraficoFinal();
 
 	/**
 	 * Retorna o nome do Algoritmo de escalonamento que foi executado.

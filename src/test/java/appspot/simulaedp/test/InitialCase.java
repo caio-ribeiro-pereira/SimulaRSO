@@ -9,11 +9,11 @@ public abstract class InitialCase {
 	protected static final boolean VALIDO = true;
 	protected static final boolean INVALIDO = false;
 
-	protected ArrayList<Processo> gerarArrayListDeProcessos(int total, int[] burst, int[] chegada, int[] prioridade) {
+	protected ArrayList<Processo> gerarArrayListDeProcessos(Integer total, Integer[] burst, Integer[] chegada, Integer[] prioridade) {
 		ArrayList<Processo> processos = new ArrayList<Processo>();
 		for (int i = 0; i < total; i++) {
-			processos.add(gerarProcessoValido((i + 1), ((burst != null) ? burst[i] : 100),
-					((chegada != null) ? chegada[i] : 0), ((prioridade != null) ? prioridade[i] : 0)));
+			processos.add(gerarProcessoValido((i + 1), ((burst != null) ? burst[i] : 100), ((chegada != null) ? chegada[i] : 0),
+					((prioridade != null) ? prioridade[i] : 0)));
 		}
 		return processos;
 	}

@@ -136,7 +136,7 @@
 						 prId : (i+1),
 						 prIdName : "pr["+i+"].id",
 						 prBurstName : "pr["+i+"].burst", 
-						 prChegadaName : "pr["+i+"].tempoChegada", 
+						 prChegadaName : "pr["+i+"].chegada", 
 						 prPrioridadeName : "pr["+i+"].prioridade",
 						 prCorName : "pr["+i+"].cor"}
 				    );

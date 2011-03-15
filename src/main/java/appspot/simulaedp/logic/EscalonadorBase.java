@@ -2,21 +2,24 @@ package appspot.simulaedp.logic;
 
 import java.util.ArrayList;
 import java.util.Collections;
+import java.util.LinkedList;
+import java.util.SortedSet;
+import java.util.TreeSet;
 
 import appspot.simulaedp.exception.ProcessosNaoCarregadosException;
 import appspot.simulaedp.model.Processo;
 
 public abstract class EscalonadorBase {
 
-	private ArrayList<Processo> resultado;
-	private ArrayList<Processo> resultadoGrafico;
+	private SortedSet<Processo> resultado;
+	private LinkedList<Processo> resultadoGrafico;
 	private int tempoTotal;
 	private int totalProcessos;
 	private ArrayList<Processo> processos;
 
 	public EscalonadorBase() {
-		this.resultado = new ArrayList<Processo>();
-		this.resultadoGrafico = new ArrayList<Processo>();
+		this.resultado = new TreeSet<Processo>();
+		this.resultadoGrafico = new LinkedList<Processo>();
 	}
 
 	protected int tempoTotal() {
@@ -29,24 +32,24 @@ public abstract class EscalonadorBase {
 
 	protected double calcularEsperaMedia() {
 		int acumulado = 0;
-		for (int i = 0; i < resultado.size(); i++) {
-			acumulado += resultado.get(i).getEspera();
+		for (Processo proc : resultado) {
+			acumulado += proc.getEspera();
 		}
 		return (acumulado / resultado.size());
 	}
 
 	protected double calcularRespostaMedia() {
 		int acumulado = 0;
-		for (int i = 0; i < resultado.size(); i++) {
-			acumulado += resultado.get(i).getResposta();
+		for (Processo proc : resultado) {
+			acumulado += proc.getResposta();
 		}
 		return (acumulado / resultado.size());
 	}
 
 	protected double calcularTurnAroundMedio() {
 		int acumulado = 0;
-		for (int i = 0; i < resultado.size(); i++) {
-			acumulado += resultado.get(i).getTurnAround();
+		for (Processo proc : resultado) {
+			acumulado += proc.getTurnAround();
 		}
 		return (acumulado / resultado.size());
 	}
@@ -61,10 +64,6 @@ public abstract class EscalonadorBase {
 
 	protected void ordernarProcessos() {
 		Collections.sort(processos);
-	}
-
-	protected void otimizarFilaDeResultados() {
-		resultadoGrafico.trimToSize();
 	}
 
 	protected Processo buscarProcesso(int index) {
@@ -116,11 +115,11 @@ public abstract class EscalonadorBase {
 		resultadoGrafico.add(processo);
 	}
 
-	protected ArrayList<Processo> resultado() {
+	protected SortedSet<Processo> resultado() {
 		return resultado;
 	}
 
-	protected ArrayList<Processo> resultadoGrafico() {
+	protected LinkedList<Processo> resultadoGrafico() {
 		return resultadoGrafico;
 	}
 

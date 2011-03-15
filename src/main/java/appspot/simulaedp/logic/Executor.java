@@ -2,7 +2,7 @@ package appspot.simulaedp.logic;
 
 import java.io.Serializable;
 import java.util.ArrayList;
-import java.util.TreeMap;
+import java.util.HashMap;
 
 import appspot.simulaedp.logic.Escalonador.AlgoritmoProcesso;
 import appspot.simulaedp.logic.impl.FCFS;
@@ -16,12 +16,12 @@ import br.com.caelum.vraptor.ioc.Component;
 @Component
 public class Executor implements Serializable {
 
-	private static final long serialVersionUID = 3546621661055816896L;
+	private static final long serialVersionUID = 251934838519507853L;
 
 	public Executor() {
 	}
 
-	public TreeMap<String, Object> executar(final AlgoritmoProcesso algortimo, final ArrayList<Processo> processos, final int quantum) {
+	public HashMap<String, Object> executar(final AlgoritmoProcesso algortimo, final ArrayList<Processo> processos, final int quantum) {
 		Escalonador escalonador = null;
 		if (algortimo != null) {
 			if (algortimo == AlgoritmoProcesso.FCFS) {
@@ -43,9 +43,8 @@ public class Executor implements Serializable {
 		return gerarResultadoMap(escalonador);
 	}
 
-	private TreeMap<String, Object> gerarResultadoMap(Escalonador escalonador) {
-		escalonador.executar();
-		TreeMap<String, Object> resultado = new TreeMap<String, Object>();
+	private HashMap<String, Object> gerarResultadoMap(Escalonador escalonador) {
+		HashMap<String, Object> resultado = new HashMap<String, Object>();
 		resultado.put("resultadoFinal", escalonador.resultadoFinal());
 		resultado.put("resultadoGrafico", escalonador.resultadoGraficoFinal());
 		resultado.put("tempoTotal", escalonador.tempoExecucaoTotal());

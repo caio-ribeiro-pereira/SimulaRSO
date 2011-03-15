@@ -1,6 +1,8 @@
 package appspot.simulaedp.logic.impl;
 
 import java.util.ArrayList;
+import java.util.LinkedList;
+import java.util.SortedSet;
 
 import appspot.simulaedp.exception.TempoQuantumException;
 import appspot.simulaedp.logic.Escalonador;
@@ -22,6 +24,19 @@ public class RoundRobin extends EscalonadorBase implements Escalonador {
 		definirTempoQuantum(tempoQuantum);
 		validarProcessos(processos);
 		enfileirarProcessos(processos);
+		executar();
+	}
+
+	private void executar() {
+		iniciar();
+		while (estiverEmExecucao()) {
+			if (totalDeProcessos() > 0) {
+				executarProcesso();
+			} else {
+				finalizar();
+				atualizarResultado();
+			}
+		}
 	}
 
 	private void definirTempoQuantum(int tempoQuantum) {
@@ -44,20 +59,6 @@ public class RoundRobin extends EscalonadorBase implements Escalonador {
 
 	private void finalizar() {
 		this.executando = false;
-		otimizarFilaDeResultados();
-	}
-
-	@Override
-	public void executar() {
-		iniciar();
-		while (estiverEmExecucao()) {
-			if (totalDeProcessos() > 0) {
-				executarProcesso();
-			} else {
-				finalizar();
-				atualizarResultado();
-			}
-		}
 	}
 
 	private void executarProcesso() {
@@ -135,12 +136,12 @@ public class RoundRobin extends EscalonadorBase implements Escalonador {
 	}
 
 	@Override
-	public ArrayList<Processo> resultadoFinal() {
+	public SortedSet<Processo> resultadoFinal() {
 		return resultado();
 	}
 
 	@Override
-	public ArrayList<Processo> resultadoGraficoFinal() {
+	public LinkedList<Processo> resultadoGraficoFinal() {
 		return resultadoGrafico();
 	}
 

@@ -1,8 +1,9 @@
 package appspot.simulaedp.model;
 
 import java.io.Serializable;
+import java.util.Comparator;
 
-public class Processo implements Comparable<Processo>, Cloneable, Serializable {
+public class Processo implements Comparable<Processo>, Cloneable, Serializable, Comparator<Processo> {
 
 	private static final long serialVersionUID = 6110475007219847923L;
 
@@ -228,5 +229,14 @@ public class Processo implements Comparable<Processo>, Cloneable, Serializable {
 
 	public void esperar() {
 		this.estado = Estado.EM_ESPERA;
+	}
+
+	@Override
+	public int compare(Processo p1, Processo p2) {
+		if (p1.getId() < p2.getId())
+			return -1;
+		if (p1.getId() > p2.getId())
+			return 1;
+		return 0;
 	}
 }
