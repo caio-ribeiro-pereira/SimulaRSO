@@ -2,7 +2,7 @@ package appspot.simulaedp.test.logic;
 
 import java.util.Iterator;
 import java.util.LinkedList;
-import java.util.SortedSet;
+import java.util.Set;
 
 import org.hamcrest.Matchers;
 import org.junit.Assert;
@@ -35,7 +35,7 @@ public class RoundRobinTest extends InitialCase {
 			Assert.assertThat(resultadoGrafico.get(i).getId(), Matchers.equalTo(ID_COM_BURSTS_SIMPLES[i]));
 		}
 
-		SortedSet<Processo> resultado = roundRobin.resultadoFinal();
+		Set<Processo> resultado = roundRobin.resultadoFinal();
 		Assert.assertThat(resultado, Matchers.notNullValue());
 		Assert.assertTrue(resultado.size() == BURSTS_SIMPLES.length);
 		Iterator<Processo> resultSet = resultado.iterator();
@@ -74,7 +74,7 @@ public class RoundRobinTest extends InitialCase {
 			Assert.assertThat(resultadoGrafico.get(i).getId(), Matchers.equalTo(ID_COM_BURSTS_MEDIO[i]));
 		}
 
-		SortedSet<Processo> resultado = roundRobin.resultadoFinal();
+		Set<Processo> resultado = roundRobin.resultadoFinal();
 		Assert.assertThat(resultado, Matchers.notNullValue());
 		Assert.assertThat(resultado.size(), Matchers.is(BURSTS_MEDIO.length));
 		Iterator<Processo> resultSet = resultado.iterator();
@@ -100,8 +100,23 @@ public class RoundRobinTest extends InitialCase {
 		final int QUANTUM_VALIDO = 20;
 		for (int i = 2; i <= 100; i++) {
 			Escalonador roundRobin = new RoundRobin(gerarListaDeProcessos(i, VALIDO), QUANTUM_VALIDO);
-			SortedSet<Processo> resultado = roundRobin.resultadoFinal();
+			Set<Processo> resultado = roundRobin.resultadoFinal();
 			Assert.assertThat(resultado, Matchers.notNullValue());
+		}
+	}
+
+	@Test
+	public void deveRetornarResultadoFinalOrdernadoPorProcessoId() {
+		final int TOTAL = 10;
+		final int QUANTUM_VALIDO = 50;
+		Escalonador roundRobin = new RoundRobin(gerarListaDeProcessos(TOTAL, VALIDO), QUANTUM_VALIDO);
+		Set<Processo> resultado = roundRobin.resultadoFinal();
+		Iterator<Processo> result = resultado.iterator();
+		int id = 1;
+		while (result.hasNext()) {
+			Integer procId = result.next().getId();
+			Assert.assertTrue(id == procId);
+			id++;
 		}
 	}
 

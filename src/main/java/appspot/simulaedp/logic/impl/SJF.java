@@ -2,7 +2,7 @@ package appspot.simulaedp.logic.impl;
 
 import java.util.ArrayList;
 import java.util.LinkedList;
-import java.util.SortedSet;
+import java.util.Set;
 
 import appspot.simulaedp.logic.Escalonador;
 import appspot.simulaedp.logic.EscalonadorBase;
@@ -28,7 +28,7 @@ public class SJF extends EscalonadorBase implements Escalonador {
 			processo.setResposta(tempoTotal());
 			processo.setTurnAround(tempoTotal());
 			processo.finalizar();
-			adicionarResultado(processo);
+			adicionarResultadoFinal(processo);
 			adicionarResultadoGrafico(processo);
 		}
 	}
@@ -39,7 +39,7 @@ public class SJF extends EscalonadorBase implements Escalonador {
 	}
 
 	@Override
-	public SortedSet<Processo> resultadoFinal() {
+	public Set<Processo> resultadoFinal() {
 		return resultado();
 	}
 

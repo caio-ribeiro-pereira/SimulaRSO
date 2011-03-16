@@ -2,7 +2,7 @@ package appspot.simulaedp.test.logic;
 
 import java.util.Iterator;
 import java.util.LinkedList;
-import java.util.SortedSet;
+import java.util.Set;
 
 import org.hamcrest.Matchers;
 import org.junit.Assert;
@@ -26,7 +26,7 @@ public class SJFTest extends InitialCase {
 
 		Escalonador sjf = new SJF(gerarArrayListDeProcessos(TEMPOS_CHEGADA.length, null, TEMPOS_CHEGADA, null));
 
-		SortedSet<Processo> resultado = sjf.resultadoFinal();
+		Set<Processo> resultado = sjf.resultadoFinal();
 		Assert.assertThat(resultado, Matchers.notNullValue());
 		Assert.assertThat(resultado.size(), Matchers.is(TEMPOS_CHEGADA.length));
 
@@ -71,7 +71,7 @@ public class SJFTest extends InitialCase {
 
 		Escalonador sjf = new SJF(gerarArrayListDeProcessos(BURSTS.length, BURSTS, null, null));
 
-		SortedSet<Processo> resultado = sjf.resultadoFinal();
+		Set<Processo> resultado = sjf.resultadoFinal();
 		Assert.assertThat(resultado, Matchers.notNullValue());
 		Assert.assertThat(resultado.size(), Matchers.is(BURSTS.length));
 
@@ -111,8 +111,22 @@ public class SJFTest extends InitialCase {
 	public void deveEscalonarComDoisACemProcessos() {
 		for (int i = 2; i <= 100; i++) {
 			Escalonador sjf = new SJF(gerarListaDeProcessos(i, VALIDO));
-			SortedSet<Processo> resultado = sjf.resultadoFinal();
+			Set<Processo> resultado = sjf.resultadoFinal();
 			Assert.assertThat(resultado, Matchers.notNullValue());
+		}
+	}
+
+	@Test
+	public void deveRetornarResultadoFinalOrdernadoPorProcessoId() {
+		final int TOTAL = 10;
+		Escalonador sjf = new SJF(gerarListaDeProcessos(TOTAL, VALIDO));
+		Set<Processo> resultado = sjf.resultadoFinal();
+		Iterator<Processo> result = resultado.iterator();
+		int id = 1;
+		while (result.hasNext()) {
+			Integer procId = result.next().getId();
+			Assert.assertTrue(id == procId);
+			id++;
 		}
 	}
 

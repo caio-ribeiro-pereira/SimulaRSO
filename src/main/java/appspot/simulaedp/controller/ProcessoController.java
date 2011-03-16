@@ -46,7 +46,7 @@ public class ProcessoController {
 			result.redirectTo(this).processoResultado();
 
 		} catch (ProcessosNaoCarregadosException e) {
-			validator.add(new ValidationMessage("Alguns processos n�o foram carregados corretamente.", ""));
+			validator.add(new ValidationMessage("Alguns processos não foram configurados corretamente.", ""));
 			validator.onErrorRedirectTo(this).processoInicio();
 
 		} catch (TempoQuantumException e) {

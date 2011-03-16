@@ -26,7 +26,7 @@
 			<div id="alg1" class="grid_3">
 				<strong>Algoritmo 1: </strong>
 				<select name="algs[0]" id="algoritmo1">
-					<option value="" selected>Selecione...</option>
+					<option value="" selected="selected">Selecione...</option>
 					<c:forEach var="alg" items="${algoritmoProcesso}">
 						<option value="${alg}">${alg.nome}</option>	
 					</c:forEach>
@@ -35,7 +35,7 @@
 			<div id="alg2" class="grid_3">
 				<strong>Algoritmo 2: </strong>
 				<select name="algs[1]" id="algoritmo2">
-					<option value="" selected>Selecione...</option>
+					<option value="" selected="selected">Selecione...</option>
 					<c:forEach var="alg" items="${algoritmoProcesso}">
 						<option value="${alg}">${alg.nome}</option>	
 					</c:forEach>
@@ -44,9 +44,11 @@
 			<div id="quantum" class="grid_4">
 				<strong>Tempo de corte: </strong>
 				<select name="qt">
-					<option value="">Selecione...</option>
-					<c:forEach begin="5" end="100" step="5" var="q">
-						<option value="${q}">${q} ms</option>
+					<c:forEach begin="1" end="4" step="1" var="qt1">
+						<option value="${qt1}">${qt1} ms</option>					
+					</c:forEach>
+					<c:forEach begin="5" end="100" step="5" var="qt2">
+						<option value="${qt2}">${qt2} ms</option>
 					</c:forEach>
 				</select>
 			</div>

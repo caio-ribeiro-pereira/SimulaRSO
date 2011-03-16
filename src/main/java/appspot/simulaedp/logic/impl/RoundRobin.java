@@ -2,20 +2,18 @@ package appspot.simulaedp.logic.impl;
 
 import java.util.ArrayList;
 import java.util.LinkedList;
-import java.util.SortedSet;
+import java.util.Set;
 
 import appspot.simulaedp.exception.TempoQuantumException;
 import appspot.simulaedp.logic.Escalonador;
 import appspot.simulaedp.logic.EscalonadorBase;
 import appspot.simulaedp.model.Processo;
-import appspot.simulaedp.model.Processo.Estado;
 
 public class RoundRobin extends EscalonadorBase implements Escalonador {
 
-	private static final int MIN_QUANTUM = 5;
+	private static final int MIN_QUANTUM = 1;
 	private static final int MAX_QUANTUM = 100;
 	private int tempoQuantum;
-	private int totalIds;
 	private int index;
 	private boolean executando;
 
@@ -34,7 +32,6 @@ public class RoundRobin extends EscalonadorBase implements Escalonador {
 				executarProcesso();
 			} else {
 				finalizar();
-				atualizarResultado();
 			}
 		}
 	}
@@ -54,7 +51,6 @@ public class RoundRobin extends EscalonadorBase implements Escalonador {
 	private void iniciar() {
 		this.index = 0;
 		this.executando = true;
-		this.totalIds = totalDeProcessos();
 	}
 
 	private void finalizar() {
@@ -74,8 +70,9 @@ public class RoundRobin extends EscalonadorBase implements Escalonador {
 	}
 
 	private void atualizarProcessos(Processo processo) {
-		if (processo.getBurstTotal() == 0) {
+		if (processo.terminou()) {
 			processo.finalizar();
+			adicionarResultadoFinal(processo);
 			removerProcesso(index);
 			atualizarIndex();
 		} else {
@@ -84,20 +81,6 @@ public class RoundRobin extends EscalonadorBase implements Escalonador {
 			avancarIndex();
 		}
 		adicionarResultadoGrafico(processo);
-	}
-
-	private void atualizarResultado() {
-		for (int i = 1; i <= totalIds; i++) {
-			adicionarResultado(buscarUltimaOcorrencia(i));
-		}
-	}
-
-	private Processo buscarUltimaOcorrencia(int id) {
-		Processo processoFinalizado = new Processo();
-		processoFinalizado.setId(id);
-		processoFinalizado.setEstado(Estado.FINALIZADO);
-		int index = resultadoGrafico().lastIndexOf(processoFinalizado);
-		return resultadoGrafico().get(index).clone();
 	}
 
 	private void atualizarIndex() {
@@ -136,7 +119,7 @@ public class RoundRobin extends EscalonadorBase implements Escalonador {
 	}
 
 	@Override
-	public SortedSet<Processo> resultadoFinal() {
+	public Set<Processo> resultadoFinal() {
 		return resultado();
 	}
 

@@ -1,14 +1,14 @@
 package appspot.simulaedp.logic;
 
 import java.util.LinkedList;
-import java.util.SortedSet;
+import java.util.Set;
 
 import appspot.simulaedp.model.Processo;
 
 public interface Escalonador {
 
 	public enum AlgoritmoProcesso {
-		FCFS("FCFS"), SJF("SJF"), PRIORIDADE("Prioridade"), SRT("SRT"), ROUNDROBIN("RoundRobin");
+		FCFS("FC-FS"), SJF("SJF"), SRT("SRT"), ROUNDROBIN("Round-Robin");
 
 		private String nome;
 
@@ -61,11 +61,11 @@ public interface Escalonador {
 
 	/**
 	 * 
-	 * Retorna um HashSet com os resultados reais de um escalonamento.
+	 * Retorna um Set com os resultados reais de um escalonamento.
 	 * 
-	 * @return HashSet com resultados reais.
+	 * @return Set com resultados reais.
 	 */
-	SortedSet<Processo> resultadoFinal();
+	Set<Processo> resultadoFinal();
 
 	/**
 	 * Retorna um LinkedList com os resultados graficos para simular o

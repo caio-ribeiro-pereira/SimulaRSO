@@ -6,7 +6,6 @@ import java.util.HashMap;
 
 import appspot.simulaedp.logic.Escalonador.AlgoritmoProcesso;
 import appspot.simulaedp.logic.impl.FCFS;
-import appspot.simulaedp.logic.impl.Prioridade;
 import appspot.simulaedp.logic.impl.RoundRobin;
 import appspot.simulaedp.logic.impl.SJF;
 import appspot.simulaedp.logic.impl.SRT;
@@ -28,8 +27,6 @@ public class Executor implements Serializable {
 				escalonador = new FCFS(processos);
 			} else if (algortimo == AlgoritmoProcesso.SJF) {
 				escalonador = new SJF(processos);
-			} else if (algortimo == AlgoritmoProcesso.PRIORIDADE) {
-				escalonador = new Prioridade(processos);
 			} else if (algortimo == AlgoritmoProcesso.ROUNDROBIN) {
 				escalonador = new RoundRobin(processos, quantum);
 			} else if (algortimo == AlgoritmoProcesso.SRT) {

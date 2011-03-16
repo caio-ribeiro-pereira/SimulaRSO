@@ -2,7 +2,7 @@ package appspot.simulaedp.test.logic;
 
 import java.util.Iterator;
 import java.util.LinkedList;
-import java.util.SortedSet;
+import java.util.Set;
 
 import org.hamcrest.Matchers;
 import org.junit.Assert;
@@ -26,7 +26,7 @@ public class SRTTest extends InitialCase {
 		final Integer[] TURN_AROUND_COM_BURSTS_SIMPLES = { 16, 7, 5, 11 };
 
 		Escalonador srt = new SRT(gerarArrayListDeProcessos(BURSTS_SIMPLES.length, BURSTS_SIMPLES, CHEGADAS_SIMPLES, null));
-		SortedSet<Processo> resultado = srt.resultadoFinal();
+		Set<Processo> resultado = srt.resultadoFinal();
 		Assert.assertThat(resultado, Matchers.notNullValue());
 		Assert.assertTrue(resultado.size() == BURSTS_SIMPLES.length);
 
@@ -66,7 +66,7 @@ public class SRTTest extends InitialCase {
 
 		Escalonador srt = new SRT(gerarArrayListDeProcessos(BURSTS_MEDIO.length, BURSTS_MEDIO, CHEGADAS_MEDIO, null));
 
-		SortedSet<Processo> resultado = srt.resultadoFinal();
+		Set<Processo> resultado = srt.resultadoFinal();
 		Assert.assertThat(resultado, Matchers.notNullValue());
 		Assert.assertTrue(resultado.size() == BURSTS_MEDIO.length);
 
@@ -98,8 +98,22 @@ public class SRTTest extends InitialCase {
 	public void deveEscalonarComDoisACemProcesso() {
 		for (int i = 2; i <= 100; i++) {
 			Escalonador srt = new SRT(gerarListaDeProcessos(i, VALIDO));
-			SortedSet<Processo> resultado = srt.resultadoFinal();
+			Set<Processo> resultado = srt.resultadoFinal();
 			Assert.assertThat(resultado, Matchers.notNullValue());
+		}
+	}
+
+	@Test
+	public void deveRetornarResultadoFinalOrdernadoPorProcessoId() {
+		final int TOTAL = 10;
+		Escalonador srt = new SRT(gerarListaDeProcessos(TOTAL, VALIDO));
+		Set<Processo> resultado = srt.resultadoFinal();
+		Iterator<Processo> result = resultado.iterator();
+		int id = 1;
+		while (result.hasNext()) {
+			Integer procId = result.next().getId();
+			Assert.assertTrue(id == procId);
+			id++;
 		}
 	}
 

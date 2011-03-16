@@ -16,12 +16,12 @@
   				'<c:url value="/resources/js/jquery/jquery-ui.spinner.min.js" />',
   				'<c:url value="/resources/js/jquery/jquery-tmpl.min.js" />',
   				'<c:url value="/resources/js/canvas/colors.js" />',
-  				'<c:url value="/resources/js/canvas/processo-chart.js" />',
-  				'<c:url value="/resources/js/ie/jooscript.js" />',
+  				'<c:url value="/resources/js/canvas/processo-chart.js" />'
+  				/*'<c:url value="/resources/js/ie/jooscript.js" />',
   				'<c:url value="/resources/js/ie/fxcanvas.js" />',
   				'<c:url value="/resources/js/ie/flash_backend.js" />',
   				'<c:url value="/resources/js/ie/canvas_backend.js" />',
-  				'<c:url value="/resources/js/ie/html5.js" />'
+  				'<c:url value="/resources/js/ie/html5.js" />'*/
   		);
   	</script>
     <decorator:head />

@@ -2,7 +2,7 @@ package appspot.simulaedp.test.logic;
 
 import java.util.Iterator;
 import java.util.LinkedList;
-import java.util.SortedSet;
+import java.util.Set;
 
 import org.hamcrest.Matchers;
 import org.junit.Assert;
@@ -30,7 +30,7 @@ public class FCFSTest extends InitialCase {
 		final Integer[] TURN_AROUND_PREVISTA_POR_BURST_SIMPLES = { 30, 40, 60, 110, 200 };
 
 		Escalonador fcfs = new FCFS(gerarArrayListDeProcessos(BURSTS_SIMPLES.length, BURSTS_SIMPLES, null, null));
-		SortedSet<Processo> resultado = fcfs.resultadoFinal();
+		Set<Processo> resultado = fcfs.resultadoFinal();
 		LinkedList<Processo> resultadoGrafico = fcfs.resultadoGraficoFinal();
 
 		Assert.assertThat(resultado, Matchers.notNullValue());
@@ -72,7 +72,7 @@ public class FCFSTest extends InitialCase {
 		final Integer[] TURN_AROUND_PREVISTA_POR_BURST_MEDIO = { 20, 31, 70, 126, 135 };
 
 		Escalonador fcfs = new FCFS(gerarArrayListDeProcessos(BURSTS_MEDIO.length, BURSTS_MEDIO, null, null));
-		SortedSet<Processo> resultado = fcfs.resultadoFinal();
+		Set<Processo> resultado = fcfs.resultadoFinal();
 		LinkedList<Processo> resultadoGrafico = fcfs.resultadoGraficoFinal();
 
 		Assert.assertThat(resultado, Matchers.notNullValue());
@@ -110,8 +110,22 @@ public class FCFSTest extends InitialCase {
 	public void deveEscalonarComDoisACemProcessos() {
 		for (int i = 2; i <= 100; i++) {
 			Escalonador fcfs = new FCFS(gerarListaDeProcessos(i, VALIDO));
-			SortedSet<Processo> resultado = fcfs.resultadoFinal();
+			Set<Processo> resultado = fcfs.resultadoFinal();
 			Assert.assertThat(resultado, Matchers.notNullValue());
+		}
+	}
+
+	@Test
+	public void deveRetornarResultadoFinalOrdernadoPorProcessoId() {
+		final int TOTAL = 10;
+		Escalonador fcfs = new FCFS(gerarListaDeProcessos(TOTAL, VALIDO));
+		Set<Processo> resultado = fcfs.resultadoFinal();
+		Iterator<Processo> result = resultado.iterator();
+		int id = 1;
+		while (result.hasNext()) {
+			Integer procId = result.next().getId();
+			Assert.assertTrue(id == procId);
+			id++;
 		}
 	}
 

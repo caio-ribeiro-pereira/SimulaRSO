@@ -3,7 +3,7 @@ package appspot.simulaedp.model;
 import java.io.Serializable;
 import java.util.Comparator;
 
-public class Processo implements Comparable<Processo>, Cloneable, Serializable, Comparator<Processo> {
+public class Processo implements Comparable<Processo>, Comparator<Processo>, Cloneable, Serializable {
 
 	private static final long serialVersionUID = 6110475007219847923L;
 
@@ -146,6 +146,22 @@ public class Processo implements Comparable<Processo>, Cloneable, Serializable, 
 		return this.estado;
 	}
 
+	public boolean terminou() {
+		return (this.burstTotal == 0);
+	}
+
+	public void executar() {
+		this.estado = Estado.EXECUTANDO;
+	}
+
+	public void finalizar() {
+		this.estado = Estado.FINALIZADO;
+	}
+
+	public void esperar() {
+		this.estado = Estado.EM_ESPERA;
+	}
+
 	@Override
 	public Processo clone() {
 		try {
@@ -153,7 +169,6 @@ public class Processo implements Comparable<Processo>, Cloneable, Serializable, 
 		} catch (CloneNotSupportedException e) {
 			return null;
 		}
-
 	}
 
 	@Override
@@ -185,12 +200,12 @@ public class Processo implements Comparable<Processo>, Cloneable, Serializable, 
 		sb.append("[id=").append(id);
 		sb.append(", burstAtual=").append(burstAtual);
 		sb.append(", burstTotal=").append(burstTotal);
+		sb.append(", burst=").append(burst);
 		sb.append(", turnAround=").append(turnAround);
 		sb.append(", espera=").append(espera);
 		sb.append(", resposta=").append(resposta);
 		sb.append(", chegada=").append(chegada);
 		sb.append(", estado=").append(estado);
-		sb.append(", burst=").append(burst);
 		sb.append(", prioridade=").append(prioridade);
 		sb.append(", firstRun=").append(firstRun);
 		sb.append(", cor=").append(cor);
@@ -212,23 +227,11 @@ public class Processo implements Comparable<Processo>, Cloneable, Serializable, 
 			return -1;
 		if (this.getBurst() > processo.getBurst())
 			return 1;
+		if (this.getId() < processo.getId())
+			return -1;
+		if (this.getId() > processo.getId())
+			return 1;
 		return 0;
-	}
-
-	public boolean terminou() {
-		return (this.burstTotal == 0);
-	}
-
-	public void executar() {
-		this.estado = Estado.EXECUTANDO;
-	}
-
-	public void finalizar() {
-		this.estado = Estado.FINALIZADO;
-	}
-
-	public void esperar() {
-		this.estado = Estado.EM_ESPERA;
 	}
 
 	@Override

@@ -3,7 +3,7 @@ package appspot.simulaedp.logic;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.LinkedList;
-import java.util.SortedSet;
+import java.util.Set;
 import java.util.TreeSet;
 
 import appspot.simulaedp.exception.ProcessosNaoCarregadosException;
@@ -11,7 +11,7 @@ import appspot.simulaedp.model.Processo;
 
 public abstract class EscalonadorBase {
 
-	private SortedSet<Processo> resultado;
+	private Set<Processo> resultado;
 	private LinkedList<Processo> resultadoGrafico;
 	private int tempoTotal;
 	private int totalProcessos;
@@ -107,7 +107,7 @@ public abstract class EscalonadorBase {
 		return processos.indexOf(processo);
 	}
 
-	protected void adicionarResultado(Processo processo) {
+	protected void adicionarResultadoFinal(Processo processo) {
 		resultado.add(processo);
 	}
 
@@ -115,7 +115,7 @@ public abstract class EscalonadorBase {
 		resultadoGrafico.add(processo);
 	}
 
-	protected SortedSet<Processo> resultado() {
+	protected Set<Processo> resultado() {
 		return resultado;
 	}
 

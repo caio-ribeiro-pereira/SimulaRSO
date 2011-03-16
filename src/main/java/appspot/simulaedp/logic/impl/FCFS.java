@@ -2,7 +2,7 @@ package appspot.simulaedp.logic.impl;
 
 import java.util.ArrayList;
 import java.util.LinkedList;
-import java.util.SortedSet;
+import java.util.Set;
 
 import appspot.simulaedp.logic.Escalonador;
 import appspot.simulaedp.logic.EscalonadorBase;
@@ -20,14 +20,18 @@ public class FCFS extends EscalonadorBase implements Escalonador {
 	private void executar() {
 		for (int i = 0; i < totalDeProcessos(); i++) {
 			Processo processo = buscarProcesso(i);
+
 			processo.executar();
 			processo.setEspera(tempoTotal());
 			processo.setBurstAtual(processo.getBurstTotal());
+
 			atualizarTempoTotal(processo.getBurstTotal());
+
 			processo.setResposta(tempoTotal());
 			processo.setTurnAround(tempoTotal());
 			processo.finalizar();
-			adicionarResultado(processo);
+
+			adicionarResultadoFinal(processo);
 			adicionarResultadoGrafico(processo);
 		}
 	}
@@ -38,7 +42,7 @@ public class FCFS extends EscalonadorBase implements Escalonador {
 	}
 
 	@Override
-	public SortedSet<Processo> resultadoFinal() {
+	public Set<Processo> resultadoFinal() {
 		return resultado();
 	}
 

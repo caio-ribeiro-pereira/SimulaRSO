@@ -2,7 +2,7 @@ package appspot.simulaedp.logic.impl;
 
 import java.util.ArrayList;
 import java.util.LinkedList;
-import java.util.SortedSet;
+import java.util.Set;
 
 import appspot.simulaedp.logic.Escalonador;
 import appspot.simulaedp.logic.EscalonadorBase;
@@ -13,7 +13,6 @@ public class SRT extends EscalonadorBase implements Escalonador {
 	private boolean executando;
 	private int index;
 	private int tempoDeCorte;
-	private int totalIDs;
 
 	public SRT(ArrayList<Processo> processos) {
 		super();
@@ -29,7 +28,6 @@ public class SRT extends EscalonadorBase implements Escalonador {
 			if (totalDeProcessos() > 0) {
 				executarProcesso();
 			} else {
-				atualizarResultado();
 				finalizar();
 			}
 		}
@@ -69,6 +67,7 @@ public class SRT extends EscalonadorBase implements Escalonador {
 	private void atualizarProcessos(Processo processo) {
 		if (processo.terminou()) {
 			processo.finalizar();
+			adicionarResultadoFinal(processo);
 		} else {
 			processo.esperar();
 			atualizarProcesso(processo);
@@ -106,7 +105,6 @@ public class SRT extends EscalonadorBase implements Escalonador {
 	private void iniciar() {
 		this.executando = true;
 		this.index = 0;
-		this.totalIDs = totalDeProcessos();
 	}
 
 	private void finalizar() {
@@ -125,24 +123,13 @@ public class SRT extends EscalonadorBase implements Escalonador {
 		return this.executando;
 	}
 
-	private void atualizarResultado() {
-		for (int i = 1; i <= totalIDs; i++) {
-			adicionarResultado(buscarUltimaOcorrencia(i));
-		}
-	}
-
-	private Processo buscarUltimaOcorrencia(int id) {
-		int index = resultadoGrafico().lastIndexOf(new Processo(id));
-		return resultadoGrafico().get(index).clone();
-	}
-
 	@Override
 	public int tempoExecucaoTotal() {
 		return tempoTotal();
 	}
 
 	@Override
-	public SortedSet<Processo> resultadoFinal() {
+	public Set<Processo> resultadoFinal() {
 		return resultado();
 	}
 
