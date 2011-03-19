@@ -1,4 +1,4 @@
-package appspot.simulaedp.exception;
+package appspot.simularso.exception;
 
 public class TempoQuantumException extends RuntimeException {
 

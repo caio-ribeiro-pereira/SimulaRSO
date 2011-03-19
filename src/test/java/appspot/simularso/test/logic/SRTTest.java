@@ -1,4 +1,4 @@
-package appspot.simulaedp.test.logic;
+package appspot.simularso.test.logic;
 
 import java.util.Iterator;
 import java.util.LinkedList;
@@ -8,11 +8,11 @@ import org.hamcrest.Matchers;
 import org.junit.Assert;
 import org.junit.Test;
 
-import appspot.simulaedp.exception.ProcessosNaoCarregadosException;
-import appspot.simulaedp.logic.Escalonador;
-import appspot.simulaedp.logic.impl.SRT;
-import appspot.simulaedp.model.Processo;
-import appspot.simulaedp.test.InitialCase;
+import appspot.simularso.exception.ProcessosNaoCarregadosException;
+import appspot.simularso.logic.Escalonador;
+import appspot.simularso.logic.impl.SRT;
+import appspot.simularso.model.Processo;
+import appspot.simularso.test.InitialCase;
 
 public class SRTTest extends InitialCase {
 

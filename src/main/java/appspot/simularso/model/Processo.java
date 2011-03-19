@@ -1,4 +1,4 @@
-package appspot.simulaedp.model;
+package appspot.simularso.model;
 
 import java.io.Serializable;
 import java.util.Comparator;

@@ -2,7 +2,7 @@
 <fmt:setLocale value="pt-BR"/>
 <html lang="pt-BR">
   <head>
-    <title><decorator:title default="Projeto SimulaEDP 0.5 Alpha"></decorator:title></title>
+    <title><decorator:title default="Projeto Simula-RSO 0.5 Alpha"></decorator:title></title>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
     <link rel="shortcut icon" href="<c:url value="/resources/img/favicon.ico" />"></link>
     <link rel="stylesheet" type="text/css" href="<c:url value="/resources/css/reset.css" />">
@@ -10,6 +10,8 @@
 	<link rel="stylesheet" type="text/css" href="<c:url value="/resources/css/main.css" />">
 	<link rel="stylesheet" type="text/css" href="<c:url value="/resources/css/smoothness/jquery-ui.css" />">
 	<script type="text/javascript" src="<c:url value="/resources/js/head.min.js" />"></script>
+	<!--[if IE]><script type="text/javascript" src="<c:url value="/resources/js/flashcanvas.js" />"></script><![endif]-->
+	<!--[if IE]><script type="text/javascript" src="<c:url value="/resources/js/html5.js" />"></script><![endif]-->
 	<script type="text/javascript">
   		head.js('<c:url value="/resources/js/jquery/jquery.min.js" />',
   				'<c:url value="/resources/js/jquery/jquery-ui.min.js" />',
@@ -17,11 +19,6 @@
   				'<c:url value="/resources/js/jquery/jquery-tmpl.min.js" />',
   				'<c:url value="/resources/js/canvas/colors.js" />',
   				'<c:url value="/resources/js/canvas/processo-chart.js" />'
-  				/*'<c:url value="/resources/js/ie/jooscript.js" />',
-  				'<c:url value="/resources/js/ie/fxcanvas.js" />',
-  				'<c:url value="/resources/js/ie/flash_backend.js" />',
-  				'<c:url value="/resources/js/ie/canvas_backend.js" />',
-  				'<c:url value="/resources/js/ie/html5.js" />'*/
   		);
   	</script>
     <decorator:head />
@@ -29,7 +26,7 @@
   <body>
   	<div class="container_12 main">
 	  	<header class="clearfix">
-	  		<h1>Projeto SimulaEDP 0.5 Alpha</h1>
+	  		<h1>Projeto Simula-RSO 0.5 Alpha</h1>
 	  		<nav>
 	  			<a class="left" href="<c:url value="/" />">Home</a>
 				<a href="<c:url value="/escalonamento-processo" />">Escalonamento de Processos</a>

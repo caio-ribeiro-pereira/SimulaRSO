@@ -1,13 +1,13 @@
-package appspot.simulaedp.controller;
+package appspot.simularso.controller;
 
 import java.util.ArrayList;
 import java.util.HashMap;
 
-import appspot.simulaedp.exception.ProcessosNaoCarregadosException;
-import appspot.simulaedp.exception.TempoQuantumException;
-import appspot.simulaedp.logic.Escalonador.AlgoritmoProcesso;
-import appspot.simulaedp.logic.Executor;
-import appspot.simulaedp.model.Processo;
+import appspot.simularso.exception.ProcessosNaoCarregadosException;
+import appspot.simularso.exception.TempoQuantumException;
+import appspot.simularso.logic.Executor;
+import appspot.simularso.logic.Escalonador.AlgoritmoProcesso;
+import appspot.simularso.model.Processo;
 import br.com.caelum.vraptor.Get;
 import br.com.caelum.vraptor.Post;
 import br.com.caelum.vraptor.Resource;

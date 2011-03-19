@@ -1,15 +1,15 @@
-package appspot.simulaedp.logic;
+package appspot.simularso.logic;
 
 import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.HashMap;
 
-import appspot.simulaedp.logic.Escalonador.AlgoritmoProcesso;
-import appspot.simulaedp.logic.impl.FCFS;
-import appspot.simulaedp.logic.impl.RoundRobin;
-import appspot.simulaedp.logic.impl.SJF;
-import appspot.simulaedp.logic.impl.SRT;
-import appspot.simulaedp.model.Processo;
+import appspot.simularso.logic.Escalonador.AlgoritmoProcesso;
+import appspot.simularso.logic.impl.FCFS;
+import appspot.simularso.logic.impl.RoundRobin;
+import appspot.simularso.logic.impl.SJF;
+import appspot.simularso.logic.impl.SRT;
+import appspot.simularso.model.Processo;
 import br.com.caelum.vraptor.ioc.Component;
 
 @Component

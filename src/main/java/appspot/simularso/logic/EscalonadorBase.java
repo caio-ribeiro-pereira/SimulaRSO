@@ -1,4 +1,4 @@
-package appspot.simulaedp.logic;
+package appspot.simularso.logic;
 
 import java.util.ArrayList;
 import java.util.Collections;
@@ -6,8 +6,8 @@ import java.util.LinkedList;
 import java.util.Set;
 import java.util.TreeSet;
 
-import appspot.simulaedp.exception.ProcessosNaoCarregadosException;
-import appspot.simulaedp.model.Processo;
+import appspot.simularso.exception.ProcessosNaoCarregadosException;
+import appspot.simularso.model.Processo;
 
 public abstract class EscalonadorBase {
 

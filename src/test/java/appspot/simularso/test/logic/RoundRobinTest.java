@@ -1,4 +1,4 @@
-package appspot.simulaedp.test.logic;
+package appspot.simularso.test.logic;
 
 import java.util.Iterator;
 import java.util.LinkedList;
@@ -8,12 +8,12 @@ import org.hamcrest.Matchers;
 import org.junit.Assert;
 import org.junit.Test;
 
-import appspot.simulaedp.exception.ProcessosNaoCarregadosException;
-import appspot.simulaedp.exception.TempoQuantumException;
-import appspot.simulaedp.logic.Escalonador;
-import appspot.simulaedp.logic.impl.RoundRobin;
-import appspot.simulaedp.model.Processo;
-import appspot.simulaedp.test.InitialCase;
+import appspot.simularso.exception.ProcessosNaoCarregadosException;
+import appspot.simularso.exception.TempoQuantumException;
+import appspot.simularso.logic.Escalonador;
+import appspot.simularso.logic.impl.RoundRobin;
+import appspot.simularso.model.Processo;
+import appspot.simularso.test.InitialCase;
 
 public class RoundRobinTest extends InitialCase {
 

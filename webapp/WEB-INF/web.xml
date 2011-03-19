@@ -2,15 +2,14 @@
 <web-app xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
 	xmlns="http://java.sun.com/xml/ns/javaee" xmlns:web="http://java.sun.com/xml/ns/javaee/web-app_2_5.xsd"
 	xsi:schemaLocation="http://java.sun.com/xml/ns/javaee http://java.sun.com/xml/ns/javaee/web-app_2_5.xsd"
-	id="SimulaEDP" version="2.5">
+	id="SimulaRSO" version="2.5">
 
-	<display-name>simulaedp</display-name>
+	<display-name>simularso</display-name>
 
 	<jsp-config>
 		<jsp-property-group>
 			<url-pattern>*.jsp</url-pattern>
 			<page-encoding>UTF-8</page-encoding>
-			<!-- <page-encoding>ISO-8859-1</page-encoding> -->
 			<scripting-invalid>true</scripting-invalid>
 			<include-prelude>/WEB-INF/jsp/prelude.jspf</include-prelude>
 			<trim-directive-whitespaces>true</trim-directive-whitespaces>

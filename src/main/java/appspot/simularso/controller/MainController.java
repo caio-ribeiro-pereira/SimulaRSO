@@ -1,4 +1,4 @@
-package appspot.simulaedp.controller;
+package appspot.simularso.controller;
 
 import br.com.caelum.vraptor.Get;
 import br.com.caelum.vraptor.Resource;

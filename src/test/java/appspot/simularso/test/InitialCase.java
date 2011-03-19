@@ -1,8 +1,8 @@
-package appspot.simulaedp.test;
+package appspot.simularso.test;
 
 import java.util.ArrayList;
 
-import appspot.simulaedp.model.Processo;
+import appspot.simularso.model.Processo;
 
 public abstract class InitialCase {
 

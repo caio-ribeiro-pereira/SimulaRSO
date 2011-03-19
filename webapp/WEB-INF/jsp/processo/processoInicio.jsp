@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <head>
-	<title>SimulaEDP - Escalonamento de Processos</title>
+	<title>Escalonamento de Processos</title>
 </head>	
 <body>
 	<h1 class="clearfix">Escalonamento de Processos</h1>

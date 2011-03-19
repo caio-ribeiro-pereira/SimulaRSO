@@ -1,9 +1,9 @@
-package appspot.simulaedp.logic;
+package appspot.simularso.logic;
 
 import java.util.LinkedList;
 import java.util.Set;
 
-import appspot.simulaedp.model.Processo;
+import appspot.simularso.model.Processo;
 
 public interface Escalonador {
 

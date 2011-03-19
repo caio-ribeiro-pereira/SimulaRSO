@@ -15,7 +15,7 @@
 		<div class="graphic-panel clearfix">
 			<canvas id="processo-chart-${resultList.algoritmoNome}"></canvas>
 		</div>
-		<table class="grid_12 result-panel">
+		<table class="clearfix result-panel">
 			<thead>
 				<tr>
 					<td colspan="5"><strong>Informações relevantes</strong></td>
@@ -76,7 +76,5 @@
 			});
 		</script>
 	</c:forEach>
-	<div class="clearfix">
-		<a href="<c:url value="/escalonamento-processo" />">Realizar nova simulação...</a>
-	</div>
+	<a class="clearfix" href="<c:url value="/escalonamento-processo" />">Realizar nova simulação...</a>
 </body>

@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <head>
-	<title>SimulaEDP - Escalonamento de Disco</title>
+	<title>Escalonamento de Disco</title>
 </head>
 <body>
 	<h1 class="clearfix">Escalonamento de Disco</h1>
