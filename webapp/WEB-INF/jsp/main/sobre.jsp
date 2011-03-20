@@ -45,7 +45,6 @@
 		<li><small><a href="http://www.w3schools.com/html5/default.asp" target="_blank"><strong>HTML 5</strong></a> - Estrutura do projeto utilizando as boas práticas de HTML 5 de acordo com as normas <a href="http://www.w3schools.com" target="_blank">W3C</a>.</small></li>
 		<li><small><a href="http://www.w3schools.com/css3/default.asp" target="_blank"><strong>CSS 3</strong></a> - Para estilização do layout do projeto, também seguindo as normas <a href="http://www.w3schools.com" target="_blank">W3C</a>.</small></li>
 		<li><small><a href="http://developer.mozilla.org/en/Canvas_tutorial" target="_blank"><strong>Canvas</strong></a> - Elemento principal do projeto, que permite renderizar elementos gráficos em 2D.</small></li>
-		<li><small><a href="http://code.google.com/p/explorercanvas/" target="_blank"><strong>Explorer Canvas</strong></a> - Plugin Javascript que permite renderizar os elementos canvas no Internet Explorer.</small></li>
 	</ul>
 	<hr>
 	<h2>Compatibilidade com os navegadores:</h2>
@@ -53,7 +52,7 @@
 		<li><a href="http://br.mozdev.org/" target="_blank"><strong>Mozilla Firefox 3+</strong></a></li>
 		<li><a href="http://www.google.com/chrome/" target="_blank"><strong>Google Chrome 5+</strong></a></li>
 		<li><a href="http://www.opera.com/" target="_blank"><strong>Opera 9+</strong></a></li>
-		<li><a href="http://www.microsoft.com/brasil/windows/internet-explorer/" target="_blank"><strong>Internet Explorer 8+ (Ainda em testes!)</strong></a></li>
+		<li><a href="http://www.microsoft.com/brasil/windows/internet-explorer/" target="_blank"><strong>Internet Explorer 9+</strong></a></li>
 		<li><a href="http://www.apple.com/br/safari/" target="_blank"><strong>Safari 4+</strong></a></li>
 	</ul>
 </body>

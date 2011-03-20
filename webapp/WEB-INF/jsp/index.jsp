@@ -10,8 +10,7 @@
 	<link rel="stylesheet" type="text/css" href="<c:url value="/resources/css/main.css" />">
 	<link rel="stylesheet" type="text/css" href="<c:url value="/resources/css/smoothness/jquery-ui.css" />">
 	<script type="text/javascript" src="<c:url value="/resources/js/head.min.js" />"></script>
-	<!--[if IE]><script type="text/javascript" src="<c:url value="/resources/js/flashcanvas.js" />"></script><![endif]-->
-	<!--[if IE]><script type="text/javascript" src="<c:url value="/resources/js/html5.js" />"></script><![endif]-->
+	<!--[if IE]><script type="text/javascript" src="<c:url value="/resources/js/ie/html5.js" />"></script><![endif]-->
 	<script type="text/javascript">
   		head.js('<c:url value="/resources/js/jquery/jquery.min.js" />',
   				'<c:url value="/resources/js/jquery/jquery-ui.min.js" />',

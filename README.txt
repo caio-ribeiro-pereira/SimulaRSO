@@ -41,8 +41,15 @@ O projeto utiliza o seguintes frameworks:
 + HTML 5 - Estrutura do projeto utilizando as boas práticas de HTML 5 de acordo com as normas W3C.
 + CSS 3 - Para estilizacao do layout do projeto, também seguindo as normas W3C.
 + Canvas - Elemento principal do projeto, que permite renderizar elementos gráficos em 2D.
-+ Explorer Canvas - Plugin Javascript que permite renderizar os elementos canvas no Internet Explorer.
 
+====================================================================
+Browsers Compatíveis:
++ Internet Explorer 9+
++ Firefox 3.5+
++ Chrome 5+
++ Safari 4+
++ Opera 9+
+====================================================================
 
 Emails: 
 Orientador: Prof. André Luiz Vizine Pereira - vizine@unisantos.br
