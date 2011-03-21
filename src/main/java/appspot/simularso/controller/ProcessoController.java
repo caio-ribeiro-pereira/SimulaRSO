@@ -51,11 +51,14 @@ public class ProcessoController {
 			validator.onErrorRedirectTo(this).processoInicio();
 
 		} catch (TempoQuantumException e) {
-			validator.add(new ValidationMessage("Nao definido um tempo de corte para o algoritmo.", ""));
+			validator.add(new ValidationMessage("Não definido um tempo de corte para este algoritmo.", ""));
 			validator.onErrorRedirectTo(this).processoInicio();
 
 		} catch (IllegalArgumentException e) {
 			validator.add(new ValidationMessage("Nenhum algoritmo foi selecionado.", ""));
+			validator.onErrorRedirectTo(this).processoInicio();
+		} catch (Exception e) {
+			validator.add(new ValidationMessage("Ocorreu uma falha na execução do algoritmo.", ""));
 			validator.onErrorRedirectTo(this).processoInicio();
 		}
 	}
@@ -63,7 +66,7 @@ public class ProcessoController {
 	@Get("/resultado-escalonamento-processo")
 	public void processoResultado() {
 		if (!result.included().containsKey("resultadosDosAlgoritmos")) {
-			validator.add(new ValidationMessage("Configure um algoritmo para simular um escalonamento.", ""));
+			validator.add(new ValidationMessage("Selecione um algoritmo para simular um escalonamento.", ""));
 			validator.onErrorRedirectTo(this).processoInicio();
 		}
 	}
