@@ -37,12 +37,14 @@
 	  	<section class="clearfix">
 	  		<c:if test="${not empty errors}">
 				<c:forEach var="error" items="${errors}">
-				    <h2>${error.message}</h2>
+				    <h2 class="clearfix error-message">${error.message}</h2>
 				</c:forEach>
 			</c:if>
+			<%-- 
 			<c:if test="${not empty message}">
 				<h2>${message}</h2>
-			</c:if>
+			</c:if> 
+			--%>
 			<decorator:body />
 	  	</section>
 	  	<hr>

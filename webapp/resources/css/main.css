@@ -36,6 +36,9 @@ h1,h2,h3 {
 	line-height: 1.8em;
 }
 
+h2.error-message {
+	color: #F00;
+}
 div.main {
 	margin-top: 25px;
 	margin-bottom: 25px;

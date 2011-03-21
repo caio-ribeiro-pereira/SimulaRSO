@@ -36,30 +36,30 @@ public class ProcessoController {
 	@Post("/executar-escalonamento-processo")
 	public void processoExecutar(ArrayList<AlgoritmoProcesso> algs, ArrayList<Processo> pr, int qt) {
 		try {
-			ArrayList<HashMap<String, Object>> resultadosDosAlgoritmos = new ArrayList<HashMap<String, Object>>();
-			for (AlgoritmoProcesso alg : algs) {
-				ArrayList<Processo> processos = (ArrayList<Processo>) pr.clone();
-				HashMap<String, Object> resultado = executor.executar(alg, processos, qt);
-				resultadosDosAlgoritmos.add(resultado);
-			}
-			resultadosDosAlgoritmos.trimToSize();
+
+			ArrayList<HashMap<String, Object>> resultadosDosAlgoritmos = executor.executarAlgoritmos(algs, pr, qt);
 			result.include("resultadosDosAlgoritmos", resultadosDosAlgoritmos);
 			result.redirectTo(this).processoResultado();
 
 		} catch (ProcessosNaoCarregadosException e) {
+
 			validator.add(new ValidationMessage("Alguns processos não foram configurados corretamente.", ""));
 			validator.onErrorRedirectTo(this).processoInicio();
 
 		} catch (TempoQuantumException e) {
+
 			validator.add(new ValidationMessage("Não definido um tempo de corte para este algoritmo.", ""));
 			validator.onErrorRedirectTo(this).processoInicio();
 
 		} catch (IllegalArgumentException e) {
+
 			validator.add(new ValidationMessage("Nenhum algoritmo foi selecionado.", ""));
 			validator.onErrorRedirectTo(this).processoInicio();
 		} catch (Exception e) {
+
 			validator.add(new ValidationMessage("Ocorreu uma falha na execução do algoritmo.", ""));
 			validator.onErrorRedirectTo(this).processoInicio();
+
 		}
 	}
 
