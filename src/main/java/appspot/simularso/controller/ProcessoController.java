@@ -5,8 +5,8 @@ import java.util.HashMap;
 
 import appspot.simularso.exception.ProcessosNaoCarregadosException;
 import appspot.simularso.exception.TempoQuantumException;
-import appspot.simularso.logic.Executor;
 import appspot.simularso.logic.Escalonador.AlgoritmoProcesso;
+import appspot.simularso.logic.Executor;
 import appspot.simularso.model.Processo;
 import br.com.caelum.vraptor.Get;
 import br.com.caelum.vraptor.Post;
@@ -38,7 +38,8 @@ public class ProcessoController {
 		try {
 			ArrayList<HashMap<String, Object>> resultadosDosAlgoritmos = new ArrayList<HashMap<String, Object>>();
 			for (AlgoritmoProcesso alg : algs) {
-				HashMap<String, Object> resultado = executor.executar(alg, pr, qt);
+				ArrayList<Processo> processos = (ArrayList<Processo>) pr.clone();
+				HashMap<String, Object> resultado = executor.executar(alg, processos, qt);
 				resultadosDosAlgoritmos.add(resultado);
 			}
 			resultadosDosAlgoritmos.trimToSize();
