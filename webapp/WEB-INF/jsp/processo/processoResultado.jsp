@@ -1,12 +1,6 @@
 <!DOCTYPE html>
 <head>
 	<title>Simulação dos Algoritmos de Escalonamento de Processos</title>
-	<script type="text/javascript">
-		head.ready(function(){
-			$('table.result-panel tr.result-line:odd').css('background-color','#DDD');
-			$('table.result-panel tr.result-line:even').css('background-color','#CCC');
-		});
-	</script>
 </head>	
 <body>
 	<h1 class="clearfix">Simulação dos Algoritmos de Escalonamento de Processos</h1>
@@ -57,7 +51,10 @@
 			</tfoot>
 		</table>
 		<script type="text/javascript">
-			head.ready(function(){
+			$(function(){
+				$('table.result-panel tr.result-line:odd').css('background-color','#DDD');
+				$('table.result-panel tr.result-line:even').css('background-color','#CCC');
+				
 				var processos = new Array();
 				<c:set var="x" value="0" />
 				<c:set var="h" value="20" />

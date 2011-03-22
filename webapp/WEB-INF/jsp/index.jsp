@@ -17,8 +17,7 @@
   				'<c:url value="/resources/js/jquery/jquery-ui.spinner.min.js" />',
   				'<c:url value="/resources/js/jquery/jquery-tmpl.min.js" />',
   				'<c:url value="/resources/js/canvas/colors.js" />',
-  				'<c:url value="/resources/js/canvas/processo-chart.js" />'
-  		);
+  				'<c:url value="/resources/js/canvas/processo-chart.js" />');
   	</script>
     <decorator:head />
   </head>
@@ -40,11 +39,6 @@
 				    <h2 class="clearfix error-message">${error.message}</h2>
 				</c:forEach>
 			</c:if>
-			<%-- 
-			<c:if test="${not empty message}">
-				<h2>${message}</h2>
-			</c:if> 
-			--%>
 			<decorator:body />
 	  	</section>
 	  	<hr>
