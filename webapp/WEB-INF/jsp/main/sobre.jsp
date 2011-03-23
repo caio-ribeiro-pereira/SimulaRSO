@@ -5,7 +5,7 @@
 </head>
 <body>
 	<h1>Detalhes sobre o projeto:</h1>
-	<h2>Simula-RSO Simulador de Recursos de Sistemas Operacionais</h2>
+	<h2>SimulaRSO Simulador de Recursos de Sistemas Operacionais</h2>
 	<p><small>O objetivo deste trabalho é o desenvolvimento de uma aplicação web
 	   a ser utilizado como ferramenta de apoio para a disciplina de 
 	   sistemas operacionais ou semelhantes, que simulem o comportamento dos
