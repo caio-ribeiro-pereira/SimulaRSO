@@ -1,4 +1,4 @@
-Projeto Simula-RSO - Simulador de Recursos de Sistemas Operacionais
+Projeto SimulaRSO - Simulador de Recursos de Sistemas Operacionais
 ====================================================================
 
 É um aplicativo que simula o comportamento dos principais recursos que são implementados
