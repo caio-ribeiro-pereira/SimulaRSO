@@ -51,7 +51,7 @@
 			</tfoot>
 		</table>
 		<script type="text/javascript">
-			$(function(){
+			head.ready(function(){
 				$('table.result-panel tr.result-line:odd').css('background-color','#DDD');
 				$('table.result-panel tr.result-line:even').css('background-color','#CCC');
 				
