@@ -2,7 +2,7 @@
 <fmt:setLocale value="pt-BR"/>
 <html lang="pt-BR">
   <head>
-    <title><decorator:title default="Projeto Simula-RSO"></decorator:title></title>
+    <title><decorator:title default="Projeto SimulaRSO"></decorator:title></title>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
     <link rel="shortcut icon" href="<c:url value="/resources/img/favicon.ico" />"></link>
     <link rel="stylesheet" type="text/css" href="<c:url value="/resources/css/reset.css" />">
@@ -24,7 +24,7 @@
   <body>
   	<div class="container_12 main">
 	  	<header class="clearfix">
-	  		<h1>Projeto Simula-RSO</h1>
+	  		<h1>Projeto SimulaRSO</h1>
 	  		<nav>
 	  			<a class="left" href="<c:url value="/" />">Home</a>
 				<a href="<c:url value="/escalonamento-processo" />">Processos</a>
