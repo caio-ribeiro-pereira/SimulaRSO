@@ -1,4 +1,4 @@
-Projeto Simula-RSO 0.5 - Simulador de Recursos de Sistemas Operacionais
+Projeto Simula-RSO - Simulador de Recursos de Sistemas Operacionais
 ====================================================================
 
 É um aplicativo que simula o comportamento dos principais recursos que são implementados
@@ -15,10 +15,11 @@ Este projeto será o nosso trabalho de conclusão de curso para 2011.
 e será contribuído para a Universidade Catolica de Santos - www.unisantos.br.
 
 ====================================================================
-Versão 1.0:
+
 Funcionalidades:
 + Simular os principais algoritmos de escalonamento de processos com até 20 processos.
-+ Simular os principais algoritmos de escalonamento de disco com até 30 requisições de (I/O) em disco.
++ Simular os principais algoritmos de escalonamento de disco com até 20 requisições de (I/O) em disco.
++ Simular os principais algoritmos de substituição de página de memória virtual com até 20 palavras de bytes na escrita.
 + Realizar simulação comparativa para analisar o comportamento de dois algoritmos distintos.
 + Exibição comportamental dos algoritmos através de gráficos 2D intuitivos.
 + Internacionalização com suporte aos idiomas inglês e português.

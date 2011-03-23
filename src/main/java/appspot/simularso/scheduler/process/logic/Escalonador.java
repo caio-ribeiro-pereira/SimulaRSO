@@ -1,4 +1,4 @@
-package appspot.simularso.logic;
+package appspot.simularso.scheduler.process.logic;
 
 import java.util.LinkedList;
 import java.util.Set;

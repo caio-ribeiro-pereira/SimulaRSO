@@ -1,4 +1,4 @@
-package appspot.simularso.logic;
+package appspot.simularso.scheduler.process.logic;
 
 import java.util.ArrayList;
 import java.util.Collections;

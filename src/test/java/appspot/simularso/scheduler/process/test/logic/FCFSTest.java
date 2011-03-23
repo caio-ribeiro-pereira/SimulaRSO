@@ -1,4 +1,4 @@
-package appspot.simularso.test.logic;
+package appspot.simularso.scheduler.process.test.logic;
 
 import java.util.Iterator;
 import java.util.LinkedList;
@@ -9,10 +9,10 @@ import org.junit.Assert;
 import org.junit.Test;
 
 import appspot.simularso.exception.ProcessosNaoCarregadosException;
-import appspot.simularso.logic.Escalonador;
-import appspot.simularso.logic.impl.FCFS;
 import appspot.simularso.model.Processo;
-import appspot.simularso.test.InitialCase;
+import appspot.simularso.scheduler.process.logic.Escalonador;
+import appspot.simularso.scheduler.process.logic.impl.FCFS;
+import appspot.simularso.scheduler.process.test.InitialCase;
 
 /**
  * Testes para Escalonamento FCFS.

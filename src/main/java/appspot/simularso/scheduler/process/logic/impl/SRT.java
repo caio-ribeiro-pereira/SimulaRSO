@@ -1,12 +1,12 @@
-package appspot.simularso.logic.impl;
+package appspot.simularso.scheduler.process.logic.impl;
 
 import java.util.ArrayList;
 import java.util.LinkedList;
 import java.util.Set;
 
-import appspot.simularso.logic.Escalonador;
-import appspot.simularso.logic.EscalonadorBase;
 import appspot.simularso.model.Processo;
+import appspot.simularso.scheduler.process.logic.Escalonador;
+import appspot.simularso.scheduler.process.logic.EscalonadorBase;
 
 public class SRT extends EscalonadorBase implements Escalonador {
 

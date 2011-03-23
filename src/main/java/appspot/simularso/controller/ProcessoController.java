@@ -5,9 +5,9 @@ import java.util.HashMap;
 
 import appspot.simularso.exception.ProcessosNaoCarregadosException;
 import appspot.simularso.exception.TempoQuantumException;
-import appspot.simularso.logic.Escalonador.AlgoritmoProcesso;
-import appspot.simularso.logic.Executor;
 import appspot.simularso.model.Processo;
+import appspot.simularso.scheduler.process.logic.Executor;
+import appspot.simularso.scheduler.process.logic.Escalonador.AlgoritmoProcesso;
 import br.com.caelum.vraptor.Get;
 import br.com.caelum.vraptor.Post;
 import br.com.caelum.vraptor.Resource;

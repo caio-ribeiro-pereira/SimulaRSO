@@ -1,6 +1,6 @@
 package appspot.simularso.controller;
 
-import appspot.simularso.logic.Executor;
+import appspot.simularso.scheduler.process.logic.Executor;
 import br.com.caelum.vraptor.Get;
 import br.com.caelum.vraptor.Post;
 import br.com.caelum.vraptor.Resource;

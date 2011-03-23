@@ -1,9 +1,9 @@
 <!DOCTYPE html>
 <head>
-	<title>Simulação dos Algoritmos de Escalonamento de Processos</title>
+	<title>Simulação Gráfica de Escalonamento de Processos</title>
 </head>	
 <body>
-	<h1 class="clearfix">Simulação dos Algoritmos de Escalonamento de Processos</h1>
+	<h1 class="clearfix">Simulação Gráfica de Escalonamento de Processos</h1>
 	<c:forEach var="resultList" items="${resultadosDosAlgoritmos}">
 		<h2 class="clearfix">Resultado do escalonamento: ${resultList.algoritmoNome}</h2>
 		<div class="graphic-panel clearfix">
