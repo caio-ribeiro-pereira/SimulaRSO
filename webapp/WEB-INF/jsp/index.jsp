@@ -15,6 +15,7 @@
   		head.js('<c:url value="/resources/js/jquery/jquery.min.js" />',
   				'<c:url value="/resources/js/jquery/jquery-ui.min.js" />',
   				'<c:url value="/resources/js/jquery/jquery-ui.spinner.min.js" />',
+  				'<c:url value="/resources/js/jquery/jquery-numeric.js" />',
   				'<c:url value="/resources/js/jquery/jquery-tmpl.min.js" />',
   				'<c:url value="/resources/js/canvas/colors.js" />',
   				'<c:url value="/resources/js/canvas/processo-chart.js" />');

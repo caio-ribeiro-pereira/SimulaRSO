@@ -76,7 +76,8 @@
 			</div>
 		</script>
 		<div class="clearfix executar">
-			<button type="submit">Executar</button>
+			<button id="execute" type="submit">Executar</button>
+			<button id="random" type="button">Geração aleatória</button>
 		</div>
 	</form>
 	<script type="text/javascript">
@@ -87,8 +88,20 @@
 			$('#alg2').hide();
 			$('#quantum').hide();
 			
+			$('#random').click(function(){
+				var total = $('#total').val();
+				for(var i = 1; i <= total; i++){
+					var randomBurst = Math.floor(Math.random()*98) + 1;
+					var randomChegada = Math.floor(Math.random()*100);
+					var randomPrioridade = Math.floor(Math.random()*11);
+					$('input[type="text"]#burst-'+i).val(randomBurst);
+					$('input[type="text"]#chegada-'+i).val(randomChegada);
+					$('input[type="text"]#prioridade-'+i).val(randomPrioridade);
+				}
+			});
+			
 			$('#process-form').submit(function(){
-				$('div.executar button').attr('disabled','disabled');
+				$('div.executar #execute').attr('disabled','disabled');
 			});
 			
 			$('#modo').change(function(){
@@ -145,9 +158,9 @@
 				}
 				var template = $('#processTemplate').tmpl(processos);
 				content.append(template).show();
-				$('input[type="text"].burst').spinner({ min: 1, max: 99, showOn: 'both' });
-				$('input[type="text"].chegada').spinner({ min: 0, max: 99, showOn: 'both' });
-				$('input[type="text"].prioridade').spinner({ min: 0, max: 10, showOn: 'both' });
+				$('input[type="text"].burst').spinner({ min: 1, max: 99, showOn: 'both' }).onlyNumeric();
+				$('input[type="text"].chegada').spinner({ min: 0, max: 99, showOn: 'both' }).onlyNumeric();
+				$('input[type="text"].prioridade').spinner({ min: 0, max: 10, showOn: 'both' }).onlyNumeric();
 			}).trigger('change');
 		});
 	</script>
