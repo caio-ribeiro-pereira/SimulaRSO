@@ -37,6 +37,7 @@ h1,h2,h3 {
 }
 
 .error-message {
+	text-align: center;
 	color: #F00;
 }
 div.main {

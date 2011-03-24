@@ -6,7 +6,7 @@
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
     <link rel="shortcut icon" href="<c:url value="/resources/img/favicon.ico" />"></link>
     <link rel="stylesheet" type="text/css" href="<c:url value="/resources/css/reset.css" />">
-	<link rel="stylesheet" type="text/css" href="<c:url value="/resources/css/grid.css" />">
+	<link rel="stylesheet" type="text/css" href="<c:url value="/resources/css/grid.min.css" />">
 	<link rel="stylesheet" type="text/css" href="<c:url value="/resources/css/main.css" />">
 	<link rel="stylesheet" type="text/css" href="<c:url value="/resources/css/smoothness/jquery-ui.css" />">
 	<script type="text/javascript" src="<c:url value="/resources/js/head.min.js" />"></script>
@@ -51,7 +51,7 @@
 	  	<section class="clearfix">
 	  		<c:if test="${not empty errors}">
 				<c:forEach var="error" items="${errors}">
-				    <h2 class="clearfix error-message">${error.message}</h2>
+				    <span class="clearfix ui-state-error ui-corner-all error-message">${error.message}</span>
 				</c:forEach>
 			</c:if>
 			<decorator:body />
