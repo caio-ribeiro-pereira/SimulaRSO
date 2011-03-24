@@ -36,7 +36,7 @@ h1,h2,h3 {
 	line-height: 1.8em;
 }
 
-h2.error-message {
+.error-message {
 	color: #F00;
 }
 div.main {
@@ -63,6 +63,10 @@ small {
 
 a {
 	color: #000;
+}
+
+li {
+	line-height: 1.6em;
 }
 
 a:hover {

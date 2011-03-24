@@ -12,6 +12,10 @@
 	<script type="text/javascript" src="<c:url value="/resources/js/head.min.js" />"></script>
 	<!--[if IE]><script type="text/javascript" src="<c:url value="/resources/js/ie/html5.js" />"></script><![endif]-->
 	<script type="text/javascript">
+		var _gaq = _gaq || [];
+		  _gaq.push(['_setAccount', 'UA-7076509-2']);
+		  _gaq.push(['_trackPageview']);
+		  
   		head.js('<c:url value="/resources/js/jquery/jquery.min.js" />',
   				'<c:url value="/resources/js/jquery/jquery-ui.min.js" />',
   				'<c:url value="/resources/js/jquery/jquery-ui.spinner.min.js" />',
@@ -19,6 +23,15 @@
   				'<c:url value="/resources/js/jquery/jquery-tmpl.min.js" />',
   				'<c:url value="/resources/js/canvas/colors.js" />',
   				'<c:url value="/resources/js/canvas/processo-chart.js" />');
+  		
+  		head.ready(
+  			function() {
+  			    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+  			    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+  			    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+  			}		
+  		);
+  		
   	</script>
     <decorator:head />
   </head>
@@ -45,12 +58,16 @@
 	  	</section>
 	  	<hr>
 		<footer class="clearfix">
-            <h3>Autores do projeto:</h3>
-	  		<p><strong>Orientador:</strong> André Luiz Vizine Pereira - <a href="mailto:vizine@unisantos.br">vizine@unisantos.br</a></p>
-	  		<p><strong>Aluno:</strong> André de Araújo Rodrigues - <a href="mailto:and.arodrigues@gmail.com">and.arodrigues@gmail.com</a></p>
-	  		<p><strong>Aluno:</strong> Caio Ribeiro Pereira - <a href="mailto:caio.ribeiro.pereira@gmail.com">caio.ribeiro.pereira@gmail.com</a></p>
-	  		<p><strong>Curso:</strong> Sistemas de Informação</p>
-	  		<p><strong><a href="http://www.unisantos.br" target="_blank">Universidade Católica de Santos</a></strong></p>
+				<h3>Autores do projeto:</h3>
+		  		<p><strong>Orientador:</strong> André Luiz Vizine Pereira - <a href="mailto:vizine@unisantos.br">vizine@unisantos.br</a></p>
+		  		<p><strong>Aluno:</strong> André de Araújo Rodrigues - <a href="mailto:and.arodrigues@gmail.com">and.arodrigues@gmail.com</a></p>
+		  		<p><strong>Aluno:</strong> Caio Ribeiro Pereira - <a href="mailto:caio.ribeiro.pereira@gmail.com">caio.ribeiro.pereira@gmail.com</a></p>
+		  		<p><strong>Curso:</strong> Sistemas de Informação</p>
+		  		<p><strong><a href="http://www.unisantos.br" target="_blank">Universidade Católica de Santos</a></strong></p>
+		  		<hr>
+				<p>
+					<a href="https://appengine.google.com/" target="_blank"><img src="http://code.google.com/appengine/images/appengine-silver-120x30.gif" alt="Powered by Google App Engine" /></a>
+				</p>
 	  	</footer>
   	</div>
   </body>
