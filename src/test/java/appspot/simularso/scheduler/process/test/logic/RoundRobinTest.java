@@ -13,9 +13,9 @@ import appspot.simularso.exception.TempoQuantumException;
 import appspot.simularso.model.Processo;
 import appspot.simularso.scheduler.process.logic.Escalonador;
 import appspot.simularso.scheduler.process.logic.impl.RoundRobin;
-import appspot.simularso.scheduler.process.test.InitialCase;
+import appspot.simularso.scheduler.process.test.InitialTestCase;
 
-public class RoundRobinTest extends InitialCase {
+public class RoundRobinTest extends InitialTestCase {
 
 	@Test
 	public void deveRetornarResultadoSimples() {

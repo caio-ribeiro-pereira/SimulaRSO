@@ -12,9 +12,9 @@ import appspot.simularso.exception.ProcessosNaoCarregadosException;
 import appspot.simularso.model.Processo;
 import appspot.simularso.scheduler.process.logic.Escalonador;
 import appspot.simularso.scheduler.process.logic.impl.SJF;
-import appspot.simularso.scheduler.process.test.InitialCase;
+import appspot.simularso.scheduler.process.test.InitialTestCase;
 
-public class SJFTest extends InitialCase {
+public class SJFTest extends InitialTestCase {
 
 	@Test
 	public void deveRetornarResultadoOrdenadoPorChegada() {

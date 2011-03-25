@@ -56,7 +56,7 @@ public class SRT extends EscalonadorBase implements Escalonador {
 			if (burstFuturo < burstAtual) {
 				int tempoChegadaAtual = processoAtual.getChegada();
 				int tempoChegadaFuturo = processoFuturo.getChegada();
-				int diferenca = tempoChegadaFuturo - tempoChegadaAtual;
+				int diferenca = Math.abs(tempoChegadaFuturo - tempoChegadaAtual);
 				if (tempoDeCorte > diferenca) {
 					atualizarTempoDeCorte(diferenca);
 				}

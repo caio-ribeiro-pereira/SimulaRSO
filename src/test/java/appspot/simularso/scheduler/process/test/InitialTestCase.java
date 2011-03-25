@@ -4,7 +4,7 @@ import java.util.ArrayList;
 
 import appspot.simularso.model.Processo;
 
-public abstract class InitialCase {
+public abstract class InitialTestCase {
 
 	protected static final boolean VALIDO = true;
 	protected static final boolean INVALIDO = false;

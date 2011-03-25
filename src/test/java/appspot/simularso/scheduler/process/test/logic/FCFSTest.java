@@ -12,7 +12,7 @@ import appspot.simularso.exception.ProcessosNaoCarregadosException;
 import appspot.simularso.model.Processo;
 import appspot.simularso.scheduler.process.logic.Escalonador;
 import appspot.simularso.scheduler.process.logic.impl.FCFS;
-import appspot.simularso.scheduler.process.test.InitialCase;
+import appspot.simularso.scheduler.process.test.InitialTestCase;
 
 /**
  * Testes para Escalonamento FCFS.
@@ -20,7 +20,7 @@ import appspot.simularso.scheduler.process.test.InitialCase;
  * @author Caio Ribeiro Pereira
  * @since 12/02/2011
  */
-public class FCFSTest extends InitialCase {
+public class FCFSTest extends InitialTestCase {
 
 	@Test
 	public void deveRetornarResultadoOrdenadoSimples() {
