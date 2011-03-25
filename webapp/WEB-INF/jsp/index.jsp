@@ -30,8 +30,8 @@
   <body>
   	<div class="container_12 main">
 	  	<header class="clearfix">
-	  		<h1>Projeto SimulaRSO</h1>
-	  		<nav>
+	  		<h1 class="clearfix">Projeto SimulaRSO</h1>
+	  		<nav class="clearfix ">
 	  			<a class="left" href="<c:url value="/" />">Home</a>
 				<a href="<c:url value="/escalonamento-processo" />">Processos</a>
 				<a href="<c:url value="/escalonamento-disco" />">Disco</a>
@@ -58,7 +58,12 @@
 		  		<p><strong><a href="http://www.unisantos.br" target="_blank">Universidade Católica de Santos</a></strong></p>
 		  		<hr>
 				<p>
-					<a href="https://appengine.google.com/" target="_blank"><img src="http://code.google.com/appengine/images/appengine-silver-120x30.gif" alt="Powered by Google App Engine" /></a>
+					<a href="http://www.oracle.com/br/technologies/java/index.html" target="_blank"><img src="<c:url value="/resources/img/icon_java.gif" />" alt="Tecnologia Java" /></a>
+					<a href="http://www.w3schools.com/html5/default.asp" target="_blank"><img src="<c:url value="/resources/img/icon_html5.gif" />" alt="Tecnologia HTML5" /></a>
+					<a href="http://jquery.com/" target="_blank"><img src="<c:url value="/resources/img/icon_jquery.gif" />" alt="Tecnologia JQuery" /></a>
+					<a href="http://vraptor.caelum.com.br" target="_blank"><img src="<c:url value="/resources/img/icon_vraptor.gif" />" alt="Tecnologia VRaptor da Caelum" /></a>
+					<a href="http://appengine.google.com/" target="_blank"><img src="<c:url value="/resources/img/icon_appengine.gif" />" alt="Hospedado no Google App Engine" /></a>
+					<a href="http://github.com/" target="_blank"><img src="<c:url value="/resources/img/icon_github.gif" />" alt="Repositório do código-fonte do projeto via GitHub" /></a>
 				</p>
 	  	</footer>
   	</div>

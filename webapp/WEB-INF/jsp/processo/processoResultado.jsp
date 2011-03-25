@@ -68,8 +68,8 @@
 				$('#processo-chart-${resultList.algoritmoNome}').attr('height', ((${resultList.totalProcessos} + 2) * ${h}));
 				var canvas = document.getElementById('processo-chart-${resultList.algoritmoNome}');
 				var chart = new ProcessoChart(${resultList.totalProcessos}, canvas);
-				chart.background();
 				chart.draw(processos);
+				chart.background();
 			});
 		</script>
 	</c:forEach>
