@@ -4,8 +4,7 @@
 	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 </head>
 <body>
-	<h1>Detalhes sobre o projeto:</h1>
-	<h2>SimulaRSO Simulador de Recursos de Sistemas Operacionais</h2>
+	<h3>SimulaRSO - Simulador de Recursos de Sistemas Operacionais</h3>
 	<p><small>O objetivo deste trabalho é o desenvolvimento de uma aplicação web
 	   a ser utilizado como ferramenta de apoio para a disciplina de 
 	   sistemas operacionais ou semelhantes, que simulem o comportamento dos
@@ -18,9 +17,11 @@
 	   de processos concorrentes presentes, também simular o comportamento
 	   dos algoritmos que escalonam as requisições de entrada e saída <strong>(I/O)</strong> de um 
 	   disco rígido: <strong>(FCFS, SSTF, SCAN, C-SCAN, C-LOOK).</strong> e apresentar o 
-	   comportamento dos algoritmos de substituição de páginas de uma memória virtual <strong>(FIFO, LRU, Ótimo)</strong>.</small></p>
+	   comportamento dos algoritmos de substituição de páginas de uma memória virtual <strong>(FIFO, LRU, Ótimo)</strong>.</small>
+	</p>
+	<p><strong><a href="https://github.com/caio-ribeiro-pereira/SimulaRSO" target="_blank">Clique aqui para visualizar o código-fonte do projeto.</a></strong></p>
 	<hr>
-	<h2>Funcionalidades do projeto:</h2>
+	<h3>Funcionalidades do projeto:</h3>
 	<ul>
 		<li><small>Simular os principais algoritmos de escalonamento de processos com até 20 processos.</small></li>
 		<li><small>Simular os principais algoritmos de escalonamento de disco com até 20 requisições de (I/O) em disco.</small></li>
@@ -30,7 +31,7 @@
 		<li><small>Projeto internacionalizado com suporte aos idiomas inglês e português.</small></li> 
 	</ul>
 	<hr>
-	<h2>Tecnologias utilizadas:</h2>
+	<h3>Tecnologias utilizadas:</h3>
 	<ul>
 		<li><small><a href="http://www.oracle.com/br/technologies/java/index.html" target="_blank"><strong>Java 6</strong></a> - Linguagem principal do projeto.</small></li>
 		<li><small><a href="http://www.github.com" target="_blank"><strong>GitHub</strong></a> - Repositório para projetos open-source.</small></li>
@@ -49,7 +50,7 @@
 		<li><small><a href="http://developer.mozilla.org/en/Canvas_tutorial" target="_blank"><strong>Canvas</strong></a> - Elemento principal do projeto, que permite renderizar elementos gráficos em 2D.</small></li>
 	</ul>
 	<hr>
-	<h2>Compatibilidade com os navegadores:</h2>
+	<h3>Compatibilidade com os navegadores:</h3>
 	<ul>
 		<li><a href="http://br.mozdev.org/" target="_blank"><strong>Mozilla Firefox 3+</strong></a></li>
 		<li><a href="http://www.google.com/chrome/" target="_blank"><strong>Google Chrome 5+</strong></a></li>

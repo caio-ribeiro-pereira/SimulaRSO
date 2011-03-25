@@ -1,9 +1,9 @@
 <!DOCTYPE html>
 <head>
-	<title>Escalonamento de Processos</title>
+	<title>Simulação de escalonamento de processos</title>
 </head>	
 <body>
-	<h1 class="clearfix">Escalonamento de Processos</h1>
+	<h1 class="clearfix">Simulação de escalonamento de processos</h1>
 	<form id="process-form" action="<c:url value="/executar-escalonamento-processo"/>" method="post">
 		<div id="main-menu" class="clearfix menu">
 			<div class="grid_3">
@@ -56,20 +56,20 @@
 		<div id="process-menu" class="clearfix menu"></div>
 		<script id="processTemplate" type="text/x-jquery-tmpl">
 			<div id="\${prDivId}" class="input-box">
-				<p>
-					<small>\${prLabel}: </small>
+				<p class="clearfix">
+					<strong>\${prLabel}: </strong>
 					<input type="hidden" name="\${prIdName}" value="\${prId}">
 					<input type="hidden" name="\${prCorName}" value="\${prCor}">
 				</p>
-				<p>
+				<p class="clearfix">
 					<label class="grid_1" for="\${inputBurst}"><small>Burst: </small></label>
 					<input type="text" class="grid_1 burst" name="\${prBurstName}" id="\${inputBurst}" value="10" maxlength="2">
 				</p>
-				<p>
+				<p class="clearfix">
 					<label class="grid_1" for="\${inputChegada}"><small>Chegada: </small></label>
 					<input type="text" class="grid_1 chegada" name="\${prChegadaName}" id="\${inputChegada}" maxlength="2">
 				</p>
-				<p>
+				<p class="clearfix">
 					<label class="grid_1" for="\${inputPrioridade}"><small>Prioridade: </small></label>
 					<input type="text" class="grid_1 prioridade" name="\${prPrioridadeName}" id="\${inputPrioridade}" maxlength="2">
 				</p>

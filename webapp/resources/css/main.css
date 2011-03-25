@@ -1,149 +1,70 @@
 /* ---------------------------------------------------------------------------
- JFinance
+ SimulaRSO
  Style Sheet
- http://github.com/caio-ribeiro-pereira/SimulaEDP
+ http://github.com/caio-ribeiro-pereira/SimulaRSO
  
  Autor: Caio Ribeiro Pereira
  Twitter: @crp_underground
 
 /* = Template
 --------------------------------------------------------------------------- */
-html {
-	font-size: 100.01%;
-	font-family: segoe ui, Arial, sans-serif;
-	color: #000;
+html {color: #000; font-family: Verdana, Arial, sans-serif;	font-size: 1.0em;}
+body {background: url("../img/background.png") repeat scroll 0pt 0pt #000;}
+header,section,footer {margin-top: 10px;}
+h1,h2,h3 {line-height: 1.6em;}
+h1 {font-size: 1.4em;}
+h2 {font-size: 1.3em;}
+h3 {font-size: 1.2em;}
+strong {font-size: 0.9em;}
+small {font-size: 0.8em;}
+p {font-size: 0.85em; line-height: 1.2em;}
+input {margin-bottom: 3px;}
+li {line-height: 1.5em;}
+a {	color: #000;}
+a:hover {color: #555;}
+a:active {color: #000;}
+ul {margin-left: 20px;}
+nav {margin-top: 10px; padding: 0px;}
+nav a {
+	float: left;
+	margin: -1px;
+	padding: 5px;
 }
-
-body {
-	background-color: #000;
-}
-
-header,section,footer {
-	margin-top: 10px;
-}
-
-h1 {
-	font-size: 1.6em;
-}
-h2 {
-	font-size: 1.4em;
-}
-h3 {
-	font-size: 1.2em;
-}
-
-h1,h2,h3 {
-	line-height: 1.8em;
-}
-
+nav a:hover {background-color: #888; color: #FFF; text-decoration: none;}
+nav a.left {border-radius: 5px 0px 0px 5px;}
+nav a.middle{border-radius: 0px 0px 0px 0px;}
+nav a.right {border-radius: 0px 5px 5px 0px;}
 .error-message {
+	color: #FF0000;
 	text-align: center;
-	color: #F00;
 }
-div.main {
-	margin-top: 25px;
+.main {
+	background-color: #FFFFFF;
+	border-radius: 7px 7px 7px 7px;
 	margin-bottom: 25px;
+	margin-top: 25px;
 	padding: 25px;
-	background-color: #FFF;
-	border-radius: 7px;
-	-moz-border-radius: 7px;
-	-webkit-border-radius: 7px;
-	-ms-border-radius: 7px;
 }
-
-div.graphic-panel {
-	padding: 10px 0px 0px 10px;
+.graphic-panel {
 	overflow-x: scroll;
 	overflow-y: hidden;
+	padding: 10px 0px 0px 10px;
 	width: 960px;
 }
-
-small {
-	font-size: 0.8em;
-}
-
-a {
-	color: #000;
-}
-
-li {
-	line-height: 1.6em;
-}
-
-a:hover {
-	color: #555;
-}
-
-a:active {
-	color: #000;
-}
-
-nav {
-	margin-top:10px;
-	padding: 0px;
-}
-
-nav a {
-	text-decoration: none;
-	border: solid 1px #000;
-	background-color: #DDD;
-	padding: 5px;
-	margin: -1px;
+.menu {margin-top: 15px;}
+.input-box {
+	border-radius: 5px 5px 5px 5px;
+	border: 1px solid #000;
 	float: left;
-}
-
-nav a:hover {
-	text-decoration: none;
-	background-color: #888;
-	color: #FFF;
-}
-
-nav a.left {
-	border-radius: 5px 0px 0px 5px;
-	-moz-border-radius: 5px 0px 0px 5px;
-	-webkit-border-radius: 5px 0px 0px 5px;
-	-ms-border-radius: 5px 0px 0px 5px;
-}
-
-nav a.right {
-	border-radius: 0px 5px 5px 0px;
-	-moz-border-radius: 0px 5px 5px 0px;
-	-webkit-border-radius: 0px 5px 5px 0px;
-	-ms-border-radius: 0px 5px 5px 0px;
-}
-
-ul {
-	margin-left: 20px;
-}
-
-div.menu {
-	margin-top: 15px;
-}
-
-div.input-box {
-	float: left;
-	padding: 3px;
 	margin: 5px 18px 10px 0px;
-	border-radius: 5px;
-	-moz-border-radius: 5px;
-	-webkit-border-radius: 5px;
-	-ms-border-radius: 5px;
-	border: solid 1px #000;
 }
-
-div.input-box p:first-child {
-	text-align: center;
+.input-box p:first-child {text-align: center;}
+.result-panel {
+	border-radius: 5px 5px 5px 5px;
+	border: 1px solid #000;
+	margin: 20px 5px;
 }
-
-table.result-panel {
-	margin: 20px 5px 20px 5px;
-	border-radius: 5px;
-	-moz-border-radius: 5px;
-	-webkit-border-radius: 5px;
-	-ms-border-radius: 5px;
-	border: solid 1px #000;
-}
-table.result-panel td {
+.result-panel td {
 	padding: 5px 14px;
 	text-align: center;
 }

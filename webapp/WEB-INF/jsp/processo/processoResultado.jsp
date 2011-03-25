@@ -7,7 +7,9 @@
 	<c:forEach var="resultList" items="${resultadosDosAlgoritmos}">
 		<h2 class="clearfix">Resultado do escalonamento: ${resultList.algoritmoNome}</h2>
 		<div class="graphic-panel clearfix">
-			<canvas id="processo-chart-${resultList.algoritmoNome}"></canvas>
+			<canvas id="processo-chart-${resultList.algoritmoNome}">
+				O seu navegador não possui suporte HTML 5 para executar o elemento Canvas para renderização dos gráficos, clique no menu Sobre para saber quais versões de browsers utilizar.
+			</canvas>
 		</div>
 		<table class="clearfix result-panel">
 			<thead>
