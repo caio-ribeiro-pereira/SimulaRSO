@@ -3,19 +3,11 @@
 	<title>Simulação Gráfica de Escalonamento de Processos</title>
 </head>	
 <body>
-	<h1 class="clearfix">Simulação Gráfica de Escalonamento de Processos</h1>
+	<h1 class="clearfix">Simulação de Escalonamento de Processos</h1>
 	<c:forEach var="resultList" items="${resultadosDosAlgoritmos}">
-		<h2 class="clearfix">Resultado do escalonamento: ${resultList.algoritmoNome}</h2>
-		<div class="graphic-panel clearfix">
-			<canvas id="processo-chart-${resultList.algoritmoNome}">
-				O seu navegador não possui suporte HTML 5 para executar o elemento Canvas para renderização dos gráficos, clique no menu Sobre para saber quais versões de browsers utilizar.
-			</canvas>
-		</div>
+		<strong class="clearfix result-message">Algoritmo: ${resultList.algoritmoNome}</strong>
 		<table class="clearfix result-panel">
 			<thead>
-				<tr>
-					<td colspan="5"><strong>Informações relevantes</strong></td>
-				</tr>
 				<tr>
 					<td><strong>Processo</strong></td>
 					<td><strong>Burst CPU</strong></td>
@@ -52,6 +44,13 @@
 				</tr>
 			</tfoot>
 		</table>
+		<strong class="clearfix result-message">Simulação gráfica: ${resultList.algoritmoNome}</strong>
+		<div class="graphic-panel clearfix">
+			<canvas id="processo-chart-${resultList.algoritmoNome}">
+				O seu navegador não possui suporte HTML 5 para executar o elemento Canvas para renderização dos gráficos, clique no menu Sobre para saber quais versões de browsers utilizar.
+			</canvas>
+		</div>
+		<hr>
 		<script type="text/javascript">
 			head.ready(function(){
 				$('table.result-panel tr.result-line:odd').css('background-color','#DDD');

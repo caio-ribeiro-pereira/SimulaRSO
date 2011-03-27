@@ -3,6 +3,7 @@ package appspot.simularso.controller;
 import java.util.ArrayList;
 import java.util.HashMap;
 
+import appspot.simularso.exception.ProcessosConfiguracaoException;
 import appspot.simularso.exception.ProcessosNaoCarregadosException;
 import appspot.simularso.exception.TempoQuantumException;
 import appspot.simularso.model.Processo;
@@ -41,9 +42,14 @@ public class ProcessoController {
 			result.include("resultadosDosAlgoritmos", resultadosDosAlgoritmos);
 			result.redirectTo(this).processoResultado();
 
-		} catch (ProcessosNaoCarregadosException e) {
+		} catch (ProcessosConfiguracaoException e) {
 
 			validator.add(new ValidationMessage("Alguns processos não foram configurados corretamente.", ""));
+			validator.onErrorRedirectTo(this).processoInicio();
+
+		} catch (ProcessosNaoCarregadosException e) {
+
+			validator.add(new ValidationMessage("Nenhum processo foi carregado..", ""));
 			validator.onErrorRedirectTo(this).processoInicio();
 
 		} catch (TempoQuantumException e) {
@@ -59,7 +65,6 @@ public class ProcessoController {
 
 			validator.add(new ValidationMessage("Ocorreu uma falha na execução do algoritmo.", ""));
 			validator.onErrorRedirectTo(this).processoInicio();
-
 		}
 	}
 

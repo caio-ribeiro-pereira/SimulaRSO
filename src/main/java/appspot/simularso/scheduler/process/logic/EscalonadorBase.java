@@ -6,6 +6,7 @@ import java.util.LinkedList;
 import java.util.Set;
 import java.util.TreeSet;
 
+import appspot.simularso.exception.ProcessosConfiguracaoException;
 import appspot.simularso.exception.ProcessosNaoCarregadosException;
 import appspot.simularso.model.Processo;
 
@@ -126,8 +127,8 @@ public abstract class EscalonadorBase {
 	protected void validarProcessos(ArrayList<Processo> processos) {
 		if (processos != null && !processos.isEmpty()) {
 			for (Processo processo : processos) {
-				if (processo.getBurstTotal() <= 0) {
-					throw new ProcessosNaoCarregadosException();
+				if (processo.getBurstTotal() <= 0 || processo.getChegada() < 0 || processo.getPrioridade() < 0) {
+					throw new ProcessosConfiguracaoException();
 				}
 			}
 		} else {

@@ -3,7 +3,7 @@
 	<title>Simulação de escalonamento de processos</title>
 </head>	
 <body>
-	<h1 class="clearfix">Simulação de escalonamento de processos</h1>
+	<h1 class="clearfix">Algoritmos de escalonamento de processos</h1>
 	<form id="process-form" action="<c:url value="/executar-escalonamento-processo"/>" method="post">
 		<div id="main-menu" class="clearfix menu">
 			<div class="grid_3">
@@ -13,11 +13,12 @@
 					<option value="COMPARATIVO">Comparativa</option>
 				</select>
 			</div>
-			<div class="grid_3">
+			<div class="grid_4">
 				<strong>Total de processos: </strong>
 				<select id="total">
+					<option value="" selected="selected">Selecione...</option>
 					<c:forEach begin="2" end="20" step="1" var="p">
-						<option value="${p}">${p}</option>
+						<option value="${p}">${p} procesos</option>
 					</c:forEach>
 				</select>
 			</div>
@@ -56,20 +57,20 @@
 		<div id="process-menu" class="clearfix menu"></div>
 		<script id="processTemplate" type="text/x-jquery-tmpl">
 			<div id="\${prDivId}" class="input-box">
-				<p class="clearfix">
+				<p class="clearfix processo">
 					<strong>\${prLabel}: </strong>
 					<input type="hidden" name="\${prIdName}" value="\${prId}">
 					<input type="hidden" name="\${prCorName}" value="\${prCor}">
 				</p>
-				<p class="clearfix">
+				<p class="clearfix processo">
 					<label class="grid_1" for="\${inputBurst}"><small>Burst: </small></label>
 					<input type="text" class="grid_1 burst" name="\${prBurstName}" id="\${inputBurst}" value="10" maxlength="2">
 				</p>
-				<p class="clearfix">
+				<p class="clearfix processo">
 					<label class="grid_1" for="\${inputChegada}"><small>Chegada: </small></label>
 					<input type="text" class="grid_1 chegada" name="\${prChegadaName}" id="\${inputChegada}" maxlength="2">
 				</p>
-				<p class="clearfix">
+				<p class="clearfix processo">
 					<label class="grid_1" for="\${inputPrioridade}"><small>Prioridade: </small></label>
 					<input type="text" class="grid_1 prioridade" name="\${prPrioridadeName}" id="\${inputPrioridade}" maxlength="2">
 				</p>
@@ -102,6 +103,7 @@
 			
 			$('#process-form').submit(function(){
 				$('div.executar #execute').attr('disabled','disabled');
+				$('div.executar #random').attr('disabled','disabled');
 			});
 			
 			$('#modo').change(function(){
@@ -135,32 +137,36 @@
 				}
 			}).trigger('change');
 			
-			$('#total').change(function(){
+			$('#total').bind('change',function(){
 				var content = $('#process-menu').empty().hide();
 				var total = $('#total').val();
-				var processos = new Array();
-				var colors = new Colors();
-				for(var i = 0; i < total; i++){
-				    processos.push(
-				    	{inputBurst : "burst-"+(i+1),
-						 inputChegada : "chegada-"+(i+1),
-						 inputPrioridade : "prioridade-"+(i+1),
-						 prCor : colors[i],
-						 prDivId : "processo-"+(i+1),
-						 prLabel : "Processo: "+(i+1),
-						 prId : (i+1),
-						 prIdName : "pr["+i+"].id",
-						 prBurstName : "pr["+i+"].burst", 
-						 prChegadaName : "pr["+i+"].chegada", 
-						 prPrioridadeName : "pr["+i+"].prioridade",
-						 prCorName : "pr["+i+"].cor"}
-				    );
+				if(total > 0){
+					var processos = new Array();
+					var colors = new Colors();
+					for(var i = 0; i < total; i++){
+					    processos.push(
+					    	{inputBurst : "burst-"+(i+1),
+							 inputChegada : "chegada-"+(i+1),
+							 inputPrioridade : "prioridade-"+(i+1),
+							 prCor : colors[i],
+							 prDivId : "processo-"+(i+1),
+							 prLabel : "Processo: "+(i+1),
+							 prId : (i+1),
+							 prIdName : "pr["+i+"].id",
+							 prBurstName : "pr["+i+"].burst", 
+							 prChegadaName : "pr["+i+"].chegada", 
+							 prPrioridadeName : "pr["+i+"].prioridade",
+							 prCorName : "pr["+i+"].cor"}
+					    );
+					}
+					var template = $('#processTemplate').tmpl(processos);
+					content.append(template).show();
+					$('input[type="text"].burst').spinner({ min: 1, max: 99, showOn: 'always' }).onlyNumeric();
+					$('input[type="text"].chegada').spinner({ min: 0, max: 99, showOn: 'always' }).onlyNumeric();
+					$('input[type="text"].prioridade').spinner({ min: 0, max: 10, showOn: 'always' }).onlyNumeric();	
+				}else {
+					$('#process-menu').html('<h3 class="clearfix info-message">Determine o número de processos para simular.</h3>').show();
 				}
-				var template = $('#processTemplate').tmpl(processos);
-				content.append(template).show();
-				$('input[type="text"].burst').spinner({ min: 1, max: 99, showOn: 'both' }).onlyNumeric();
-				$('input[type="text"].chegada').spinner({ min: 0, max: 99, showOn: 'both' }).onlyNumeric();
-				$('input[type="text"].prioridade').spinner({ min: 0, max: 10, showOn: 'both' }).onlyNumeric();
 			}).trigger('change');
 		});
 	</script>

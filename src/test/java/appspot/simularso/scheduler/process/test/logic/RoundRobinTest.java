@@ -8,6 +8,7 @@ import org.hamcrest.Matchers;
 import org.junit.Assert;
 import org.junit.Test;
 
+import appspot.simularso.exception.ProcessosConfiguracaoException;
 import appspot.simularso.exception.ProcessosNaoCarregadosException;
 import appspot.simularso.exception.TempoQuantumException;
 import appspot.simularso.model.Processo;
@@ -26,7 +27,8 @@ public class RoundRobinTest extends InitialTestCase {
 		final Integer[] TURN_AROUND_COM_BURSTS_SIMPLES = { 150, 40, 120, 130 };
 		final int QUANTUM = 20;
 
-		Escalonador roundRobin = new RoundRobin(gerarArrayListDeProcessos(BURSTS_SIMPLES.length, BURSTS_SIMPLES, null, null), QUANTUM);
+		Escalonador roundRobin = new RoundRobin(gerarArrayListDeProcessos(BURSTS_SIMPLES.length, BURSTS_SIMPLES, null,
+				null), QUANTUM);
 
 		LinkedList<Processo> resultadoGrafico = roundRobin.resultadoGraficoFinal();
 		Assert.assertThat(resultadoGrafico, Matchers.notNullValue());
@@ -65,7 +67,8 @@ public class RoundRobinTest extends InitialTestCase {
 		final Integer[] TURN_AROUND_COM_BURSTS_MEDIO = { 134, 37, 162, 121 };
 		final int QUANTUM = 20;
 
-		Escalonador roundRobin = new RoundRobin(gerarArrayListDeProcessos(BURSTS_MEDIO.length, BURSTS_MEDIO, null, null), QUANTUM);
+		Escalonador roundRobin = new RoundRobin(
+				gerarArrayListDeProcessos(BURSTS_MEDIO.length, BURSTS_MEDIO, null, null), QUANTUM);
 
 		LinkedList<Processo> resultadoGrafico = roundRobin.resultadoGraficoFinal();
 		Assert.assertThat(resultadoGrafico, Matchers.notNullValue());
@@ -126,7 +129,7 @@ public class RoundRobinTest extends InitialTestCase {
 		new RoundRobin(gerarListaDeProcessos(3, VALIDO), QUANTUM_INVALIDO);
 	}
 
-	@Test(expected = ProcessosNaoCarregadosException.class)
+	@Test(expected = ProcessosConfiguracaoException.class)
 	public void naoDeveEscalonarProcessosComBurstNegativo() {
 		final int QUANTUM_VALIDO = 20;
 		new RoundRobin(gerarListaDeProcessos(3, INVALIDO), QUANTUM_VALIDO);

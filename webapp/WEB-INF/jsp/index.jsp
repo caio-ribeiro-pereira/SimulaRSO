@@ -22,8 +22,8 @@
   				'<c:url value="/resources/js/jquery/jquery-numeric.js" />',
   				'<c:url value="/resources/js/jquery/jquery-tmpl.min.js" />',
   				'<c:url value="/resources/js/canvas/colors.js" />',
-  				'<c:url value="/resources/js/canvas/processo-chart.js" />'
-  				//'http://www.google-analytics.com/ga.js');
+  				'<c:url value="/resources/js/canvas/processo-chart.js" />',
+  				'http://www.google-analytics.com/ga.js'
   		);
   	</script>
     <decorator:head />
