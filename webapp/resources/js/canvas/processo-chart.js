@@ -1,15 +1,14 @@
 /**
  * Canvas-Gantt Chart Desenvolvido por Caio R. Pereira Data: 18/02/2011
  * 
- * Gr·fico de Gantt para exibiÁ„o de toda simulaÁ„o dos algoritmos de
+ * Gr√°fico de Gantt para exibi√ß√£o de toda simula√ß√£o dos algoritmos de
  * escalonamento de processos.
  * 
  */
 function ProcessoChart(total, canvas) {
-	this.canvas = canvas;
-	this.ctx = this.canvas.getContext('2d');
-	this.width = this.canvas.width;
-	this.height = this.canvas.height;
+	this.ctx = canvas.getContext('2d');
+	this.width = canvas.width;
+	this.height = canvas.height;
 	this.inicio_x = 0;
 	this.inicio_y = 0;
 	this.total = total;

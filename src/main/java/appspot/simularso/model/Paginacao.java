@@ -3,42 +3,38 @@ package appspot.simularso.model;
 import java.io.Serializable;
 import java.util.Arrays;
 
-public class Pagina implements Cloneable, Serializable {
+public class Paginacao implements Cloneable, Serializable {
 
-	private static final long serialVersionUID = -5672594285333581212L;
+	private static final long serialVersionUID = 8783591747285682271L;
 
+	private long id;
 	private String[] palavras;
 	private boolean pageFault;
 
-	public Pagina() {
-		this(0, false);
+	public Paginacao() {
+		this(1, 0, false);
 	}
 
-	public Pagina(int bloco, boolean pageFault) {
+	public Paginacao(long id, int bloco, boolean pageFault) {
+		this.setId(id);
 		this.setPalavras(new String[bloco]);
 		this.setPageFault(pageFault);
 	}
 
 	@Override
-	public Pagina clone() {
+	public Paginacao clone() {
 		try {
-			return (Pagina) super.clone();
+			return (Paginacao) super.clone();
 		} catch (CloneNotSupportedException e) {
 			return null;
 		}
 	}
 
 	@Override
-	public String toString() {
-		return "Pagina [palavras=" + Arrays.toString(palavras) + ", pageFault=" + pageFault + "]";
-	}
-
-	@Override
 	public int hashCode() {
 		final int prime = 31;
 		int result = 1;
-		result = prime * result + (pageFault ? 1231 : 1237);
-		result = prime * result + Arrays.hashCode(palavras);
+		result = prime * result + (int) (id ^ (id >>> 32));
 		return result;
 	}
 
@@ -48,14 +44,25 @@ public class Pagina implements Cloneable, Serializable {
 			return true;
 		if (obj == null)
 			return false;
-		if (!(obj instanceof Pagina))
+		if (!(obj instanceof Paginacao))
 			return false;
-		Pagina other = (Pagina) obj;
-		if (pageFault != other.pageFault)
-			return false;
-		if (!Arrays.equals(palavras, other.palavras))
+		Paginacao other = (Paginacao) obj;
+		if (id != other.id)
 			return false;
 		return true;
+	}
+
+	@Override
+	public String toString() {
+		return "Paginacao [id=" + id + ", palavras=" + Arrays.toString(palavras) + ", pageFault=" + pageFault + "]";
+	}
+
+	public void setId(long id) {
+		this.id = id;
+	}
+
+	public long getId() {
+		return id;
 	}
 
 	public void setPalavras(String[] palavras) {

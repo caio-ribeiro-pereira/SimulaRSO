@@ -2,7 +2,7 @@ package appspot.simularso.virtualmemory.logic;
 
 import java.util.ArrayList;
 
-import appspot.simularso.model.Pagina;
+import appspot.simularso.model.Paginacao;
 
 public interface MemoriaVirtual {
 
@@ -34,6 +34,6 @@ public interface MemoriaVirtual {
 	 * 
 	 * @return ArrayList com estado de cada substituição realizada.
 	 */
-	ArrayList<Pagina> resultadoFinal();
+	ArrayList<Paginacao> resultadoFinal();
 
 }
