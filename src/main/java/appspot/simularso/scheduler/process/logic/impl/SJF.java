@@ -5,6 +5,7 @@ import java.util.LinkedList;
 import java.util.Set;
 
 import appspot.simularso.model.Processo;
+import appspot.simularso.model.dto.ProcessoDTO;
 import appspot.simularso.scheduler.process.logic.Escalonador;
 import appspot.simularso.scheduler.process.logic.EscalonadorBase;
 
@@ -24,12 +25,14 @@ public class SJF extends EscalonadorBase implements Escalonador {
 			processo.executar();
 			processo.setEspera(tempoTotal());
 			processo.setBurstAtual(processo.getBurstTotal());
+
+			adicionarResultadoGrafico(processo);
 			atualizarTempoTotal(processo.getBurstTotal());
+
 			processo.setResposta(tempoTotal());
 			processo.setTurnAround(tempoTotal());
 			processo.finalizar();
 			adicionarResultadoFinal(processo);
-			adicionarResultadoGrafico(processo);
 		}
 	}
 
@@ -44,7 +47,7 @@ public class SJF extends EscalonadorBase implements Escalonador {
 	}
 
 	@Override
-	public LinkedList<Processo> resultadoGraficoFinal() {
+	public LinkedList<ProcessoDTO> resultadoGraficoFinal() {
 		return resultadoGrafico();
 	}
 

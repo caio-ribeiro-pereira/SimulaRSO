@@ -4,6 +4,7 @@ import java.util.LinkedList;
 import java.util.Set;
 
 import appspot.simularso.model.Processo;
+import appspot.simularso.model.dto.ProcessoDTO;
 
 public interface Escalonador {
 
@@ -73,7 +74,7 @@ public interface Escalonador {
 	 * 
 	 * @return LinkedList com resultados para grafico.
 	 */
-	LinkedList<Processo> resultadoGraficoFinal();
+	LinkedList<ProcessoDTO> resultadoGraficoFinal();
 
 	/**
 	 * Retorna o nome do Algoritmo de escalonamento que foi executado.

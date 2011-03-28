@@ -5,7 +5,7 @@ import java.util.Comparator;
 
 public class Processo implements Comparable<Processo>, Comparator<Processo>, Cloneable, Serializable {
 
-	private static final long serialVersionUID = 6110475007219847923L;
+	private static final long serialVersionUID = -7188199719025405214L;
 
 	public enum Estado {
 		EM_ESPERA, EXECUTANDO, FINALIZADO

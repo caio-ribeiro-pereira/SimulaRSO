@@ -11,6 +11,7 @@ import org.junit.Test;
 import appspot.simularso.exception.ProcessosConfiguracaoException;
 import appspot.simularso.exception.ProcessosNaoCarregadosException;
 import appspot.simularso.model.Processo;
+import appspot.simularso.model.dto.ProcessoDTO;
 import appspot.simularso.scheduler.process.logic.Escalonador;
 import appspot.simularso.scheduler.process.logic.impl.FCFS;
 import appspot.simularso.scheduler.process.test.InitialTestCase;
@@ -26,13 +27,13 @@ public class FCFSTest extends InitialTestCase {
 	@Test
 	public void deveRetornarResultadoOrdenadoSimples() {
 		final Integer[] BURSTS_SIMPLES = { 30, 10, 20, 50, 90 };
+		final Integer[] ID_SIMPLES = { 1, 2, 3, 4, 5 };
 		final Integer[] TEMPO_ESPERA_PREVISTA_POR_BURST_SIMPLES = { 0, 30, 40, 60, 110 };
 		final Integer[] TEMPO_RESPOSTA_PREVISTA_POR_BURST_SIMPLES = { 30, 40, 60, 110, 200 };
 		final Integer[] TURN_AROUND_PREVISTA_POR_BURST_SIMPLES = { 30, 40, 60, 110, 200 };
 
 		Escalonador fcfs = new FCFS(gerarArrayListDeProcessos(BURSTS_SIMPLES.length, BURSTS_SIMPLES, null, null));
 		Set<Processo> resultado = fcfs.resultadoFinal();
-		LinkedList<Processo> resultadoGrafico = fcfs.resultadoGraficoFinal();
 
 		Assert.assertThat(resultado, Matchers.notNullValue());
 		Assert.assertThat(resultado.size(), Matchers.is(BURSTS_SIMPLES.length));
@@ -45,15 +46,14 @@ public class FCFSTest extends InitialTestCase {
 			Assert.assertThat(TURN_AROUND_PREVISTA_POR_BURST_SIMPLES, Matchers.hasItemInArray(proc.getTurnAround()));
 		}
 
+		LinkedList<ProcessoDTO> resultadoGrafico = fcfs.resultadoGraficoFinal();
 		Assert.assertThat(resultadoGrafico, Matchers.notNullValue());
 		Assert.assertThat(resultadoGrafico.size(), Matchers.is(BURSTS_SIMPLES.length));
 
-		Iterator<Processo> resultSetGraphic = resultadoGrafico.iterator();
+		Iterator<ProcessoDTO> resultSetGraphic = resultadoGrafico.iterator();
 		while (resultSetGraphic.hasNext()) {
-			Processo proc = resultSetGraphic.next();
-			Assert.assertThat(TEMPO_ESPERA_PREVISTA_POR_BURST_SIMPLES, Matchers.hasItemInArray(proc.getEspera()));
-			Assert.assertThat(TEMPO_RESPOSTA_PREVISTA_POR_BURST_SIMPLES, Matchers.hasItemInArray(proc.getResposta()));
-			Assert.assertThat(TURN_AROUND_PREVISTA_POR_BURST_SIMPLES, Matchers.hasItemInArray(proc.getTurnAround()));
+			ProcessoDTO proc = resultSetGraphic.next();
+			Assert.assertThat(ID_SIMPLES, Matchers.hasItemInArray(proc.getId()));
 		}
 
 		double esperaMedia = fcfs.tempoEsperaMedia();
@@ -67,15 +67,15 @@ public class FCFSTest extends InitialTestCase {
 
 	@Test
 	public void deveRetornarResultadoOrdenadoMedio() {
-		final Integer[] BURSTS_MEDIO = { 20, 11, 39, 56, 9 };
-		final Integer[] TEMPO_ESPERA_PREVISTA_POR_BURST_MEDIO = { 0, 20, 31, 70, 126 };
-		final Integer[] TEMPO_RESPOSTA_PREVISTA_POR_BURST_MEDIO = { 20, 31, 70, 126, 135 };
-		final Integer[] TURN_AROUND_PREVISTA_POR_BURST_MEDIO = { 20, 31, 70, 126, 135 };
+		final Integer[] BURSTS_MEDIO = { 20, 11, 39, 56, 9, 1, 5, 10 };
+		final Integer[] ID_MEDIO = { 1, 2, 3, 4, 5, 6, 7, 8 };
+		final Integer[] TEMPO_ESPERA_PREVISTA_POR_BURST_MEDIO = { 0, 20, 31, 70, 126, 135, 136, 141 };
+		final Integer[] TEMPO_RESPOSTA_PREVISTA_POR_BURST_MEDIO = { 20, 31, 70, 126, 135, 136, 141, 151 };
+		final Integer[] TURN_AROUND_PREVISTA_POR_BURST_MEDIO = { 20, 31, 70, 126, 135, 136, 141, 151 };
 
 		Escalonador fcfs = new FCFS(gerarArrayListDeProcessos(BURSTS_MEDIO.length, BURSTS_MEDIO, null, null));
-		Set<Processo> resultado = fcfs.resultadoFinal();
-		LinkedList<Processo> resultadoGrafico = fcfs.resultadoGraficoFinal();
 
+		Set<Processo> resultado = fcfs.resultadoFinal();
 		Assert.assertThat(resultado, Matchers.notNullValue());
 		Assert.assertThat(resultado.size(), Matchers.is(BURSTS_MEDIO.length));
 
@@ -87,15 +87,14 @@ public class FCFSTest extends InitialTestCase {
 			Assert.assertThat(TURN_AROUND_PREVISTA_POR_BURST_MEDIO, Matchers.hasItemInArray(proc.getTurnAround()));
 		}
 
+		LinkedList<ProcessoDTO> resultadoGrafico = fcfs.resultadoGraficoFinal();
 		Assert.assertThat(resultadoGrafico, Matchers.notNullValue());
 		Assert.assertThat(resultadoGrafico.size(), Matchers.is(BURSTS_MEDIO.length));
 
-		Iterator<Processo> resultSetGraphic = resultadoGrafico.iterator();
+		Iterator<ProcessoDTO> resultSetGraphic = resultadoGrafico.iterator();
 		while (resultSetGraphic.hasNext()) {
-			Processo proc = resultSetGraphic.next();
-			Assert.assertThat(TEMPO_ESPERA_PREVISTA_POR_BURST_MEDIO, Matchers.hasItemInArray(proc.getEspera()));
-			Assert.assertThat(TEMPO_RESPOSTA_PREVISTA_POR_BURST_MEDIO, Matchers.hasItemInArray(proc.getResposta()));
-			Assert.assertThat(TURN_AROUND_PREVISTA_POR_BURST_MEDIO, Matchers.hasItemInArray(proc.getTurnAround()));
+			ProcessoDTO proc = resultSetGraphic.next();
+			Assert.assertThat(ID_MEDIO, Matchers.hasItemInArray(proc.getId()));
 		}
 
 		double esperaMedia = fcfs.tempoEsperaMedia();

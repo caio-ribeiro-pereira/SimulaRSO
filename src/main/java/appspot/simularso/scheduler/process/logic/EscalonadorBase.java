@@ -9,18 +9,19 @@ import java.util.TreeSet;
 import appspot.simularso.exception.ProcessosConfiguracaoException;
 import appspot.simularso.exception.ProcessosNaoCarregadosException;
 import appspot.simularso.model.Processo;
+import appspot.simularso.model.dto.ProcessoDTO;
 
 public abstract class EscalonadorBase {
 
 	private Set<Processo> resultado;
-	private LinkedList<Processo> resultadoGrafico;
+	private LinkedList<ProcessoDTO> resultadoGrafico;
 	private int tempoTotal;
 	private int totalProcessos;
 	private ArrayList<Processo> processos;
 
 	public EscalonadorBase() {
 		this.resultado = new TreeSet<Processo>();
-		this.resultadoGrafico = new LinkedList<Processo>();
+		this.resultadoGrafico = new LinkedList<ProcessoDTO>();
 	}
 
 	protected int tempoTotal() {
@@ -113,15 +114,25 @@ public abstract class EscalonadorBase {
 	}
 
 	protected void adicionarResultadoGrafico(Processo processo) {
-		resultadoGrafico.add(processo);
+		resultadoGrafico.add(extrairParaProcessoDTO(processo));
 	}
 
 	protected Set<Processo> resultado() {
 		return resultado;
 	}
 
-	protected LinkedList<Processo> resultadoGrafico() {
+	protected LinkedList<ProcessoDTO> resultadoGrafico() {
 		return resultadoGrafico;
+	}
+
+	private ProcessoDTO extrairParaProcessoDTO(Processo processo) {
+		int id = processo.getId();
+		int x = tempoTotal * 20;
+		int y = id * 20;
+		int w = processo.getBurstAtual() * 20;
+		int h = 20;
+		String cor = processo.getCor();
+		return new ProcessoDTO(id, x, y, w, h, cor);
 	}
 
 	protected void validarProcessos(ArrayList<Processo> processos) {

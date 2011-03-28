@@ -11,6 +11,7 @@ import org.junit.Test;
 import appspot.simularso.exception.ProcessosConfiguracaoException;
 import appspot.simularso.exception.ProcessosNaoCarregadosException;
 import appspot.simularso.model.Processo;
+import appspot.simularso.model.dto.ProcessoDTO;
 import appspot.simularso.scheduler.process.logic.Escalonador;
 import appspot.simularso.scheduler.process.logic.impl.SJF;
 import appspot.simularso.scheduler.process.test.InitialTestCase;
@@ -40,17 +41,14 @@ public class SJFTest extends InitialTestCase {
 			Assert.assertThat(TURN_AROUND_PREVISTA_POR_CHEGADA, Matchers.hasItemInArray(proc.getTurnAround()));
 		}
 
-		LinkedList<Processo> resultadoGrafico = sjf.resultadoGraficoFinal();
+		LinkedList<ProcessoDTO> resultadoGrafico = sjf.resultadoGraficoFinal();
 		Assert.assertThat(resultadoGrafico, Matchers.notNullValue());
 		Assert.assertThat(resultadoGrafico.size(), Matchers.is(TEMPOS_CHEGADA.length));
 
-		Iterator<Processo> resultSetGraphic = resultadoGrafico.iterator();
+		Iterator<ProcessoDTO> resultSetGraphic = resultadoGrafico.iterator();
 		while (resultSetGraphic.hasNext()) {
-			Processo proc = resultSetGraphic.next();
+			ProcessoDTO proc = resultSetGraphic.next();
 			Assert.assertThat(ID_PREVISTO_POR_CHEGADA, Matchers.hasItemInArray(proc.getId()));
-			Assert.assertThat(TEMPO_ESPERA_PREVISTA_POR_CHEGADA, Matchers.hasItemInArray(proc.getEspera()));
-			Assert.assertThat(TEMPO_RESPOSTA_PREVISTA_POR_CHEGADA, Matchers.hasItemInArray(proc.getResposta()));
-			Assert.assertThat(TURN_AROUND_PREVISTA_POR_CHEGADA, Matchers.hasItemInArray(proc.getTurnAround()));
 		}
 
 		double esperaMedia = sjf.tempoEsperaMedia();
@@ -85,17 +83,14 @@ public class SJFTest extends InitialTestCase {
 			Assert.assertThat(TURN_AROUND_PREVISTA_POR_BURST, Matchers.hasItemInArray(proc.getTurnAround()));
 		}
 
-		LinkedList<Processo> resultadoGrafico = sjf.resultadoGraficoFinal();
+		LinkedList<ProcessoDTO> resultadoGrafico = sjf.resultadoGraficoFinal();
 		Assert.assertThat(resultadoGrafico, Matchers.notNullValue());
 		Assert.assertThat(resultadoGrafico.size(), Matchers.is(BURSTS.length));
 
-		Iterator<Processo> resultSetGraphic = resultadoGrafico.iterator();
+		Iterator<ProcessoDTO> resultSetGraphic = resultadoGrafico.iterator();
 		while (resultSetGraphic.hasNext()) {
-			Processo proc = resultSetGraphic.next();
+			ProcessoDTO proc = resultSetGraphic.next();
 			Assert.assertThat(ID_PREVISTO_POR_BURST, Matchers.hasItemInArray(proc.getId()));
-			Assert.assertThat(TEMPO_ESPERA_PREVISTA_POR_BURST, Matchers.hasItemInArray(proc.getEspera()));
-			Assert.assertThat(TEMPO_RESPOSTA_PREVISTA_POR_BURST, Matchers.hasItemInArray(proc.getResposta()));
-			Assert.assertThat(TURN_AROUND_PREVISTA_POR_BURST, Matchers.hasItemInArray(proc.getTurnAround()));
 		}
 
 		double esperaMedia = sjf.tempoEsperaMedia();

@@ -12,6 +12,7 @@ import appspot.simularso.exception.ProcessosConfiguracaoException;
 import appspot.simularso.exception.ProcessosNaoCarregadosException;
 import appspot.simularso.exception.TempoQuantumException;
 import appspot.simularso.model.Processo;
+import appspot.simularso.model.dto.ProcessoDTO;
 import appspot.simularso.scheduler.process.logic.Escalonador;
 import appspot.simularso.scheduler.process.logic.impl.RoundRobin;
 import appspot.simularso.scheduler.process.test.InitialTestCase;
@@ -27,10 +28,9 @@ public class RoundRobinTest extends InitialTestCase {
 		final Integer[] TURN_AROUND_COM_BURSTS_SIMPLES = { 150, 40, 120, 130 };
 		final int QUANTUM = 20;
 
-		Escalonador roundRobin = new RoundRobin(gerarArrayListDeProcessos(BURSTS_SIMPLES.length, BURSTS_SIMPLES, null,
-				null), QUANTUM);
+		Escalonador roundRobin = new RoundRobin(gerarArrayListDeProcessos(BURSTS_SIMPLES.length, BURSTS_SIMPLES, null, null), QUANTUM);
 
-		LinkedList<Processo> resultadoGrafico = roundRobin.resultadoGraficoFinal();
+		LinkedList<ProcessoDTO> resultadoGrafico = roundRobin.resultadoGraficoFinal();
 		Assert.assertThat(resultadoGrafico, Matchers.notNullValue());
 		Assert.assertTrue(resultadoGrafico.size() == ID_COM_BURSTS_SIMPLES.length);
 		for (int i = 0; i < resultadoGrafico.size(); i++) {
@@ -67,10 +67,9 @@ public class RoundRobinTest extends InitialTestCase {
 		final Integer[] TURN_AROUND_COM_BURSTS_MEDIO = { 134, 37, 162, 121 };
 		final int QUANTUM = 20;
 
-		Escalonador roundRobin = new RoundRobin(
-				gerarArrayListDeProcessos(BURSTS_MEDIO.length, BURSTS_MEDIO, null, null), QUANTUM);
+		Escalonador roundRobin = new RoundRobin(gerarArrayListDeProcessos(BURSTS_MEDIO.length, BURSTS_MEDIO, null, null), QUANTUM);
 
-		LinkedList<Processo> resultadoGrafico = roundRobin.resultadoGraficoFinal();
+		LinkedList<ProcessoDTO> resultadoGrafico = roundRobin.resultadoGraficoFinal();
 		Assert.assertThat(resultadoGrafico, Matchers.notNullValue());
 		Assert.assertThat(resultadoGrafico.size(), Matchers.is(ID_COM_BURSTS_MEDIO.length));
 		for (int i = 0; i < resultadoGrafico.size(); i++) {

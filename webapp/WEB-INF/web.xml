@@ -4,7 +4,7 @@
 	xsi:schemaLocation="http://java.sun.com/xml/ns/javaee http://java.sun.com/xml/ns/javaee/web-app_2_5.xsd"
 	id="SimulaRSO" version="2.5">
 
-	<display-name>simularso</display-name>
+	<display-name>simula-rso</display-name>
 
 	<session-config>
       <session-timeout>10</session-timeout> 

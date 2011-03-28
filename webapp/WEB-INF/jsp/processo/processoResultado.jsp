@@ -57,16 +57,12 @@
 				$('table.result-panel tr.result-line:even').css('background-color','#CCC');
 				
 				var processos = new Array();
-				<c:set var="x" value="0" />
-				<c:set var="h" value="20" />
 				<c:forEach items="${resultList.resultadoGrafico}" var="pr">
-					<c:set var="w" value="${pr.burstAtual * 20}" />
-					<c:set var="y" value="${pr.id * 20}" />
-				processos.push({x : ${x}, y : ${y}, w : ${w}, h : ${h}, cor: '${pr.cor}'});
-					<c:set var="x" value="${x+w}" />
+				processos.push({x : ${pr.x}, y : ${pr.y}, w : ${pr.w}, h : ${pr.h}, cor: '${pr.cor}'});
 				</c:forEach>
-				$('#processo-chart-${resultList.algoritmoNome}').attr('width', ((${resultList.tempoTotal} + 1) * ${h}));
-				$('#processo-chart-${resultList.algoritmoNome}').attr('height', ((${resultList.totalProcessos} + 2) * ${h}));
+				var espacamento = 20;
+				$('#processo-chart-${resultList.algoritmoNome}').attr('width', ((${resultList.tempoTotal} + 1) * espacamento));
+				$('#processo-chart-${resultList.algoritmoNome}').attr('height', ((${resultList.totalProcessos} + 2) * espacamento));
 				var canvas = document.getElementById('processo-chart-${resultList.algoritmoNome}');
 				var chart = new ProcessoChart(${resultList.totalProcessos}, canvas);
 				chart.draw(processos);
