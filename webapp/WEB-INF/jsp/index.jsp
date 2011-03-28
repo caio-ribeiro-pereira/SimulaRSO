@@ -9,7 +9,7 @@
 	<link rel="stylesheet" type="text/css" href="<c:url value="/resources/css/grid.min.css" />">
 	<link rel="stylesheet" type="text/css" href="<c:url value="/resources/css/main.css" />">
 	<link rel="stylesheet" type="text/css" href="<c:url value="/resources/css/dark-hive/jquery-ui.css" />">
-	<script type="text/javascript" src="<c:url value="/resources/js/head.min.js" />"></script>
+	<script type="text/javascript" src="<c:url value="/resources/js/head.load.min.js" />"></script>
 	<!--[if IE]><script type="text/javascript" src="<c:url value="/resources/js/ie/html5.min.js" />"></script><![endif]-->
 	<!--[if IE]><script type="text/javascript" src="<c:url value="/resources/js/ie/excanvas.min.js" />"></script><![endif]-->
 	<script type="text/javascript">
@@ -23,7 +23,7 @@
   				'<c:url value="/resources/js/jquery/jquery-tmpl.min.js" />',
   				'<c:url value="/resources/js/canvas/colors.js" />',
   				'<c:url value="/resources/js/canvas/processo-chart.js" />',
-  				'http://www.google-analytics.com/ga.js'
+  				'<c:url value="/resources/js/ga.js" />'
   		);
   	</script>
     <decorator:head />

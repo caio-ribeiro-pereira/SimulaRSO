@@ -127,10 +127,10 @@ public abstract class EscalonadorBase {
 
 	private ProcessoDTO extrairParaProcessoDTO(Processo processo) {
 		int id = processo.getId();
-		int x = tempoTotal * 20;
-		int y = id * 20;
-		int w = processo.getBurstAtual() * 20;
-		int h = 20;
+		int x = tempoTotal;
+		int y = id;
+		int w = processo.getBurstAtual();
+		int h = 1;
 		String cor = processo.getCor();
 		return new ProcessoDTO(id, x, y, w, h, cor);
 	}

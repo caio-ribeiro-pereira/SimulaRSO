@@ -19,7 +19,7 @@
 			<tbody>
 				<c:forEach items="${resultList.resultadoFinal}" var="res">
 				<tr class="result-line">
-					<td>${res.id}</td>
+					<td><div style="background-color:'${res.cor}'">${res.id}</div></td>
 					<td>${res.burst} ms</td>
 					<td>${res.espera} ms</td>
 					<td>${res.resposta} ms</td>
@@ -55,14 +55,14 @@
 			head.ready(function(){
 				$('table.result-panel tr.result-line:odd').css('background-color','#DDD');
 				$('table.result-panel tr.result-line:even').css('background-color','#CCC');
-				
+				var spc = 20;
 				var processos = new Array();
 				<c:forEach items="${resultList.resultadoGrafico}" var="pr">
-				processos.push({x : ${pr.x}, y : ${pr.y}, w : ${pr.w}, h : ${pr.h}, cor: '${pr.cor}'});
+				processos.push({x : ${pr.x} * spc, y : ${pr.y} * spc, w : ${pr.w} * spc, h : ${pr.h} * spc, cor: '${pr.cor}'});
 				</c:forEach>
-				var espacamento = 20;
-				$('#processo-chart-${resultList.algoritmoNome}').attr('width', ((${resultList.tempoTotal} + 1) * espacamento));
-				$('#processo-chart-${resultList.algoritmoNome}').attr('height', ((${resultList.totalProcessos} + 2) * espacamento));
+				
+				$('#processo-chart-${resultList.algoritmoNome}').attr('width', ((${resultList.tempoTotal} + 1) * spc));
+				$('#processo-chart-${resultList.algoritmoNome}').attr('height', ((${resultList.totalProcessos} + 2) * spc));
 				var canvas = document.getElementById('processo-chart-${resultList.algoritmoNome}');
 				var chart = new ProcessoChart(${resultList.totalProcessos}, canvas);
 				chart.draw(processos);

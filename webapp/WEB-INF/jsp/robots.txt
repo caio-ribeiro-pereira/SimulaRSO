@@ -1,3 +1,6 @@
 User-agent: *
+Allow: /escalonamento-processo
+Allow: /escalonamento-disco
+Allow: /paginacao-memoria-virtual
+Allow: /sobre
 Allow: /
-
