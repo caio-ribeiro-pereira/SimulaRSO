@@ -1,13 +1,13 @@
-package appspot.simularso.virtualmemory.logic;
+package appspot.simularso.paginator.logic;
 
-import java.util.ArrayList;
+import java.util.List;
 
-import appspot.simularso.model.Paginacao;
+import appspot.simularso.model.Pagina;
 
-public interface MemoriaVirtual {
+public interface Paginador {
 
 	public enum AlgoritmoPaginacao {
-		FIFO("FI-FO"), OTIMO("Ótimo"), LRU("LRU");
+		FIFO("FI-FO"), OPT("OPT"), LRU("LRU");
 
 		private String nome;
 
@@ -34,6 +34,6 @@ public interface MemoriaVirtual {
 	 * 
 	 * @return ArrayList com estado de cada substituição realizada.
 	 */
-	ArrayList<Paginacao> resultadoFinal();
+	List<Pagina> resultadoGraficoFinal();
 
 }
