@@ -4,7 +4,7 @@
   <head>
     <title><decorator:title default="Projeto SimulaRSO"></decorator:title></title>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-    <link rel="shortcut icon" href="<c:url value="/resources/img/favicon.ico" />"></link>
+    <link rel="shortcut icon" type="image/x-icon" href="<c:url value="/resources/img/favicon.ico" />" />
     <link rel="stylesheet" type="text/css" href="<c:url value="/resources/css/reset.min.css" />">
 	<link rel="stylesheet" type="text/css" href="<c:url value="/resources/css/grid.min.css" />">
 	<link rel="stylesheet" type="text/css" href="<c:url value="/resources/css/main.css" />">
@@ -16,11 +16,12 @@
 		var _gaq = _gaq || [];
 		  _gaq.push(['_setAccount', 'UA-7076509-2']);
 		  _gaq.push(['_trackPageview']);
-  		head.js('<c:url value="/resources/js/jquery/jquery.min.js" />',
+  		head.js(/*'<c:url value="/resources/js/jquery/jquery.min.js" />',
   				'<c:url value="/resources/js/jquery/jquery-ui.min.js" />',
   				'<c:url value="/resources/js/jquery/jquery-ui.spinner.min.js" />',
   				'<c:url value="/resources/js/jquery/jquery-numeric.js" />',
-  				'<c:url value="/resources/js/jquery/jquery-tmpl.min.js" />',
+  				'<c:url value="/resources/js/jquery/jquery-tmpl.min.js" />',*/
+  				'<c:url value="/resources/js/jquery/jquery-all-plugins.min.js" />',
   				'<c:url value="/resources/js/canvas/colors.js" />',
   				'<c:url value="/resources/js/canvas/processo-chart.js" />',
   				'<c:url value="/resources/js/ga.js" />'
