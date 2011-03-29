@@ -16,7 +16,8 @@
 		var _gaq = _gaq || [];
 		  _gaq.push(['_setAccount', 'UA-7076509-2']);
 		  _gaq.push(['_trackPageview']);
-  		head.js(/*'<c:url value="/resources/js/jquery/jquery.min.js" />',
+  		head.js(
+  				/*'<c:url value="/resources/js/jquery/jquery.min.js" />',
   				'<c:url value="/resources/js/jquery/jquery-ui.min.js" />',
   				'<c:url value="/resources/js/jquery/jquery-ui.spinner.min.js" />',
   				'<c:url value="/resources/js/jquery/jquery-numeric.js" />',
