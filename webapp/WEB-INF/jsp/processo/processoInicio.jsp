@@ -76,15 +76,24 @@
 				</p>
 			</div>
 		</script>
-		<div class="clearfix executar">
-			<button id="execute" type="submit">Executar</button>
-			<button id="random" type="button">Geração aleatória</button>
+		<div class="clearfix execute-panel">
+			<p>
+				<button id="execute" type="submit">Executar</button>
+				<button id="random" type="button">Geração aleatória</button>			
+			</p>
 		</div>
 	</form>
 	<script type="text/javascript">
 		head.ready(function(){
+			var MAXBURST = 98;
+			var MAXCHEGADA = 100;
+			var MAXPRIORIDADE = 11;
 			
-			$('button').button();
+			$('button').button({
+				icons: {primary: 'ui-icon-gear'}	
+			}).next().button({
+				icons: {primary: 'ui-icon-shuffle'}
+			});
 			
 			$('#alg2').hide();
 			$('#quantum').hide();
@@ -92,9 +101,9 @@
 			$('#random').click(function(){
 				var total = $('#total').val();
 				for(var i = 1; i <= total; i++){
-					var randomBurst = Math.floor(Math.random()*98) + 1;
-					var randomChegada = Math.floor(Math.random()*100);
-					var randomPrioridade = Math.floor(Math.random()*11);
+					var randomBurst = Math.floor(Math.random() * MAXBURST) + 1;
+					var randomChegada = Math.floor(Math.random()* MAXCHEGADA);
+					var randomPrioridade = Math.floor(Math.random() * MAXPRIORIDADE);
 					$('input[type="text"]#burst-'+i).val(randomBurst);
 					$('input[type="text"]#chegada-'+i).val(randomChegada);
 					$('input[type="text"]#prioridade-'+i).val(randomPrioridade);
@@ -102,8 +111,7 @@
 			});
 			
 			$('#process-form').submit(function(){
-				$('div.executar #execute').attr('disabled','disabled');
-				$('div.executar #random').attr('disabled','disabled');
+				$('button').attr('disabled','disabled');
 			});
 			
 			$('#modo').change(function(){

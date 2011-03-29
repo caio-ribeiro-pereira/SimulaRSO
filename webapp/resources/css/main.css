@@ -50,6 +50,11 @@ nav a.right {
 	-moz-border-radius: 0px 5px 5px 0px;
 	-ms-border-radius: 0px 5px 5px 0px;
 }
+.logos{
+	text-align: right;
+	margin-bottom: 5px;
+	padding: 5px;
+}
 .processo{margin-bottom:1px; margin-top:1px;}
 .error-message {
 	color: #F00;
@@ -79,7 +84,7 @@ nav a.right {
 	padding: 10px 0px 0px 10px;
 	width: 960px;
 }
-.menu {margin-top: 15px;}
+.menu {margin-top: 20px;}
 .input-box {
 	border-radius: 5px;
 	-webkit-border-radius: 5px;
@@ -90,6 +95,7 @@ nav a.right {
 	margin: 5px 18px 10px 0px;
 }
 .input-box p:first-child {text-align: center;}
+.execute-panel p{text-align: right; margin-right: 40px; margin-top: 20px;}
 .result-panel {
 	border-radius: 5px;
 	-webkit-border-radius: 5px;

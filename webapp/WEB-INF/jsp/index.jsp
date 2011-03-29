@@ -5,8 +5,7 @@
     <title><decorator:title default="Projeto SimulaRSO"></decorator:title></title>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
     <link rel="shortcut icon" type="image/x-icon" href="<c:url value="/resources/img/favicon.ico" />" />
-    <link rel="stylesheet" type="text/css" href="<c:url value="/resources/css/reset.min.css" />">
-	<link rel="stylesheet" type="text/css" href="<c:url value="/resources/css/grid.min.css" />">
+	<link rel="stylesheet" type="text/css" href="<c:url value="/resources/css/reset-grid.min.css" />">
 	<link rel="stylesheet" type="text/css" href="<c:url value="/resources/css/main.css" />">
 	<link rel="stylesheet" type="text/css" href="<c:url value="/resources/css/dark-hive/jquery-ui.css" />">
 	<script type="text/javascript" src="<c:url value="/resources/js/head.load.min.js" />"></script>
@@ -16,13 +15,7 @@
 		var _gaq = _gaq || [];
 		  _gaq.push(['_setAccount', 'UA-7076509-2']);
 		  _gaq.push(['_trackPageview']);
-  		head.js(
-  				/*'<c:url value="/resources/js/jquery/jquery.min.js" />',
-  				'<c:url value="/resources/js/jquery/jquery-ui.min.js" />',
-  				'<c:url value="/resources/js/jquery/jquery-ui.spinner.min.js" />',
-  				'<c:url value="/resources/js/jquery/jquery-numeric.js" />',
-  				'<c:url value="/resources/js/jquery/jquery-tmpl.min.js" />',*/
-  				'<c:url value="/resources/js/jquery/jquery-all-plugins.min.js" />',
+  		head.js('<c:url value="/resources/js/jquery/jquery-all-plugins.min.js" />',
   				'<c:url value="/resources/js/canvas/colors.js" />',
   				'<c:url value="/resources/js/canvas/processo-chart.js" />',
   				'<c:url value="/resources/js/ga.js" />'
@@ -60,7 +53,7 @@
 		  		<p><strong>Aluno:</strong> Caio Ribeiro Pereira - <a href="mailto:caio.ribeiro.pereira@gmail.com">caio.ribeiro.pereira@gmail.com</a></p>
 		  		<p><strong>Curso:</strong> Sistemas de Informação</p>
 		  		<hr>
-				<p>
+		  		<p class="clearfix logos">
 					<a href="http://www.oracle.com/br/technologies/java/index.html" target="_blank"><img src="<c:url value="/resources/img/icon_java.gif" />" alt="Tecnologia Java" width="30" height="30" /></a>
 					<a href="http://www.w3schools.com/html5/default.asp" target="_blank"><img src="<c:url value="/resources/img/icon_html5.gif" />" alt="Tecnologia HTML5" width="32" height="32" style="margin-top: 10px;" /></a>
 					<a href="http://jquery.com/" target="_blank"><img src="<c:url value="/resources/img/icon_jquery.gif" />" alt="Tecnologia JQuery"  width="64" height="29"  style="margin-top: -1px;"/></a>
@@ -72,7 +65,9 @@
   	</div>
   	<script type="text/javascript">
   		head.ready(function(){
-			$('nav a').button();
+			$('nav a.left').button({icons: {primary: 'ui-icon-home'}});
+			$('nav a.right').button({icons: {primary: 'ui-icon-comment'}});
+			$('nav a.middle').button({icons: {primary: 'ui-icon-triangle-1-e'}});
 		});
   	</script>
   </body>
