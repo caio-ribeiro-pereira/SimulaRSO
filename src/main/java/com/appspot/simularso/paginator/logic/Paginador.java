@@ -1,6 +1,7 @@
 package com.appspot.simularso.paginator.logic;
 
 import java.util.ArrayList;
+import java.util.List;
 
 import com.appspot.simularso.model.Pagina;
 
@@ -36,4 +37,10 @@ public interface Paginador {
 	 */
 	ArrayList<Pagina> resultadoGraficoFinal();
 
+	/**
+	 * Retorna a String de Referência de entrada do usuário.
+	 * 
+	 * @return Array de Integer
+	 */
+	List<Integer> stringReferencia();
 }

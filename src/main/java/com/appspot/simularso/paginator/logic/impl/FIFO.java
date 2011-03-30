@@ -1,6 +1,7 @@
 package com.appspot.simularso.paginator.logic.impl;
 
 import java.util.ArrayList;
+import java.util.List;
 
 import com.appspot.simularso.model.Pagina;
 import com.appspot.simularso.paginator.logic.Paginador;
@@ -8,49 +9,33 @@ import com.appspot.simularso.paginator.logic.PaginadorBase;
 
 public class FIFO extends PaginadorBase implements Paginador {
 
-	private static final boolean CADASTRAR = true;
-	private static final boolean ATUALIZAR = false;
-	private int index;
-
-	public FIFO(Integer[] stringRef, Integer frames) {
+	public FIFO(List<Integer> stringRef, Integer frames) {
 		super(stringRef, frames);
 		executar();
 	}
 
 	private void executar() {
-		for (Integer palavra : stringReferencia()) {
+		for (Integer palavra : getStringReferencia()) {
 			pageFaultPadrao();
-			if (totalPalavras() < totalFrames()) {
+			if (totalDePalavrasNaPagina() < totalFrames()) {
 				if (!foiAlocado(palavra)) {
-					atualizarPaginacao(palavra, CADASTRAR);
+					inserirPagina(palavra);
+					atualizarIndex();
+					atualizarPageFault();
 				}
 			} else {
 				if (!foiAlocado(palavra)) {
-					atualizarPaginacao(palavra, ATUALIZAR);
+					atualizarPagina(getIndex(), palavra);
+					atualizarIndex();
+					atualizarPageFault();
 				}
 			}
 			atualizarResultadoGrafico();
 		}
 	}
 
-	private void atualizarPaginacao(Integer palavra, boolean cadastrar) {
-		if (cadastrar) {
-			inserirPagina(palavra);
-		} else {
-			atualizarPagina(index, palavra);
-		}
-		atualizarPageFault();
-		atualizarIndex();
-	}
-
 	private void atualizarIndex() {
-		index = index + 1 >= totalFrames() ? 0 : index + 1;
-	}
-
-	private boolean foiAlocado(Integer palavra) {
-		if (getPagina().getPalavras().indexOf(palavra) != -1)
-			return true;
-		return false;
+		setIndex(getIndex() + 1 >= totalFrames() ? 0 : getIndex() + 1);
 	}
 
 	@Override
@@ -63,4 +48,8 @@ public class FIFO extends PaginadorBase implements Paginador {
 		return getResultadoGrafico();
 	}
 
+	@Override
+	public List<Integer> stringReferencia() {
+		return getStringReferencia();
+	}
 }
