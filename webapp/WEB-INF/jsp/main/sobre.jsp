@@ -13,7 +13,7 @@
 	   de escalonamento de disco, escalonamento de processos e paginação de memória virtual.
 	   O foco principal é simular graficamente e de forma intuitiva
 	   como funcionam os principais algoritmos de escalonadores de processos: 
-	   <strong>(FCFS, SJF, SRT, Prioridade, Round Robin)</strong> que são utilizados no gerenciamento
+	   <strong>(FCFS, SJF, SRT, Round Robin)</strong> que são utilizados no gerenciamento
 	   de processos concorrentes presentes, também simular o comportamento
 	   dos algoritmos que escalonam as requisições de entrada e saída <strong>(I/O)</strong> de um 
 	   disco rígido: <strong>(FCFS, SSTF, SCAN, C-SCAN, C-LOOK).</strong> e apresentar o 
@@ -51,7 +51,7 @@
 	</ul>
 	<hr>
 	<h3>Compatibilidade com os navegadores:</h3>
-	<ul class="clearfix browsers" style="margin-top: 20px;">
+	<ul class="clearfix browsers" id="sobre">
 		<li><a class="firefox" title="Mozilla Firefox 3+" href="http://br.mozdev.org/" target="_blank"></a></li>
 		<li><a class="chrome" title="Google Chrome 5+" href="http://www.google.com/chrome/" target="_blank"></a></li>
 		<li><a class="ie" title="Microsoft Internet Explorer 9+" href="http://www.microsoft.com/brasil/windows/internet-explorer/" target="_blank"></a></li>

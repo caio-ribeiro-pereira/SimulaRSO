@@ -9,7 +9,7 @@
 /* = Template
 --------------------------------------------------------------------------- */
 html {color: #000; font-family: Verdana, Arial, sans-serif; font-size: 1.0em;}
-body {background: url('../img/background.png') repeat scroll 0pt 0pt #000;}
+body {background: url('../img/background.png') repeat scroll 0pt 0pt #000; min-width: 960px; min-height: 680px;}
 header,section,footer {margin-top: 10px;}
 h1,h2,h3 {line-height: 1.6em;}
 h1 {font-size: 1.4em;}
@@ -109,6 +109,8 @@ nav a.right {
 	text-align: center;
 }
 .browsers{list-style: none;}
+#sobre{margin-top: 20px;}
+#index{margin-left:320px;}
 .chrome{ background: url('../img/icon_browsers.png') no-repeat top left; background-position: 0 0; width: 64px; height: 64px; float: left; } 
 .firefox{ background: url('../img/icon_browsers.png') no-repeat top left; background-position: -128px 0; width: 64px; height: 64px; float: left; } 
 .ie{ background: url('../img/icon_browsers.png') no-repeat top left; background-position: -256px 0; width: 64px; height: 64px; float: left; } 

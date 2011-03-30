@@ -4,6 +4,19 @@
   <head>
     <title><decorator:title default="Projeto SimulaRSO"></decorator:title></title>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <meta name="author" content="Unisantos - Universidade Católica de Santos">
+    <meta name="author" content="André de Araújo Rodrigues">
+    <meta name="author" content="Caio Ribeiro Pereira">
+    <meta name="description" content="SimulaRSO - Simulador de Recursos de Sistemas Operacionais">
+    <meta name="keywords" content="simularso, simula-rso, simulador, recursos, sistemas, operacionais, sistema, operacional">
+    <meta name="keywords" content="simulação, comparativa, única, disciplina, aplicação, web">
+    <meta name="keywords" content="escalonamento, escalonador, escalonar, algoritmo, algoritmos, resultado">
+	<meta name="keywords" content="processos, processo, FCFS, SJF, SRT, Round Robin">
+	<meta name="keywords" content="tempo, burst, cpu, chegada, prioridade, espera, resposta, turn around">
+	<meta name="keywords" content="disco, discos, (I/O), FCFS, SSTF, SCAN, C-SCAN, C-LOOK">
+	<meta name="keywords" content="paginação, memória virtual, FIFO, LRU, Ótimo">
+	<meta name="keywords" content="string, referência, page faults, falta, página, substituição, páginas, paginação">
+	<meta name="keywords" content="unisantos, universidade, tcc, católica, santos">
     <link rel="shortcut icon" type="image/x-icon" href="<c:url value="/resources/img/favicon.ico" />" />
 	<link rel="stylesheet" type="text/css" href="<c:url value="/resources/css/reset-grid.min.css" />">
 	<link rel="stylesheet" type="text/css" href="<c:url value="/resources/css/main.css" />">
@@ -39,14 +52,14 @@
 	  	<section class="clearfix">
 	  		<c:if test="${not empty errors}">
 				<c:forEach var="error" items="${errors}">
-				    <h3 class="clearfix error-message">${error.message}</h3>
+				    <strong class="clearfix error-message">${error.message}</strong>
 				</c:forEach>
 			</c:if>
 			<decorator:body />
 	  	</section>
 	  	<hr>
 		<footer class="clearfix">
-				<h3>Informações sobre os autores do projeto:</h3>
+				<p><strong>Informações sobre os autores do projeto:</strong></p>
 				<p><strong><a href="http://www.unisantos.br" target="_blank">Universidade Católica de Santos</a></strong></p>
 		  		<p><strong>Orientador:</strong> André Luiz Vizine Pereira - <a href="mailto:vizine@unisantos.br">vizine@unisantos.br</a></p>
 		  		<p><strong>Aluno:</strong> André de Araújo Rodrigues - <a href="mailto:and.arodrigues@gmail.com">and.arodrigues@gmail.com</a></p>

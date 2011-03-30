@@ -3,7 +3,7 @@
 	<title>Simulação de escalonamento de processos</title>
 </head>	
 <body>
-	<h1 class="clearfix">Algoritmos de escalonamento de processos</h1>
+	<h2 class="clearfix">Algoritmos de escalonamento de processos</h2>
 	<form id="process-form" action="<c:url value="/executar-escalonamento-processo"/>" method="post">
 		<div id="main-menu" class="clearfix menu">
 			<div class="grid_3">
@@ -173,7 +173,7 @@
 					$('input[type="text"].chegada').spinner({ min: 0, max: 99, showOn: 'always' }).onlyNumeric();
 					$('input[type="text"].prioridade').spinner({ min: 0, max: 10, showOn: 'always' }).onlyNumeric();	
 				}else {
-					$('#process-menu').html('<h3 class="clearfix info-message">Determine o número de processos para simular.</h3>').show();
+					$('#process-menu').html('<strong class="clearfix info-message">Determine o número de processos para simular.</strong>').show();
 				}
 			}).trigger('change');
 		});
