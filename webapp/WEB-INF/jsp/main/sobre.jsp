@@ -51,11 +51,11 @@
 	</ul>
 	<hr>
 	<h3>Compatibilidade com os navegadores:</h3>
-	<ul>
-		<li><a href="http://br.mozdev.org/" target="_blank"><strong>Mozilla Firefox 3+</strong></a></li>
-		<li><a href="http://www.google.com/chrome/" target="_blank"><strong>Google Chrome 5+</strong></a></li>
-		<li><a href="http://www.opera.com/" target="_blank"><strong>Opera 9+</strong></a></li>
-		<li><a href="http://www.microsoft.com/brasil/windows/internet-explorer/" target="_blank"><strong>Internet Explorer 9+</strong></a></li>
-		<li><a href="http://www.apple.com/br/safari/" target="_blank"><strong>Safari 4+</strong></a></li>
+	<ul class="clearfix browsers" style="margin-top: 20px;">
+		<li><a class="firefox" title="Mozilla Firefox 3+" href="http://br.mozdev.org/" target="_blank"></a></li>
+		<li><a class="chrome" title="Google Chrome 5+" href="http://www.google.com/chrome/" target="_blank"></a></li>
+		<li><a class="ie" title="Microsoft Internet Explorer 9+" href="http://www.microsoft.com/brasil/windows/internet-explorer/" target="_blank"></a></li>
+		<li><a class="opera" title="Opera 9+" href="http://www.opera.com/" target="_blank"></a></li>
+		<li><a class="safari" title="Apple Safari 4+" href="http://www.apple.com/br/safari/" target="_blank"></a></li>
 	</ul>
 </body>

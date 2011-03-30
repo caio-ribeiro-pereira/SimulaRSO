@@ -15,10 +15,10 @@
 		var _gaq = _gaq || [];
 		  _gaq.push(['_setAccount', 'UA-7076509-2']);
 		  _gaq.push(['_trackPageview']);
-  		head.js('<c:url value="/resources/js/jquery/jquery-all-plugins.min.js" />',
+  		head.js('<c:url value="/resources/js/jquery/jquery-pack-plugins.min.js" />',
   				'<c:url value="/resources/js/canvas/colors.js" />',
   				'<c:url value="/resources/js/canvas/processo-chart.js" />',
-  				'<c:url value="/resources/js/ga.js" />'
+  				'<c:url value="/resources/js/google-analytics.js" />'
   		);
   	</script>
     <decorator:head />

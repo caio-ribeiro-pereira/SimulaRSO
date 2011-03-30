@@ -108,3 +108,9 @@ nav a.right {
 	padding: 5px 14px;
 	text-align: center;
 }
+.browsers{list-style: none;}
+.chrome{ background: url('../img/icon_browsers.png') no-repeat top left; background-position: 0 0; width: 64px; height: 64px; float: left; } 
+.firefox{ background: url('../img/icon_browsers.png') no-repeat top left; background-position: -128px 0; width: 64px; height: 64px; float: left; } 
+.ie{ background: url('../img/icon_browsers.png') no-repeat top left; background-position: -256px 0; width: 64px; height: 64px; float: left; } 
+.opera{ background: url('../img/icon_browsers.png') no-repeat top left; background-position: -384px 0; width: 64px; height: 64px; float: left; } 
+.safari{ background: url('../img/icon_browsers.png') no-repeat top left; background-position: -512px 0; width: 64px; height: 64px; float: left; } 
