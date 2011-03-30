@@ -33,6 +33,11 @@
   				'<c:url value="/resources/js/canvas/processo-chart.js" />',
   				'<c:url value="/resources/js/google-analytics.js" />'
   		);
+  		head.ready(function(){
+			$('nav a.left').button({icons: {primary: 'ui-icon-home'}});
+			$('nav a.right').button({icons: {primary: 'ui-icon-comment'}});
+			$('nav a.middle').button({icons: {primary: 'ui-icon-triangle-1-e'}});
+		});
   	</script>
     <decorator:head />
   </head>
@@ -59,29 +64,20 @@
 	  	</section>
 	  	<hr>
 		<footer class="clearfix">
-				<p><strong>Informações sobre os autores do projeto:</strong></p>
-				<p><strong><a href="http://www.unisantos.br" target="_blank">Universidade Católica de Santos</a></strong></p>
+				<p><a href="http://www.unisantos.br" target="_blank"><strong>Universidade Católica de Santos</strong></a></p>
 		  		<p><strong>Orientador:</strong> André Luiz Vizine Pereira - <a href="mailto:vizine@unisantos.br">vizine@unisantos.br</a></p>
 		  		<p><strong>Aluno:</strong> André de Araújo Rodrigues - <a href="mailto:and.arodrigues@gmail.com">and.arodrigues@gmail.com</a></p>
 		  		<p><strong>Aluno:</strong> Caio Ribeiro Pereira - <a href="mailto:caio.ribeiro.pereira@gmail.com">caio.ribeiro.pereira@gmail.com</a></p>
-		  		<p><strong>Curso:</strong> Sistemas de Informação</p>
-		  		<hr>
-		  		<p class="clearfix logos">
+		  		<p><strong>Curso:</strong> Sistemas de Informação - 2011</p>
+		  		<div class="clearfix logos">
 					<a href="http://www.oracle.com/br/technologies/java/index.html" target="_blank"><img src="<c:url value="/resources/img/icon_java.gif" />" alt="Tecnologia Java" width="30" height="30" /></a>
 					<a href="http://www.w3schools.com/html5/default.asp" target="_blank"><img src="<c:url value="/resources/img/icon_html5.gif" />" alt="Tecnologia HTML5" width="32" height="32" style="margin-top: 10px;" /></a>
 					<a href="http://jquery.com/" target="_blank"><img src="<c:url value="/resources/img/icon_jquery.gif" />" alt="Tecnologia JQuery"  width="64" height="29"  style="margin-top: -1px;"/></a>
 					<a href="http://vraptor.caelum.com.br" target="_blank"><img src="<c:url value="/resources/img/icon_vraptor.gif" />" alt="Tecnologia VRaptor da Caelum"  width="90" height="30"  /></a>
 					<a href="http://appengine.google.com/" target="_blank"><img src="<c:url value="/resources/img/icon_appengine.gif" />" alt="Hospedado no Google App Engine"  width="120" height="28"  style="margin-top: -2px;"/></a>
 					<a href="http://github.com/" target="_blank"><img src="<c:url value="/resources/img/icon_github.gif" />" alt="Repositório do código-fonte do projeto via GitHub"  width="48" height="24"  style="margin-top: -6px;"/></a>
-				</p>
+				</div>
 	  	</footer>
   	</div>
-  	<script type="text/javascript">
-  		head.ready(function(){
-			$('nav a.left').button({icons: {primary: 'ui-icon-home'}});
-			$('nav a.right').button({icons: {primary: 'ui-icon-comment'}});
-			$('nav a.middle').button({icons: {primary: 'ui-icon-triangle-1-e'}});
-		});
-  	</script>
   </body>
 </html>

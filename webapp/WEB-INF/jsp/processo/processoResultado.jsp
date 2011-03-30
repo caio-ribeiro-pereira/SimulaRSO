@@ -18,13 +18,13 @@
 			</thead>
 			<tbody>
 				<c:forEach items="${resultList.resultadoFinal}" var="res">
-				<tr class="result-line">
-					<td><div style="background-color:'${res.cor}'">${res.id}</div></td>
-					<td>${res.burst} ms</td>
-					<td>${res.espera} ms</td>
-					<td>${res.resposta} ms</td>
-					<td>${res.turnAround} ms</td>
-				</tr>
+					<tr class="result-line" ${res.id % 2 eq 1 ? 'id="even"':'id="odd"'}>
+						<td><div class="processo-cor" style="background-color:${res.cor};"></div></td>
+						<td>${res.burst} ms</td>
+						<td>${res.espera} ms</td>
+						<td>${res.resposta} ms</td>
+						<td>${res.turnAround} ms</td>
+					</tr>
 				</c:forEach>
 			</tbody>
 			<tfoot>
@@ -35,7 +35,7 @@
 					<td><strong>Tempo de Resposta Médio</strong></td>
 					<td><strong>Turn Around Médio</strong></td>
 				</tr>
-				<tr class="result-line">
+				<tr class="result-line" id="odd">
 					<td>${resultList.totalProcessos}</td>
 					<td>${resultList.tempoTotal} ms</td>
 					<td>${resultList.tempoEsperaMedia} ms</td>
@@ -53,8 +53,6 @@
 		<hr>
 		<script type="text/javascript">
 			head.ready(function(){
-				$('table.result-panel tr.result-line:odd').css('background-color','#DDD');
-				$('table.result-panel tr.result-line:even').css('background-color','#CCC');
 				var spc = 20;
 				var processos = new Array();
 				<c:forEach items="${resultList.resultadoGrafico}" var="pr">

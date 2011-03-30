@@ -51,11 +51,12 @@ nav a.right {
 	-ms-border-radius: 0px 5px 5px 0px;
 }
 .logos{
-	text-align: right;
-	margin-bottom: 5px;
+    float: right;
+    margin: -45px 0px 0px 0px;
 	padding: 5px;
 }
-.processo{margin-bottom:1px; margin-top:1px;}
+.processo{margin:1px;}
+.processo-cor{width: 20px; height: 20px; border: 1px solid #FFF; margin: 0 auto;}
 .error-message {
 	color: #F00;
 	text-align: center;
@@ -95,7 +96,7 @@ nav a.right {
 	margin: 5px 18px 10px 0px;
 }
 .input-box p:first-child {text-align: center;}
-.execute-panel p{text-align: right; margin-right: 40px; margin-top: 20px;}
+.execute-panel p{text-align: right; margin: 20px 40px 0px 0px;}
 .result-panel {
 	border-radius: 5px;
 	-webkit-border-radius: 5px;
@@ -104,15 +105,15 @@ nav a.right {
 	border: 1px solid #000;
 	margin: 20px 5px;
 }
-.result-panel td {
-	padding: 5px 14px;
-	text-align: center;
-}
-.browsers{list-style: none;}
+.result-panel td {padding: 5px 14px; text-align: center;}
+.result-line{color:#FFF;}
+#odd{background-color: #555;}
+#even{background-color:#000;}
 #sobre{margin-top: 20px;}
 #index{margin-left:320px;}
-.chrome{ background: url('../img/icon_browsers.png') no-repeat top left; background-position: 0 0; width: 64px; height: 64px; float: left; } 
-.firefox{ background: url('../img/icon_browsers.png') no-repeat top left; background-position: -128px 0; width: 64px; height: 64px; float: left; } 
-.ie{ background: url('../img/icon_browsers.png') no-repeat top left; background-position: -256px 0; width: 64px; height: 64px; float: left; } 
-.opera{ background: url('../img/icon_browsers.png') no-repeat top left; background-position: -384px 0; width: 64px; height: 64px; float: left; } 
-.safari{ background: url('../img/icon_browsers.png') no-repeat top left; background-position: -512px 0; width: 64px; height: 64px; float: left; } 
+.browsers{list-style: none;}
+.chrome{ background: url('../img/icon_browsers.png') no-repeat 0 0; width: 64px; height: 64px; float: left; } 
+.firefox{ background: url('../img/icon_browsers.png') no-repeat -128px 0; width: 64px; height: 64px; float: left; } 
+.ie{ background: url('../img/icon_browsers.png') no-repeat -256px 0; width: 64px; height: 64px; float: left; } 
+.opera{ background: url('../img/icon_browsers.png') no-repeat -384px 0; width: 64px; height: 64px; float: left; } 
+.safari{ background: url('../img/icon_browsers.png') no-repeat -512px 0; width: 64px; height: 64px; float: left; } 
