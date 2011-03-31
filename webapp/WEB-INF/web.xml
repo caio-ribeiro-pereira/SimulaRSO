@@ -7,7 +7,7 @@
 	<display-name>simula-rso</display-name>
 
 	<session-config>
-		<session-timeout>10</session-timeout>
+		<session-timeout>20160</session-timeout>
 	</session-config>
 
 	<jsp-config>
