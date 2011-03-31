@@ -3,7 +3,7 @@
 	<title>Simulação Gráfica de Escalonamento de Processos</title>
 </head>	
 <body>
-	<h1 class="clearfix">Simulação de Escalonamento de Processos</h1>
+	<h2 class="clearfix">Simulação de Escalonamento de Processos</h1>
 	<c:forEach var="resultList" items="${resultadosDosAlgoritmos}">
 		<script type="text/javascript">
 			head.ready(function(){

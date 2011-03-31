@@ -1,5 +1,7 @@
 <!DOCTYPE html>
 <head>
+	<meta name="keywords" content="Algoritmos de escalonamento de processos, Processos, Processo" />
+	<meta name="keywords" content="FC-FS, SJF, SRT, Round-Robin" />
 	<title>Simulação de escalonamento de processos</title>
 	<script type="text/javascript">
 		head.ready(function(){

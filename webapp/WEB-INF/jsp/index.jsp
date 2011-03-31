@@ -8,15 +8,8 @@
     <meta name="author" content="André de Araújo Rodrigues" />
     <meta name="author" content="Caio Ribeiro Pereira" />
     <meta name="description" content="SimulaRSO - Simulador de Recursos de Sistemas Operacionais" />
-    <meta name="keywords" content="simularso, simula-rso, simulador, recursos, sistemas, operacionais, sistema, operacional" />
-    <meta name="keywords" content="simulação, comparativa, única, disciplina, aplicação, web" />
-    <meta name="keywords" content="escalonamento, escalonador, escalonar, algoritmo, algoritmos, resultado" />
-	<meta name="keywords" content="processos, processo, FCFS, SJF, SRT, Round Robin" />
-	<meta name="keywords" content="tempo, burst, cpu, chegada, prioridade, espera, resposta, turn around" />
-	<meta name="keywords" content="disco, discos, (I/O), FCFS, SSTF, SCAN, C-SCAN, C-LOOK" />
-	<meta name="keywords" content="paginação, memória virtual, FIFO, LRU, Ótimo" />
-	<meta name="keywords" content="string, referência, page faults, falta, página, substituição, páginas, paginação" />
-	<meta name="keywords" content="unisantos, universidade, tcc, católica, santos" />
+    <meta name="keywords" content="Projeto SimulaRSO, Simulador de Recursos de Sistemas Operacionais, Simulador, Sistemas Operacionais" />
+    <meta name="keywords" content="Unisantos, Universidade Católica de Santos" />
 	<meta name="msvalidate.01" content="8E5B78FB688E236FBD4D6659F8089AD6" />
 	<meta name="y_key" content="3406b834d5e1d184" />
     <link rel="shortcut icon" type="image/x-icon" href="<c:url value="/resources/img/favicon.ico" />" />
