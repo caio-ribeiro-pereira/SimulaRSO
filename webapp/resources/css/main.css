@@ -50,11 +50,6 @@ nav a.right {
 	-moz-border-radius: 0px 5px 5px 0px;
 	-ms-border-radius: 0px 5px 5px 0px;
 }
-.logos{
-    float: right;
-    margin: -45px 0px 0px 0px;
-	padding: 5px;
-}
 .processo{margin:1px;}
 .processo-cor{width: 20px; height: 20px; border: 1px solid #FFF; margin: 0 auto;}
 .error-message {
@@ -111,7 +106,14 @@ nav a.right {
 #even{background-color:#000;}
 #sobre{margin-top: 20px;}
 #index{margin-left:320px;}
-.browsers{list-style: none;}
+
+.list-imgs{list-style: none;}
+.gae{ background: url('../img/icon_tecnologias.png') no-repeat 0 0; width: 60px; height: 48px; } 
+.github{ background: url('../img/icon_tecnologias.png') no-repeat -225px 0; width: 149px; height: 48px; } 
+.html5{ background: url('../img/icon_tecnologias.png') no-repeat -539px 0; width: 48px; height: 48px; } 
+.java{ background: url('../img/icon_tecnologias.png') no-repeat -752px 0; width: 48px; height: 48px; } 
+.vraptor{ background: url('../img/icon_tecnologias.png') no-repeat -965px 0; width: 165px; height: 48px; } 
+
 .chrome{ background: url('../img/icon_browsers.png') no-repeat 0 0; width: 64px; height: 64px; float: left; } 
 .firefox{ background: url('../img/icon_browsers.png') no-repeat -128px 0; width: 64px; height: 64px; float: left; } 
 .ie{ background: url('../img/icon_browsers.png') no-repeat -256px 0; width: 64px; height: 64px; float: left; } 

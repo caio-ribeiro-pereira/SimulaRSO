@@ -1,88 +1,6 @@
 <!DOCTYPE html>
 <head>
 	<title>Simulação de escalonamento de processos</title>
-</head>	
-<body>
-	<h2 class="clearfix">Algoritmos de escalonamento de processos</h2>
-	<form id="process-form" action="<c:url value="/executar-escalonamento-processo"/>" method="post">
-		<div id="main-menu" class="clearfix menu">
-			<div class="grid_3">
-				<strong>Simulação: </strong>
-				<select id="modo">
-					<option value="UNICO">Única</option>
-					<option value="COMPARATIVO">Comparativa</option>
-				</select>
-			</div>
-			<div class="grid_4">
-				<strong>Total de processos: </strong>
-				<select id="total">
-					<option value="" selected="selected">Selecione...</option>
-					<c:forEach begin="2" end="20" step="1" var="p">
-						<option value="${p}">${p} procesos</option>
-					</c:forEach>
-				</select>
-			</div>
-		</div>
-		<div id="algoritmo-menu" class="clearfix menu">
-			<div id="alg1" class="grid_3">
-				<strong>Algoritmo 1: </strong>
-				<select name="algs[0]" id="algoritmo1">
-					<option value="" selected="selected">Selecione...</option>
-					<c:forEach var="alg" items="${algoritmoProcesso}">
-						<option value="${alg}">${alg.nome}</option>	
-					</c:forEach>
-				</select>
-			</div>
-			<div id="alg2" class="grid_3">
-				<strong>Algoritmo 2: </strong>
-				<select name="algs[1]" id="algoritmo2">
-					<option value="" selected="selected">Selecione...</option>
-					<c:forEach var="alg" items="${algoritmoProcesso}">
-						<option value="${alg}">${alg.nome}</option>	
-					</c:forEach>
-				</select>			
-			</div>
-			<div id="quantum" class="grid_4">
-				<strong>Tempo de corte: </strong>
-				<select name="qt">
-					<c:forEach begin="1" end="4" step="1" var="qt1">
-						<option value="${qt1}">${qt1} ms</option>					
-					</c:forEach>
-					<c:forEach begin="5" end="100" step="5" var="qt2">
-						<option value="${qt2}">${qt2} ms</option>
-					</c:forEach>
-				</select>
-			</div>
-		</div>
-		<div id="process-menu" class="clearfix menu"></div>
-		<script id="processTemplate" type="text/x-jquery-tmpl">
-			<div id="\${prDivId}" class="input-box">
-				<p class="clearfix processo">
-					<strong>\${prLabel}: </strong>
-					<input type="hidden" name="\${prIdName}" value="\${prId}">
-					<input type="hidden" name="\${prCorName}" value="\${prCor}">
-				</p>
-				<p class="clearfix processo">
-					<label class="grid_1" for="\${inputBurst}"><small>Burst: </small></label>
-					<input type="text" class="grid_1 burst" name="\${prBurstName}" id="\${inputBurst}" value="10" maxlength="2">
-				</p>
-				<p class="clearfix processo">
-					<label class="grid_1" for="\${inputChegada}"><small>Chegada: </small></label>
-					<input type="text" class="grid_1 chegada" name="\${prChegadaName}" id="\${inputChegada}" maxlength="2">
-				</p>
-				<p class="clearfix processo">
-					<label class="grid_1" for="\${inputPrioridade}"><small>Prioridade: </small></label>
-					<input type="text" class="grid_1 prioridade" name="\${prPrioridadeName}" id="\${inputPrioridade}" maxlength="2">
-				</p>
-			</div>
-		</script>
-		<div class="clearfix execute-panel">
-			<p>
-				<button id="execute" type="submit">Executar</button>
-				<button id="random" type="button">Geração aleatória</button>			
-			</p>
-		</div>
-	</form>
 	<script type="text/javascript">
 		head.ready(function(){
 			var MAXBURST = 98;
@@ -178,4 +96,86 @@
 			}).trigger('change');
 		});
 	</script>
+</head>	
+<body>
+	<h2 class="clearfix">Algoritmos de escalonamento de processos</h2>
+	<form id="process-form" action="<c:url value="/executar-escalonamento-processo"/>" method="post">
+		<div id="main-menu" class="clearfix menu">
+			<div class="grid_3">
+				<strong>Simulação: </strong>
+				<select id="modo">
+					<option value="UNICO">Única</option>
+					<option value="COMPARATIVO">Comparativa</option>
+				</select>
+			</div>
+			<div class="grid_4">
+				<strong>Total de processos: </strong>
+				<select id="total">
+					<option value="" selected="selected">Selecione...</option>
+					<c:forEach begin="2" end="20" step="1" var="p">
+						<option value="${p}">${p} procesos</option>
+					</c:forEach>
+				</select>
+			</div>
+		</div>
+		<div id="algoritmo-menu" class="clearfix menu">
+			<div id="alg1" class="grid_3">
+				<strong>Algoritmo 1: </strong>
+				<select name="algs[0]" id="algoritmo1">
+					<option value="" selected="selected">Selecione...</option>
+					<c:forEach var="alg" items="${algoritmoProcesso}">
+						<option value="${alg}">${alg.nome}</option>	
+					</c:forEach>
+				</select>
+			</div>
+			<div id="alg2" class="grid_3">
+				<strong>Algoritmo 2: </strong>
+				<select name="algs[1]" id="algoritmo2">
+					<option value="" selected="selected">Selecione...</option>
+					<c:forEach var="alg" items="${algoritmoProcesso}">
+						<option value="${alg}">${alg.nome}</option>	
+					</c:forEach>
+				</select>			
+			</div>
+			<div id="quantum" class="grid_4">
+				<strong>Tempo de corte: </strong>
+				<select name="qt">
+					<c:forEach begin="1" end="4" step="1" var="qt1">
+						<option value="${qt1}">${qt1} ms</option>					
+					</c:forEach>
+					<c:forEach begin="5" end="100" step="5" var="qt2">
+						<option value="${qt2}">${qt2} ms</option>
+					</c:forEach>
+				</select>
+			</div>
+		</div>
+		<div id="process-menu" class="clearfix menu"></div>
+		<script id="processTemplate" type="text/x-jquery-tmpl">
+			<div id="\${prDivId}" class="input-box">
+				<p class="clearfix processo">
+					<strong>\${prLabel}: </strong>
+					<input type="hidden" name="\${prIdName}" value="\${prId}">
+					<input type="hidden" name="\${prCorName}" value="\${prCor}">
+				</p>
+				<p class="clearfix processo">
+					<label class="grid_1" for="\${inputBurst}"><small>Burst: </small></label>
+					<input type="text" class="grid_1 burst" name="\${prBurstName}" id="\${inputBurst}" value="10" maxlength="2">
+				</p>
+				<p class="clearfix processo">
+					<label class="grid_1" for="\${inputChegada}"><small>Chegada: </small></label>
+					<input type="text" class="grid_1 chegada" name="\${prChegadaName}" id="\${inputChegada}" maxlength="2">
+				</p>
+				<p class="clearfix processo">
+					<label class="grid_1" for="\${inputPrioridade}"><small>Prioridade: </small></label>
+					<input type="text" class="grid_1 prioridade" name="\${prPrioridadeName}" id="\${inputPrioridade}" maxlength="2">
+				</p>
+			</div>
+		</script>
+		<div class="clearfix execute-panel">
+			<p>
+				<button id="execute" type="submit">Executar</button>
+				<button id="random" type="button">Geração aleatória</button>			
+			</p>
+		</div>
+	</form>
 </body>

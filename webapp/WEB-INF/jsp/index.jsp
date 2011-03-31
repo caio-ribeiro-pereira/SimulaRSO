@@ -69,14 +69,15 @@
 		  		<p><strong>Aluno:</strong> André de Araújo Rodrigues - <a href="mailto:and.arodrigues@gmail.com">and.arodrigues@gmail.com</a></p>
 		  		<p><strong>Aluno:</strong> Caio Ribeiro Pereira - <a href="mailto:caio.ribeiro.pereira@gmail.com">caio.ribeiro.pereira@gmail.com</a></p>
 		  		<p><strong>Curso:</strong> Sistemas de Informação - 2011</p>
-		  		<div class="clearfix logos">
-					<a href="http://www.oracle.com/br/technologies/java/index.html" target="_blank"><img src="<c:url value="/resources/img/icon_java.gif" />" alt="Tecnologia Java" width="30" height="30" /></a>
-					<a href="http://www.w3schools.com/html5/default.asp" target="_blank"><img src="<c:url value="/resources/img/icon_html5.gif" />" alt="Tecnologia HTML5" width="32" height="32" style="margin-top: 10px;" /></a>
-					<a href="http://jquery.com/" target="_blank"><img src="<c:url value="/resources/img/icon_jquery.gif" />" alt="Tecnologia JQuery"  width="64" height="29"  style="margin-top: -1px;"/></a>
-					<a href="http://vraptor.caelum.com.br" target="_blank"><img src="<c:url value="/resources/img/icon_vraptor.gif" />" alt="Tecnologia VRaptor da Caelum"  width="90" height="30"  /></a>
-					<a href="http://appengine.google.com/" target="_blank"><img src="<c:url value="/resources/img/icon_appengine.gif" />" alt="Hospedado no Google App Engine"  width="120" height="28"  style="margin-top: -2px;"/></a>
-					<a href="http://github.com/" target="_blank"><img src="<c:url value="/resources/img/icon_github.gif" />" alt="Repositório do código-fonte do projeto via GitHub"  width="48" height="24"  style="margin-top: -6px;"/></a>
-				</div>
+		  		<div style="float:right;">
+					<ul class="clearfix list-imgs">
+			  			<li><a class="java" title="Tecnologia Java" href="http://www.oracle.com/br/technologies/java/index.html" target="_blank"></a></li>
+			  			<li><a class="html5" title="Tecnologia HTML5" href="http://www.w3schools.com/html5/default.asp" target="_blank"></a></li>
+			  			<li><a class="vraptor" title="Tecnologia VRaptor" href="http://vraptor.caelum.com.br" target="_blank"></a></li>
+			  			<li><a class="gae" title="Cloud Host Google App Engine" href="http://appengine.google.com/" target="_blank"></a></li>
+			  			<li><a class="github" title="Repositório GitHub Social Coding" href="http://github.com/" target="_blank"></a></li>
+			  		</ul>		  		
+		  		</div>
 	  	</footer>
   	</div>
   </body>
