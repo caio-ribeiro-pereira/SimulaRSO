@@ -12,7 +12,7 @@ import com.appspot.simularso.paginator.logic.impl.OPT;
 
 public class OPTTest {
 
-	// @Test
+	@Test
 	public void deveRealizarSubstituicaoPaginaComStringReferenciaSimples() {
 		final Integer[] STRING_REFERENCIA = { 0, 1, 2, 2, 0, 3, 4, 5, 6, 7 };
 		final List<Integer> REFERENCIA = Arrays.asList(STRING_REFERENCIA);

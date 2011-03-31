@@ -1,14 +1,13 @@
 package com.appspot.simularso.scheduler.process.logic.impl;
 
 import java.util.ArrayList;
-import java.util.LinkedList;
-import java.util.Set;
+import java.util.List;
 
 import com.appspot.simularso.model.Processo;
-import com.appspot.simularso.model.dto.ProcessoDTO;
+import com.appspot.simularso.model.ProcessoDTO;
+import com.appspot.simularso.model.ProcessoVO;
 import com.appspot.simularso.scheduler.process.logic.Escalonador;
 import com.appspot.simularso.scheduler.process.logic.EscalonadorBase;
-
 
 public class SRT extends EscalonadorBase implements Escalonador {
 
@@ -133,12 +132,12 @@ public class SRT extends EscalonadorBase implements Escalonador {
 	}
 
 	@Override
-	public Set<Processo> resultadoFinal() {
+	public List<ProcessoVO> resultadoFinal() {
 		return resultado();
 	}
 
 	@Override
-	public LinkedList<ProcessoDTO> resultadoGraficoFinal() {
+	public List<ProcessoDTO> resultadoGraficoFinal() {
 		return resultadoGrafico();
 	}
 

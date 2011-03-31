@@ -8,13 +8,13 @@
 
 /* = Template
 --------------------------------------------------------------------------- */
-html {color: #000; font-family: Verdana, Arial, sans-serif; font-size: 1.0em;}
+html {color: #000; font-family: Arial, Verdana, sans-serif; font-size: 1.2em;}
 body {background: url('../img/background.png') repeat scroll 0pt 0pt #000; min-width: 960px; min-height: 680px;}
-header,section,footer {margin-top: 10px;}
+header,section,article,footer {margin-top: 10px;}
 h1,h2,h3 {line-height: 1.6em;}
-h1 {font-size: 1.4em;}
-h2 {font-size: 1.3em;}
-h3 {font-size: 1.2em;}
+h1 {font-size: 1.5em;}
+h2 {font-size: 1.4em;}
+h3 {font-size: 1.3em;}
 hr {border: 1px solid #000;}
 strong {font-size: 0.9em;}
 small {font-size: 0.8em;}
@@ -26,96 +26,53 @@ a:hover {color: #555;}
 a:active {color: #000;}
 ul {margin-left: 20px;}
 nav {margin-top: 10px; padding: 0px;}
-nav a {
-	float: left;
-	margin: -2px;
-	padding: 5px;
-}
+nav a {float: left;	margin: -2px; padding: 5px;}
 nav a:hover {background-color: #888; color: #FFF; text-decoration: none;}
-nav a.left {
-	border-radius: 5px 0px 0px 5px;
-	-webkit-border-radius: 5px 0px 0px 5px;
-	-moz-border-radius: 5px 0px 0px 5px;
-	-ms-border-radius: 5px 0px 0px 5px;
-}
-nav a.middle{
-	border-radius: 0px 0px 0px 0px;
-	-webkit-border-radius: 0px 0px 0px 0px;
-	-moz-border-radius: 0px 0px 0px 0px;
-	-ms-border-radius: 0px 0px 0px 0px;
-}
-nav a.right {
-	border-radius: 0px 5px 5px 0px;
-	-webkit-border-radius: 0px 5px 5px 0px;
-	-moz-border-radius: 0px 5px 5px 0px;
-	-ms-border-radius: 0px 5px 5px 0px;
-}
+nav a.left {border-radius: 5px 0px 0px 5px;}
+nav a.middle{border-radius: 0px 0px 0px 0px;}
+nav a.right {border-radius: 0px 5px 5px 0px;}
 .processo{margin:1px;}
 .processo-cor{width: 20px; height: 20px; border: 1px solid #FFF; margin: 0 auto;}
-.error-message {
-	color: #F00;
-	text-align: center;
-}
-.info-message {
-	color: #00F;
-	text-align: center;
-}
-.result-message{
-	color: #000;
-	text-align: center;
-}
-.main {
-	background-color: #FFF;
-	border-radius: 7px;
-	-webkit-border-radius: 7px;
-	-moz-border-radius: 7px;
-	-ms-border-radius: 7px;
-	margin-bottom: 25px;
-	margin-top: 25px;
-	padding: 25px;
-}
-.graphic-panel {
-	overflow-x: scroll;
-	overflow-y: hidden;
-	padding: 10px 0px 0px 10px;
-	width: 960px;
-}
+.error-message {color: #F00; text-align: center;}
+.info-message {color: #00F;	text-align: center;}
+.result-message{color: #000; text-align: center;}
+.main {background-color: #FFF; border-radius: 7px; margin-bottom: 25px;	margin-top: 25px; padding: 25px;}
+.graphic-panel {overflow-x: scroll;	overflow-y: hidden;	padding: 10px 0px 0px 10px;	width: 960px;}
 .menu {margin-top: 20px;}
-.input-box {
-	border-radius: 5px;
-	-webkit-border-radius: 5px;
-	-moz-border-radius: 5px;
-	-ms-border-radius: 5px;
-	border: 1px solid #000;
-	float: left;
-	margin: 5px 18px 10px 0px;
-}
+.input-box {border-radius: 5px;	border: 1px solid #000;	float: left; margin: 5px 18px 10px 0px;}
 .input-box p:first-child {text-align: center;}
 .execute-panel p{text-align: right; margin: 20px 40px 0px 0px;}
-.result-panel {
-	border-radius: 5px;
-	-webkit-border-radius: 5px;
-	-moz-border-radius: 5px;
-	-ms-border-radius: 5px;
-	border: 1px solid #000;
-	margin: 20px 5px;
-}
+.result-panel {border-radius: 5px; border: 1px solid #000; margin: 20px 5px;}
 .result-panel td {padding: 5px 14px; text-align: center;}
 .result-line{color:#FFF;}
 #odd{background-color: #555;}
 #even{background-color:#000;}
+#odd:hover{background-color: #CCC; color:#000}
+#even:hover{background-color:#CCC; color:#000}
+
 #sobre{margin-top: 20px;}
 #index{margin-left:320px;}
+#tecnologias{margin: 20px 0px 5px 480px;}
 
-.list-imgs{list-style: none;}
-.gae{ background: url('../img/icon_tecnologias.png') no-repeat 0 0; width: 60px; height: 48px; } 
-.github{ background: url('../img/icon_tecnologias.png') no-repeat -225px 0; width: 149px; height: 48px; } 
-.html5{ background: url('../img/icon_tecnologias.png') no-repeat -539px 0; width: 48px; height: 48px; } 
-.java{ background: url('../img/icon_tecnologias.png') no-repeat -752px 0; width: 48px; height: 48px; } 
-.vraptor{ background: url('../img/icon_tecnologias.png') no-repeat -965px 0; width: 165px; height: 48px; } 
+.images{list-style: none;}
+.gae{ background: url('../img/icon_tecnologias.png') no-repeat 0 0; width: 60px; height: 48px; float: left; opacity: 0.7;}
+.gae:hover{opacity: 1.0;}
+.github{ background: url('../img/icon_tecnologias.png') no-repeat -225px 0; width: 149px; height: 48px; float: left; opacity: 0.7;}
+.github:hover{opacity: 1.0;}
+.html5{ background: url('../img/icon_tecnologias.png') no-repeat -539px 0; width: 48px; height: 48px; float: left; opacity: 0.7;}
+.html5:hover{opacity: 1.0;}
+.java{ background: url('../img/icon_tecnologias.png') no-repeat -752px 0; width: 48px; height: 48px; float: left; opacity: 0.7;}
+.java:hover{opacity: 1.0;}
+.vraptor{ background: url('../img/icon_tecnologias.png') no-repeat -965px 0; width: 165px; height: 48px; float: left; opacity: 0.7;}
+.vraptor:hover{opacity: 1.0;}
 
-.chrome{ background: url('../img/icon_browsers.png') no-repeat 0 0; width: 64px; height: 64px; float: left; } 
-.firefox{ background: url('../img/icon_browsers.png') no-repeat -128px 0; width: 64px; height: 64px; float: left; } 
-.ie{ background: url('../img/icon_browsers.png') no-repeat -256px 0; width: 64px; height: 64px; float: left; } 
-.opera{ background: url('../img/icon_browsers.png') no-repeat -384px 0; width: 64px; height: 64px; float: left; } 
-.safari{ background: url('../img/icon_browsers.png') no-repeat -512px 0; width: 64px; height: 64px; float: left; } 
+.chrome{ background: url('../img/icon_browsers.png') no-repeat 0 0; width: 64px; height: 64px; float: left; opacity: 0.7;}
+.chrome:hover{opacity: 1.0;}
+.firefox{ background: url('../img/icon_browsers.png') no-repeat -128px 0; width: 64px; height: 64px; float: left; opacity: 0.7;}
+.firefox:hover{opacity: 1.0;}
+.ie{ background: url('../img/icon_browsers.png') no-repeat -256px 0; width: 64px; height: 64px; float: left; opacity: 0.7;}
+.ie:hover{opacity: 1.0;}
+.opera{ background: url('../img/icon_browsers.png') no-repeat -384px 0; width: 64px; height: 64px; float: left; opacity: 0.7;}
+.opera:hover{opacity: 1.0;}
+.safari{ background: url('../img/icon_browsers.png') no-repeat -512px 0; width: 64px; height: 64px; float: left; opacity: 0.7;}
+.safari:hover{opacity: 1.0;}

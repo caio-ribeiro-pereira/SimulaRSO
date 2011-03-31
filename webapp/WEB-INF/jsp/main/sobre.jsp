@@ -51,7 +51,7 @@
 	</ul>
 	<hr>
 	<h3>Compatibilidade com os navegadores:</h3>
-	<ul class="clearfix list-imgs" id="sobre">
+	<ul class="clearfix images" id="sobre">
 		<li><a class="firefox" title="Mozilla Firefox 3+" href="http://br.mozdev.org/" target="_blank"></a></li>
 		<li><a class="chrome" title="Google Chrome 5+" href="http://www.google.com/chrome/" target="_blank"></a></li>
 		<li><a class="ie" title="Microsoft Internet Explorer 9+" href="http://www.microsoft.com/brasil/windows/internet-explorer/" target="_blank"></a></li>

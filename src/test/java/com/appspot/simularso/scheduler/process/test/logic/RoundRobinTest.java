@@ -1,8 +1,7 @@
 package com.appspot.simularso.scheduler.process.test.logic;
 
 import java.util.Iterator;
-import java.util.LinkedList;
-import java.util.Set;
+import java.util.List;
 
 import org.hamcrest.Matchers;
 import org.junit.Assert;
@@ -11,12 +10,11 @@ import org.junit.Test;
 import com.appspot.simularso.exception.ProcessosConfiguracaoException;
 import com.appspot.simularso.exception.ProcessosNaoCarregadosException;
 import com.appspot.simularso.exception.TempoQuantumException;
-import com.appspot.simularso.model.Processo;
-import com.appspot.simularso.model.dto.ProcessoDTO;
+import com.appspot.simularso.model.ProcessoDTO;
+import com.appspot.simularso.model.ProcessoVO;
 import com.appspot.simularso.scheduler.process.logic.Escalonador;
 import com.appspot.simularso.scheduler.process.logic.impl.RoundRobin;
 import com.appspot.simularso.scheduler.process.test.InitialTestCase;
-
 
 public class RoundRobinTest extends InitialTestCase {
 
@@ -31,19 +29,19 @@ public class RoundRobinTest extends InitialTestCase {
 
 		Escalonador roundRobin = new RoundRobin(gerarArrayListDeProcessos(BURSTS_SIMPLES.length, BURSTS_SIMPLES, null, null), QUANTUM);
 
-		LinkedList<ProcessoDTO> resultadoGrafico = roundRobin.resultadoGraficoFinal();
+		List<ProcessoDTO> resultadoGrafico = roundRobin.resultadoGraficoFinal();
 		Assert.assertThat(resultadoGrafico, Matchers.notNullValue());
 		Assert.assertTrue(resultadoGrafico.size() == ID_COM_BURSTS_SIMPLES.length);
 		for (int i = 0; i < resultadoGrafico.size(); i++) {
 			Assert.assertThat(resultadoGrafico.get(i).getId(), Matchers.equalTo(ID_COM_BURSTS_SIMPLES[i]));
 		}
 
-		Set<Processo> resultado = roundRobin.resultadoFinal();
+		List<ProcessoVO> resultado = roundRobin.resultadoFinal();
 		Assert.assertThat(resultado, Matchers.notNullValue());
 		Assert.assertTrue(resultado.size() == BURSTS_SIMPLES.length);
-		Iterator<Processo> resultSet = resultado.iterator();
-		while (resultSet.hasNext()) {
-			Processo proc = resultSet.next();
+		Iterator<ProcessoVO> resultArrayList = resultado.iterator();
+		while (resultArrayList.hasNext()) {
+			ProcessoVO proc = resultArrayList.next();
 			Assert.assertThat(ID_COM_BURSTS_SIMPLES, Matchers.hasItemInArray(proc.getId()));
 			Assert.assertThat(TEMPO_ESPERA_COM_BURSTS_SIMPLES, Matchers.hasItemInArray(proc.getEspera()));
 			Assert.assertThat(TEMPO_RESPOSTA_COM_BURSTS_SIMPLES, Matchers.hasItemInArray(proc.getResposta()));
@@ -70,19 +68,19 @@ public class RoundRobinTest extends InitialTestCase {
 
 		Escalonador roundRobin = new RoundRobin(gerarArrayListDeProcessos(BURSTS_MEDIO.length, BURSTS_MEDIO, null, null), QUANTUM);
 
-		LinkedList<ProcessoDTO> resultadoGrafico = roundRobin.resultadoGraficoFinal();
+		List<ProcessoDTO> resultadoGrafico = roundRobin.resultadoGraficoFinal();
 		Assert.assertThat(resultadoGrafico, Matchers.notNullValue());
 		Assert.assertThat(resultadoGrafico.size(), Matchers.is(ID_COM_BURSTS_MEDIO.length));
 		for (int i = 0; i < resultadoGrafico.size(); i++) {
 			Assert.assertThat(resultadoGrafico.get(i).getId(), Matchers.equalTo(ID_COM_BURSTS_MEDIO[i]));
 		}
 
-		Set<Processo> resultado = roundRobin.resultadoFinal();
+		List<ProcessoVO> resultado = roundRobin.resultadoFinal();
 		Assert.assertThat(resultado, Matchers.notNullValue());
 		Assert.assertThat(resultado.size(), Matchers.is(BURSTS_MEDIO.length));
-		Iterator<Processo> resultSet = resultado.iterator();
-		while (resultSet.hasNext()) {
-			Processo proc = resultSet.next();
+		Iterator<ProcessoVO> resultArrayList = resultado.iterator();
+		while (resultArrayList.hasNext()) {
+			ProcessoVO proc = resultArrayList.next();
 			Assert.assertThat(ID_COM_BURSTS_MEDIO, Matchers.hasItemInArray(proc.getId()));
 			Assert.assertThat(TEMPO_ESPERA_COM_BURSTS_MEDIO, Matchers.hasItemInArray(proc.getEspera()));
 			Assert.assertThat(TEMPO_RESPOSTA_COM_BURSTS_MEDIO, Matchers.hasItemInArray(proc.getResposta()));
@@ -103,7 +101,7 @@ public class RoundRobinTest extends InitialTestCase {
 		final int QUANTUM_VALIDO = 20;
 		for (int i = 2; i <= 100; i++) {
 			Escalonador roundRobin = new RoundRobin(gerarListaDeProcessos(i, VALIDO), QUANTUM_VALIDO);
-			Set<Processo> resultado = roundRobin.resultadoFinal();
+			List<ProcessoVO> resultado = roundRobin.resultadoFinal();
 			Assert.assertThat(resultado, Matchers.notNullValue());
 		}
 	}
@@ -113,13 +111,10 @@ public class RoundRobinTest extends InitialTestCase {
 		final int TOTAL = 10;
 		final int QUANTUM_VALIDO = 50;
 		Escalonador roundRobin = new RoundRobin(gerarListaDeProcessos(TOTAL, VALIDO), QUANTUM_VALIDO);
-		Set<Processo> resultado = roundRobin.resultadoFinal();
-		Iterator<Processo> result = resultado.iterator();
+		List<ProcessoVO> resultado = roundRobin.resultadoFinal();
 		int id = 1;
-		while (result.hasNext()) {
-			Integer procId = result.next().getId();
-			Assert.assertTrue(id == procId);
-			id++;
+		for (ProcessoVO processo : resultado) {
+			Assert.assertTrue(id++ == processo.getId());
 		}
 	}
 

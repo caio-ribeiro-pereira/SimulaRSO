@@ -3,19 +3,19 @@ package com.appspot.simularso.controller;
 import java.util.ArrayList;
 import java.util.HashMap;
 
-import com.appspot.simularso.exception.ProcessosConfiguracaoException;
-import com.appspot.simularso.exception.ProcessosNaoCarregadosException;
-import com.appspot.simularso.exception.TempoQuantumException;
-import com.appspot.simularso.model.Processo;
-import com.appspot.simularso.scheduler.process.logic.Executor;
-import com.appspot.simularso.scheduler.process.logic.Escalonador.AlgoritmoProcesso;
-
 import br.com.caelum.vraptor.Get;
 import br.com.caelum.vraptor.Post;
 import br.com.caelum.vraptor.Resource;
 import br.com.caelum.vraptor.Result;
 import br.com.caelum.vraptor.Validator;
 import br.com.caelum.vraptor.validator.ValidationMessage;
+
+import com.appspot.simularso.exception.ProcessosConfiguracaoException;
+import com.appspot.simularso.exception.ProcessosNaoCarregadosException;
+import com.appspot.simularso.exception.TempoQuantumException;
+import com.appspot.simularso.facade.Executor;
+import com.appspot.simularso.model.Processo;
+import com.appspot.simularso.scheduler.process.logic.Escalonador.AlgoritmoProcesso;
 
 @Resource
 public class ProcessoController {

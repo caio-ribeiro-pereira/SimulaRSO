@@ -6,7 +6,7 @@
 	<p><strong class="clearfix error-message">Atenção estamos ainda em fase de testes e desenvolvimento!</strong></p>
 	<p><strong class="clearfix error-message">Este projeto atualmente não funciona em navegadores Internet Explorer 7 e 8.</strong></p>
 	<p><strong class="clearfix error-message">Por esses motivos, recomendamos utilizar browsers alternativos que dão suporte nativo ao HTML 5:</strong></p>
-	<ul class="clearfix list-imgs" id="index">
+	<ul class="clearfix images" id="index">
 		<li><a class="firefox" title="Mozilla Firefox 3+" href="http://br.mozdev.org/" target="_blank"></a></li>
 		<li><a class="chrome" title="Google Chrome 5+" href="http://www.google.com/chrome/" target="_blank"></a></li>
 		<li><a class="ie" title="Microsoft Internet Explorer 9+" href="http://www.microsoft.com/brasil/windows/internet-explorer/" target="_blank"></a></li>

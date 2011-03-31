@@ -56,6 +56,7 @@ public abstract class PaginadorBase {
 	}
 
 	protected ArrayList<Pagina> getResultadoGrafico() {
+		resultadoGrafico.trimToSize();
 		return resultadoGrafico;
 	}
 

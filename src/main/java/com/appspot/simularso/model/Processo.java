@@ -1,11 +1,10 @@
 package com.appspot.simularso.model;
 
 import java.io.Serializable;
-import java.util.Comparator;
 
-public class Processo implements Comparable<Processo>, Comparator<Processo>, Cloneable, Serializable {
+public class Processo implements Comparable<Processo>, Cloneable, Serializable {
 
-	private static final long serialVersionUID = -7188199719025405214L;
+	private static final long serialVersionUID = 4135991502330565347L;
 
 	public enum Estado {
 		EM_ESPERA, EXECUTANDO, FINALIZADO
@@ -234,12 +233,4 @@ public class Processo implements Comparable<Processo>, Comparator<Processo>, Clo
 		return 0;
 	}
 
-	@Override
-	public int compare(Processo p1, Processo p2) {
-		if (p1.getId() < p2.getId())
-			return -1;
-		if (p1.getId() > p2.getId())
-			return 1;
-		return 0;
-	}
 }

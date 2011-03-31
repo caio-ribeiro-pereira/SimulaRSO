@@ -1,8 +1,7 @@
 package com.appspot.simularso.scheduler.process.test.logic;
 
 import java.util.Iterator;
-import java.util.LinkedList;
-import java.util.Set;
+import java.util.List;
 
 import org.hamcrest.Matchers;
 import org.junit.Assert;
@@ -10,12 +9,11 @@ import org.junit.Test;
 
 import com.appspot.simularso.exception.ProcessosConfiguracaoException;
 import com.appspot.simularso.exception.ProcessosNaoCarregadosException;
-import com.appspot.simularso.model.Processo;
-import com.appspot.simularso.model.dto.ProcessoDTO;
+import com.appspot.simularso.model.ProcessoDTO;
+import com.appspot.simularso.model.ProcessoVO;
 import com.appspot.simularso.scheduler.process.logic.Escalonador;
 import com.appspot.simularso.scheduler.process.logic.impl.FCFS;
 import com.appspot.simularso.scheduler.process.test.InitialTestCase;
-
 
 /**
  * Testes para Escalonamento FCFS.
@@ -34,26 +32,26 @@ public class FCFSTest extends InitialTestCase {
 		final Integer[] TURN_AROUND_PREVISTA_POR_BURST_SIMPLES = { 30, 40, 60, 110, 200 };
 
 		Escalonador fcfs = new FCFS(gerarArrayListDeProcessos(BURSTS_SIMPLES.length, BURSTS_SIMPLES, null, null));
-		Set<Processo> resultado = fcfs.resultadoFinal();
+		List<ProcessoVO> resultado = fcfs.resultadoFinal();
 
 		Assert.assertThat(resultado, Matchers.notNullValue());
 		Assert.assertThat(resultado.size(), Matchers.is(BURSTS_SIMPLES.length));
 
-		Iterator<Processo> resultSet = resultado.iterator();
-		while (resultSet.hasNext()) {
-			Processo proc = resultSet.next();
+		Iterator<ProcessoVO> resultArrayList = resultado.iterator();
+		while (resultArrayList.hasNext()) {
+			ProcessoVO proc = resultArrayList.next();
 			Assert.assertThat(TEMPO_ESPERA_PREVISTA_POR_BURST_SIMPLES, Matchers.hasItemInArray(proc.getEspera()));
 			Assert.assertThat(TEMPO_RESPOSTA_PREVISTA_POR_BURST_SIMPLES, Matchers.hasItemInArray(proc.getResposta()));
 			Assert.assertThat(TURN_AROUND_PREVISTA_POR_BURST_SIMPLES, Matchers.hasItemInArray(proc.getTurnAround()));
 		}
 
-		LinkedList<ProcessoDTO> resultadoGrafico = fcfs.resultadoGraficoFinal();
+		List<ProcessoDTO> resultadoGrafico = fcfs.resultadoGraficoFinal();
 		Assert.assertThat(resultadoGrafico, Matchers.notNullValue());
 		Assert.assertThat(resultadoGrafico.size(), Matchers.is(BURSTS_SIMPLES.length));
 
-		Iterator<ProcessoDTO> resultSetGraphic = resultadoGrafico.iterator();
-		while (resultSetGraphic.hasNext()) {
-			ProcessoDTO proc = resultSetGraphic.next();
+		Iterator<ProcessoDTO> resultArrayListGraphic = resultadoGrafico.iterator();
+		while (resultArrayListGraphic.hasNext()) {
+			ProcessoDTO proc = resultArrayListGraphic.next();
 			Assert.assertThat(ID_SIMPLES, Matchers.hasItemInArray(proc.getId()));
 		}
 
@@ -76,25 +74,25 @@ public class FCFSTest extends InitialTestCase {
 
 		Escalonador fcfs = new FCFS(gerarArrayListDeProcessos(BURSTS_MEDIO.length, BURSTS_MEDIO, null, null));
 
-		Set<Processo> resultado = fcfs.resultadoFinal();
+		List<ProcessoVO> resultado = fcfs.resultadoFinal();
 		Assert.assertThat(resultado, Matchers.notNullValue());
 		Assert.assertThat(resultado.size(), Matchers.is(BURSTS_MEDIO.length));
 
-		Iterator<Processo> resultSet = resultado.iterator();
-		while (resultSet.hasNext()) {
-			Processo proc = resultSet.next();
+		Iterator<ProcessoVO> resultArrayList = resultado.iterator();
+		while (resultArrayList.hasNext()) {
+			ProcessoVO proc = resultArrayList.next();
 			Assert.assertThat(TEMPO_ESPERA_PREVISTA_POR_BURST_MEDIO, Matchers.hasItemInArray(proc.getEspera()));
 			Assert.assertThat(TEMPO_RESPOSTA_PREVISTA_POR_BURST_MEDIO, Matchers.hasItemInArray(proc.getResposta()));
 			Assert.assertThat(TURN_AROUND_PREVISTA_POR_BURST_MEDIO, Matchers.hasItemInArray(proc.getTurnAround()));
 		}
 
-		LinkedList<ProcessoDTO> resultadoGrafico = fcfs.resultadoGraficoFinal();
+		List<ProcessoDTO> resultadoGrafico = fcfs.resultadoGraficoFinal();
 		Assert.assertThat(resultadoGrafico, Matchers.notNullValue());
 		Assert.assertThat(resultadoGrafico.size(), Matchers.is(BURSTS_MEDIO.length));
 
-		Iterator<ProcessoDTO> resultSetGraphic = resultadoGrafico.iterator();
-		while (resultSetGraphic.hasNext()) {
-			ProcessoDTO proc = resultSetGraphic.next();
+		Iterator<ProcessoDTO> resultArrayListGraphic = resultadoGrafico.iterator();
+		while (resultArrayListGraphic.hasNext()) {
+			ProcessoDTO proc = resultArrayListGraphic.next();
 			Assert.assertThat(ID_MEDIO, Matchers.hasItemInArray(proc.getId()));
 		}
 
@@ -111,7 +109,7 @@ public class FCFSTest extends InitialTestCase {
 	public void deveEscalonarComDoisACemProcessos() {
 		for (int i = 2; i <= 100; i++) {
 			Escalonador fcfs = new FCFS(gerarListaDeProcessos(i, VALIDO));
-			Set<Processo> resultado = fcfs.resultadoFinal();
+			List<ProcessoVO> resultado = fcfs.resultadoFinal();
 			Assert.assertThat(resultado, Matchers.notNullValue());
 		}
 	}
@@ -120,14 +118,12 @@ public class FCFSTest extends InitialTestCase {
 	public void deveRetornarResultadoFinalOrdernadoPorProcessoId() {
 		final int TOTAL = 10;
 		Escalonador fcfs = new FCFS(gerarListaDeProcessos(TOTAL, VALIDO));
-		Set<Processo> resultado = fcfs.resultadoFinal();
-		Iterator<Processo> result = resultado.iterator();
+		List<ProcessoVO> resultado = fcfs.resultadoFinal();
 		int id = 1;
-		while (result.hasNext()) {
-			Integer procId = result.next().getId();
-			Assert.assertTrue(id == procId);
-			id++;
+		for (ProcessoVO processo : resultado) {
+			Assert.assertTrue(id++ == processo.getId());
 		}
+
 	}
 
 	@Test(expected = ProcessosConfiguracaoException.class)

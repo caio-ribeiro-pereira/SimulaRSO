@@ -5,6 +5,22 @@
 <body>
 	<h1 class="clearfix">Simulação de Escalonamento de Processos</h1>
 	<c:forEach var="resultList" items="${resultadosDosAlgoritmos}">
+		<script type="text/javascript">
+			head.ready(function(){
+				var spc = 20;
+				var processos = new Array();
+				<c:forEach items="${resultList.resultadoGrafico}" var="pr">
+				processos.push({x : ${pr.x} * spc, y : ${pr.y} * spc, w : ${pr.w} * spc, h : ${pr.h} * spc, cor: '${pr.cor}'});
+				</c:forEach>
+				
+				$('#processo-chart-${resultList.algoritmoNome}').attr('width', ((${resultList.tempoTotal} + 1) * spc));
+				$('#processo-chart-${resultList.algoritmoNome}').attr('height', ((${resultList.totalProcessos} + 2) * spc));
+				var canvas = document.getElementById('processo-chart-${resultList.algoritmoNome}');
+				var chart = new ProcessoChart(${resultList.totalProcessos}, canvas);
+				chart.draw(processos);
+				chart.background();
+			});
+		</script>
 		<strong class="clearfix result-message">Algoritmo: ${resultList.algoritmoNome}</strong>
 		<table class="clearfix result-panel">
 			<thead>
@@ -51,22 +67,6 @@
 			</canvas>
 		</div>
 		<hr>
-		<script type="text/javascript">
-			head.ready(function(){
-				var spc = 20;
-				var processos = new Array();
-				<c:forEach items="${resultList.resultadoGrafico}" var="pr">
-				processos.push({x : ${pr.x} * spc, y : ${pr.y} * spc, w : ${pr.w} * spc, h : ${pr.h} * spc, cor: '${pr.cor}'});
-				</c:forEach>
-				
-				$('#processo-chart-${resultList.algoritmoNome}').attr('width', ((${resultList.tempoTotal} + 1) * spc));
-				$('#processo-chart-${resultList.algoritmoNome}').attr('height', ((${resultList.totalProcessos} + 2) * spc));
-				var canvas = document.getElementById('processo-chart-${resultList.algoritmoNome}');
-				var chart = new ProcessoChart(${resultList.totalProcessos}, canvas);
-				chart.draw(processos);
-				chart.background();
-			});
-		</script>
 	</c:forEach>
 	<a class="clearfix" href="<c:url value="/escalonamento-processo" />">Realizar nova simulação...</a>
 </body>

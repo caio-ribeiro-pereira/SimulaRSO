@@ -1,11 +1,9 @@
 package com.appspot.simularso.scheduler.process.logic;
 
-import java.util.LinkedList;
-import java.util.Set;
+import java.util.List;
 
-import com.appspot.simularso.model.Processo;
-import com.appspot.simularso.model.dto.ProcessoDTO;
-
+import com.appspot.simularso.model.ProcessoDTO;
+import com.appspot.simularso.model.ProcessoVO;
 
 public interface Escalonador {
 
@@ -63,11 +61,11 @@ public interface Escalonador {
 
 	/**
 	 * 
-	 * Retorna um Set com os resultados reais de um escalonamento.
+	 * Retorna um LinkedList com os resultados reais de um escalonamento.
 	 * 
-	 * @return Set com resultados reais.
+	 * @return LinkedList com resultados reais.
 	 */
-	Set<Processo> resultadoFinal();
+	List<ProcessoVO> resultadoFinal();
 
 	/**
 	 * Retorna um LinkedList com os resultados graficos para simular o
@@ -75,7 +73,7 @@ public interface Escalonador {
 	 * 
 	 * @return LinkedList com resultados para grafico.
 	 */
-	LinkedList<ProcessoDTO> resultadoGraficoFinal();
+	List<ProcessoDTO> resultadoGraficoFinal();
 
 	/**
 	 * Retorna o nome do Algoritmo de escalonamento que foi executado.

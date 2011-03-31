@@ -3,25 +3,24 @@ package com.appspot.simularso.scheduler.process.logic;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.LinkedList;
-import java.util.Set;
-import java.util.TreeSet;
+import java.util.List;
 
 import com.appspot.simularso.exception.ProcessosConfiguracaoException;
 import com.appspot.simularso.exception.ProcessosNaoCarregadosException;
 import com.appspot.simularso.model.Processo;
-import com.appspot.simularso.model.dto.ProcessoDTO;
-
+import com.appspot.simularso.model.ProcessoDTO;
+import com.appspot.simularso.model.ProcessoVO;
 
 public abstract class EscalonadorBase {
 
-	private Set<Processo> resultado;
-	private LinkedList<ProcessoDTO> resultadoGrafico;
+	private List<ProcessoVO> resultado;
+	private List<ProcessoDTO> resultadoGrafico;
 	private int tempoTotal;
 	private int totalProcessos;
 	private ArrayList<Processo> processos;
 
 	public EscalonadorBase() {
-		this.resultado = new TreeSet<Processo>();
+		this.resultado = new LinkedList<ProcessoVO>();
 		this.resultadoGrafico = new LinkedList<ProcessoDTO>();
 	}
 
@@ -35,7 +34,7 @@ public abstract class EscalonadorBase {
 
 	protected double calcularEsperaMedia() {
 		int acumulado = 0;
-		for (Processo proc : resultado) {
+		for (ProcessoVO proc : resultado) {
 			acumulado += proc.getEspera();
 		}
 		return (acumulado / resultado.size());
@@ -43,7 +42,7 @@ public abstract class EscalonadorBase {
 
 	protected double calcularRespostaMedia() {
 		int acumulado = 0;
-		for (Processo proc : resultado) {
+		for (ProcessoVO proc : resultado) {
 			acumulado += proc.getResposta();
 		}
 		return (acumulado / resultado.size());
@@ -51,7 +50,7 @@ public abstract class EscalonadorBase {
 
 	protected double calcularTurnAroundMedio() {
 		int acumulado = 0;
-		for (Processo proc : resultado) {
+		for (ProcessoVO proc : resultado) {
 			acumulado += proc.getTurnAround();
 		}
 		return (acumulado / resultado.size());
@@ -111,18 +110,19 @@ public abstract class EscalonadorBase {
 	}
 
 	protected void adicionarResultadoFinal(Processo processo) {
-		resultado.add(processo);
+		resultado.add(extrairParaProcessoVO(processo));
 	}
 
 	protected void adicionarResultadoGrafico(Processo processo) {
 		resultadoGrafico.add(extrairParaProcessoDTO(processo));
 	}
 
-	protected Set<Processo> resultado() {
+	protected List<ProcessoVO> resultado() {
+		Collections.sort(resultado);
 		return resultado;
 	}
 
-	protected LinkedList<ProcessoDTO> resultadoGrafico() {
+	protected List<ProcessoDTO> resultadoGrafico() {
 		return resultadoGrafico;
 	}
 
@@ -134,6 +134,16 @@ public abstract class EscalonadorBase {
 		int h = 1;
 		String cor = processo.getCor();
 		return new ProcessoDTO(id, x, y, w, h, cor);
+	}
+
+	private ProcessoVO extrairParaProcessoVO(Processo processo) {
+		int id = processo.getId();
+		int burst = processo.getBurst();
+		int espera = processo.getEspera();
+		int resposta = processo.getResposta();
+		int turnAround = processo.getTurnAround();
+		String cor = processo.getCor();
+		return new ProcessoVO(id, burst, espera, resposta, turnAround, cor);
 	}
 
 	protected void validarProcessos(ArrayList<Processo> processos) {

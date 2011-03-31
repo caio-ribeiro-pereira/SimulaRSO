@@ -3,20 +3,22 @@
 <html lang="pt-BR">
   <head>
     <title><decorator:title default="Projeto SimulaRSO"></decorator:title></title>
-    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-    <meta name="author" content="Unisantos - Universidade Católica de Santos">
-    <meta name="author" content="André de Araújo Rodrigues">
-    <meta name="author" content="Caio Ribeiro Pereira">
-    <meta name="description" content="SimulaRSO - Simulador de Recursos de Sistemas Operacionais">
-    <meta name="keywords" content="simularso, simula-rso, simulador, recursos, sistemas, operacionais, sistema, operacional">
-    <meta name="keywords" content="simulação, comparativa, única, disciplina, aplicação, web">
-    <meta name="keywords" content="escalonamento, escalonador, escalonar, algoritmo, algoritmos, resultado">
-	<meta name="keywords" content="processos, processo, FCFS, SJF, SRT, Round Robin">
-	<meta name="keywords" content="tempo, burst, cpu, chegada, prioridade, espera, resposta, turn around">
-	<meta name="keywords" content="disco, discos, (I/O), FCFS, SSTF, SCAN, C-SCAN, C-LOOK">
-	<meta name="keywords" content="paginação, memória virtual, FIFO, LRU, Ótimo">
-	<meta name="keywords" content="string, referência, page faults, falta, página, substituição, páginas, paginação">
-	<meta name="keywords" content="unisantos, universidade, tcc, católica, santos">
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <meta name="author" content="Unisantos - Universidade Católica de Santos" />
+    <meta name="author" content="André de Araújo Rodrigues" />
+    <meta name="author" content="Caio Ribeiro Pereira" />
+    <meta name="description" content="SimulaRSO - Simulador de Recursos de Sistemas Operacionais" />
+    <meta name="keywords" content="simularso, simula-rso, simulador, recursos, sistemas, operacionais, sistema, operacional" />
+    <meta name="keywords" content="simulação, comparativa, única, disciplina, aplicação, web" />
+    <meta name="keywords" content="escalonamento, escalonador, escalonar, algoritmo, algoritmos, resultado" />
+	<meta name="keywords" content="processos, processo, FCFS, SJF, SRT, Round Robin" />
+	<meta name="keywords" content="tempo, burst, cpu, chegada, prioridade, espera, resposta, turn around" />
+	<meta name="keywords" content="disco, discos, (I/O), FCFS, SSTF, SCAN, C-SCAN, C-LOOK" />
+	<meta name="keywords" content="paginação, memória virtual, FIFO, LRU, Ótimo" />
+	<meta name="keywords" content="string, referência, page faults, falta, página, substituição, páginas, paginação" />
+	<meta name="keywords" content="unisantos, universidade, tcc, católica, santos" />
+	<meta name="msvalidate.01" content="8E5B78FB688E236FBD4D6659F8089AD6" />
+	<meta name="y_key" content="3406b834d5e1d184" />
     <link rel="shortcut icon" type="image/x-icon" href="<c:url value="/resources/img/favicon.ico" />" />
 	<link rel="stylesheet" type="text/css" href="<c:url value="/resources/css/reset-grid.min.css" />">
 	<link rel="stylesheet" type="text/css" href="<c:url value="/resources/css/main.css" />">
@@ -54,14 +56,16 @@
 			</nav>
 	  	</header>
 	  	<hr>
-	  	<section class="clearfix">
-	  		<c:if test="${not empty errors}">
-				<c:forEach var="error" items="${errors}">
-				    <strong class="clearfix error-message">${error.message}</strong>
-				</c:forEach>
-			</c:if>
-			<decorator:body />
-	  	</section>
+	  	<article class="clearfix">
+			<section class="clearfix">
+		  		<c:if test="${not empty errors}">
+					<c:forEach var="error" items="${errors}">
+					    <strong class="clearfix error-message">${error.message}</strong>
+					</c:forEach>
+				</c:if>
+				<decorator:body />
+		  	</section>	  	
+	  	</article>
 	  	<hr>
 		<footer class="clearfix">
 				<p><a href="http://www.unisantos.br" target="_blank"><strong>Universidade Católica de Santos</strong></a></p>
@@ -69,15 +73,13 @@
 		  		<p><strong>Aluno:</strong> André de Araújo Rodrigues - <a href="mailto:and.arodrigues@gmail.com">and.arodrigues@gmail.com</a></p>
 		  		<p><strong>Aluno:</strong> Caio Ribeiro Pereira - <a href="mailto:caio.ribeiro.pereira@gmail.com">caio.ribeiro.pereira@gmail.com</a></p>
 		  		<p><strong>Curso:</strong> Sistemas de Informação - 2011</p>
-		  		<div style="float:right;">
-					<ul class="clearfix list-imgs">
-			  			<li><a class="java" title="Tecnologia Java" href="http://www.oracle.com/br/technologies/java/index.html" target="_blank"></a></li>
-			  			<li><a class="html5" title="Tecnologia HTML5" href="http://www.w3schools.com/html5/default.asp" target="_blank"></a></li>
-			  			<li><a class="vraptor" title="Tecnologia VRaptor" href="http://vraptor.caelum.com.br" target="_blank"></a></li>
-			  			<li><a class="gae" title="Cloud Host Google App Engine" href="http://appengine.google.com/" target="_blank"></a></li>
-			  			<li><a class="github" title="Repositório GitHub Social Coding" href="http://github.com/" target="_blank"></a></li>
-			  		</ul>		  		
-		  		</div>
+				<ul class="clearfix images" id="tecnologias">
+			  		<li><a class="java" title="Tecnologia Java" href="http://www.oracle.com/br/technologies/java/index.html" target="_blank"></a></li>
+			  		<li><a class="html5" title="Tecnologia HTML5" href="http://www.w3schools.com/html5/default.asp" target="_blank"></a></li>
+			  		<li><a class="vraptor" title="Tecnologia VRaptor" href="http://vraptor.caelum.com.br" target="_blank"></a></li>
+			 		<li><a class="gae" title="Cloud Host Google App Engine" href="http://appengine.google.com/" target="_blank"></a></li>
+			 		<li><a class="github" title="Repositório GitHub Social Coding" href="http://github.com/" target="_blank"></a></li>
+			 	</ul>		  		
 	  	</footer>
   	</div>
   </body>

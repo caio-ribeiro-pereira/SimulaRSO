@@ -1,8 +1,7 @@
 package com.appspot.simularso.scheduler.process.test.logic;
 
 import java.util.Iterator;
-import java.util.LinkedList;
-import java.util.Set;
+import java.util.List;
 
 import org.hamcrest.Matchers;
 import org.junit.Assert;
@@ -10,12 +9,11 @@ import org.junit.Test;
 
 import com.appspot.simularso.exception.ProcessosConfiguracaoException;
 import com.appspot.simularso.exception.ProcessosNaoCarregadosException;
-import com.appspot.simularso.model.Processo;
-import com.appspot.simularso.model.dto.ProcessoDTO;
+import com.appspot.simularso.model.ProcessoDTO;
+import com.appspot.simularso.model.ProcessoVO;
 import com.appspot.simularso.scheduler.process.logic.Escalonador;
 import com.appspot.simularso.scheduler.process.logic.impl.SRT;
 import com.appspot.simularso.scheduler.process.test.InitialTestCase;
-
 
 public class SRTTest extends InitialTestCase {
 
@@ -29,19 +27,19 @@ public class SRTTest extends InitialTestCase {
 		final Integer[] TURN_AROUND_COM_BURSTS_SIMPLES = { 16, 7, 5, 11 };
 
 		Escalonador srt = new SRT(gerarArrayListDeProcessos(BURSTS_SIMPLES.length, BURSTS_SIMPLES, CHEGADAS_SIMPLES, null));
-		Set<Processo> resultado = srt.resultadoFinal();
+		List<ProcessoVO> resultado = srt.resultadoFinal();
 		Assert.assertThat(resultado, Matchers.notNullValue());
 		Assert.assertTrue(resultado.size() == BURSTS_SIMPLES.length);
 
-		Iterator<Processo> resultSetGraphic = resultado.iterator();
-		while (resultSetGraphic.hasNext()) {
-			Processo proc = resultSetGraphic.next();
+		Iterator<ProcessoVO> resultArrayListGraphic = resultado.iterator();
+		while (resultArrayListGraphic.hasNext()) {
+			ProcessoVO proc = resultArrayListGraphic.next();
 			Assert.assertThat(TEMPO_ESPERA_COM_BURSTS_SIMPLES, Matchers.hasItemInArray(proc.getEspera()));
 			Assert.assertThat(TEMPO_RESPOSTA_COM_BURSTS_SIMPLES, Matchers.hasItemInArray(proc.getResposta()));
 			Assert.assertThat(TURN_AROUND_COM_BURSTS_SIMPLES, Matchers.hasItemInArray(proc.getTurnAround()));
 		}
 
-		LinkedList<ProcessoDTO> resultadoGrafico = srt.resultadoGraficoFinal();
+		List<ProcessoDTO> resultadoGrafico = srt.resultadoGraficoFinal();
 		Assert.assertThat(resultadoGrafico, Matchers.notNullValue());
 		Assert.assertTrue(resultadoGrafico.size() == ID_COM_BURSTS_SIMPLES.length);
 
@@ -69,19 +67,19 @@ public class SRTTest extends InitialTestCase {
 
 		Escalonador srt = new SRT(gerarArrayListDeProcessos(BURSTS_MEDIO.length, BURSTS_MEDIO, CHEGADAS_MEDIO, null));
 
-		Set<Processo> resultado = srt.resultadoFinal();
+		List<ProcessoVO> resultado = srt.resultadoFinal();
 		Assert.assertThat(resultado, Matchers.notNullValue());
 		Assert.assertTrue(resultado.size() == BURSTS_MEDIO.length);
 
-		Iterator<Processo> resultSetGraphic = resultado.iterator();
-		while (resultSetGraphic.hasNext()) {
-			Processo proc = resultSetGraphic.next();
+		Iterator<ProcessoVO> resultArrayListGraphic = resultado.iterator();
+		while (resultArrayListGraphic.hasNext()) {
+			ProcessoVO proc = resultArrayListGraphic.next();
 			Assert.assertThat(TEMPO_ESPERA_COM_BURSTS_MEDIO, Matchers.hasItemInArray(proc.getEspera()));
 			Assert.assertThat(TEMPO_RESPOSTA_COM_BURSTS_MEDIO, Matchers.hasItemInArray(proc.getResposta()));
 			Assert.assertThat(TURN_AROUND_COM_BURSTS_MEDIO, Matchers.hasItemInArray(proc.getTurnAround()));
 		}
 
-		LinkedList<ProcessoDTO> resultadoGrafico = srt.resultadoGraficoFinal();
+		List<ProcessoDTO> resultadoGrafico = srt.resultadoGraficoFinal();
 		Assert.assertThat(resultadoGrafico, Matchers.notNullValue());
 		Assert.assertTrue(resultadoGrafico.size() == ID_COM_BURSTS_MEDIO.length);
 		for (int i = 0; i < resultadoGrafico.size(); i++) {
@@ -114,19 +112,19 @@ public class SRTTest extends InitialTestCase {
 		Escalonador srt = new SRT(
 				gerarArrayListDeProcessos(BURSTS_COMPLEXO.length, BURSTS_COMPLEXO, CHEGADAS_COMPLEXO, PRIORIDADE_COMPLEXO));
 
-		Set<Processo> resultado = srt.resultadoFinal();
+		List<ProcessoVO> resultado = srt.resultadoFinal();
 		Assert.assertThat(resultado, Matchers.notNullValue());
 		Assert.assertTrue(resultado.size() == BURSTS_COMPLEXO.length);
 
-		Iterator<Processo> resultSet = resultado.iterator();
-		while (resultSet.hasNext()) {
-			Processo proc = resultSet.next();
+		Iterator<ProcessoVO> resultArrayList = resultado.iterator();
+		while (resultArrayList.hasNext()) {
+			ProcessoVO proc = resultArrayList.next();
 			Assert.assertThat(TEMPO_ESPERA_COM_BURSTS_COMPLEXO, Matchers.hasItemInArray(proc.getEspera()));
 			Assert.assertThat(TEMPO_RESPOSTA_COM_BURSTS_COMPLEXO, Matchers.hasItemInArray(proc.getResposta()));
 			Assert.assertThat(TURN_AROUND_COM_BURSTS_COMPLEXO, Matchers.hasItemInArray(proc.getTurnAround()));
 		}
 
-		LinkedList<ProcessoDTO> resultadoGrafico = srt.resultadoGraficoFinal();
+		List<ProcessoDTO> resultadoGrafico = srt.resultadoGraficoFinal();
 		Assert.assertThat(resultadoGrafico, Matchers.notNullValue());
 		Assert.assertTrue(resultadoGrafico.size() == ID_PROCESSOS_COMPLEXO.length);
 		for (int i = 0; i < resultadoGrafico.size(); i++) {
@@ -146,7 +144,7 @@ public class SRTTest extends InitialTestCase {
 	public void deveEscalonarComDoisACemProcesso() {
 		for (int i = 2; i <= 100; i++) {
 			Escalonador srt = new SRT(gerarListaDeProcessos(i, VALIDO));
-			Set<Processo> resultado = srt.resultadoFinal();
+			List<ProcessoVO> resultado = srt.resultadoFinal();
 			Assert.assertThat(resultado, Matchers.notNullValue());
 		}
 	}
@@ -155,13 +153,10 @@ public class SRTTest extends InitialTestCase {
 	public void deveRetornarResultadoFinalOrdernadoPorProcessoId() {
 		final int TOTAL = 10;
 		Escalonador srt = new SRT(gerarListaDeProcessos(TOTAL, VALIDO));
-		Set<Processo> resultado = srt.resultadoFinal();
-		Iterator<Processo> result = resultado.iterator();
+		List<ProcessoVO> resultado = srt.resultadoFinal();
 		int id = 1;
-		while (result.hasNext()) {
-			Integer procId = result.next().getId();
-			Assert.assertTrue(id == procId);
-			id++;
+		for (ProcessoVO processo : resultado) {
+			Assert.assertTrue(id++ == processo.getId());
 		}
 	}
 
