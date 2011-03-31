@@ -9,7 +9,7 @@ import org.junit.Test;
 import com.appspot.simularso.exception.FramesInvalidoException;
 import com.appspot.simularso.exception.StringReferenciaInvalidaException;
 import com.appspot.simularso.model.Pagina;
-import com.appspot.simularso.paginator.logic.Paginador;
+import com.appspot.simularso.paginator.logic.PaginacaoMemoriaVirtual;
 import com.appspot.simularso.paginator.logic.impl.FIFO;
 
 public class FIFOTest {
@@ -18,10 +18,10 @@ public class FIFOTest {
 	public void deveRealizarSubstituicaoPaginaComStringReferenciaSimples() {
 		final Integer[] STRING_REFERENCIA = { 0, 1, 2, 2, 0, 3, 4, 5, 6, 7 };
 		final List<Integer> REFERENCIA = Arrays.asList(STRING_REFERENCIA);
-		final Integer FRAME_SIMPLES = 3;
+		final Integer FRAME = 3;
 		final int RESULTADO_PAGE_FAULT = 8;
 
-		Paginador fifo = new FIFO(REFERENCIA, FRAME_SIMPLES);
+		PaginacaoMemoriaVirtual fifo = new FIFO(REFERENCIA, FRAME);
 
 		List<Pagina> resultadoGrafico = fifo.resultadoGraficoFinal();
 		Assert.assertNotNull(resultadoGrafico);
@@ -37,10 +37,10 @@ public class FIFOTest {
 	public void deveRealizarSubstituicaoPaginaComStringReferenciaSimplesComAnomaliaDeBellady() {
 		final Integer[] STRING_REFERENCIA = { 0, 1, 2, 2, 0, 3, 4, 5, 6, 7 };
 		final List<Integer> REFERENCIA = Arrays.asList(STRING_REFERENCIA);
-		final Integer FRAME_SIMPLES = 4;
+		final Integer FRAME = 4;
 		final int RESULTADO_PAGE_FAULT = 8;
 
-		Paginador fifo = new FIFO(REFERENCIA, FRAME_SIMPLES);
+		PaginacaoMemoriaVirtual fifo = new FIFO(REFERENCIA, FRAME);
 
 		List<Pagina> resultadoGrafico = fifo.resultadoGraficoFinal();
 		Assert.assertNotNull(resultadoGrafico);
@@ -56,10 +56,10 @@ public class FIFOTest {
 	public void deveRealizarSubstituicaoPaginaComStringReferenciaMedio() {
 		final Integer[] STRING_REFERENCIA = { 0, 1, 2, 2, 0, 3, 4, 5, 6, 7, 2, 3, 0, 1, 4, 5, 6, 5, 3 };
 		final List<Integer> REFERENCIA = Arrays.asList(STRING_REFERENCIA);
-		final Integer FRAME_SIMPLES = 4;
+		final Integer FRAME = 4;
 		final int RESULTADO_PAGE_FAULT = 16;
 
-		Paginador fifo = new FIFO(REFERENCIA, FRAME_SIMPLES);
+		PaginacaoMemoriaVirtual fifo = new FIFO(REFERENCIA, FRAME);
 
 		List<Pagina> resultadoGrafico = fifo.resultadoGraficoFinal();
 		Assert.assertNotNull(resultadoGrafico);
@@ -75,10 +75,48 @@ public class FIFOTest {
 	public void deveRealizarSubstituicaoPaginaComStringReferenciaMedioComAnomaliaDeBellady() {
 		final Integer[] STRING_REFERENCIA = { 0, 1, 2, 2, 0, 3, 4, 5, 6, 7, 2, 3, 0, 1, 4, 5, 6, 5, 3 };
 		final List<Integer> REFERENCIA = Arrays.asList(STRING_REFERENCIA);
-		final Integer FRAME_SIMPLES = 5;
+		final Integer FRAME = 5;
 		final int RESULTADO_PAGE_FAULT = 16;
 
-		Paginador fifo = new FIFO(REFERENCIA, FRAME_SIMPLES);
+		PaginacaoMemoriaVirtual fifo = new FIFO(REFERENCIA, FRAME);
+
+		List<Pagina> resultadoGrafico = fifo.resultadoGraficoFinal();
+		Assert.assertNotNull(resultadoGrafico);
+
+		int pageFaults = fifo.totalPageFault();
+		Assert.assertTrue(RESULTADO_PAGE_FAULT == pageFaults);
+
+		List<Integer> stringRef = fifo.stringReferencia();
+		Assert.assertEquals(REFERENCIA, stringRef);
+	}
+
+	@Test
+	public void deveRealizarSubstituicaoPaginaComStringReferencia() {
+		final Integer[] STRING_REFERENCIA = { 0, 1, 2, 3, 0, 1, 4, 0, 1, 2, 3, 4 };
+		final List<Integer> REFERENCIA = Arrays.asList(STRING_REFERENCIA);
+		final Integer FRAME = 3;
+		final int RESULTADO_PAGE_FAULT = 9;
+
+		PaginacaoMemoriaVirtual fifo = new FIFO(REFERENCIA, FRAME);
+
+		List<Pagina> resultadoGrafico = fifo.resultadoGraficoFinal();
+		Assert.assertNotNull(resultadoGrafico);
+
+		int pageFaults = fifo.totalPageFault();
+		Assert.assertTrue(RESULTADO_PAGE_FAULT == pageFaults);
+
+		List<Integer> stringRef = fifo.stringReferencia();
+		Assert.assertEquals(REFERENCIA, stringRef);
+	}
+
+	@Test
+	public void deveRealizarSubstituicaoPaginaComStringReferenciaComAnomaliaDeBellady() {
+		final Integer[] STRING_REFERENCIA = { 0, 1, 2, 3, 0, 1, 4, 0, 1, 2, 3, 4 };
+		final List<Integer> REFERENCIA = Arrays.asList(STRING_REFERENCIA);
+		final Integer FRAME = 4;
+		final int RESULTADO_PAGE_FAULT = 10;
+
+		PaginacaoMemoriaVirtual fifo = new FIFO(REFERENCIA, FRAME);
 
 		List<Pagina> resultadoGrafico = fifo.resultadoGraficoFinal();
 		Assert.assertNotNull(resultadoGrafico);

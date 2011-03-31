@@ -5,7 +5,7 @@ import java.util.List;
 
 import com.appspot.simularso.model.Pagina;
 
-public interface Paginador {
+public interface PaginacaoMemoriaVirtual {
 
 	public enum AlgoritmoPaginacao {
 		FIFO("FI-FO"), OPT("OPT"), LRU("LRU");
@@ -43,4 +43,11 @@ public interface Paginador {
 	 * @return Array de Integer
 	 */
 	List<Integer> stringReferencia();
+
+	/**
+	 * Retorna o nome do Algoritmo de escalonamento que foi executado.
+	 * 
+	 * @return String nome do algoritmo escalonador.
+	 */
+	String algoritmoNome();
 }

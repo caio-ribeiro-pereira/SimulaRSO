@@ -33,14 +33,16 @@ nav a.middle{border-radius: 0px 0px 0px 0px;}
 nav a.right {border-radius: 0px 5px 5px 0px;}
 .processo{margin:1px;}
 .processo-cor{width: 20px; height: 20px; border: 1px solid #FFF; margin: 0 auto;}
+.pagination{margin:1px;}
 .error-message {color: #F00; text-align: center;}
 .info-message {color: #00F;	text-align: center;}
 .result-message{color: #000; text-align: center;}
 .main {background-color: #FFF; border-radius: 7px; margin-bottom: 25px;	margin-top: 25px; padding: 25px;}
 .graphic-panel {overflow-x: scroll;	overflow-y: hidden;	padding: 10px 0px 0px 10px;	width: 960px;}
 .menu {margin-top: 20px;}
-.input-box {border-radius: 5px;	border: 1px solid #000;	float: left; margin: 5px 18px 10px 0px;}
-.input-box p:first-child {text-align: center;}
+.processo-input-box {border-radius: 5px; border: 1px solid #000; float: left; margin: 5px 18px 10px 0px;}
+.processo-input-box p:first-child {text-align: center;}
+.pagination-input-box {border-radius: 5px; border: 1px solid #000; float: left; margin: 5px 18px 10px 0px; padding: 3px 3px;}
 .execute-panel p{text-align: right; margin: 20px 40px 0px 0px;}
 .result-panel {border-radius: 5px; border: 1px solid #000; margin: 20px 5px;}
 .result-panel td {padding: 5px 14px; text-align: center;}

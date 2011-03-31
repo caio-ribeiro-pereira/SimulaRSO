@@ -4,10 +4,10 @@ import java.util.ArrayList;
 import java.util.List;
 
 import com.appspot.simularso.model.Pagina;
-import com.appspot.simularso.paginator.logic.Paginador;
-import com.appspot.simularso.paginator.logic.PaginadorBase;
+import com.appspot.simularso.paginator.logic.PaginacaoMemoriaVirtual;
+import com.appspot.simularso.paginator.logic.PaginacaoMemoriaVirtualBase;
 
-public class FIFO extends PaginadorBase implements Paginador {
+public class FIFO extends PaginacaoMemoriaVirtualBase implements PaginacaoMemoriaVirtual {
 
 	public FIFO(List<Integer> stringRef, Integer frames) {
 		super(stringRef, frames);
@@ -51,5 +51,10 @@ public class FIFO extends PaginadorBase implements Paginador {
 	@Override
 	public List<Integer> stringReferencia() {
 		return getStringReferencia();
+	}
+
+	@Override
+	public String algoritmoNome() {
+		return AlgoritmoPaginacao.FIFO.getNome();
 	}
 }

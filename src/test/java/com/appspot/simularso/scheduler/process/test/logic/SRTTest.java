@@ -11,7 +11,7 @@ import com.appspot.simularso.exception.ProcessosConfiguracaoException;
 import com.appspot.simularso.exception.ProcessosNaoCarregadosException;
 import com.appspot.simularso.model.ProcessoDTO;
 import com.appspot.simularso.model.ProcessoVO;
-import com.appspot.simularso.scheduler.process.logic.Escalonador;
+import com.appspot.simularso.scheduler.process.logic.EscalonadorProcesso;
 import com.appspot.simularso.scheduler.process.logic.impl.SRT;
 import com.appspot.simularso.scheduler.process.test.InitialTestCase;
 
@@ -26,7 +26,7 @@ public class SRTTest extends InitialTestCase {
 		final Integer[] TEMPO_RESPOSTA_COM_BURSTS_SIMPLES = { 0, 2, 4, 7 };
 		final Integer[] TURN_AROUND_COM_BURSTS_SIMPLES = { 16, 7, 5, 11 };
 
-		Escalonador srt = new SRT(gerarArrayListDeProcessos(BURSTS_SIMPLES.length, BURSTS_SIMPLES, CHEGADAS_SIMPLES, null));
+		EscalonadorProcesso srt = new SRT(gerarArrayListDeProcessos(BURSTS_SIMPLES.length, BURSTS_SIMPLES, CHEGADAS_SIMPLES, null));
 		List<ProcessoVO> resultado = srt.resultadoFinal();
 		Assert.assertThat(resultado, Matchers.notNullValue());
 		Assert.assertTrue(resultado.size() == BURSTS_SIMPLES.length);
@@ -65,7 +65,7 @@ public class SRTTest extends InitialTestCase {
 		final Integer[] TEMPO_RESPOSTA_COM_BURSTS_MEDIO = { 0, 100, 130, 285, 200 };
 		final Integer[] TURN_AROUND_COM_BURSTS_MEDIO = { 100, 130, 200, 380, 285 };
 
-		Escalonador srt = new SRT(gerarArrayListDeProcessos(BURSTS_MEDIO.length, BURSTS_MEDIO, CHEGADAS_MEDIO, null));
+		EscalonadorProcesso srt = new SRT(gerarArrayListDeProcessos(BURSTS_MEDIO.length, BURSTS_MEDIO, CHEGADAS_MEDIO, null));
 
 		List<ProcessoVO> resultado = srt.resultadoFinal();
 		Assert.assertThat(resultado, Matchers.notNullValue());
@@ -109,7 +109,7 @@ public class SRTTest extends InitialTestCase {
 		final Integer[] TURN_AROUND_COM_BURSTS_COMPLEXO = { 10, 18, 60, 104, 528, 158, 881, 477, 221, 241, 244, 587, 310, 346, 355, 392,
 				717, 647, 432, 794 };
 
-		Escalonador srt = new SRT(
+		EscalonadorProcesso srt = new SRT(
 				gerarArrayListDeProcessos(BURSTS_COMPLEXO.length, BURSTS_COMPLEXO, CHEGADAS_COMPLEXO, PRIORIDADE_COMPLEXO));
 
 		List<ProcessoVO> resultado = srt.resultadoFinal();
@@ -143,7 +143,7 @@ public class SRTTest extends InitialTestCase {
 	@Test
 	public void deveEscalonarComDoisACemProcesso() {
 		for (int i = 2; i <= 100; i++) {
-			Escalonador srt = new SRT(gerarListaDeProcessos(i, VALIDO));
+			EscalonadorProcesso srt = new SRT(gerarListaDeProcessos(i, VALIDO));
 			List<ProcessoVO> resultado = srt.resultadoFinal();
 			Assert.assertThat(resultado, Matchers.notNullValue());
 		}
@@ -152,7 +152,7 @@ public class SRTTest extends InitialTestCase {
 	@Test
 	public void deveRetornarResultadoFinalOrdernadoPorProcessoId() {
 		final int TOTAL = 10;
-		Escalonador srt = new SRT(gerarListaDeProcessos(TOTAL, VALIDO));
+		EscalonadorProcesso srt = new SRT(gerarListaDeProcessos(TOTAL, VALIDO));
 		List<ProcessoVO> resultado = srt.resultadoFinal();
 		int id = 1;
 		for (ProcessoVO processo : resultado) {

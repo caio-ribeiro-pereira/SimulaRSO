@@ -6,10 +6,10 @@ import java.util.List;
 import com.appspot.simularso.model.Processo;
 import com.appspot.simularso.model.ProcessoDTO;
 import com.appspot.simularso.model.ProcessoVO;
-import com.appspot.simularso.scheduler.process.logic.Escalonador;
-import com.appspot.simularso.scheduler.process.logic.EscalonadorBase;
+import com.appspot.simularso.scheduler.process.logic.EscalonadorProcesso;
+import com.appspot.simularso.scheduler.process.logic.EscalonadorProcessoBase;
 
-public class FCFS extends EscalonadorBase implements Escalonador {
+public class FCFS extends EscalonadorProcessoBase implements EscalonadorProcesso {
 
 	public FCFS(ArrayList<Processo> processos) {
 		super();

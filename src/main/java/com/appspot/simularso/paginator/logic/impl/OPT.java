@@ -4,10 +4,10 @@ import java.util.ArrayList;
 import java.util.List;
 
 import com.appspot.simularso.model.Pagina;
-import com.appspot.simularso.paginator.logic.Paginador;
-import com.appspot.simularso.paginator.logic.PaginadorBase;
+import com.appspot.simularso.paginator.logic.PaginacaoMemoriaVirtual;
+import com.appspot.simularso.paginator.logic.PaginacaoMemoriaVirtualBase;
 
-public class OPT extends PaginadorBase implements Paginador {
+public class OPT extends PaginacaoMemoriaVirtualBase implements PaginacaoMemoriaVirtual {
 
 	public OPT(List<Integer> stringRef, Integer frames) {
 		super(stringRef, frames);
@@ -17,7 +17,7 @@ public class OPT extends PaginadorBase implements Paginador {
 	private void executar() {
 		for (int i = 0; i < getStringReferencia().size(); i++) {
 			pageFaultPadrao();
-			Integer palavra = getStringReferencia().get(i);
+			int palavra = getStringReferencia().get(i);
 			if (totalDePalavrasNaPagina() < totalFrames()) {
 				if (!foiAlocado(palavra)) {
 					inserirPagina(palavra);
@@ -35,36 +35,33 @@ public class OPT extends PaginadorBase implements Paginador {
 	}
 
 	private void atualizarIndex(int pointCutIndex) {
-		setIndex(buscarPaginaMaisDistante(pointCutIndex));
+		int palavraEncontrada = buscarPaginaMaisDistante(pointCutIndex);
+		setIndex(getPagina().getPalavras().indexOf(palavraEncontrada));
 	}
 
-	// TODO ; CORRIGIR BUG
 	private int buscarPaginaMaisDistante(int pointCutIndex) {
-		int maxIndex = 0;
-		boolean paginaEncontrada;
+		int maxPageIndex = pointCutIndex;
 
 		for (int pageIndex = 0; pageIndex < getPagina().getPalavras().size(); pageIndex++) {
-			paginaEncontrada = false;
+			boolean paginaEncontrada = false;
+			int palavraDaPagina = getPagina().getPalavras().get(pageIndex);
 
 			for (int stringRefIndex = pointCutIndex; stringRefIndex < getStringReferencia().size(); stringRefIndex++) {
-				int palavraDaPagina = getPagina().getPalavras().get(pageIndex);
 				int palavraDaStringReferencia = getStringReferencia().get(stringRefIndex);
 
 				if (palavraDaPagina == palavraDaStringReferencia) {
-
-					if (pageIndex >= maxIndex) {
-						maxIndex = pageIndex;
-						paginaEncontrada = true;
-						break;
+					if (stringRefIndex >= maxPageIndex) {
+						maxPageIndex = stringRefIndex;
 					}
-
+					paginaEncontrada = true;
+					break;
 				}
 			}
 			if (!paginaEncontrada) {
-				return maxIndex;
+				return getPagina().getPalavras().get(pageIndex);
 			}
 		}
-		return maxIndex;
+		return getStringReferencia().get(maxPageIndex);
 	}
 
 	@Override
@@ -80,5 +77,10 @@ public class OPT extends PaginadorBase implements Paginador {
 	@Override
 	public List<Integer> stringReferencia() {
 		return getStringReferencia();
+	}
+
+	@Override
+	public String algoritmoNome() {
+		return AlgoritmoPaginacao.OPT.getNome();
 	}
 }

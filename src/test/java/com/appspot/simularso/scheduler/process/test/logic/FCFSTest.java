@@ -11,7 +11,7 @@ import com.appspot.simularso.exception.ProcessosConfiguracaoException;
 import com.appspot.simularso.exception.ProcessosNaoCarregadosException;
 import com.appspot.simularso.model.ProcessoDTO;
 import com.appspot.simularso.model.ProcessoVO;
-import com.appspot.simularso.scheduler.process.logic.Escalonador;
+import com.appspot.simularso.scheduler.process.logic.EscalonadorProcesso;
 import com.appspot.simularso.scheduler.process.logic.impl.FCFS;
 import com.appspot.simularso.scheduler.process.test.InitialTestCase;
 
@@ -31,7 +31,7 @@ public class FCFSTest extends InitialTestCase {
 		final Integer[] TEMPO_RESPOSTA_PREVISTA_POR_BURST_SIMPLES = { 30, 40, 60, 110, 200 };
 		final Integer[] TURN_AROUND_PREVISTA_POR_BURST_SIMPLES = { 30, 40, 60, 110, 200 };
 
-		Escalonador fcfs = new FCFS(gerarArrayListDeProcessos(BURSTS_SIMPLES.length, BURSTS_SIMPLES, null, null));
+		EscalonadorProcesso fcfs = new FCFS(gerarArrayListDeProcessos(BURSTS_SIMPLES.length, BURSTS_SIMPLES, null, null));
 		List<ProcessoVO> resultado = fcfs.resultadoFinal();
 
 		Assert.assertThat(resultado, Matchers.notNullValue());
@@ -72,7 +72,7 @@ public class FCFSTest extends InitialTestCase {
 		final Integer[] TEMPO_RESPOSTA_PREVISTA_POR_BURST_MEDIO = { 20, 31, 70, 126, 135, 136, 141, 151 };
 		final Integer[] TURN_AROUND_PREVISTA_POR_BURST_MEDIO = { 20, 31, 70, 126, 135, 136, 141, 151 };
 
-		Escalonador fcfs = new FCFS(gerarArrayListDeProcessos(BURSTS_MEDIO.length, BURSTS_MEDIO, null, null));
+		EscalonadorProcesso fcfs = new FCFS(gerarArrayListDeProcessos(BURSTS_MEDIO.length, BURSTS_MEDIO, null, null));
 
 		List<ProcessoVO> resultado = fcfs.resultadoFinal();
 		Assert.assertThat(resultado, Matchers.notNullValue());
@@ -108,7 +108,7 @@ public class FCFSTest extends InitialTestCase {
 	@Test
 	public void deveEscalonarComDoisACemProcessos() {
 		for (int i = 2; i <= 100; i++) {
-			Escalonador fcfs = new FCFS(gerarListaDeProcessos(i, VALIDO));
+			EscalonadorProcesso fcfs = new FCFS(gerarListaDeProcessos(i, VALIDO));
 			List<ProcessoVO> resultado = fcfs.resultadoFinal();
 			Assert.assertThat(resultado, Matchers.notNullValue());
 		}
@@ -117,7 +117,7 @@ public class FCFSTest extends InitialTestCase {
 	@Test
 	public void deveRetornarResultadoFinalOrdernadoPorProcessoId() {
 		final int TOTAL = 10;
-		Escalonador fcfs = new FCFS(gerarListaDeProcessos(TOTAL, VALIDO));
+		EscalonadorProcesso fcfs = new FCFS(gerarListaDeProcessos(TOTAL, VALIDO));
 		List<ProcessoVO> resultado = fcfs.resultadoFinal();
 		int id = 1;
 		for (ProcessoVO processo : resultado) {

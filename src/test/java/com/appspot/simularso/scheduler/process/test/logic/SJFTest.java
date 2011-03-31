@@ -11,7 +11,7 @@ import com.appspot.simularso.exception.ProcessosConfiguracaoException;
 import com.appspot.simularso.exception.ProcessosNaoCarregadosException;
 import com.appspot.simularso.model.ProcessoDTO;
 import com.appspot.simularso.model.ProcessoVO;
-import com.appspot.simularso.scheduler.process.logic.Escalonador;
+import com.appspot.simularso.scheduler.process.logic.EscalonadorProcesso;
 import com.appspot.simularso.scheduler.process.logic.impl.SJF;
 import com.appspot.simularso.scheduler.process.test.InitialTestCase;
 
@@ -25,7 +25,7 @@ public class SJFTest extends InitialTestCase {
 		final Integer[] TEMPO_RESPOSTA_PREVISTA_POR_CHEGADA = { 100, 200, 300, 400, 500 };
 		final Integer[] TURN_AROUND_PREVISTA_POR_CHEGADA = { 100, 200, 300, 400, 500 };
 
-		Escalonador sjf = new SJF(gerarArrayListDeProcessos(TEMPOS_CHEGADA.length, null, TEMPOS_CHEGADA, null));
+		EscalonadorProcesso sjf = new SJF(gerarArrayListDeProcessos(TEMPOS_CHEGADA.length, null, TEMPOS_CHEGADA, null));
 
 		List<ProcessoVO> resultado = sjf.resultadoFinal();
 		Assert.assertThat(resultado, Matchers.notNullValue());
@@ -67,7 +67,7 @@ public class SJFTest extends InitialTestCase {
 		final Integer[] TEMPO_RESPOSTA_PREVISTA_POR_BURST = { 10, 30, 70, 120, 220 };
 		final Integer[] TURN_AROUND_PREVISTA_POR_BURST = { 10, 30, 70, 120, 220 };
 
-		Escalonador sjf = new SJF(gerarArrayListDeProcessos(BURSTS.length, BURSTS, null, null));
+		EscalonadorProcesso sjf = new SJF(gerarArrayListDeProcessos(BURSTS.length, BURSTS, null, null));
 
 		List<ProcessoVO> resultado = sjf.resultadoFinal();
 		Assert.assertThat(resultado, Matchers.notNullValue());
@@ -105,7 +105,7 @@ public class SJFTest extends InitialTestCase {
 	@Test
 	public void deveEscalonarComDoisACemProcessos() {
 		for (int i = 2; i <= 100; i++) {
-			Escalonador sjf = new SJF(gerarListaDeProcessos(i, VALIDO));
+			EscalonadorProcesso sjf = new SJF(gerarListaDeProcessos(i, VALIDO));
 			List<ProcessoVO> resultado = sjf.resultadoFinal();
 			Assert.assertThat(resultado, Matchers.notNullValue());
 		}
@@ -114,7 +114,7 @@ public class SJFTest extends InitialTestCase {
 	@Test
 	public void deveRetornarResultadoFinalOrdernadoPorProcessoId() {
 		final int TOTAL = 10;
-		Escalonador sjf = new SJF(gerarListaDeProcessos(TOTAL, VALIDO));
+		EscalonadorProcesso sjf = new SJF(gerarListaDeProcessos(TOTAL, VALIDO));
 		List<ProcessoVO> resultado = sjf.resultadoFinal();
 		int id = 1;
 		for (ProcessoVO processo : resultado) {

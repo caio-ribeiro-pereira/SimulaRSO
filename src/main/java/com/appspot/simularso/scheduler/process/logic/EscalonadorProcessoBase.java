@@ -11,7 +11,7 @@ import com.appspot.simularso.model.Processo;
 import com.appspot.simularso.model.ProcessoDTO;
 import com.appspot.simularso.model.ProcessoVO;
 
-public abstract class EscalonadorBase {
+public abstract class EscalonadorProcessoBase {
 
 	private List<ProcessoVO> resultado;
 	private List<ProcessoDTO> resultadoGrafico;
@@ -19,7 +19,7 @@ public abstract class EscalonadorBase {
 	private int totalProcessos;
 	private ArrayList<Processo> processos;
 
-	public EscalonadorBase() {
+	public EscalonadorProcessoBase() {
 		this.resultado = new LinkedList<ProcessoVO>();
 		this.resultadoGrafico = new LinkedList<ProcessoDTO>();
 	}

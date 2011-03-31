@@ -65,7 +65,7 @@
 				}
 			}).trigger('change');
 			
-			$('#total').bind('change',function(){
+			$('#total').change(function(){
 				var content = $('#process-menu').empty().hide();
 				var total = $('#total').val();
 				if(total > 0){
@@ -153,7 +153,7 @@
 		</div>
 		<div id="process-menu" class="clearfix menu"></div>
 		<script id="processTemplate" type="text/x-jquery-tmpl">
-			<div id="\${prDivId}" class="input-box">
+			<div id="\${prDivId}" class="processo-input-box">
 				<p class="clearfix processo">
 					<strong>\${prLabel}: </strong>
 					<input type="hidden" name="\${prIdName}" value="\${prId}">

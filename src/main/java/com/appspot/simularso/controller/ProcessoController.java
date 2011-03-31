@@ -13,21 +13,21 @@ import br.com.caelum.vraptor.validator.ValidationMessage;
 import com.appspot.simularso.exception.ProcessosConfiguracaoException;
 import com.appspot.simularso.exception.ProcessosNaoCarregadosException;
 import com.appspot.simularso.exception.TempoQuantumException;
-import com.appspot.simularso.facade.Executor;
+import com.appspot.simularso.facade.ProcessoFacade;
 import com.appspot.simularso.model.Processo;
-import com.appspot.simularso.scheduler.process.logic.Escalonador.AlgoritmoProcesso;
+import com.appspot.simularso.scheduler.process.logic.EscalonadorProcesso.AlgoritmoProcesso;
 
 @Resource
 public class ProcessoController {
 
 	private final Result result;
 	private final Validator validator;
-	private final Executor executor;
+	private final ProcessoFacade facade;
 
-	public ProcessoController(Result result, Validator validator, Executor executor) {
+	public ProcessoController(Result result, Validator validator, ProcessoFacade facade) {
 		this.result = result;
 		this.validator = validator;
-		this.executor = executor;
+		this.facade = facade;
 	}
 
 	@Get("/escalonamento-processo")
@@ -39,7 +39,7 @@ public class ProcessoController {
 	public void processoExecutar(ArrayList<AlgoritmoProcesso> algs, ArrayList<Processo> pr, int qt) {
 		try {
 
-			ArrayList<HashMap<String, Object>> resultadosDosAlgoritmos = executor.executarAlgoritmos(algs, pr, qt);
+			ArrayList<HashMap<String, Object>> resultadosDosAlgoritmos = facade.executar(algs, pr, qt);
 			result.include("resultadosDosAlgoritmos", resultadosDosAlgoritmos);
 			result.redirectTo(this).processoResultado();
 

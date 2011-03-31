@@ -7,10 +7,10 @@ import com.appspot.simularso.exception.TempoQuantumException;
 import com.appspot.simularso.model.Processo;
 import com.appspot.simularso.model.ProcessoDTO;
 import com.appspot.simularso.model.ProcessoVO;
-import com.appspot.simularso.scheduler.process.logic.Escalonador;
-import com.appspot.simularso.scheduler.process.logic.EscalonadorBase;
+import com.appspot.simularso.scheduler.process.logic.EscalonadorProcesso;
+import com.appspot.simularso.scheduler.process.logic.EscalonadorProcessoBase;
 
-public class RoundRobin extends EscalonadorBase implements Escalonador {
+public class RoundRobin extends EscalonadorProcessoBase implements EscalonadorProcesso {
 
 	private static final int MIN_QUANTUM = 1;
 	private static final int MAX_QUANTUM = 100;

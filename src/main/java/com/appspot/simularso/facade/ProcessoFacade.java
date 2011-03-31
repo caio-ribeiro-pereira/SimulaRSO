@@ -7,28 +7,24 @@ import java.util.HashMap;
 import br.com.caelum.vraptor.ioc.Component;
 
 import com.appspot.simularso.model.Processo;
-import com.appspot.simularso.scheduler.process.logic.Escalonador;
-import com.appspot.simularso.scheduler.process.logic.Escalonador.AlgoritmoProcesso;
+import com.appspot.simularso.scheduler.process.logic.EscalonadorProcesso;
+import com.appspot.simularso.scheduler.process.logic.EscalonadorProcesso.AlgoritmoProcesso;
 import com.appspot.simularso.scheduler.process.logic.impl.FCFS;
 import com.appspot.simularso.scheduler.process.logic.impl.RoundRobin;
 import com.appspot.simularso.scheduler.process.logic.impl.SJF;
 import com.appspot.simularso.scheduler.process.logic.impl.SRT;
 
 @Component
-public class Executor implements Serializable {
+public class ProcessoFacade implements Serializable {
 
-	private static final long serialVersionUID = 569390622666269186L;
+	private static final long serialVersionUID = 5445385891556187026L;
 
-	public Executor() {
-	}
-
-	public ArrayList<HashMap<String, Object>> executarAlgoritmos(final ArrayList<AlgoritmoProcesso> algs, final ArrayList<Processo> pr,
-			final int qt) {
+	public ArrayList<HashMap<String, Object>> executar(final ArrayList<AlgoritmoProcesso> algs, final ArrayList<Processo> pr, final int qt) {
 		if (algs != null && !algs.isEmpty()) {
 			ArrayList<HashMap<String, Object>> resultadosDosAlgoritmos = new ArrayList<HashMap<String, Object>>();
 			for (AlgoritmoProcesso alg : algs) {
 				ArrayList<Processo> processos = (ArrayList<Processo>) pr.clone();
-				HashMap<String, Object> resultado = executar(alg, processos, qt);
+				HashMap<String, Object> resultado = gerarResultado(alg, processos, qt);
 				resultadosDosAlgoritmos.add(resultado);
 			}
 			resultadosDosAlgoritmos.trimToSize();
@@ -38,8 +34,8 @@ public class Executor implements Serializable {
 		}
 	}
 
-	private HashMap<String, Object> executar(final AlgoritmoProcesso algortimo, final ArrayList<Processo> processos, final int quantum) {
-		Escalonador escalonador = null;
+	private HashMap<String, Object> gerarResultado(final AlgoritmoProcesso algortimo, final ArrayList<Processo> processos, final int quantum) {
+		EscalonadorProcesso escalonador = null;
 		if (algortimo == AlgoritmoProcesso.FCFS) {
 			escalonador = new FCFS(processos);
 		} else if (algortimo == AlgoritmoProcesso.SJF) {
@@ -54,7 +50,7 @@ public class Executor implements Serializable {
 		return gerarResultadoMap(escalonador);
 	}
 
-	private HashMap<String, Object> gerarResultadoMap(Escalonador escalonador) {
+	private HashMap<String, Object> gerarResultadoMap(EscalonadorProcesso escalonador) {
 		HashMap<String, Object> resultado = new HashMap<String, Object>();
 		resultado.put("resultadoFinal", escalonador.resultadoFinal());
 		resultado.put("resultadoGrafico", escalonador.resultadoGraficoFinal());

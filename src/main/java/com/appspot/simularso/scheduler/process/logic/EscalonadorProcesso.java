@@ -5,7 +5,7 @@ import java.util.List;
 import com.appspot.simularso.model.ProcessoDTO;
 import com.appspot.simularso.model.ProcessoVO;
 
-public interface Escalonador {
+public interface EscalonadorProcesso {
 
 	public enum AlgoritmoProcesso {
 		FCFS("FC-FS"), SJF("SJF"), SRT("SRT"), ROUNDROBIN("Round-Robin");

@@ -12,7 +12,7 @@ import com.appspot.simularso.exception.ProcessosNaoCarregadosException;
 import com.appspot.simularso.exception.TempoQuantumException;
 import com.appspot.simularso.model.ProcessoDTO;
 import com.appspot.simularso.model.ProcessoVO;
-import com.appspot.simularso.scheduler.process.logic.Escalonador;
+import com.appspot.simularso.scheduler.process.logic.EscalonadorProcesso;
 import com.appspot.simularso.scheduler.process.logic.impl.RoundRobin;
 import com.appspot.simularso.scheduler.process.test.InitialTestCase;
 
@@ -27,7 +27,7 @@ public class RoundRobinTest extends InitialTestCase {
 		final Integer[] TURN_AROUND_COM_BURSTS_SIMPLES = { 150, 40, 120, 130 };
 		final int QUANTUM = 20;
 
-		Escalonador roundRobin = new RoundRobin(gerarArrayListDeProcessos(BURSTS_SIMPLES.length, BURSTS_SIMPLES, null, null), QUANTUM);
+		EscalonadorProcesso roundRobin = new RoundRobin(gerarArrayListDeProcessos(BURSTS_SIMPLES.length, BURSTS_SIMPLES, null, null), QUANTUM);
 
 		List<ProcessoDTO> resultadoGrafico = roundRobin.resultadoGraficoFinal();
 		Assert.assertThat(resultadoGrafico, Matchers.notNullValue());
@@ -66,7 +66,7 @@ public class RoundRobinTest extends InitialTestCase {
 		final Integer[] TURN_AROUND_COM_BURSTS_MEDIO = { 134, 37, 162, 121 };
 		final int QUANTUM = 20;
 
-		Escalonador roundRobin = new RoundRobin(gerarArrayListDeProcessos(BURSTS_MEDIO.length, BURSTS_MEDIO, null, null), QUANTUM);
+		EscalonadorProcesso roundRobin = new RoundRobin(gerarArrayListDeProcessos(BURSTS_MEDIO.length, BURSTS_MEDIO, null, null), QUANTUM);
 
 		List<ProcessoDTO> resultadoGrafico = roundRobin.resultadoGraficoFinal();
 		Assert.assertThat(resultadoGrafico, Matchers.notNullValue());
@@ -100,7 +100,7 @@ public class RoundRobinTest extends InitialTestCase {
 	public void deveEscalonarComDoisACemProcessos() {
 		final int QUANTUM_VALIDO = 20;
 		for (int i = 2; i <= 100; i++) {
-			Escalonador roundRobin = new RoundRobin(gerarListaDeProcessos(i, VALIDO), QUANTUM_VALIDO);
+			EscalonadorProcesso roundRobin = new RoundRobin(gerarListaDeProcessos(i, VALIDO), QUANTUM_VALIDO);
 			List<ProcessoVO> resultado = roundRobin.resultadoFinal();
 			Assert.assertThat(resultado, Matchers.notNullValue());
 		}
@@ -110,7 +110,7 @@ public class RoundRobinTest extends InitialTestCase {
 	public void deveRetornarResultadoFinalOrdernadoPorProcessoId() {
 		final int TOTAL = 10;
 		final int QUANTUM_VALIDO = 50;
-		Escalonador roundRobin = new RoundRobin(gerarListaDeProcessos(TOTAL, VALIDO), QUANTUM_VALIDO);
+		EscalonadorProcesso roundRobin = new RoundRobin(gerarListaDeProcessos(TOTAL, VALIDO), QUANTUM_VALIDO);
 		List<ProcessoVO> resultado = roundRobin.resultadoFinal();
 		int id = 1;
 		for (ProcessoVO processo : resultado) {

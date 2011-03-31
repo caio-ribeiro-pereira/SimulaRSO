@@ -7,7 +7,9 @@ import com.appspot.simularso.exception.FramesInvalidoException;
 import com.appspot.simularso.exception.StringReferenciaInvalidaException;
 import com.appspot.simularso.model.Pagina;
 
-public abstract class PaginadorBase {
+public abstract class PaginacaoMemoriaVirtualBase {
+
+	private static final int MIN_FRAME = 2;
 
 	private List<Integer> stringRef;
 	private int frames;
@@ -16,7 +18,7 @@ public abstract class PaginadorBase {
 	private int pageFaults;
 	private int index;
 
-	protected PaginadorBase(List<Integer> stringRef, Integer frames) {
+	protected PaginacaoMemoriaVirtualBase(List<Integer> stringRef, Integer frames) {
 		validar(stringRef, frames);
 		this.stringRef = stringRef;
 		this.frames = frames;
@@ -30,7 +32,7 @@ public abstract class PaginadorBase {
 		if (stringRef == null || stringRef.size() <= 0) {
 			throw new StringReferenciaInvalidaException();
 		}
-		if (frames < 2) {
+		if (frames < MIN_FRAME) {
 			throw new FramesInvalidoException();
 		}
 	}
