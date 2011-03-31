@@ -7,16 +7,15 @@
 	<c:forEach var="resultList" items="${resultadosDosAlgoritmos}">
 		<script type="text/javascript">
 			head.ready(function(){
-				var spc = 20;
 				var processos = new Array();
 				<c:forEach items="${resultList.resultadoGrafico}" var="pr">
-				processos.push({x : ${pr.x} * spc, y : ${pr.y} * spc, w : ${pr.w} * spc, h : ${pr.h} * spc, cor: '${pr.cor}'});
+				processos.push({x : ${pr.x}, y : ${pr.y}, w : ${pr.w}, h : ${pr.h}, cor: '${pr.cor}'});
 				</c:forEach>
-				
-				$('#processo-chart-${resultList.algoritmoNome}').attr('width', ((${resultList.tempoTotal} + 1) * spc));
-				$('#processo-chart-${resultList.algoritmoNome}').attr('height', ((${resultList.totalProcessos} + 2) * spc));
+				var espaco = 26;				
+				$('#processo-chart-${resultList.algoritmoNome}').attr('width', ((${resultList.tempoTotal} + 1) * espaco));
+				$('#processo-chart-${resultList.algoritmoNome}').attr('height', ((${resultList.totalProcessos} + 2) * espaco));
 				var canvas = document.getElementById('processo-chart-${resultList.algoritmoNome}');
-				var chart = new ProcessoChart(${resultList.totalProcessos}, canvas);
+				var chart = new ProcessoChart(${resultList.totalProcessos}, canvas, espaco);
 				chart.draw(processos);
 				chart.background();
 			});
