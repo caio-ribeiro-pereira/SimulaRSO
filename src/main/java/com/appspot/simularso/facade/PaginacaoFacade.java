@@ -7,10 +7,10 @@ import java.util.List;
 
 import br.com.caelum.vraptor.ioc.Component;
 
-import com.appspot.simularso.paginator.logic.PaginacaoMemoriaVirtual;
-import com.appspot.simularso.paginator.logic.PaginacaoMemoriaVirtual.AlgoritmoPaginacao;
-import com.appspot.simularso.paginator.logic.impl.FIFO;
-import com.appspot.simularso.paginator.logic.impl.OPT;
+import com.appspot.simularso.paginator.memory.logic.PaginacaoMemoriaVirtual;
+import com.appspot.simularso.paginator.memory.logic.PaginacaoMemoriaVirtual.AlgoritmoPaginacao;
+import com.appspot.simularso.paginator.memory.logic.impl.FIFO;
+import com.appspot.simularso.paginator.memory.logic.impl.OPT;
 
 @Component
 public class PaginacaoFacade implements Serializable {

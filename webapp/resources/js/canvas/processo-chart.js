@@ -1,8 +1,13 @@
 /**
- * Canvas-Gantt Chart Desenvolvido por Caio R. Pereira Data: 18/02/2011
+ * Canvas Plugin Gantt Chart
  * 
  * Gráfico de Gantt para exibição de toda simulação dos algoritmos de
  * escalonamento de processos.
+ * 
+ * @autor Caio R. Pereira  
+ * @since 18/02/2011
+ * @twitter crp_underground
+ * @email caio.ribeiro.pereira@gmail.com
  * 
  */
 function ProcessoChart(total, canvas, espaco) {

@@ -1,4 +1,4 @@
-package com.appspot.simularso.paginator.logic;
+package com.appspot.simularso.paginator.memory.logic;
 
 import java.util.ArrayList;
 import java.util.List;

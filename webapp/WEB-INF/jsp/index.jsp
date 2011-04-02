@@ -42,9 +42,9 @@
 	  		<h1 class="clearfix">Projeto SimulaRSO</h1>
 	  		<nav class="clearfix ">
 	  			<a class="left" href="<c:url value="/" />">Home</a>
-				<a class="middle" href="<c:url value="/escalonamento-processo" />">Processos</a>
-				<a class="middle" href="<c:url value="/escalonamento-disco" />">Disco</a>
-				<a class="middle" href="<c:url value="/paginacao-memoria-virtual" />">Memória virtual</a>
+				<a class="middle" href="<c:url value="/escalonamento-processo" />">Escalonamento de processos</a>
+				<a class="middle" href="<c:url value="/escalonamento-disco" />">Escalonamento de disco</a>
+				<a class="middle" href="<c:url value="/paginacao-memoria" />">Paginação de memória</a>
 				<a class="right" href="<c:url value="/sobre" />">Sobre</a>
 			</nav>
 	  	</header>

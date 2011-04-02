@@ -1,9 +1,9 @@
 <!DOCTYPE html>
 <head>
-	<meta name="keywords" content="Simulação de memória virtual, algoritmos de substituição de páginas, memória virtual" />
-	<meta name="keywords" content="string, referência, páginas, paginação, FIFO, LRU, OPT" />
-	<title>Simulação de memória virtual - algoritmos de substituição de páginas</title>
-	<script type="text/javascript">
+	<meta name="keywords" content="Simulação de paginação, algoritmos de substituição de páginas" />
+	<meta name="keywords" content="string, referência, byte, páginas, paginação, FIFO, LRU, OPT" />
+	<title>Algoritmos de paginação</title>
+	<%-- <script type="text/javascript">
 		head.ready(function(){
 			$('#stringRefTotal').change(function(){
 				var content = $('#pagination-menu').empty().hide();
@@ -21,12 +21,13 @@
 				}
 			}).trigger('change');
 		});
-	
-	</script>
+	</script> --%>
 </head>
 <body>
-	<h2 class="clearfix">Simulação de memória virtual - algoritmos de substituição de páginas</h2>
-	<form id="pagination-form" action="<c:url value="/executar-paginacao-memoria-virtual"/>" method="post">
+	<h2 class="clearfix subtitle">Algoritmos de paginação</h2>
+	<strong class="clearfix error-message">Em desenvolvimento...</strong>
+	
+	<%-- <form id="pagination-form" action="<c:url value="/executar-paginacao-memoria-virtual"/>" method="post">
 		<div id="main-menu" class="clearfix menu">
 			<div class="grid_3">
 				<strong>Simulação: </strong>
@@ -87,5 +88,5 @@
 				<button id="random" type="button">Geração aleatória</button>			
 			</p>
 		</div>
-	</form>
+	</form> --%>
 </body>

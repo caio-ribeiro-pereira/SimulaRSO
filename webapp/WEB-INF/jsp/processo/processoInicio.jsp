@@ -2,7 +2,7 @@
 <head>
 	<meta name="keywords" content="Algoritmos de escalonamento de processos, Processos, Processo" />
 	<meta name="keywords" content="FC-FS, SJF, SRT, Round-Robin" />
-	<title>Simulação de escalonamento de processos</title>
+	<title>Algoritmos de escalonamento de processos</title>
 	<script type="text/javascript">
 		head.ready(function(){
 			var MAXBURST = 98;
@@ -91,7 +91,7 @@
 					content.append(template).show();
 					$('input[type="text"].burst').spinner({ min: 1, max: 99, showOn: 'always' }).onlyNumeric();
 					$('input[type="text"].chegada').spinner({ min: 0, max: 99, showOn: 'always' }).onlyNumeric();
-					$('input[type="text"].prioridade').spinner({ min: 0, max: 10, showOn: 'always' }).onlyNumeric();	
+					$('input[type="text"].prioridade').spinner({ min: 1, max: 10, showOn: 'always' }).onlyNumeric();	
 				}else {
 					$('#process-menu').html('<strong class="clearfix info-message">Determine o número de processos para simular.</strong>').show();
 				}
@@ -100,9 +100,28 @@
 	</script>
 </head>	
 <body>
-	<h2 class="clearfix">Algoritmos de escalonamento de processos</h2>
+	<h2 class="clearfix subtitle">Algoritmos de escalonamento de processos</h2>
+	<div class="clearfix main-info">
+		<p><strong>Regras para simulação:</strong></p>
+		<p>1 - Determine o modo de simulação: <strong>(Única ou Comparativa).</strong></p>
+		<p>2 - Escolha o total de processos que serão simulados: <strong>(Mínino 2 e Máximo 20)</strong></p>
+		<p>Ao escolher o total de processos será exibido um total de campos para configuração de cada processo baseado no total de processos definido.
+		   Em cada campo será possível configurar as características principais de um processo a ser hipotéticamente executado.
+		   Os atributos de um processo são: <strong>(*Burst-CPU, **Tempo de chegada, ***Prioridade).</strong></p>
+		<p>3 - ****Defina o algoritmo de escalonamento de processos: <strong>(FC-FS, SJF, SRT ou *****Round Robin).</strong></p>
+		<p>4 - Clique em executar para visualizar o resultado da execução do escalonamento.</p>
+		<p>5 - Ao lado do botão <strong>executar</strong> existe a opção: <strong>Configuração automática</strong>, que serve para configurar aletóriamente os atributos de cada processo.</p>
+		<p><strong>Observações:</strong></p>
+		<p><strong>* Burst-CPU:</strong> É tempo de surto de um processo, é o tempo necessário que o processo possui para utilizar a CPU.</p>
+		<p><strong>** Tempo de chegada:</strong> É o tempo em que o processo será iniciado, ou seja, é o tempo que o processo será alocado na CPU.</p>
+		<p><strong>*** Prioridade:</strong> É a prioridade que um processo possui em relação aos demais processos. 
+		   O valor de prioridade definido neste simulador é de <strong>1 (prioridade mais alta)</strong> até <strong>10 (prioridade mais baixa).</strong></p>
+		<p><strong>****</strong> Caso seja determinado o modo <strong>comparativo</strong> será necessário definir dois algoritmos de escalonamento distintos.</p>
+		<p><strong>*****</strong> Ao escolher o algoritmo <strong>Round Robin</strong> surgirá um campo chamado <strong>Tempo de corte</strong> que é para definir o tempo de corte para o funcionamento correto deste algoritmo.</p>
+	</div>
 	<form id="process-form" action="<c:url value="/executar-escalonamento-processo"/>" method="post">
 		<div id="main-menu" class="clearfix menu">
+			<p class="painel-config"><strong>Painel de configuração</strong></p>
 			<div class="grid_3">
 				<strong>Simulação: </strong>
 				<select id="modo">
@@ -176,7 +195,7 @@
 		<div class="clearfix execute-panel">
 			<p>
 				<button id="execute" type="submit">Executar</button>
-				<button id="random" type="button">Geração aleatória</button>			
+				<button id="random" type="button">Configuração automática</button>			
 			</p>
 		</div>
 	</form>

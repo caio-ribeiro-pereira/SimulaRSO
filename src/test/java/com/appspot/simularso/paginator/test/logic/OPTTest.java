@@ -9,8 +9,8 @@ import org.junit.Test;
 import com.appspot.simularso.exception.FramesInvalidoException;
 import com.appspot.simularso.exception.StringReferenciaInvalidaException;
 import com.appspot.simularso.model.Pagina;
-import com.appspot.simularso.paginator.logic.PaginacaoMemoriaVirtual;
-import com.appspot.simularso.paginator.logic.impl.OPT;
+import com.appspot.simularso.paginator.memory.logic.PaginacaoMemoriaVirtual;
+import com.appspot.simularso.paginator.memory.logic.impl.OPT;
 
 public class OPTTest {
 

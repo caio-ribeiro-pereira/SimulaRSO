@@ -14,7 +14,7 @@ import br.com.caelum.vraptor.validator.ValidationMessage;
 import com.appspot.simularso.exception.FramesInvalidoException;
 import com.appspot.simularso.exception.StringReferenciaInvalidaException;
 import com.appspot.simularso.facade.PaginacaoFacade;
-import com.appspot.simularso.paginator.logic.PaginacaoMemoriaVirtual.AlgoritmoPaginacao;
+import com.appspot.simularso.paginator.memory.logic.PaginacaoMemoriaVirtual.AlgoritmoPaginacao;
 
 @Resource
 public class PaginacaoController {
@@ -29,12 +29,12 @@ public class PaginacaoController {
 		this.facade = facade;
 	}
 
-	@Get("/paginacao-memoria-virtual")
+	@Get("/paginacao-memoria")
 	public void paginacaoInicio() {
 		result.include("algoritmoPaginacao", AlgoritmoPaginacao.values());
 	}
 
-	@Post("/executar-paginacao-memoria-virtual")
+	@Post("/executar-paginacao-memoria")
 	public void paginacaoExecutar(ArrayList<AlgoritmoPaginacao> algs, List<Integer> stringRef, Integer frames) {
 		try {
 
@@ -64,10 +64,10 @@ public class PaginacaoController {
 		}
 	}
 
-	@Get("/resultado-paginacao-memoria-virtual")
+	@Get("/resultado-paginacao-memoria")
 	public void paginacaoResultado() {
 		if (!result.included().containsKey("resultadosDosAlgoritmos")) {
-			validator.add(new ValidationMessage("Selecione um algoritmo para simular uma paginação de memória virtual.", ""));
+			validator.add(new ValidationMessage("Selecione um algoritmo para simular uma paginação de memória.", ""));
 			validator.onErrorRedirectTo(this).paginacaoInicio();
 		}
 	}

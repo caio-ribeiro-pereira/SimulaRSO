@@ -1,11 +1,11 @@
-package com.appspot.simularso.paginator.logic.impl;
+package com.appspot.simularso.paginator.memory.logic.impl;
 
 import java.util.ArrayList;
 import java.util.List;
 
 import com.appspot.simularso.model.Pagina;
-import com.appspot.simularso.paginator.logic.PaginacaoMemoriaVirtual;
-import com.appspot.simularso.paginator.logic.PaginacaoMemoriaVirtualBase;
+import com.appspot.simularso.paginator.memory.logic.PaginacaoMemoriaVirtual;
+import com.appspot.simularso.paginator.memory.logic.PaginacaoMemoriaVirtualBase;
 
 public class FIFO extends PaginacaoMemoriaVirtualBase implements PaginacaoMemoriaVirtual {
 
