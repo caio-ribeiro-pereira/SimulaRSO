@@ -4,7 +4,7 @@
 	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 </head>
 <body>
-	<h2 class="clearfix subtitle">SimulaRSO - Simulador de Recursos de Sistemas Operacionais</h2>
+	<h3 class="clearfix subtitle">SimulaRSO - Simulador de Recursos de Sistemas Operacionais</h3>
 	<p><small>O objetivo deste trabalho é o desenvolvimento de uma aplicação web
 	   a ser utilizado como ferramenta de apoio para a disciplina de 
 	   sistemas operacionais ou semelhantes, que simulem o comportamento dos
