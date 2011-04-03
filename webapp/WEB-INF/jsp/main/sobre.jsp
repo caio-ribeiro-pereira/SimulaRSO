@@ -1,7 +1,6 @@
 <!DOCTYPE html>
 <head>
 	<title>Detalhes sobre o projeto</title>
-	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 </head>
 <body>
 	<h3 class="clearfix subtitle">SimulaRSO - Simulador de Recursos de Sistemas Operacionais</h3>
@@ -51,11 +50,5 @@
 	</ul>
 	<hr>
 	<h3 class="clearfix subtitle">Compatibilidade com os navegadores</h3>
-	<ul class="clearfix browser-images">
-		<li><a class="firefox" title="Mozilla Firefox 3+" href="http://br.mozdev.org/" target="_blank"></a></li>
-		<li><a class="chrome" title="Google Chrome 5+" href="http://www.google.com/chrome/" target="_blank"></a></li>
-		<li><a class="ie" title="Microsoft Internet Explorer 9+" href="http://www.microsoft.com/brasil/windows/internet-explorer/" target="_blank"></a></li>
-		<li><a class="opera" title="Opera 9+" href="http://www.opera.com/" target="_blank"></a></li>
-		<li><a class="safari" title="Apple Safari 4+" href="http://www.apple.com/br/safari/" target="_blank"></a></li>
-	</ul>
+	<%@include file="browsers.jsp"%>
 </body>
