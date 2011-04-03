@@ -3,4 +3,4 @@ Allow: /escalonamento-processo
 Allow: /escalonamento-disco
 Allow: /paginacao-memoria
 Allow: /sobre
-Allow: /home
+Allow: /

@@ -31,7 +31,7 @@ nav a:hover {background-color: #888; color: #FFF; text-decoration: none;}
 nav a.left {border-radius: 5px 0px 0px 5px;}
 nav a.middle{border-radius: 0px 0px 0px 0px;}
 nav a.right {border-radius: 0px 5px 5px 0px;}
-.subtitle{line-height: 1.6em; font-size: 1.6em; text-align: center;}
+.subtitle{line-height: 1.6em; text-align: center;}
 .main-info{border-radius: 5px; border: 1px solid #000; padding: 20px 30px; margin: 20px 0px 10px 0px;}
 .main-info p{line-height: 1.6em;}
 .painel-config{line-height: 1.4em; font-size: 1.4em; text-align: center;}
@@ -51,16 +51,15 @@ nav a.right {border-radius: 0px 5px 5px 0px;}
 .result-panel {border-radius: 5px; border: 1px solid #000; margin: 20px 5px;}
 .result-panel td {padding: 5px 14px; text-align: center;}
 .result-line{color:#FFF;}
+.checked{color:#00F;}
 #odd{background-color: #555;}
 #even{background-color:#000;}
 #odd:hover{background-color: #CCC; color:#000}
 #even:hover{background-color:#CCC; color:#000}
 
-#sobre{margin-top: 20px;}
-#index{margin-left:320px;}
-#tecnologias{margin: 20px 0px 5px 450px;}
+.tecnologias-images{list-style: none; margin: 20px 0px 5px 450px;}
+.browser-images{list-style: none; margin: 20px 0px 20px 320px;}
 
-.images{list-style: none;}
 .gae{ background: url('../img/icon_tecnologias.png') no-repeat 0 0; width: 86px; height: 48px; float: left; opacity: 0.7;} 
 .gae:hover{opacity: 1.0;}
 .github{ background: url('../img/icon_tecnologias.png') no-repeat -136px 0; width: 149px; height: 48px; float: left; opacity: 0.7; } 

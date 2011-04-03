@@ -24,8 +24,6 @@
 		  _gaq.push(['_setAccount', 'UA-7076509-2']);
 		  _gaq.push(['_trackPageview']);
   		head.js('<c:url value="/resources/js/jquery/jquery-pack-plugins.min.js" />',
-  				'<c:url value="/resources/js/canvas/colors.js" />',
-  				'<c:url value="/resources/js/canvas/processo-chart.js" />',
   				'<c:url value="/resources/js/google-analytics.js" />'
   		);
   		head.ready(function(){
@@ -66,7 +64,7 @@
 		  		<p><strong>Aluno:</strong> André de Araújo Rodrigues - <a href="mailto:and.arodrigues@gmail.com">and.arodrigues@gmail.com</a></p>
 		  		<p><strong>Aluno:</strong> Caio Ribeiro Pereira - <a href="mailto:caio.ribeiro.pereira@gmail.com">caio.ribeiro.pereira@gmail.com</a></p>
 		  		<p><strong>Curso:</strong> Sistemas de Informação - 2011</p>
-				<ul class="clearfix images" id="tecnologias">
+				<ul class="clearfix tecnologias-images">
 			  		<li><a class="java" title="Tecnologia Java" href="http://www.oracle.com/br/technologies/java/index.html" target="_blank"></a></li>
 			  		<li><a class="html5" title="Tecnologia HTML5" href="http://www.w3schools.com/html5/default.asp" target="_blank"></a></li>
 			  		<li><a class="vraptor" title="Tecnologia VRaptor" href="http://vraptor.caelum.com.br" target="_blank"></a></li>

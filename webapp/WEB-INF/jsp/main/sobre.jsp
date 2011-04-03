@@ -21,17 +21,17 @@
 	</p>
 	<p><strong><a href="https://github.com/caio-ribeiro-pereira/SimulaRSO" target="_blank">Clique aqui para visualizar o código-fonte do projeto.</a></strong></p>
 	<hr>
-	<h3>Funcionalidades do projeto:</h3>
+	<h3 class="clearfix subtitle">Funcionalidades do projeto</h3>
 	<ul>
-		<li><small>Simular os principais algoritmos de escalonamento de processos com até 20 processos.</small></li>
-		<li><small>Simular os principais algoritmos de escalonamento de disco com até 20 requisições de (I/O) em disco.</small></li>
-		<li><small>Simular os principais algoritmos de substituição de página de memória virtual com até 20 palavras de bytes na escrita.</small></li>
-		<li><small>Realizar simulação comparativa para analisar o comportamento de dois algoritmos distintos.</small></li>
-		<li><small>Exibição comportamental dos algoritmos através de gráficos intuitivos.</small></li>
-		<li><small>Projeto internacionalizado com suporte aos idiomas inglês e português.</small></li> 
+		<li><small class="checked" title="Funcionalidade liberada.">Simular os principais algoritmos de escalonamento de processos com até 20 processos.</small></li>
+		<li><small title="Funcionalidade em desenvolvimento.">Simular os principais algoritmos de escalonamento de disco com até 20 requisições de (I/O) em disco.</small></li>
+		<li><small title="Funcionalidade em desenvolvimento.">Simular os principais algoritmos de substituição de página de memória virtual com até 20 palavras de bytes na escrita.</small></li>
+		<li><small class="checked" title="Funcionalidade liberada.">Realizar simulação comparativa para analisar o comportamento de dois algoritmos distintos.</small></li>
+		<li><small class="checked" title="Funcionalidade liberada.">Exibição comportamental dos algoritmos através de gráficos intuitivos.</small></li>
+		<li><small title="Funcionalidade em desenvolvimento.">Projeto internacionalizado com suporte aos idiomas inglês e português.</small></li> 
 	</ul>
 	<hr>
-	<h3>Tecnologias utilizadas:</h3>
+	<h3 class="clearfix subtitle">Tecnologias utilizadas</h3>
 	<ul>
 		<li><small><a href="http://www.oracle.com/br/technologies/java/index.html" target="_blank"><strong>Java 6</strong></a> - Linguagem principal do projeto.</small></li>
 		<li><small><a href="http://www.github.com" target="_blank"><strong>GitHub</strong></a> - Repositório para projetos open-source.</small></li>
@@ -50,8 +50,8 @@
 		<li><small><a href="http://developer.mozilla.org/en/Canvas_tutorial" target="_blank"><strong>Canvas</strong></a> - Elemento principal do projeto, que permite renderizar elementos gráficos em 2D.</small></li>
 	</ul>
 	<hr>
-	<h3>Compatibilidade com os navegadores:</h3>
-	<ul class="clearfix images" id="sobre">
+	<h3 class="clearfix subtitle">Compatibilidade com os navegadores</h3>
+	<ul class="clearfix browser-images">
 		<li><a class="firefox" title="Mozilla Firefox 3+" href="http://br.mozdev.org/" target="_blank"></a></li>
 		<li><a class="chrome" title="Google Chrome 5+" href="http://www.google.com/chrome/" target="_blank"></a></li>
 		<li><a class="ie" title="Microsoft Internet Explorer 9+" href="http://www.microsoft.com/brasil/windows/internet-explorer/" target="_blank"></a></li>

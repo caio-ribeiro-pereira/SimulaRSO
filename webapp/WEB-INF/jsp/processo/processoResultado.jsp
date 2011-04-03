@@ -6,6 +6,8 @@
 	<h2 class="clearfix">Simulação de Escalonamento de Processos</h1>
 	<c:forEach var="resultList" items="${resultadosDosAlgoritmos}">
 		<script type="text/javascript">
+			head.js('<c:url value="/resources/js/canvas/colors.js" />',
+					'<c:url value="/resources/js/canvas/processo-chart.js" />');
 			head.ready(function(){
 				var processos = new Array();
 				<c:forEach items="${resultList.resultadoGrafico}" var="pr">
