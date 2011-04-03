@@ -31,44 +31,45 @@ public class PaginacaoController {
 
 	@Get("/paginacao-memoria")
 	public void paginacaoInicio() {
-		result.include("algoritmoPaginacao", AlgoritmoPaginacao.values());
+		// result.include("algoritmoPaginacao", AlgoritmoPaginacao.values());
 	}
 
-	@Post("/executar-paginacao-memoria")
-	public void paginacaoExecutar(ArrayList<AlgoritmoPaginacao> algs, List<Integer> stringRef, Integer frames) {
-		try {
-
-			ArrayList<HashMap<String, Object>> resultadosDosAlgoritmos = facade.executar(algs, stringRef, frames);
-			result.include("resultadosDosAlgoritmos", resultadosDosAlgoritmos);
-			result.redirectTo(this).paginacaoResultado();
-
-		} catch (IllegalArgumentException e) {
-
-			validator.add(new ValidationMessage("Nenhum algoritmo foi selecionado.", ""));
-			validator.onErrorRedirectTo(this).paginacaoInicio();
-
-		} catch (StringReferenciaInvalidaException e) {
-
-			validator.add(new ValidationMessage("String de Referência inválida.", ""));
-			validator.onErrorRedirectTo(this).paginacaoInicio();
-
-		} catch (FramesInvalidoException e) {
-
-			validator.add(new ValidationMessage("O número de frames de alocação mínimo é 2.", ""));
-			validator.onErrorRedirectTo(this).paginacaoInicio();
-
-		} catch (Exception e) {
-
-			validator.add(new ValidationMessage("Ocorreu uma falha na execução do algoritmo.", ""));
-			validator.onErrorRedirectTo(this).paginacaoInicio();
-		}
-	}
-
-	@Get("/resultado-paginacao-memoria")
-	public void paginacaoResultado() {
-		if (!result.included().containsKey("resultadosDosAlgoritmos")) {
-			validator.add(new ValidationMessage("Selecione um algoritmo para simular uma paginação de memória.", ""));
-			validator.onErrorRedirectTo(this).paginacaoInicio();
-		}
-	}
+	/*
+	 * @Post("/executar-paginacao-memoria") public void
+	 * paginacaoExecutar(ArrayList<AlgoritmoPaginacao> algs, List<Integer>
+	 * stringRef, Integer frames) { try {
+	 * 
+	 * ArrayList<HashMap<String, Object>> resultadosDosAlgoritmos =
+	 * facade.executar(algs, stringRef, frames);
+	 * result.include("resultadosDosAlgoritmos", resultadosDosAlgoritmos);
+	 * result.redirectTo(this).paginacaoResultado();
+	 * 
+	 * } catch (IllegalArgumentException e) {
+	 * 
+	 * validator.add(new ValidationMessage("Nenhum algoritmo foi selecionado.",
+	 * "")); validator.onErrorRedirectTo(this).paginacaoInicio();
+	 * 
+	 * } catch (StringReferenciaInvalidaException e) {
+	 * 
+	 * validator.add(new ValidationMessage("String de Referência inválida.",
+	 * "")); validator.onErrorRedirectTo(this).paginacaoInicio();
+	 * 
+	 * } catch (FramesInvalidoException e) {
+	 * 
+	 * validator.add(new
+	 * ValidationMessage("O número de frames de alocação mínimo é 2.", ""));
+	 * validator.onErrorRedirectTo(this).paginacaoInicio();
+	 * 
+	 * } catch (Exception e) {
+	 * 
+	 * validator.add(new
+	 * ValidationMessage("Ocorreu uma falha na execução do algoritmo.", ""));
+	 * validator.onErrorRedirectTo(this).paginacaoInicio(); } }
+	 * 
+	 * @Get("/resultado-paginacao-memoria") public void paginacaoResultado() {
+	 * if (!result.included().containsKey("resultadosDosAlgoritmos")) {
+	 * validator.add(new ValidationMessage(
+	 * "Selecione um algoritmo para simular uma paginação de memória.", ""));
+	 * validator.onErrorRedirectTo(this).paginacaoInicio(); } }
+	 */
 }

@@ -12,11 +12,9 @@ public class DiscoController {
 
 	}
 
-	@Post("/executar-escalonamento-disco")
-	public void discoExecutar() {
-	}
-
-	@Get("/resultado-escalonamento-disco")
-	public void discoResultado() {
-	}
+	/*
+	 * @Post("/executar-escalonamento-disco") public void discoExecutar() { }
+	 * 
+	 * @Get("/resultado-escalonamento-disco") public void discoResultado() { }
+	 */
 }

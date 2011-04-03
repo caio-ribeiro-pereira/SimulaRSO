@@ -7,7 +7,7 @@
 	<display-name>simula-rso</display-name>
 
 	<session-config>
-		<session-timeout>1440</session-timeout>
+		<session-timeout>60</session-timeout>
 	</session-config>
 
 	<jsp-config>
@@ -38,16 +38,6 @@
 		<param-name>javax.servlet.jsp.jstl.fmt.locale</param-name>
 		<param-value>pt_BR</param-value>
 	</context-param>
-
-	<filter>
-		<filter-name>sitemesh</filter-name>
-		<filter-class>com.opensymphony.sitemesh.webapp.SiteMeshFilter</filter-class>
-	</filter>
-
-	<filter-mapping>
-		<filter-name>sitemesh</filter-name>
-		<url-pattern>/*</url-pattern>
-	</filter-mapping>
 
 	<filter>
 		<filter-name>vraptor</filter-name>

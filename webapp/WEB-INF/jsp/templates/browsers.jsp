@@ -1,3 +1,4 @@
+<%@ page contentType="text/html; charset=UTF-8" %>
 <p class="clearfix browser">
 		<a class="mozilla-firefox" title="Mozilla Firefox 3+" href="http://br.mozdev.org/" target="_blank"></a>
 		<a class="google-chrome" title="Google Chrome 5+" href="http://www.google.com/chrome/" target="_blank"></a>
