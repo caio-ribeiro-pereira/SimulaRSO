@@ -10,8 +10,7 @@
 			if(head.browser.ie && head.browser.version !== "9.0"){
 				head.js('<c:url value="/resources/js/ie/excanvas.min.js" />');	
 			}
-			head.js('<c:url value="/resources/js/canvas/processo-chart.js" />')
-				.js('<c:url value="/resources/js/canvas/colors.js" />');
+			head.js('<c:url value="/resources/js/canvas/colors.js" />');
 			head.ready(function(){
 				var MAXBURST = 98;
 				var MAXCHEGADA = 100;

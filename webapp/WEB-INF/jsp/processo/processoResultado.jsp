@@ -16,8 +16,7 @@
 							if(head.browser.ie && head.browser.version !== "9.0"){
 								head.js('<c:url value="/resources/js/ie/excanvas.min.js" />');	
 							}
-							head.js('<c:url value="/resources/js/canvas/processo-chart.js" />')
-								.js('<c:url value="/resources/js/canvas/colors.js" />');
+							head.js('<c:url value="/resources/js/canvas/processo-chart.js" />');
 							head.ready(function(){
 								var processos = new Array();
 								<c:forEach items="${resultList.resultadoGrafico}" var="pr">

@@ -18,39 +18,43 @@ e será contribuído para a Universidade Catolica de Santos - www.unisantos.br.
 ====================================================================
 
 Funcionalidades:
-+ Simular os principais algoritmos de escalonamento de processos com até 20 processos.
-+ Simular os principais algoritmos de escalonamento de disco com até 20 requisições de (I/O) em disco.
-+ Simular os principais algoritmos de substituição de página de memória virtual com até 20 palavras de bytes na escrita.
-+ Realizar simulação comparativa para analisar o comportamento de dois algoritmos distintos.
-+ Exibição comportamental dos algoritmos através de gráficos 2D intuitivos.
-+ Internacionalização com suporte aos idiomas inglês e português.
+	+ Simular os principais algoritmos de escalonamento de processos com até 20 processos.
+	+ Simular os principais algoritmos de escalonamento de disco com até 20 requisições de (I/O) em disco.
+	+ Simular os principais algoritmos de substituição de página de memória virtual com até 40 palavras de bytes na escrita.
+	+ Realizar simulação comparativa para analisar o comportamento de dois algoritmos distintos.
+	+ Exibição comportamental dos algoritmos através de gráficos 2D intuitivos.
+	+ Internacionalização com suporte aos idiomas inglês e português.
 
 ====================================================================
 O projeto utiliza o seguintes frameworks:
 
-+ Java 6 - Linguagem principal do projeto.
-+ Google App Engine - Serviço de hospedagem em Cloud Computing.
-+ GitHub - Repositório para projetos open-source.
-+ JUnit 4.8 - Framework para realizar testes unitários.
-+ VRaptor 3.3.1 - Framework MVC Brasileiro desenvolvido pela equipe da Caelum.
-+ JSTL 1.2 - Tags Java para incorporar funcionalidades em um jsp.
-+ Sitemesh 2.4.2 - Framework para modelar templates web.
-+ JQuery 1.5 - Biblioteca Javascript Cross-browser para manipulação de elementos DOM HTML.
-+ JQuery-UI 1.8.10 - Conjunto de interfaces gráficas prontas e totalmente compatível com JQuery.
-+ JQuery-UI Spinner - Plugin JQuery para implementar um componente do tipo spinner control.
-+ Head JS 0.9 - Script para carregamento rápido de arquivos javascript.
-+ 960 Grid System - Framework CSS para posicionamento de objetos DOM Cross-Browser em formato de grid.
-+ HTML 5 - Estrutura do projeto utilizando as boas práticas de HTML 5 de acordo com as normas W3C.
-+ CSS 3 - Para estilizacao do layout do projeto, também seguindo as normas W3C.
-+ Canvas - Elemento principal do projeto, que permite renderizar elementos gráficos em 2D.
+- Infra-estrutura:
+	+ Google App Engine - Serviço de hospedagem de Cloud Computing para aplicações Java ou Python.
+	+ GitHub - Repositório para projetos open-source.
+- Server-Side:
+	+ Java 6 - Linguagem principal do projeto.
+	+ JUnit 4.8 - Framework para realizar testes unitários nos algoritmos.
+	+ VRaptor 3.3.1 - Framework MVC Brasileiro desenvolvido pela equipe da Caelum.
+	+ JSTL 1.2 - Tags Java para incorporar funcionalidades em uma página JSP.
+
+- Client-Side:
+	+ HTML 5 - Estrutura do projeto utilizando as boas práticas de HTML 5 de acordo com as normas W3C.
+	+ CSS 3 - Para estilizacao do layout do projeto, também seguindo as normas W3C.
+	+ Canvas - Elemento principal do projeto, que permite renderizar elementos gráficos em 2D.
+	+ JQuery 1.5.1 - Biblioteca Javascript Cross-browser para manipulação de elementos DOM HTML.
+	+ JQuery-UI 1.8.11 - Conjunto de interfaces gráficas prontas e totalmente compatível com JQuery.
+	+ JQuery-UI Spinner 1.24 - Plugin JQuery para implementar um componente do tipo spinner control.
+	+ Head JS 0.9 - Script para carregamento rápido de arquivos javascript.
+	+ 960 Grid System - Framework CSS para posicionamento de objetos DOM Cross-Browser em formato de grid.
+	
 
 ====================================================================
 Browsers Compatíveis:
-+ Internet Explorer 9+
-+ Firefox 3.5+
-+ Chrome 5+
-+ Safari 4+
-+ Opera 9+
+	+ Internet Explorer 9+
+	+ Firefox 3.5+
+	+ Chrome 5+
+	+ Safari 4+
+	+ Opera 9+
 ====================================================================
 
 Emails: 
