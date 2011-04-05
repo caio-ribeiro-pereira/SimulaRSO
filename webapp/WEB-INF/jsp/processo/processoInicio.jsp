@@ -196,11 +196,11 @@
 								</p>
 								<p class="clearfix processo">
 									<label class="grid_1" for="\${inputChegada}"><small>Chegada: </small></label>
-									<input type="text" class="grid_1 chegada" name="\${prChegadaName}" id="\${inputChegada}" maxlength="2">
+									<input type="text" class="grid_1 chegada" name="\${prChegadaName}" id="\${inputChegada}" value="0" maxlength="2">
 								</p>
 								<p class="clearfix processo">
 									<label class="grid_1" for="\${inputPrioridade}"><small>Prioridade: </small></label>
-									<input type="text" class="grid_1 prioridade" name="\${prPrioridadeName}" id="\${inputPrioridade}" maxlength="2">
+									<input type="text" class="grid_1 prioridade" name="\${prPrioridadeName}" id="\${inputPrioridade}" value="1" maxlength="2">
 								</p>
 							</div>
 						</script>

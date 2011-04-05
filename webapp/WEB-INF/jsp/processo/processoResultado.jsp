@@ -4,6 +4,12 @@
 	<head>
 		<title>Simulação Gráfica de Escalonamento de Processos</title>
 		<%@include file="../templates/script-loader.jsp"%>
+		<script type="text/javascript">
+			if(head.browser.ie && head.browser.version !== "9.0"){
+				head.js('<c:url value="/resources/js/ie/excanvas.min.js" />');	
+			}
+			head.js('<c:url value="/resources/js/canvas/processo-chart.js" />');
+		</script>
 	</head>	
 	<body>
 		<div class="container_12 main">
@@ -13,10 +19,6 @@
 					<h2 class="clearfix subtitle">Simulação de Escalonamento de Processos</h2>
 					<c:forEach var="resultList" items="${resultadosDosAlgoritmos}">
 						<script type="text/javascript">
-							if(head.browser.ie && head.browser.version !== "9.0"){
-								head.js('<c:url value="/resources/js/ie/excanvas.min.js" />');	
-							}
-							head.js('<c:url value="/resources/js/canvas/processo-chart.js" />');
 							head.ready(function(){
 								var processos = new Array();
 								<c:forEach items="${resultList.resultadoGrafico}" var="pr">
@@ -45,7 +47,7 @@
 							<tbody>
 								<c:forEach items="${resultList.resultadoFinal}" var="res">
 									<tr class="result-line" ${res.id % 2 eq 1 ? 'id="even"':'id="odd"'}>
-										<td><div class="processo-cor" style="background-color:${res.cor};"></div></td>
+										<td><div class="processo-cor" style="background-color:${res.cor};">${res.id}</div></td>
 										<td>${res.burst} ms</td>
 										<td>${res.espera} ms</td>
 										<td>${res.resposta} ms</td>

@@ -215,9 +215,9 @@ public class Processo implements Comparable<Processo>, Cloneable, Serializable {
 
 	public int compareTo(Processo processo) {
 		if (this.getPrioridade() < processo.getPrioridade())
-			return 1;
-		if (this.getPrioridade() > processo.getPrioridade())
 			return -1;
+		if (this.getPrioridade() > processo.getPrioridade())
+			return 1;
 		if (this.getChegada() < processo.getChegada())
 			return -1;
 		if (this.getChegada() > processo.getChegada())

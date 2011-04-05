@@ -25,7 +25,7 @@
 					   disco rígido: <strong>(FCFS, SSTF, SCAN, C-SCAN, C-LOOK).</strong> e apresentar o 
 					   comportamento dos algoritmos de substituição de páginas de uma memória virtual <strong>(FIFO, LRU, Ótimo)</strong>.</small>
 					</p>
-					<p><strong><a href="https://github.com/caio-ribeiro-pereira/SimulaRSO" target="_blank">Clique aqui para visualizar o código-fonte do projeto.</a></strong></p>
+					<p class="info-message"><a href="https://github.com/caio-ribeiro-pereira/SimulaRSO" target="_blank"><strong>Clique aqui para visualizar o código-fonte do projeto.</strong></a></p>
 					<hr>
 					<h3 class="clearfix subtitle">Funcionalidades do projeto</h3>
 					<ul>

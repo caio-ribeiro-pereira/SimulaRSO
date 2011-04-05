@@ -36,7 +36,7 @@ nav a.right {border-radius: 0px 5px 5px 0px;}
 .main-info p{line-height: 1.6em;}
 .painel-config{line-height: 1.4em; font-size: 1.4em; text-align: center;}
 .processo{margin:1px;}
-.processo-cor{width: 20px; height: 20px; border: 1px solid #FFF; margin: 0 auto;}
+.processo-cor{width: 26px; height: 20px; border: 1px solid #FFF; margin: 0 auto;}
 .pagination{margin:1px;}
 .error-message {color: #F00; text-align: center;}
 .info-message {color: #00F;	text-align: center;}
