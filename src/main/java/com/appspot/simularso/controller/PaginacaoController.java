@@ -14,7 +14,8 @@ import br.com.caelum.vraptor.validator.ValidationMessage;
 import com.appspot.simularso.exception.FramesInvalidoException;
 import com.appspot.simularso.exception.StringReferenciaInvalidaException;
 import com.appspot.simularso.facade.PaginacaoFacade;
-import com.appspot.simularso.paginator.memory.logic.PaginacaoMemoriaVirtual.AlgoritmoPaginacao;
+import com.appspot.simularso.paginator.memory.logic.impl.PaginacaoMemoriaAlgoritmo;
+import com.appspot.simularso.util.EnumToClass;
 
 @Resource
 public class PaginacaoController {
@@ -22,25 +23,27 @@ public class PaginacaoController {
 	private final Result result;
 	private final Validator validator;
 	private final PaginacaoFacade facade;
+	private final EnumToClass enumToClass;
 
-	public PaginacaoController(Result result, Validator validator, PaginacaoFacade facade) {
+	public PaginacaoController(Result result, Validator validator, PaginacaoFacade facade, EnumToClass enumToClass) {
 		this.result = result;
 		this.validator = validator;
 		this.facade = facade;
+		this.enumToClass = enumToClass;
 	}
 
 	@Get("/paginacao-memoria")
 	public void paginacaoInicio() {
-		// result.include("algoritmoPaginacao", AlgoritmoPaginacao.values());
+		result.include("paginacaoMemoriaAlgoritmo", PaginacaoMemoriaAlgoritmo.values());
 	}
 
 	/*
 	 * @Post("/executar-paginacao-memoria") public void
-	 * paginacaoExecutar(ArrayList<AlgoritmoPaginacao> algs, List<Integer>
-	 * stringRef, Integer frames) { try {
+	 * paginacaoExecutar(ArrayList<PaginacaoMemoriaAlgoritmo> algs,
+	 * List<Integer> stringRef, Integer frames) { try {
 	 * 
 	 * ArrayList<HashMap<String, Object>> resultadosDosAlgoritmos =
-	 * facade.executar(algs, stringRef, frames);
+	 * facade.executar(algs, stringRef, frames, enumToClass);
 	 * result.include("resultadosDosAlgoritmos", resultadosDosAlgoritmos);
 	 * result.redirectTo(this).paginacaoResultado();
 	 * 

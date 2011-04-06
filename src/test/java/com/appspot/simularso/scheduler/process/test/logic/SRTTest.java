@@ -26,8 +26,7 @@ public class SRTTest extends InitialTestCase {
 		final Integer[] TEMPO_RESPOSTA_COM_BURSTS_SIMPLES = { 0, 2, 4, 7 };
 		final Integer[] TURN_AROUND_COM_BURSTS_SIMPLES = { 16, 7, 5, 11 };
 
-		EscalonadorProcesso srt = new SRT(gerarArrayListDeProcessos(BURSTS_SIMPLES.length, BURSTS_SIMPLES,
-				CHEGADAS_SIMPLES, null));
+		EscalonadorProcesso srt = new SRT(gerarArrayListDeProcessos(BURSTS_SIMPLES.length, BURSTS_SIMPLES, CHEGADAS_SIMPLES, null), 0);
 		List<ProcessoVO> resultado = srt.resultadoFinal();
 		Assert.assertThat(resultado, Matchers.notNullValue());
 		Assert.assertTrue(resultado.size() == BURSTS_SIMPLES.length);
@@ -66,8 +65,7 @@ public class SRTTest extends InitialTestCase {
 		final Integer[] TEMPO_RESPOSTA_COM_BURSTS_MEDIO = { 0, 100, 130, 285, 200 };
 		final Integer[] TURN_AROUND_COM_BURSTS_MEDIO = { 100, 130, 200, 380, 285 };
 
-		EscalonadorProcesso srt = new SRT(gerarArrayListDeProcessos(BURSTS_MEDIO.length, BURSTS_MEDIO, CHEGADAS_MEDIO,
-				null));
+		EscalonadorProcesso srt = new SRT(gerarArrayListDeProcessos(BURSTS_MEDIO.length, BURSTS_MEDIO, CHEGADAS_MEDIO, null), 0);
 
 		List<ProcessoVO> resultado = srt.resultadoFinal();
 		Assert.assertThat(resultado, Matchers.notNullValue());
@@ -100,7 +98,7 @@ public class SRTTest extends InitialTestCase {
 	@Test
 	public void deveEscalonarComDoisACemProcesso() {
 		for (int i = 2; i <= 100; i++) {
-			EscalonadorProcesso srt = new SRT(gerarListaDeProcessos(i, VALIDO));
+			EscalonadorProcesso srt = new SRT(gerarListaDeProcessos(i, VALIDO), 0);
 			List<ProcessoVO> resultado = srt.resultadoFinal();
 			Assert.assertThat(resultado, Matchers.notNullValue());
 		}
@@ -109,7 +107,7 @@ public class SRTTest extends InitialTestCase {
 	@Test
 	public void deveRetornarResultadoFinalOrdernadoPorProcessoId() {
 		final int TOTAL = 10;
-		EscalonadorProcesso srt = new SRT(gerarListaDeProcessos(TOTAL, VALIDO));
+		EscalonadorProcesso srt = new SRT(gerarListaDeProcessos(TOTAL, VALIDO), 0);
 		List<ProcessoVO> resultado = srt.resultadoFinal();
 		int id = 1;
 		for (ProcessoVO processo : resultado) {
@@ -119,11 +117,11 @@ public class SRTTest extends InitialTestCase {
 
 	@Test(expected = ProcessosNaoCarregadosException.class)
 	public void naoDeveEscalonarSemAntesCarregarOsProcessos() {
-		new SRT(null);
+		new SRT(null, 0);
 	}
 
 	@Test(expected = ProcessosConfiguracaoException.class)
 	public void naoDeveEscalonarProcessosComBurstNegativo() {
-		new SRT(gerarListaDeProcessos(3, INVALIDO));
+		new SRT(gerarListaDeProcessos(3, INVALIDO), 0);
 	}
 }

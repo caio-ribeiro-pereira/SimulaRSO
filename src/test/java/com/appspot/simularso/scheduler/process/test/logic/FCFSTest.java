@@ -31,7 +31,7 @@ public class FCFSTest extends InitialTestCase {
 		final Integer[] TEMPO_RESPOSTA_PREVISTA_POR_BURST_SIMPLES = { 30, 40, 60, 110, 200 };
 		final Integer[] TURN_AROUND_PREVISTA_POR_BURST_SIMPLES = { 30, 40, 60, 110, 200 };
 
-		EscalonadorProcesso fcfs = new FCFS(gerarArrayListDeProcessos(BURSTS_SIMPLES.length, BURSTS_SIMPLES, null, null));
+		EscalonadorProcesso fcfs = new FCFS(gerarArrayListDeProcessos(BURSTS_SIMPLES.length, BURSTS_SIMPLES, null, null), 0);
 		List<ProcessoVO> resultado = fcfs.resultadoFinal();
 
 		Assert.assertThat(resultado, Matchers.notNullValue());
@@ -72,7 +72,7 @@ public class FCFSTest extends InitialTestCase {
 		final Integer[] TEMPO_RESPOSTA_PREVISTA_POR_BURST_MEDIO = { 20, 31, 70, 126, 135, 136, 141, 151 };
 		final Integer[] TURN_AROUND_PREVISTA_POR_BURST_MEDIO = { 20, 31, 70, 126, 135, 136, 141, 151 };
 
-		EscalonadorProcesso fcfs = new FCFS(gerarArrayListDeProcessos(BURSTS_MEDIO.length, BURSTS_MEDIO, null, null));
+		EscalonadorProcesso fcfs = new FCFS(gerarArrayListDeProcessos(BURSTS_MEDIO.length, BURSTS_MEDIO, null, null), 0);
 
 		List<ProcessoVO> resultado = fcfs.resultadoFinal();
 		Assert.assertThat(resultado, Matchers.notNullValue());
@@ -108,7 +108,7 @@ public class FCFSTest extends InitialTestCase {
 	@Test
 	public void deveEscalonarComDoisACemProcessos() {
 		for (int i = 2; i <= 100; i++) {
-			EscalonadorProcesso fcfs = new FCFS(gerarListaDeProcessos(i, VALIDO));
+			EscalonadorProcesso fcfs = new FCFS(gerarListaDeProcessos(i, VALIDO), 0);
 			List<ProcessoVO> resultado = fcfs.resultadoFinal();
 			Assert.assertThat(resultado, Matchers.notNullValue());
 		}
@@ -117,7 +117,7 @@ public class FCFSTest extends InitialTestCase {
 	@Test
 	public void deveRetornarResultadoFinalOrdernadoPorProcessoId() {
 		final int TOTAL = 10;
-		EscalonadorProcesso fcfs = new FCFS(gerarListaDeProcessos(TOTAL, VALIDO));
+		EscalonadorProcesso fcfs = new FCFS(gerarListaDeProcessos(TOTAL, VALIDO), 0);
 		List<ProcessoVO> resultado = fcfs.resultadoFinal();
 		int id = 1;
 		for (ProcessoVO processo : resultado) {
@@ -128,12 +128,12 @@ public class FCFSTest extends InitialTestCase {
 
 	@Test(expected = ProcessosConfiguracaoException.class)
 	public void naoDeveEscalonarProcessosComBurstNegativo() {
-		new FCFS(gerarListaDeProcessos(3, INVALIDO));
+		new FCFS(gerarListaDeProcessos(3, INVALIDO), 0);
 	}
 
 	@Test(expected = ProcessosNaoCarregadosException.class)
 	public void naoDeveGerarResultadoSemEscalonarOsProcessosAntes() {
-		new FCFS(null);
+		new FCFS(null, 0);
 	}
 
 }

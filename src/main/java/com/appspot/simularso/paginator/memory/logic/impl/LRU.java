@@ -6,9 +6,9 @@ import java.util.List;
 import com.appspot.simularso.model.Pagina;
 import com.appspot.simularso.paginator.memory.logic.PaginacaoMemoria;
 
-public class OPT extends PaginacaoMemoriaBase implements PaginacaoMemoria {
+public class LRU extends PaginacaoMemoriaBase implements PaginacaoMemoria {
 
-	public OPT(List<Integer> stringRef, Integer frames) {
+	public LRU(List<Integer> stringRef, Integer frames) {
 		super(stringRef, frames);
 		executar();
 	}
@@ -24,7 +24,7 @@ public class OPT extends PaginacaoMemoriaBase implements PaginacaoMemoria {
 				}
 			} else {
 				if (!foiAlocado(palavra)) {
-					atualizarIndex(i + 1);
+					atualizarIndex(i - 1);
 					atualizarPagina(getIndex(), palavra);
 					atualizarPageFault();
 				}
@@ -34,22 +34,22 @@ public class OPT extends PaginacaoMemoriaBase implements PaginacaoMemoria {
 	}
 
 	private void atualizarIndex(int pointCutIndex) {
-		int palavraEncontrada = buscarPaginaMaisDistante(pointCutIndex);
+		int palavraEncontrada = buscarPaginaMaisAntiga(pointCutIndex);
 		setIndex(getPagina().getPalavras().indexOf(palavraEncontrada));
 	}
 
-	private int buscarPaginaMaisDistante(int pointCutIndex) {
+	private int buscarPaginaMaisAntiga(int pointCutIndex) {
 		int maxPageIndex = pointCutIndex;
 
 		for (int pageIndex = 0; pageIndex < getPagina().getPalavras().size(); pageIndex++) {
 			boolean paginaEncontrada = false;
 			int palavraDaPagina = getPagina().getPalavras().get(pageIndex);
 
-			for (int stringRefIndex = pointCutIndex; stringRefIndex < getStringReferencia().size(); stringRefIndex++) {
+			for (int stringRefIndex = pointCutIndex; stringRefIndex >= 0; stringRefIndex--) {
 				int palavraDaStringReferencia = getStringReferencia().get(stringRefIndex);
 
 				if (palavraDaPagina == palavraDaStringReferencia) {
-					if (stringRefIndex >= maxPageIndex) {
+					if (stringRefIndex <= maxPageIndex) {
 						maxPageIndex = stringRefIndex;
 					}
 					paginaEncontrada = true;
@@ -80,6 +80,6 @@ public class OPT extends PaginacaoMemoriaBase implements PaginacaoMemoria {
 
 	@Override
 	public String algoritmoNome() {
-		return PaginacaoMemoriaAlgoritmo.OPT.getNome();
+		return PaginacaoMemoriaAlgoritmo.LRU.getNome();
 	}
 }

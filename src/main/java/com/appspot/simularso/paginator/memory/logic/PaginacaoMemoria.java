@@ -5,21 +5,7 @@ import java.util.List;
 
 import com.appspot.simularso.model.Pagina;
 
-public interface PaginacaoMemoriaVirtual {
-
-	public enum AlgoritmoPaginacao {
-		FIFO("FI-FO"), OPT("OPT"), LRU("LRU");
-
-		private String nome;
-
-		AlgoritmoPaginacao(String nome) {
-			this.nome = nome;
-		}
-
-		public String getNome() {
-			return this.nome;
-		}
-	}
+public interface PaginacaoMemoria {
 
 	/**
 	 * Retorna o total de falhas de páginas ocorridas durante a paginação do

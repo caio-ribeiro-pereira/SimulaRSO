@@ -8,7 +8,7 @@
 
 /* = Template
 --------------------------------------------------------------------------- */
-body {background: url('../img/background.png') repeat scroll 0 0 #000;font-family: Arial, Verdana, sans-serif; font-size: 1.2em;}
+body {background: url('../img/background.png') repeat scroll 0 0 #000; font-family: Arial, Verdana, sans-serif; font-size: 1.2em;}
 header,section,article,footer {margin-top: 10px;}
 h1,h2,h3 {line-height: 1.6em;}
 h1 {font-size: 1.5em;}
@@ -41,12 +41,13 @@ nav a.right {border-radius: 0px 5px 5px 0px;}
 .error-message {color: #F00; text-align: center;}
 .info-message {color: #00F;	text-align: center;}
 .result-message{color: #000; text-align: center;}
-.main {background-color: #FFF; border-radius: 7px; margin-bottom: 25px;	margin-top: 25px; padding: 25px;}
+.main {background-color: #FFF; border-radius: 7px; border: 5px solid #CCC; margin-bottom: 25px;	margin-top: 25px; padding: 25px;}
 .graphic-panel {overflow-x: scroll;	overflow-y: hidden;	padding: 10px 0px 0px 10px;	width: 960px;}
 .menu {margin-top: 20px;}
 .processo-input-box {border-radius: 5px; border: 1px solid #000; float: left; margin: 5px 18px 10px 0px;}
 .processo-input-box p:first-child {text-align: center;}
-.pagination-input-box {border-radius: 5px; border: 1px solid #000; float: left; margin: 5px 18px 10px 0px; padding: 3px 3px;}
+.pagination-input-box {border-radius: 5px; border: 1px solid #000; float: left; margin: 5px 18px 10px 0px; padding: 5px 4px 2px 4px; width: 130px;}
+.pagination-input-box input{width: 35px;}
 .execute-panel p{text-align: right; margin: 20px 40px 0px 0px;}
 .result-panel {border-radius: 5px; border: 1px solid #000; margin: 20px 5px;}
 .result-panel td {padding: 5px 14px; text-align: center;}
@@ -78,7 +79,7 @@ nav a.right {border-radius: 0px 5px 5px 0px;}
 .mozilla-firefox:hover{opacity: 1.0;}
 .internet-explorer{ background: url('../img/icon_browsers.png') no-repeat -256px 0; width: 64px; height: 64px; float: left; opacity: 0.7;}
 .internet-explorer:hover{opacity: 1.0;}
-.opera{ background: url('../img/icon_browsers.png') no-repeat -384px 0; width: 64px; height: 64px; float: left; opacity: 0.7;}
-.opera:hover{opacity: 1.0;}
+.opera-software{ background: url('../img/icon_browsers.png') no-repeat -384px 0; width: 64px; height: 64px; float: left; opacity: 0.7;}
+.opera-software:hover{opacity: 1.0;}
 .apple-safari{ background: url('../img/icon_browsers.png') no-repeat -512px 0; width: 64px; height: 64px; float: left; opacity: 0.7;}
 .apple-safari:hover{opacity: 1.0;}

@@ -8,17 +8,13 @@ import com.appspot.simularso.model.Processo;
 import com.appspot.simularso.model.ProcessoDTO;
 import com.appspot.simularso.model.ProcessoVO;
 import com.appspot.simularso.scheduler.process.logic.EscalonadorProcesso;
-import com.appspot.simularso.scheduler.process.logic.EscalonadorProcessoBase;
 
-public class RoundRobin extends EscalonadorProcessoBase implements EscalonadorProcesso {
+public class RR extends EscalonadorProcessoBase implements EscalonadorProcesso {
 
-	private static final int MIN_QUANTUM = 1;
-	private static final int MAX_QUANTUM = 100;
-	private int tempoQuantum;
 	private int index;
 	private boolean executando;
 
-	public RoundRobin(ArrayList<Processo> processos, int tempoQuantum) {
+	public RR(ArrayList<Processo> processos, int tempoQuantum) {
 		super();
 		definirTempoQuantum(tempoQuantum);
 		validarProcessos(processos);
@@ -39,7 +35,7 @@ public class RoundRobin extends EscalonadorProcessoBase implements EscalonadorPr
 
 	private void definirTempoQuantum(int tempoQuantum) {
 		if (tempoQuantum >= MIN_QUANTUM && tempoQuantum <= MAX_QUANTUM) {
-			this.tempoQuantum = tempoQuantum;
+			adcionarTempoQuantum(tempoQuantum);
 		} else {
 			throw new TempoQuantumException();
 		}
@@ -99,11 +95,11 @@ public class RoundRobin extends EscalonadorProcessoBase implements EscalonadorPr
 	}
 
 	private int atualizarBurstAtual(Processo processo) {
-		return (processo.getBurstTotal() < tempoQuantum) ? processo.getBurstTotal() : tempoQuantum;
+		return (processo.getBurstTotal() < tempoQuantum()) ? processo.getBurstTotal() : tempoQuantum();
 	}
 
 	private int atualizarBurstTotal(Processo processo) {
-		int novoBurst = processo.getBurstTotal() - tempoQuantum;
+		int novoBurst = processo.getBurstTotal() - tempoQuantum();
 		return (novoBurst < 0) ? 0 : novoBurst;
 	}
 
@@ -153,6 +149,6 @@ public class RoundRobin extends EscalonadorProcessoBase implements EscalonadorPr
 
 	@Override
 	public String algoritmoNome() {
-		return AlgoritmoProcesso.ROUNDROBIN.getNome();
+		return EscalonadorProcessoAlgoritmo.RR.getNome();
 	}
 }

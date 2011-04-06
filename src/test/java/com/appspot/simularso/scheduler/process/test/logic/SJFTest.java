@@ -25,7 +25,7 @@ public class SJFTest extends InitialTestCase {
 		final Integer[] TEMPO_RESPOSTA_PREVISTA_POR_CHEGADA = { 100, 200, 300, 400, 500 };
 		final Integer[] TURN_AROUND_PREVISTA_POR_CHEGADA = { 100, 200, 300, 400, 500 };
 
-		EscalonadorProcesso sjf = new SJF(gerarArrayListDeProcessos(TEMPOS_CHEGADA.length, null, TEMPOS_CHEGADA, null));
+		EscalonadorProcesso sjf = new SJF(gerarArrayListDeProcessos(TEMPOS_CHEGADA.length, null, TEMPOS_CHEGADA, null), 0);
 
 		List<ProcessoVO> resultado = sjf.resultadoFinal();
 		Assert.assertThat(resultado, Matchers.notNullValue());
@@ -67,7 +67,7 @@ public class SJFTest extends InitialTestCase {
 		final Integer[] TEMPO_RESPOSTA_PREVISTA_POR_BURST = { 10, 30, 70, 120, 220 };
 		final Integer[] TURN_AROUND_PREVISTA_POR_BURST = { 10, 30, 70, 120, 220 };
 
-		EscalonadorProcesso sjf = new SJF(gerarArrayListDeProcessos(BURSTS.length, BURSTS, null, null));
+		EscalonadorProcesso sjf = new SJF(gerarArrayListDeProcessos(BURSTS.length, BURSTS, null, null), 0);
 
 		List<ProcessoVO> resultado = sjf.resultadoFinal();
 		Assert.assertThat(resultado, Matchers.notNullValue());
@@ -105,7 +105,7 @@ public class SJFTest extends InitialTestCase {
 	@Test
 	public void deveEscalonarComDoisACemProcessos() {
 		for (int i = 2; i <= 100; i++) {
-			EscalonadorProcesso sjf = new SJF(gerarListaDeProcessos(i, VALIDO));
+			EscalonadorProcesso sjf = new SJF(gerarListaDeProcessos(i, VALIDO), 0);
 			List<ProcessoVO> resultado = sjf.resultadoFinal();
 			Assert.assertThat(resultado, Matchers.notNullValue());
 		}
@@ -114,7 +114,7 @@ public class SJFTest extends InitialTestCase {
 	@Test
 	public void deveRetornarResultadoFinalOrdernadoPorProcessoId() {
 		final int TOTAL = 10;
-		EscalonadorProcesso sjf = new SJF(gerarListaDeProcessos(TOTAL, VALIDO));
+		EscalonadorProcesso sjf = new SJF(gerarListaDeProcessos(TOTAL, VALIDO), 0);
 		List<ProcessoVO> resultado = sjf.resultadoFinal();
 		int id = 1;
 		for (ProcessoVO processo : resultado) {
@@ -124,12 +124,12 @@ public class SJFTest extends InitialTestCase {
 
 	@Test(expected = ProcessosNaoCarregadosException.class)
 	public void naoDeveEscalonarSemAntesCarregarOsProcessos() {
-		new SJF(null);
+		new SJF(null, 0);
 	}
 
 	@Test(expected = ProcessosConfiguracaoException.class)
 	public void naoDeveEscalonarProcessosComBurstNegativo() {
-		new SJF(gerarListaDeProcessos(3, INVALIDO));
+		new SJF(gerarListaDeProcessos(3, INVALIDO), 0);
 	}
 
 }

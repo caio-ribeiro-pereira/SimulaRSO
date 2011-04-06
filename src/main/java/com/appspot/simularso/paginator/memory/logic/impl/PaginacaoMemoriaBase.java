@@ -1,4 +1,4 @@
-package com.appspot.simularso.paginator.memory.logic;
+package com.appspot.simularso.paginator.memory.logic.impl;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -7,7 +7,7 @@ import com.appspot.simularso.exception.FramesInvalidoException;
 import com.appspot.simularso.exception.StringReferenciaInvalidaException;
 import com.appspot.simularso.model.Pagina;
 
-public abstract class PaginacaoMemoriaVirtualBase {
+public abstract class PaginacaoMemoriaBase {
 
 	private static final int MIN_FRAME = 2;
 
@@ -18,12 +18,12 @@ public abstract class PaginacaoMemoriaVirtualBase {
 	private int pageFaults;
 	private int index;
 
-	protected PaginacaoMemoriaVirtualBase(List<Integer> stringRef, Integer frames) {
+	protected PaginacaoMemoriaBase(List<Integer> stringRef, Integer frames) {
 		validar(stringRef, frames);
 		this.stringRef = stringRef;
 		this.frames = frames;
 		this.pageFaults = 0;
-		this.setIndex(0);
+		this.index = 0;
 		this.pagina = new Pagina();
 		this.resultadoGrafico = new ArrayList<Pagina>();
 	}

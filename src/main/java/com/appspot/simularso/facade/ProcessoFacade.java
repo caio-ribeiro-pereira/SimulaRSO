@@ -4,27 +4,26 @@ import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.HashMap;
 
+import net.vidageek.mirror.dsl.Mirror;
 import br.com.caelum.vraptor.ioc.Component;
 
 import com.appspot.simularso.model.Processo;
 import com.appspot.simularso.scheduler.process.logic.EscalonadorProcesso;
-import com.appspot.simularso.scheduler.process.logic.EscalonadorProcesso.AlgoritmoProcesso;
-import com.appspot.simularso.scheduler.process.logic.impl.FCFS;
-import com.appspot.simularso.scheduler.process.logic.impl.RoundRobin;
-import com.appspot.simularso.scheduler.process.logic.impl.SJF;
-import com.appspot.simularso.scheduler.process.logic.impl.SRT;
+import com.appspot.simularso.scheduler.process.logic.impl.EscalonadorProcessoAlgoritmo;
+import com.appspot.simularso.util.EnumToClass;
 
 @Component
 public class ProcessoFacade implements Serializable {
 
-	private static final long serialVersionUID = 5445385891556187026L;
+	private static final long serialVersionUID = -5040900705627220946L;
 
-	public ArrayList<HashMap<String, Object>> executar(final ArrayList<AlgoritmoProcesso> algs, final ArrayList<Processo> pr, final int qt) {
+	public ArrayList<HashMap<String, Object>> executar(final ArrayList<EscalonadorProcessoAlgoritmo> algs, final ArrayList<Processo> pr,
+			final int qt, final EnumToClass enumToClass) {
 		if (algs != null && !algs.isEmpty()) {
 			ArrayList<HashMap<String, Object>> resultadosDosAlgoritmos = new ArrayList<HashMap<String, Object>>();
-			for (AlgoritmoProcesso alg : algs) {
+			for (EscalonadorProcessoAlgoritmo alg : algs) {
 				ArrayList<Processo> processos = (ArrayList<Processo>) pr.clone();
-				HashMap<String, Object> resultado = gerarResultado(alg, processos, qt);
+				HashMap<String, Object> resultado = gerarResultado(alg, processos, qt, enumToClass);
 				resultadosDosAlgoritmos.add(resultado);
 			}
 			resultadosDosAlgoritmos.trimToSize();
@@ -34,19 +33,10 @@ public class ProcessoFacade implements Serializable {
 		}
 	}
 
-	private HashMap<String, Object> gerarResultado(final AlgoritmoProcesso algortimo, final ArrayList<Processo> processos, final int quantum) {
-		EscalonadorProcesso escalonador = null;
-		if (algortimo == AlgoritmoProcesso.FCFS) {
-			escalonador = new FCFS(processos);
-		} else if (algortimo == AlgoritmoProcesso.SJF) {
-			escalonador = new SJF(processos);
-		} else if (algortimo == AlgoritmoProcesso.ROUNDROBIN) {
-			escalonador = new RoundRobin(processos, quantum);
-		} else if (algortimo == AlgoritmoProcesso.SRT) {
-			escalonador = new SRT(processos);
-		} else {
-			throw new IllegalArgumentException();
-		}
+	private HashMap<String, Object> gerarResultado(EscalonadorProcessoAlgoritmo algoritmo, ArrayList<Processo> processos, int quantum,
+			EnumToClass enumToClass) {
+		Class<?> klass = new Mirror().reflectClass(enumToClass.extractClassFromEnum(algoritmo));
+		EscalonadorProcesso escalonador = (EscalonadorProcesso) new Mirror().on(klass).invoke().constructor().withArgs(processos, quantum);
 		return gerarResultadoMap(escalonador);
 	}
 

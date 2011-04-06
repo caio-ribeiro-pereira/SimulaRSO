@@ -7,7 +7,6 @@ import com.appspot.simularso.model.Processo;
 import com.appspot.simularso.model.ProcessoDTO;
 import com.appspot.simularso.model.ProcessoVO;
 import com.appspot.simularso.scheduler.process.logic.EscalonadorProcesso;
-import com.appspot.simularso.scheduler.process.logic.EscalonadorProcessoBase;
 
 public class SRT extends EscalonadorProcessoBase implements EscalonadorProcesso {
 
@@ -15,7 +14,7 @@ public class SRT extends EscalonadorProcessoBase implements EscalonadorProcesso 
 	private int index;
 	private int tempoDeCorte;
 
-	public SRT(ArrayList<Processo> processos) {
+	public SRT(ArrayList<Processo> processos, int tempoQuantum) {
 		super();
 		validarProcessos(processos);
 		enfileirarProcessos(processos);
@@ -163,6 +162,6 @@ public class SRT extends EscalonadorProcessoBase implements EscalonadorProcesso 
 
 	@Override
 	public String algoritmoNome() {
-		return AlgoritmoProcesso.SRT.getNome();
+		return EscalonadorProcessoAlgoritmo.SRT.getNome();
 	}
 }

@@ -1,4 +1,4 @@
-package com.appspot.simularso.scheduler.process.logic;
+package com.appspot.simularso.scheduler.process.logic.impl;
 
 import java.util.ArrayList;
 import java.util.Collections;
@@ -13,15 +13,27 @@ import com.appspot.simularso.model.ProcessoVO;
 
 public abstract class EscalonadorProcessoBase {
 
+	protected static final int MIN_QUANTUM = 1;
+	protected static final int MAX_QUANTUM = 100;
+
 	private List<ProcessoVO> resultado;
 	private List<ProcessoDTO> resultadoGrafico;
 	private int tempoTotal;
 	private int totalProcessos;
+	private int tempoQuantum;
 	private ArrayList<Processo> processos;
 
 	public EscalonadorProcessoBase() {
 		this.resultado = new LinkedList<ProcessoVO>();
 		this.resultadoGrafico = new LinkedList<ProcessoDTO>();
+	}
+
+	public void adcionarTempoQuantum(int tempoQuantum) {
+		this.tempoQuantum = tempoQuantum;
+	}
+
+	public int tempoQuantum() {
+		return tempoQuantum;
 	}
 
 	protected int tempoTotal() {

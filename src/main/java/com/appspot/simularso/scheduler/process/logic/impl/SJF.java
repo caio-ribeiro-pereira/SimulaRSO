@@ -7,11 +7,10 @@ import com.appspot.simularso.model.Processo;
 import com.appspot.simularso.model.ProcessoDTO;
 import com.appspot.simularso.model.ProcessoVO;
 import com.appspot.simularso.scheduler.process.logic.EscalonadorProcesso;
-import com.appspot.simularso.scheduler.process.logic.EscalonadorProcessoBase;
 
 public class SJF extends EscalonadorProcessoBase implements EscalonadorProcesso {
 
-	public SJF(ArrayList<Processo> processos) {
+	public SJF(ArrayList<Processo> processos, int tempoQuantum) {
 		super();
 		validarProcessos(processos);
 		enfileirarProcessos(processos);
@@ -73,6 +72,6 @@ public class SJF extends EscalonadorProcessoBase implements EscalonadorProcesso 
 
 	@Override
 	public String algoritmoNome() {
-		return AlgoritmoProcesso.SJF.getNome();
+		return EscalonadorProcessoAlgoritmo.SJF.getNome();
 	}
 }

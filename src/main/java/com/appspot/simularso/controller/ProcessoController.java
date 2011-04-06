@@ -15,7 +15,8 @@ import com.appspot.simularso.exception.ProcessosNaoCarregadosException;
 import com.appspot.simularso.exception.TempoQuantumException;
 import com.appspot.simularso.facade.ProcessoFacade;
 import com.appspot.simularso.model.Processo;
-import com.appspot.simularso.scheduler.process.logic.EscalonadorProcesso.AlgoritmoProcesso;
+import com.appspot.simularso.scheduler.process.logic.impl.EscalonadorProcessoAlgoritmo;
+import com.appspot.simularso.util.EnumToClass;
 
 @Resource
 public class ProcessoController {
@@ -23,23 +24,25 @@ public class ProcessoController {
 	private final Result result;
 	private final Validator validator;
 	private final ProcessoFacade facade;
+	private final EnumToClass enumToClass;
 
-	public ProcessoController(Result result, Validator validator, ProcessoFacade facade) {
+	public ProcessoController(Result result, Validator validator, ProcessoFacade facade, EnumToClass enumToClass) {
 		this.result = result;
 		this.validator = validator;
 		this.facade = facade;
+		this.enumToClass = enumToClass;
 	}
 
 	@Get("/escalonamento-processo")
 	public void processoInicio() {
-		result.include("algoritmoProcesso", AlgoritmoProcesso.values());
+		result.include("escalonadorProcessoAlgoritmo", EscalonadorProcessoAlgoritmo.values());
 	}
 
 	@Post("/executar-escalonamento-processo")
-	public void processoExecutar(ArrayList<AlgoritmoProcesso> algs, ArrayList<Processo> pr, int qt) {
+	public void processoExecutar(ArrayList<EscalonadorProcessoAlgoritmo> algs, ArrayList<Processo> pr, int qt) {
 		try {
 
-			ArrayList<HashMap<String, Object>> resultadosDosAlgoritmos = facade.executar(algs, pr, qt);
+			ArrayList<HashMap<String, Object>> resultadosDosAlgoritmos = facade.executar(algs, pr, qt, enumToClass);
 			result.include("resultadosDosAlgoritmos", resultadosDosAlgoritmos);
 			result.redirectTo(this).processoResultado();
 
