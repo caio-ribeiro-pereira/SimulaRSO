@@ -47,7 +47,7 @@ public abstract class PaginacaoMemoriaBase {
 		this.pageFaults++;
 	}
 
-	protected int totalFrames() {
+	protected int totalDeFrames() {
 		return frames;
 	}
 

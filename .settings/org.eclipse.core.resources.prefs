@@ -1,4 +1,4 @@
-#Sun Apr 03 20:38:45 BRT 2011
+#Thu Apr 07 11:50:26 BRT 2011
 eclipse.preferences.version=1
 encoding//webapp/WEB-INF/jsp/disco/discoInicio.jsp=UTF-8
 encoding//webapp/WEB-INF/jsp/errors/error.jsp=UTF-8
@@ -6,6 +6,7 @@ encoding//webapp/WEB-INF/jsp/errors/not-found.jsp=UTF-8
 encoding//webapp/WEB-INF/jsp/main/home.jsp=UTF-8
 encoding//webapp/WEB-INF/jsp/main/sobre.jsp=UTF-8
 encoding//webapp/WEB-INF/jsp/paginacao/paginacaoInicio.jsp=UTF-8
+encoding//webapp/WEB-INF/jsp/paginacao/paginacaoResultado.jsp=UTF-8
 encoding//webapp/WEB-INF/jsp/processo/processoInicio.jsp=UTF-8
 encoding//webapp/WEB-INF/jsp/processo/processoResultado.jsp=UTF-8
 encoding/<project>=UTF-8

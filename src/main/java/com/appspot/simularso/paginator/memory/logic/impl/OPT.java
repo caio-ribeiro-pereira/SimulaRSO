@@ -17,7 +17,7 @@ public class OPT extends PaginacaoMemoriaBase implements PaginacaoMemoria {
 		for (int i = 0; i < getStringReferencia().size(); i++) {
 			pageFaultPadrao();
 			int palavra = getStringReferencia().get(i);
-			if (totalDePalavrasNaPagina() < totalFrames()) {
+			if (totalDePalavrasNaPagina() < totalDeFrames()) {
 				if (!foiAlocado(palavra)) {
 					inserirPagina(palavra);
 					atualizarPageFault();
@@ -66,6 +66,11 @@ public class OPT extends PaginacaoMemoriaBase implements PaginacaoMemoria {
 	@Override
 	public int totalPageFault() {
 		return getTotalPageFaults();
+	}
+
+	@Override
+	public Integer totalFrames() {
+		return totalDeFrames();
 	}
 
 	@Override

@@ -1,4 +1,4 @@
-package com.appspot.simularso.paginator.test.logic;
+package com.appspot.simularso.paginator.memory.test.logic;
 
 import java.util.Arrays;
 import java.util.List;
@@ -31,6 +31,7 @@ public class FIFOTest {
 
 		List<Integer> stringRef = fifo.stringReferencia();
 		Assert.assertEquals(REFERENCIA, stringRef);
+		Assert.assertTrue(STRING_REFERENCIA.length == resultadoGrafico.size());
 	}
 
 	@Test
@@ -50,6 +51,7 @@ public class FIFOTest {
 
 		List<Integer> stringRef = fifo.stringReferencia();
 		Assert.assertEquals(REFERENCIA, stringRef);
+		Assert.assertTrue(STRING_REFERENCIA.length == resultadoGrafico.size());
 	}
 
 	@Test
@@ -69,6 +71,7 @@ public class FIFOTest {
 
 		List<Integer> stringRef = fifo.stringReferencia();
 		Assert.assertEquals(REFERENCIA, stringRef);
+		Assert.assertTrue(STRING_REFERENCIA.length == resultadoGrafico.size());
 	}
 
 	@Test
@@ -88,6 +91,7 @@ public class FIFOTest {
 
 		List<Integer> stringRef = fifo.stringReferencia();
 		Assert.assertEquals(REFERENCIA, stringRef);
+		Assert.assertTrue(STRING_REFERENCIA.length == resultadoGrafico.size());
 	}
 
 	@Test
@@ -107,6 +111,7 @@ public class FIFOTest {
 
 		List<Integer> stringRef = fifo.stringReferencia();
 		Assert.assertEquals(REFERENCIA, stringRef);
+		Assert.assertTrue(STRING_REFERENCIA.length == resultadoGrafico.size());
 	}
 
 	@Test
@@ -126,6 +131,7 @@ public class FIFOTest {
 
 		List<Integer> stringRef = fifo.stringReferencia();
 		Assert.assertEquals(REFERENCIA, stringRef);
+		Assert.assertTrue(STRING_REFERENCIA.length == resultadoGrafico.size());
 	}
 
 	@Test(expected = StringReferenciaInvalidaException.class)

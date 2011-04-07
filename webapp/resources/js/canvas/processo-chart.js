@@ -21,7 +21,12 @@ function ProcessoChart(total, canvas, espaco) {
 	this.ctx.clearRect(0, 0, this.width, this.height);
 };
 
-ProcessoChart.prototype.background = function() {
+ProcessoChart.prototype.draw = function(p) {
+	for(var i = 0; i < p.length; i++){
+		this.ctx.fillStyle = p[i].cor;
+		this.ctx.fillRect(p[i].x * this.espaco, p[i].y * this.espaco, p[i].w * this.espaco, p[i].h * this.espaco);
+	}
+	
 	this.ctx.beginPath();
 	this.strokeStyle = '#000000';
 	// linhas
@@ -42,11 +47,4 @@ ProcessoChart.prototype.background = function() {
 		this.ctx.fillText(tempo++, t + 3, 17);
 	}
 	this.ctx.stroke();
-};
-
-ProcessoChart.prototype.draw = function(p) {
-	for(var i = 0; i < p.length; i++){
-		this.ctx.fillStyle = p[i].cor;
-		this.ctx.fillRect(p[i].x * this.espaco, p[i].y * this.espaco, p[i].w * this.espaco, p[i].h * this.espaco);
-	}
 };

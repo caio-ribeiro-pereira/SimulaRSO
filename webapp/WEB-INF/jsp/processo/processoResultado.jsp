@@ -30,7 +30,6 @@
 								var canvas = document.getElementById('processo-chart-${resultList.algoritmoNome}');
 								var chart = new ProcessoChart(${resultList.totalProcessos}, canvas, espaco);
 								chart.draw(processos);
-								chart.background();
 							});
 						</script>
 						<strong class="clearfix result-message">Algoritmo: ${resultList.algoritmoNome}</strong>

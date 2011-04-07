@@ -15,16 +15,22 @@ import com.appspot.simularso.util.EnumToClass;
 @Component
 public class PaginacaoFacade implements Serializable {
 
-	private static final long serialVersionUID = -7340262096330741072L;
+	private static final long serialVersionUID = 2529486308695350506L;
+
+	private final EnumToClass enumToClass;
+
+	public PaginacaoFacade(EnumToClass enumToClass) {
+		this.enumToClass = enumToClass;
+	}
 
 	public ArrayList<HashMap<String, Object>> executar(final ArrayList<PaginacaoMemoriaAlgoritmo> algs, final List<Integer> stringRef,
-			final Integer frames, final EnumToClass enumToClass) {
+			final Integer frames) {
 
 		if (algs != null && !algs.isEmpty()) {
 			ArrayList<HashMap<String, Object>> resultadosDosAlgoritmos = new ArrayList<HashMap<String, Object>>();
 
 			for (PaginacaoMemoriaAlgoritmo alg : algs) {
-				HashMap<String, Object> resultado = gerarResultado(alg, stringRef, frames, enumToClass);
+				HashMap<String, Object> resultado = gerarResultado(alg, stringRef, frames);
 				resultadosDosAlgoritmos.add(resultado);
 			}
 
@@ -35,8 +41,7 @@ public class PaginacaoFacade implements Serializable {
 		}
 	}
 
-	private HashMap<String, Object> gerarResultado(PaginacaoMemoriaAlgoritmo algoritmo, List<Integer> stringReferencia, Integer frames,
-			EnumToClass enumToClass) {
+	private HashMap<String, Object> gerarResultado(PaginacaoMemoriaAlgoritmo algoritmo, List<Integer> stringReferencia, Integer frames) {
 		Class<?> klass = new Mirror().reflectClass(enumToClass.extractClassFromEnum(algoritmo));
 		PaginacaoMemoria paginacao = (PaginacaoMemoria) new Mirror().on(klass).invoke().constructor().withArgs(stringReferencia, frames);
 		return gerarResultadoMap(paginacao);
@@ -46,6 +51,7 @@ public class PaginacaoFacade implements Serializable {
 		HashMap<String, Object> resultado = new HashMap<String, Object>();
 		resultado.put("resultadoGrafico", paginacao.resultadoGraficoFinal());
 		resultado.put("stringReferencia", paginacao.stringReferencia());
+		resultado.put("totalFrames", paginacao.totalFrames());
 		resultado.put("totalPageFault", paginacao.totalPageFault());
 		resultado.put("algoritmoNome", paginacao.algoritmoNome());
 		return resultado;

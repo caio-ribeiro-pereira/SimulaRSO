@@ -16,7 +16,6 @@ import com.appspot.simularso.exception.TempoQuantumException;
 import com.appspot.simularso.facade.ProcessoFacade;
 import com.appspot.simularso.model.Processo;
 import com.appspot.simularso.scheduler.process.logic.impl.EscalonadorProcessoAlgoritmo;
-import com.appspot.simularso.util.EnumToClass;
 
 @Resource
 public class ProcessoController {
@@ -24,13 +23,11 @@ public class ProcessoController {
 	private final Result result;
 	private final Validator validator;
 	private final ProcessoFacade facade;
-	private final EnumToClass enumToClass;
 
-	public ProcessoController(Result result, Validator validator, ProcessoFacade facade, EnumToClass enumToClass) {
+	public ProcessoController(Result result, Validator validator, ProcessoFacade facade) {
 		this.result = result;
 		this.validator = validator;
 		this.facade = facade;
-		this.enumToClass = enumToClass;
 	}
 
 	@Get("/escalonamento-processo")
@@ -42,7 +39,7 @@ public class ProcessoController {
 	public void processoExecutar(ArrayList<EscalonadorProcessoAlgoritmo> algs, ArrayList<Processo> pr, int qt) {
 		try {
 
-			ArrayList<HashMap<String, Object>> resultadosDosAlgoritmos = facade.executar(algs, pr, qt, enumToClass);
+			ArrayList<HashMap<String, Object>> resultadosDosAlgoritmos = facade.executar(algs, pr, qt);
 			result.include("resultadosDosAlgoritmos", resultadosDosAlgoritmos);
 			result.redirectTo(this).processoResultado();
 

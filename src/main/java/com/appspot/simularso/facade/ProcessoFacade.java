@@ -15,15 +15,21 @@ import com.appspot.simularso.util.EnumToClass;
 @Component
 public class ProcessoFacade implements Serializable {
 
-	private static final long serialVersionUID = -5040900705627220946L;
+	private static final long serialVersionUID = 2042380361685124958L;
+
+	private final EnumToClass enumToClass;
+
+	public ProcessoFacade(EnumToClass enumToClass) {
+		this.enumToClass = enumToClass;
+	}
 
 	public ArrayList<HashMap<String, Object>> executar(final ArrayList<EscalonadorProcessoAlgoritmo> algs, final ArrayList<Processo> pr,
-			final int qt, final EnumToClass enumToClass) {
+			final int qt) {
 		if (algs != null && !algs.isEmpty()) {
 			ArrayList<HashMap<String, Object>> resultadosDosAlgoritmos = new ArrayList<HashMap<String, Object>>();
 			for (EscalonadorProcessoAlgoritmo alg : algs) {
 				ArrayList<Processo> processos = (ArrayList<Processo>) pr.clone();
-				HashMap<String, Object> resultado = gerarResultado(alg, processos, qt, enumToClass);
+				HashMap<String, Object> resultado = gerarResultado(alg, processos, qt);
 				resultadosDosAlgoritmos.add(resultado);
 			}
 			resultadosDosAlgoritmos.trimToSize();
@@ -33,8 +39,7 @@ public class ProcessoFacade implements Serializable {
 		}
 	}
 
-	private HashMap<String, Object> gerarResultado(EscalonadorProcessoAlgoritmo algoritmo, ArrayList<Processo> processos, int quantum,
-			EnumToClass enumToClass) {
+	private HashMap<String, Object> gerarResultado(EscalonadorProcessoAlgoritmo algoritmo, ArrayList<Processo> processos, int quantum) {
 		Class<?> klass = new Mirror().reflectClass(enumToClass.extractClassFromEnum(algoritmo));
 		EscalonadorProcesso escalonador = (EscalonadorProcesso) new Mirror().on(klass).invoke().constructor().withArgs(processos, quantum);
 		return gerarResultadoMap(escalonador);

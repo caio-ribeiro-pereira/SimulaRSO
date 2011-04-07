@@ -32,6 +32,10 @@ public class Pagina implements Serializable, Cloneable {
 		this.pageFault = false;
 	}
 
+	public boolean isPageFault() {
+		return pageFault;
+	}
+
 	public void setPalavras(ArrayList<Integer> palavras) {
 		this.palavras = palavras;
 	}
@@ -42,6 +46,17 @@ public class Pagina implements Serializable, Cloneable {
 
 	public Integer totalPalavras() {
 		return this.palavras.size();
+	}
+
+	public String getPalavrasToString() {
+		StringBuilder builder = new StringBuilder();
+		builder.append("[");
+		for (Integer palavra : palavras) {
+			builder.append(palavra).append(",");
+		}
+		builder.delete(builder.length() - 1, builder.length());
+		builder.append("]");
+		return builder.toString();
 	}
 
 	@Override

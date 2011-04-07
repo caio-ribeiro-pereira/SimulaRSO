@@ -16,7 +16,7 @@ public class FIFO extends PaginacaoMemoriaBase implements PaginacaoMemoria {
 	private void executar() {
 		for (Integer palavra : getStringReferencia()) {
 			pageFaultPadrao();
-			if (totalDePalavrasNaPagina() < totalFrames()) {
+			if (totalDePalavrasNaPagina() < totalDeFrames()) {
 				if (!foiAlocado(palavra)) {
 					inserirPagina(palavra);
 					atualizarIndex();
@@ -34,7 +34,12 @@ public class FIFO extends PaginacaoMemoriaBase implements PaginacaoMemoria {
 	}
 
 	private void atualizarIndex() {
-		setIndex(getIndex() + 1 >= totalFrames() ? 0 : getIndex() + 1);
+		setIndex(getIndex() + 1 >= totalDeFrames() ? 0 : getIndex() + 1);
+	}
+
+	@Override
+	public Integer totalFrames() {
+		return totalDeFrames();
 	}
 
 	@Override

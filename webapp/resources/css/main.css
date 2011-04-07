@@ -32,9 +32,9 @@ nav a.middle{border-radius: 0px 0px 0px 0px;}
 nav a.right {border-radius: 0px 5px 5px 0px;}
 
 .subtitle{line-height: 1.6em; text-align: center;}
-.main-info{border-radius: 5px; border: 1px solid #000; padding: 20px 30px; margin: 20px 0px 10px 0px;}
+.main-info{border-radius: 5px; border: 3px solid #999; padding: 10px 20px; margin: 20px 0px 10px 0px;}
 .main-info p{line-height: 1.6em;}
-.painel-config{line-height: 1.4em; font-size: 1.4em; text-align: center;}
+.painel-config{line-height: 1.4em; font-size: 1.4em; text-align: center; margin-bottom: 10px;}
 .processo{margin:1px;}
 .processo-cor{width: 26px; height: 20px; border: 1px solid #FFF; margin: 0 auto;}
 .pagination{margin:1px;}
