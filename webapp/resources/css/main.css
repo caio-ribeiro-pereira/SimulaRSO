@@ -42,7 +42,7 @@ nav a.right {border-radius: 0px 5px 5px 0px;}
 .info-message {color: #00F;	text-align: center;}
 .result-message{color: #000; text-align: center;}
 .main {background-color: #FFF; border-radius: 7px; border: 5px solid #CCC; margin-bottom: 25px;	margin-top: 25px; padding: 25px;}
-.graphic-panel {overflow-x: scroll;	overflow-y: hidden;	padding: 10px 0px 0px 10px;	width: 960px;}
+.graphic-panel {overflow-x: scroll;	overflow-y: hidden;	position: relative; padding: 10px 0px 0px 10px;	width: 950px;}
 .menu {margin-top: 20px;}
 .processo-input-box {border-radius: 5px; border: 1px solid #000; float: left; margin: 5px 8px 10px 0px;}
 .processo-input-box p:first-child {text-align: center;}

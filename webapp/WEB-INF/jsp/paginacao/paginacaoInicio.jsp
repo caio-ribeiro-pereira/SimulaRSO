@@ -57,7 +57,8 @@
 					if(total > 0){
 						var paginator = new Array();
 						for(var i = 0; i < total; i++){
-							paginator.push({inputStringRef:'stringReferencia-'+(i+1), stringRefName:'stringRef['+i+']', labelStringRef:'Palavra '+(i+1)});
+							paginator.push({inputStringRef:'stringReferencia-'+(i+1), 
+											labelStringRef:'Palavra '+(i+1)});
 						}
 						var template = $('#paginationTemplate').tmpl(paginator);
 						content.append(template).show();
@@ -165,7 +166,7 @@
 						<script id="paginationTemplate" type="text/x-jquery-tmpl">
 							<div class="pagination-input-box">
 								<label for="\${inputStringRef}"><small>\${labelStringRef}:</small></label>
-								<input type="text" class="stringReferencia" name="\${stringRefName}" id="\${inputStringRef}" value="1" maxlength="1">
+								<input type="text" class="stringReferencia" name="stringRef[]" id="\${inputStringRef}" value="1" maxlength="1">
 							</div>
 						</script>
 						<strong id="error" class="clearfix error-message menu"></strong>

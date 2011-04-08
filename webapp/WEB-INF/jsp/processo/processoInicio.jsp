@@ -93,12 +93,7 @@
 											prCor : colors[i],
 											prDivId : "processo-"+ (i + 1),
 											prLabel : "Processo: "+ (i + 1),
-											prId : (i + 1),
-											prIdName : "pr["+i+"].id",
-											prBurstName : "pr["+i+"].burst",
-											prChegadaName : "pr["+i+"].chegada",
-											prPrioridadeName : "pr["+i+"].prioridade",
-											prCorName : "pr["+i+"].cor"
+											prId : (i + 1)
 										});
 						}
 						var template = $('#processTemplate').tmpl(processos);
@@ -232,20 +227,20 @@
 							<div id="\${prDivId}" class="processo-input-box">
 								<p class="clearfix processo">
 									<strong>\${prLabel}: </strong>
-									<input type="hidden" name="\${prIdName}" value="\${prId}">
-									<input type="hidden" name="\${prCorName}" value="\${prCor}">
+									<input type="hidden" name="pr[].id" value="\${prId}">
+									<input type="hidden" name="pr[].cor" value="\${prCor}">
 								</p>
 								<p class="clearfix processo">
 									<label class="grid_1" for="\${inputBurst}"><small>Burst: </small></label>
-									<input type="text" class="grid_1 burst" name="\${prBurstName}" id="\${inputBurst}" value="10" maxlength="2">
+									<input type="text" class="grid_1 burst" name="pr[].burst" id="\${inputBurst}" value="10" maxlength="2">
 								</p>
 								<p class="clearfix processo">
 									<label class="grid_1" for="\${inputChegada}"><small>Chegada: </small></label>
-									<input type="text" class="grid_1 chegada" name="\${prChegadaName}" id="\${inputChegada}" value="0" maxlength="2">
+									<input type="text" class="grid_1 chegada" name="pr[].chegada" id="\${inputChegada}" value="0" maxlength="2">
 								</p>
 								<p class="clearfix processo">
 									<label class="grid_1" for="\${inputPrioridade}"><small>Prioridade: </small></label>
-									<input type="text" class="grid_1 prioridade" name="\${prPrioridadeName}" id="\${inputPrioridade}" value="1" maxlength="2">
+									<input type="text" class="grid_1 prioridade" name="pr[].prioridade" id="\${inputPrioridade}" value="1" maxlength="2">
 								</p>
 							</div>
 						</script>
