@@ -44,9 +44,9 @@ nav a.right {border-radius: 0px 5px 5px 0px;}
 .main {background-color: #FFF; border-radius: 7px; border: 5px solid #CCC; margin-bottom: 25px;	margin-top: 25px; padding: 25px;}
 .graphic-panel {overflow-x: scroll;	overflow-y: hidden;	padding: 10px 0px 0px 10px;	width: 960px;}
 .menu {margin-top: 20px;}
-.processo-input-box {border-radius: 5px; border: 1px solid #000; float: left; margin: 5px 18px 10px 0px;}
+.processo-input-box {border-radius: 5px; border: 1px solid #000; float: left; margin: 5px 8px 10px 0px;}
 .processo-input-box p:first-child {text-align: center;}
-.pagination-input-box {border-radius: 5px; border: 1px solid #000; float: left; margin: 5px 18px 10px 0px; padding: 5px 4px 2px 4px; width: 130px;}
+.pagination-input-box {border-radius: 5px; border: 1px solid #000; float: left; margin: 5px 8px 10px 0px; padding: 5px 4px 2px 4px; width: 130px;}
 .pagination-input-box input{width: 35px;}
 .execute-panel p{text-align: right; margin: 20px 40px 0px 0px;}
 .result-panel {border-radius: 5px; border: 1px solid #000; margin: 20px 5px;}

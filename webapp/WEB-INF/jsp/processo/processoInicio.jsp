@@ -21,18 +21,17 @@
 				$('#alg2').hide();
 				$('#quantum').hide();
 
-				$('#random').click(
-						function() {
-							var total = $('#total').val();
-							for ( var i = 1; i <= total; i++) {
-								var randomBurst = Math.floor(Math.random() * MAXBURST) + 1;
-								var randomChegada = Math.floor(Math.random() * MAXCHEGADA);
-								var randomPrioridade = Math.floor(Math.random() * MAXPRIORIDADE);
-								$('input[type="text"]#burst-' + i).val(randomBurst);
-								$('input[type="text"]#chegada-' + i).val(randomChegada);
-								$('input[type="text"]#prioridade-' + i).val(randomPrioridade);
-							}
-						});
+				$('#random').click(function() {
+					var total = $('#total').val();
+					for ( var i = 1; i <= total; i++) {
+						var randomBurst = Math.floor(Math.random() * MAXBURST) + 1;
+						var randomChegada = Math.floor(Math.random() * MAXCHEGADA);
+						var randomPrioridade = Math.floor(Math.random() * MAXPRIORIDADE);
+						$('input[type="text"]#burst-' + i).val(randomBurst);
+						$('input[type="text"]#chegada-' + i).val(randomChegada);
+						$('input[type="text"]#prioridade-' + i).val(randomPrioridade);
+					}
+				});
 
 				$('#process-form').submit(function() {
 					$('button').attr('disabled', 'disabled');
@@ -52,20 +51,32 @@
 				}).trigger('change');
 
 				$('#algoritmo1').change(function() {
+					$('#error').text('');
+					$('#execute').removeAttr('disabled');
 					if (this.value == 'RR' || $('#algoritmo2').val() == 'RR') {
 						$('#quantum').show();
 					} else {
 						$('#quantum').hide();
 						$('#quantum select option:first-child').attr('selected', 'selected');
 					}
+					if(this.value == $('#algoritmo2').val() && this.value != ''){
+						$('#error').text('Escolha um algoritmo diferente.').show();
+						$('#execute').attr('disabled', 'disabled');
+					}
 				}).trigger('change');
 
 				$('#algoritmo2').change(function() {
+					$('#error').text('');
+					$('#execute').removeAttr('disabled');
 					if (this.value == 'RR' || $('#algoritmo1').val() == 'RR') {
 						$('#quantum').show();
 					} else {
 						$('#quantum').hide();
 						$('#quantum select option:first-child').attr('selected', 'selected');
+					}
+					if(this.value == $('#algoritmo1').val() && this.value != ''){
+						$('#error').text('Escolha um algoritmo diferente.').show();
+						$('#execute').attr('disabled', 'disabled');
 					}
 				}).trigger('change');
 
@@ -107,62 +118,63 @@
 		<%@ include file="../templates/header.jsp"%>
 		<article class="clearfix">
 			<section class="clearfix">
-				<h2 class="clearfix subtitle">Algoritmos de escalonamento de
-					processos</h2>
+				<h2 class="subtitle">Algoritmos de escalonamento de processos</h2>
 				<%@ include file="../templates/error-message.jsp"%>
-				<div class="clearfix main-info">
-					<p>
-						<strong>Regras para simulação:</strong>
-					</p>
-					<p>
-						1 - Determine o modo de simulação: <strong>(Única ou
-							Comparativa).</strong>
-					</p>
-					<p>
-						2 - Escolha o total de processos que serão simulados: <strong>(Mínino
-							2 e Máximo 20)</strong>, ao escolher o total de processos será exibido um painel 
-							para configuração de cada processo definido no total de processos. 
-							Em cada campo será possível configurar as
-							características principais de um processo para ser hipotéticamente
-							executado. Os atributos de um processo são: <strong>(*Burst-CPU,
-							**Tempo de chegada, ***Prioridade).</strong>
-					<p>
-						3 - ****Defina o algoritmo de escalonamento de processos: <strong>(FC-FS,
-							SJF, SRT ou *****Round Robin).</strong>
-					</p>
-					<p>4 - Clique em executar para visualizar o resultado da execução do algoritmo de escalonamento.</p>
-					<p>
-						5 - Ao lado do botão <strong>executar</strong> existe a opção: <strong>Configuração
-							automática</strong>, que serve para configurar aleatóriamente os atributos de cada processo.
-					</p>
-					<p>
-						<strong>Observações:</strong>
-					</p>
-					<p>
-						<strong>* Burst-CPU:</strong> É tempo de surto de um processo, é o
-						tempo necessário que o processo possui para ser alocado na CPU.
-					</p>
-					<p>
-						<strong>** Tempo de chegada:</strong> É o tempo em que o processo
-						será iniciado, ou seja, é o tempo exato que o processo será alocado na
-						CPU ou ficará na fila de processos em espera.
-					</p>
-					<p>
-						<strong>*** Prioridade:</strong> É a prioridade que um processo
-						possui em relação aos demais processos. A regra de prioridade
-						definido neste simulador é: <strong>1 (prioridade mais
-							alta)</strong> e <strong>10 (prioridade mais baixa).</strong>
-					</p>
-					<p>
-						<strong>****</strong> Caso seja determinado o modo <strong>comparativo</strong>
-						será necessário definir dois algoritmos de escalonamento distintos.
-					</p>
-					<p>
-						<strong>*****</strong> Ao escolher o algoritmo <strong>Round Robin</strong> 
-						surgirá um campo chamado <strong>Tempo de corte</strong> que deve ser definido 
-						para o funcionamento deste algoritmo.
-					</p>
-				</div>
+			</section>
+			<section class="clearfix main-info">
+				<p>
+					<strong>Regras para simulação:</strong>
+				</p>
+				<p>
+					1 - Determine o modo de simulação: <strong>(Única ou
+						Comparativa).</strong>
+				</p>
+				<p>
+					2 - Escolha o total de processos que serão simulados: <strong>(Mínino
+						2 e Máximo 20)</strong>, ao escolher o total de processos será exibido um painel 
+						para configuração de cada processo definido no total de processos. 
+						Em cada campo será possível configurar as
+						características principais de um processo para ser hipotéticamente
+						executado. Os atributos de um processo são: <strong>(*Burst-CPU,
+						**Tempo de chegada, ***Prioridade).</strong>
+				<p>
+					3 - ****Defina o algoritmo de escalonamento de processos: <strong>(FC-FS,
+						SJF, SRT ou *****Round Robin).</strong>
+				</p>
+				<p>4 - Clique em executar para visualizar o resultado da execução do algoritmo de escalonamento.</p>
+				<p>
+					5 - Ao lado do botão <strong>executar</strong> existe a opção: <strong>Configuração
+						automática</strong>, que serve para configurar aleatóriamente os atributos de cada processo.
+				</p>
+				<p>
+					<strong>Observações:</strong>
+				</p>
+				<p>
+					<strong>* Burst-CPU:</strong> É tempo de surto de um processo, é o
+					tempo necessário que o processo possui para ser alocado na CPU.
+				</p>
+				<p>
+					<strong>** Tempo de chegada:</strong> É o tempo em que o processo
+					será iniciado, ou seja, é o tempo exato que o processo será alocado na
+					CPU ou ficará na fila de processos em espera.
+				</p>
+				<p>
+					<strong>*** Prioridade:</strong> É a prioridade que um processo
+					possui em relação aos demais processos. A regra de prioridade
+					definido neste simulador é: <strong>1 (prioridade mais
+						alta)</strong> e <strong>10 (prioridade mais baixa).</strong>
+				</p>
+				<p>
+					<strong>****</strong> Caso seja determinado o modo <strong>comparativo</strong>
+					será necessário definir dois algoritmos de escalonamento distintos.
+				</p>
+				<p>
+					<strong>*****</strong> Ao escolher o algoritmo <strong>Round Robin</strong> 
+					surgirá um campo chamado <strong>Tempo de corte</strong> que deve ser definido 
+					para o funcionamento deste algoritmo.
+				</p>
+			</section>
+			<section class="clearfix main-info">
 				<form id="process-form"	action="<c:url value="/executar-escalonamento-processo"/>" method="post">
 					<div id="main-menu" class="clearfix menu">
 						<p class="painel-config">
@@ -175,17 +187,6 @@
 								<option value="COMPARATIVO">Comparativa</option>
 							</select>
 						</div>
-						<div class="grid_4">
-							<strong>Total de processos: </strong> 
-							<select id="total" tabindex="2">
-								<option value="">Selecione...</option>
-								<c:forEach begin="2" end="20" step="1" var="p">
-									<option value="${p}">${p} procesos</option>
-								</c:forEach>
-							</select>
-						</div>
-					</div>
-					<div id="algoritmo-menu" class="clearfix menu">
 						<div id="alg1" class="grid_3">
 							<strong>Algoritmo 1: </strong> 
 							<select name="algs[0]" id="algoritmo1" tabindex="3">
@@ -204,7 +205,16 @@
 								</c:forEach>
 							</select>
 						</div>
-						<div id="quantum" class="grid_4">
+						<div class="grid_6 menu">
+							<strong>Total de processos: </strong> 
+							<select id="total" tabindex="2">
+								<option value="">Selecione...</option>
+								<c:forEach begin="2" end="20" step="1" var="p">
+									<option value="${p}">${p} procesos</option>
+								</c:forEach>
+							</select>
+						</div>
+						<div id="quantum" class="grid_5 menu">
 							<strong>Tempo de corte: </strong> 
 							<select name="qt" tabindex="5">
 								<option value="">Selecione</option>
@@ -239,6 +249,7 @@
 								</p>
 							</div>
 						</script>
+					<strong id="error" class="clearfix error-message"></strong>
 					<div class="clearfix execute-panel">
 						<p>
 							<button id="random" type="button" tabindex="7">Configuração automática</button>
