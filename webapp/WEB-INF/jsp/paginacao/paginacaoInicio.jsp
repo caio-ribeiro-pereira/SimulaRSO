@@ -4,7 +4,7 @@
 	<head>
 		<title>Algoritmos de paginação de memória</title>
 		<meta name="keywords" content="Simulação de paginação, algoritmos de substituição de páginas" />
-		<meta name="keywords" content="string, referência, byte, páginas, paginação, FIFO, LRU, OPT" />
+		<meta name="keywords" content="string de referência, paginação, FIFO, LRU, OPT" />
 		<%@include file="../templates/script-loader.jsp"%>
 		<script type="text/javascript">
 			head.ready(function(){
@@ -110,7 +110,7 @@
 								<strong>Tamanho da String de Referência: </strong>
 								<select id="stringRefTotal" tabindex="2">
 									<option value="">Selecione...</option>
-									<c:forEach begin="6" end="30" step="6" var="sr">
+									<c:forEach begin="6" end="30" step="1" var="sr">
 										<option value="${sr}">${sr}</option>
 									</c:forEach>
 								</select>

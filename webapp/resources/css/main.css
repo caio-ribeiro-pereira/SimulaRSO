@@ -59,27 +59,27 @@ nav a.right {border-radius: 0px 5px 5px 0px;}
 #odd:hover{background-color: #CCC; color:#000}
 #even:hover{background-color:#CCC; color:#000}
 
-.tecnologias{margin: 20px 0px 5px 450px;}
+.tecnologias{margin: -45px 0px 0px 460px;}
 .browser{margin: 20px 0px 20px 320px;}
 
-.gae{ background: url('../img/icon_tecnologias.png') no-repeat 0 0; width: 86px; height: 48px; float: left; opacity: 0.7;} 
+.gae{ background: url('../img/icon_tecnologias.png') no-repeat 0 0; width: 86px; height: 48px; float: left; opacity: 0.9;} 
 .gae:hover{opacity: 1.0;}
-.github{ background: url('../img/icon_tecnologias.png') no-repeat -136px 0; width: 149px; height: 48px; float: left; opacity: 0.7; } 
+.github{ background: url('../img/icon_tecnologias.png') no-repeat -136px 0; width: 149px; height: 48px; float: left; opacity: 0.9; } 
 .github:hover{opacity: 1.0;}
-.html5{ background: url('../img/icon_tecnologias.png') no-repeat -335px 0; width: 48px; height: 48px; float: left; opacity: 0.7; } 
+.html5{ background: url('../img/icon_tecnologias.png') no-repeat -335px 0; width: 48px; height: 48px; float: left; opacity: 0.9; } 
 .html5:hover{opacity: 1.0;}
-.java{ background: url('../img/icon_tecnologias.png') no-repeat -433px 0; width: 48px; height: 48px; float: left; opacity: 0.7; } 
+.java{ background: url('../img/icon_tecnologias.png') no-repeat -433px 0; width: 48px; height: 48px; float: left; opacity: 0.9; } 
 .java:hover{opacity: 1.0;}
-.vraptor{ background: url('../img/icon_tecnologias.png') no-repeat -531px 0; width: 165px; height: 48px; float: left; opacity: 0.7; } 
+.vraptor{ background: url('../img/icon_tecnologias.png') no-repeat -531px 0; width: 165px; height: 48px; float: left; opacity: 0.9; } 
 .vraptor:hover{opacity: 1.0;}
 
-.google-chrome{ background: url('../img/icon_browsers.png') no-repeat 0 0; width: 64px; height: 64px; float: left; opacity: 0.7;}
+.google-chrome{ background: url('../img/icon_browsers.png') no-repeat 0 0; width: 64px; height: 64px; float: left; opacity: 0.9;}
 .google-chrome:hover{opacity: 1.0;}
-.mozilla-firefox{ background: url('../img/icon_browsers.png') no-repeat -128px 0; width: 64px; height: 64px; float: left; opacity: 0.7;}
+.mozilla-firefox{ background: url('../img/icon_browsers.png') no-repeat -128px 0; width: 64px; height: 64px; float: left; opacity: 0.9;}
 .mozilla-firefox:hover{opacity: 1.0;}
-.internet-explorer{ background: url('../img/icon_browsers.png') no-repeat -256px 0; width: 64px; height: 64px; float: left; opacity: 0.7;}
+.internet-explorer{ background: url('../img/icon_browsers.png') no-repeat -256px 0; width: 64px; height: 64px; float: left; opacity: 0.9;}
 .internet-explorer:hover{opacity: 1.0;}
-.opera-software{ background: url('../img/icon_browsers.png') no-repeat -384px 0; width: 64px; height: 64px; float: left; opacity: 0.7;}
+.opera-software{ background: url('../img/icon_browsers.png') no-repeat -384px 0; width: 64px; height: 64px; float: left; opacity: 0.9;}
 .opera-software:hover{opacity: 1.0;}
-.apple-safari{ background: url('../img/icon_browsers.png') no-repeat -512px 0; width: 64px; height: 64px; float: left; opacity: 0.7;}
+.apple-safari{ background: url('../img/icon_browsers.png') no-repeat -512px 0; width: 64px; height: 64px; float: left; opacity: 0.9;}
 .apple-safari:hover{opacity: 1.0;}

@@ -3,7 +3,6 @@
 <html lang="pt-BR" >
 	<head>
 		<title>Simulação de Paginação de Memória</title>
-		<meta name="keywords" content="algoritmos de paginação, LRU, FIFO, OPT, string de referência" />
 		<%@ include file="../templates/script-loader.jsp"%>
 		<script type="text/javascript">
 			if(head.browser.ie && head.browser.version !== "9.0"){
