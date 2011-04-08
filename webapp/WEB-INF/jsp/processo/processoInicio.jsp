@@ -42,7 +42,7 @@
 					if (this.value == 'COMPARATIVO') {
 						$('#alg2').show();
 					} else {
-						if ($('#algoritmo1').val() != 'ROUNDROBIN' && $('#algoritmo2').val() == 'ROUNDROBIN') {
+						if ($('#algoritmo1').val() != 'RR' && $('#algoritmo2').val() == 'RR') {
 							$('#quantum').hide();
 							$('#quantum select option:first-child').attr('selected','selected');
 						}
@@ -52,7 +52,7 @@
 				}).trigger('change');
 
 				$('#algoritmo1').change(function() {
-					if (this.value == 'ROUNDROBIN' || $('#algoritmo2').val() == 'ROUNDROBIN') {
+					if (this.value == 'RR' || $('#algoritmo2').val() == 'RR') {
 						$('#quantum').show();
 					} else {
 						$('#quantum').hide();
@@ -61,7 +61,7 @@
 				}).trigger('change');
 
 				$('#algoritmo2').change(function() {
-					if (this.value == 'ROUNDROBIN' || $('#algoritmo1').val() == 'ROUNDROBIN') {
+					if (this.value == 'RR' || $('#algoritmo1').val() == 'RR') {
 						$('#quantum').show();
 					} else {
 						$('#quantum').hide();
