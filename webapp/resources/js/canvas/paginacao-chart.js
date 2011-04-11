@@ -18,7 +18,7 @@ function PaginacaoChart(total, canvas, espaco) {
 	this.ctx.clearRect(0, 0, this.width, this.height);
 };
 
-PaginacaoChart.prototype.draw = function(strRef, pg, totalPageFault){
+PaginacaoChart.prototype.draw = function(strRef, pg, totalPageFault,totalFrames){
 	// Imprimindo String de Referencia
 	var x = 0;
 	var y = 50;
@@ -26,11 +26,15 @@ PaginacaoChart.prototype.draw = function(strRef, pg, totalPageFault){
 	this.strokeStyle = '#000000';
 	this.ctx.fillStyle = '#000000';
 	this.ctx.font = "16px Arial";
-	this.ctx.fillText('String de Referência:', x, y);
+	
+	this.ctx.fillText('Total de faltas de página: '+totalPageFault, x, y);
+	this.ctx.fillText('Total de frames: '+totalFrames, x, y + 25);
+	this.ctx.fillText('Tamanho da String de Referência: '+strRef.length, x, y + 50);
+	this.ctx.fillText('String de Referência:', x, y + 75);
 	
 	// String de Referencia
 	var str_x = x + 2;
-	var str_y = y + 10;
+	var str_y = y + 88;
 	var str_w = this.espaco;
 	var str_h = this.espaco;
 	for(var i = 0; i < strRef.length; i++){
@@ -39,12 +43,12 @@ PaginacaoChart.prototype.draw = function(strRef, pg, totalPageFault){
 		str_x += this.espaco + 10;
 	}
 	//Paginacao
-	this.ctx.fillText('Frames:', x, y + 60);
+	this.ctx.fillText('Frames:', x, y + 135);
 	var pg_x = x + 2;
 	var pg_w = this.espaco;
 	var pg_h = this.espaco;
 	for(var i = 0; i < pg.length; i++){
-		var pg_y = y + 70;
+		var pg_y = y + 145;
 		if(pg[i].pageFault){
 			var palavras = pg[i].palavras;
 			for(var p = 0; p < palavras.length; p++){
@@ -55,6 +59,5 @@ PaginacaoChart.prototype.draw = function(strRef, pg, totalPageFault){
 		}
 		pg_x += this.espaco + 10;
 	}
-	this.ctx.fillText('Total de PageFaults: '+totalPageFault, x, this.height - 10);
 	this.ctx.stroke();
 };

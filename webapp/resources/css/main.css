@@ -27,12 +27,12 @@ ul {list-style: none; margin-left: 20px;}
 nav {margin-top: 10px; padding: 0px;}
 nav a {float: left;	margin: -2px; padding: 5px;}
 nav a:hover {background-color: #888; color: #FFF; text-decoration: none;}
-nav a.left {border-radius: 5px 0px 0px 5px;}
-nav a.middle{border-radius: 0px 0px 0px 0px;}
-nav a.right {border-radius: 0px 5px 5px 0px;}
+nav a.left {border-radius: 5px 0px 0px 5px; -moz-border-radius: 5px 0px 0px 5px; -webkit-border-radius: 5px 0px 0px 5px;}
+nav a.middle{border-radius: 0px 0px 0px 0px; -moz-border-radius: 0px 0px 0px 0px; -webkit-border-radius: 0px 0px 0px 0px;}
+nav a.right {border-radius: 0px 5px 5px 0px; -moz-border-radius: 0px 5px 5px 0px; -webkit-border-radius: 0px 5px 5px 0px;}
 
 .subtitle{line-height: 1.6em; text-align: center;}
-.main-info{border-radius: 5px; border: 3px solid #999; padding: 10px 20px; margin: 20px 0px 10px 0px;}
+.main-info{border-radius: 5px; -moz-border-radius: 5px; -webkit-border-radius: 5px; border: 3px solid #999; padding: 10px 20px; margin: 20px 0px 10px 0px;}
 .main-info p{line-height: 1.6em;}
 .painel-config{line-height: 1.4em; font-size: 1.4em; text-align: center; margin-bottom: 10px;}
 .processo{margin:1px;}
@@ -41,15 +41,15 @@ nav a.right {border-radius: 0px 5px 5px 0px;}
 .error-message {color: #F00; text-align: center;}
 .info-message {color: #00F;	text-align: center;}
 .result-message{color: #000; text-align: center;}
-.main {background-color: #FFF; border-radius: 7px; border: 5px solid #CCC; margin-bottom: 25px;	margin-top: 25px; padding: 25px;}
+.main {background-color: #FFF; border-radius: 7px; -moz-border-radius: 7px; -webkit-border-radius: 7px; border: 5px solid #CCC; margin-bottom: 25px;	margin-top: 25px; padding: 25px;}
 .graphic-panel {overflow-x: scroll;	overflow-y: hidden;	position: relative; padding: 10px 0px 0px 10px;	width: 950px;}
 .menu {margin-top: 20px;}
-.processo-input-box {border-radius: 5px; border: 1px solid #000; float: left; margin: 5px 8px 10px 0px;}
+.processo-input-box {border-radius: 5px; -moz-border-radius: 5px; -webkit-border-radius: 5px; border: 1px solid #000; float: left; margin: 5px 8px 10px 0px;}
 .processo-input-box p:first-child {text-align: center;}
-.pagination-input-box {border-radius: 5px; border: 1px solid #000; float: left; margin: 5px 8px 10px 0px; padding: 5px 4px 2px 4px; width: 130px;}
+.pagination-input-box {border-radius: 5px; -moz-border-radius: 5px; -webkit-border-radius: 5px; border: 1px solid #000; float: left; margin: 5px 8px 10px 0px; padding: 5px 4px 2px 4px; width: 130px;}
 .pagination-input-box input{width: 35px;}
 .execute-panel p{text-align: right; margin: 20px 40px 0px 0px;}
-.result-panel {border-radius: 5px; border: 1px solid #000; margin: 20px 5px;}
+.result-panel {border-radius: 5px; -moz-border-radius: 5px; -webkit-border-radius: 5px; border: 1px solid #000; margin: 20px 5px;}
 .result-panel td {padding: 5px 14px; text-align: center;}
 .result-line{color:#FFF;}
 .checked{color:#00F;}
@@ -62,24 +62,24 @@ nav a.right {border-radius: 0px 5px 5px 0px;}
 .tecnologias{margin: -45px 0px 0px 460px;}
 .browser{margin: 20px 0px 20px 320px;}
 
-.gae{ background: url('../img/icon_tecnologias.png') no-repeat 0 0; width: 86px; height: 48px; float: left; opacity: 0.9;} 
+.gae{ background: url('../img/icon_tecnologias.png') no-repeat 0 0; width: 86px; height: 48px; float: left; opacity: 0.85;} 
 .gae:hover{opacity: 1.0;}
-.github{ background: url('../img/icon_tecnologias.png') no-repeat -136px 0; width: 149px; height: 48px; float: left; opacity: 0.9; } 
+.github{ background: url('../img/icon_tecnologias.png') no-repeat -136px 0; width: 149px; height: 48px; float: left; opacity: 0.85; } 
 .github:hover{opacity: 1.0;}
-.html5{ background: url('../img/icon_tecnologias.png') no-repeat -335px 0; width: 48px; height: 48px; float: left; opacity: 0.9; } 
+.html5{ background: url('../img/icon_tecnologias.png') no-repeat -335px 0; width: 48px; height: 48px; float: left; opacity: 0.85; } 
 .html5:hover{opacity: 1.0;}
-.java{ background: url('../img/icon_tecnologias.png') no-repeat -433px 0; width: 48px; height: 48px; float: left; opacity: 0.9; } 
+.java{ background: url('../img/icon_tecnologias.png') no-repeat -433px 0; width: 48px; height: 48px; float: left; opacity: 0.85; } 
 .java:hover{opacity: 1.0;}
-.vraptor{ background: url('../img/icon_tecnologias.png') no-repeat -531px 0; width: 165px; height: 48px; float: left; opacity: 0.9; } 
+.vraptor{ background: url('../img/icon_tecnologias.png') no-repeat -531px 0; width: 165px; height: 48px; float: left; opacity: 0.85; } 
 .vraptor:hover{opacity: 1.0;}
 
-.google-chrome{ background: url('../img/icon_browsers.png') no-repeat 0 0; width: 64px; height: 64px; float: left; opacity: 0.9;}
+.google-chrome{ background: url('../img/icon_browsers.png') no-repeat 0 0; width: 64px; height: 64px; float: left; opacity: 0.85;}
 .google-chrome:hover{opacity: 1.0;}
-.mozilla-firefox{ background: url('../img/icon_browsers.png') no-repeat -128px 0; width: 64px; height: 64px; float: left; opacity: 0.9;}
+.mozilla-firefox{ background: url('../img/icon_browsers.png') no-repeat -128px 0; width: 64px; height: 64px; float: left; opacity: 0.85;}
 .mozilla-firefox:hover{opacity: 1.0;}
-.internet-explorer{ background: url('../img/icon_browsers.png') no-repeat -256px 0; width: 64px; height: 64px; float: left; opacity: 0.9;}
+.internet-explorer{ background: url('../img/icon_browsers.png') no-repeat -256px 0; width: 64px; height: 64px; float: left; opacity: 0.85;}
 .internet-explorer:hover{opacity: 1.0;}
-.opera-software{ background: url('../img/icon_browsers.png') no-repeat -384px 0; width: 64px; height: 64px; float: left; opacity: 0.9;}
+.opera-software{ background: url('../img/icon_browsers.png') no-repeat -384px 0; width: 64px; height: 64px; float: left; opacity: 0.85;}
 .opera-software:hover{opacity: 1.0;}
-.apple-safari{ background: url('../img/icon_browsers.png') no-repeat -512px 0; width: 64px; height: 64px; float: left; opacity: 0.9;}
+.apple-safari{ background: url('../img/icon_browsers.png') no-repeat -512px 0; width: 64px; height: 64px; float: left; opacity: 0.85;}
 .apple-safari:hover{opacity: 1.0;}

@@ -28,14 +28,15 @@
 									<c:forEach items="${resultList.stringReferencia}" var="strRef">
 									stringRef.push(${strRef});
 									</c:forEach>
-									var espaco = 22;				
+									var espaco = 22;
+									$('#paginacao-chart-${resultList.algoritmoNome}').attr('height', ((${resultList.totalFrames} * espaco) + 245));
 									var canvas = document.getElementById('paginacao-chart-${resultList.algoritmoNome}');
 									var chart = new PaginacaoChart(10, canvas, espaco);
-									chart.draw(stringRef,paginacao, ${resultList.totalPageFault});
+									chart.draw(stringRef,paginacao, ${resultList.totalPageFault},${resultList.totalFrames});
 								});
 						</script>
 						<strong class="clearfix result-message">Algoritmo: ${resultList.algoritmoNome}</strong>
-						<canvas id="paginacao-chart-${resultList.algoritmoNome}" width="960" height="450">
+						<canvas id="paginacao-chart-${resultList.algoritmoNome}" width="960">
 							O seu navegador não possui suporte HTML 5 para executar o elemento Canvas para renderização dos gráficos, clique no menu Sobre para saber quais versões de browsers utilizar.
 						</canvas>
 						<hr>
