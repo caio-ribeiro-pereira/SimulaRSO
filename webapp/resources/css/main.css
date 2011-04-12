@@ -38,9 +38,9 @@ nav a.right {border-radius: 0px 5px 5px 0px; -moz-border-radius: 0px 5px 5px 0px
 .processo{margin:1px;}
 .processo-cor{width: 26px; height: 20px; border: 1px solid #FFF; margin: 0 auto;}
 .pagination{margin:1px;}
-.error-message {color: #F00; text-align: center;}
-.info-message {color: #00F;	text-align: center;}
-.result-message{color: #000; text-align: center;}
+.error-message {color: #F00; text-align: center; line-height: 1.8em;}
+.info-message {color: #00F;	text-align: center; line-height: 1.8em;}
+.result-message{color: #000; text-align: center; line-height:  1.8em;}
 .main {background-color: #FFF; border-radius: 7px; -moz-border-radius: 7px; -webkit-border-radius: 7px; border: 5px solid #CCC; margin-bottom: 25px;	margin-top: 25px; padding: 25px;}
 .graphic-panel {overflow-x: scroll;	overflow-y: hidden;	position: relative; padding: 10px 0px 0px 10px;	width: 950px;}
 .menu {margin-top: 20px;}

@@ -18,6 +18,7 @@
 				<section class="clearfix">
 					<h2 class="clearfix subtitle">Simulação de Paginação de Memória</h2>
 					<c:forEach var="resultList" items="${resultadosDosAlgoritmos}">
+						<p class="clearfix result-message"><strong>Algoritmo: ${resultList.algoritmoNome}</strong></p>
 						<script type="text/javascript">
 								head.ready(function(){
 									var paginacao = new Array();
@@ -29,16 +30,18 @@
 									stringRef.push(${strRef});
 									</c:forEach>
 									var espaco = 22;
-									$('#paginacao-chart-${resultList.algoritmoNome}').attr('height', ((${resultList.totalFrames} * espaco) + 245));
+									$('#paginacao-chart-${resultList.algoritmoNome}').attr('height', ((${resultList.totalFrames} * espaco) + 140));
 									var canvas = document.getElementById('paginacao-chart-${resultList.algoritmoNome}');
 									var chart = new PaginacaoChart(10, canvas, espaco);
-									chart.draw(stringRef,paginacao, ${resultList.totalPageFault},${resultList.totalFrames});
+									chart.draw(stringRef,paginacao);
 								});
 						</script>
-						<strong class="clearfix result-message">Algoritmo: ${resultList.algoritmoNome}</strong>
 						<canvas id="paginacao-chart-${resultList.algoritmoNome}" width="960">
 							O seu navegador não possui suporte HTML 5 para executar o elemento Canvas para renderização dos gráficos, clique no menu Sobre para saber quais versões de browsers utilizar.
 						</canvas>
+						<p class="clearfix"><small>Tamanho da string de referência: ${resultList.totalStringReferencia}</small></p>
+						<p class="clearfix"><small>Total de frames: ${resultList.totalFrames}</small></p>
+						<p class="clearfix"><small>Total de faltas de páginas: ${resultList.totalPageFault}</small></p>
 						<hr>
 					</c:forEach>
 					<a class="clearfix" href="<c:url value="/paginacao-memoria" />">Realizar nova simulação...</a>

@@ -51,6 +51,7 @@ public class PaginacaoFacade implements Serializable {
 		HashMap<String, Object> resultado = new HashMap<String, Object>();
 		resultado.put("resultadoGrafico", paginacao.resultadoGraficoFinal());
 		resultado.put("stringReferencia", paginacao.stringReferencia());
+		resultado.put("totalStringReferencia", paginacao.stringReferencia().size());
 		resultado.put("totalFrames", paginacao.totalFrames());
 		resultado.put("totalPageFault", paginacao.totalPageFault());
 		resultado.put("algoritmoNome", paginacao.algoritmoNome());
