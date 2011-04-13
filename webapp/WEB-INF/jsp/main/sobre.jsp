@@ -3,6 +3,7 @@
 <html lang="pt-BR" >
 	<head>
 		<title>Detalhes sobre o projeto</title>
+		<meta name="keywords" content="FCFS, SJR, SRT, Round Robin, SSTF, SCAN, C-SCAN, C-LOOK, FIFO, LRU, OPT, MRU" />
 		<%@include file="../templates/script-loader.jsp"%>
 	</head>
 	<body>
@@ -23,7 +24,7 @@
 					   de processos concorrentes presentes, também simular o comportamento
 					   dos algoritmos que escalonam as requisições de entrada e saída <strong>(I/O)</strong> de um 
 					   disco rígido: <strong>(FCFS, SSTF, SCAN, C-SCAN, C-LOOK).</strong> e apresentar o 
-					   comportamento dos algoritmos de substituição de páginas de uma memória virtual <strong>(FIFO, LRU, OPT).</strong>
+					   comportamento dos algoritmos de substituição de páginas de uma memória virtual <strong>(FIFO, LRU, OPT, MRU).</strong>
 					</p>
 					<p class="info-message"><a href="https://github.com/caio-ribeiro-pereira/SimulaRSO" target="_blank"><strong>Clique aqui para visualizar o código-fonte do projeto.</strong></a></p>
 					<hr>

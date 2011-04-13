@@ -3,6 +3,8 @@
 <html lang="pt-BR" >
 	<head>
 		<title>Bem-vindo ao Projeto SimulaRSO</title>
+		<meta name="keywords" content="sistema operacional, algoritmos, escalonamento, processos, disco, paginação de memória" />
+		<meta name="keywords" content="sistema de ensino a distância, EAD, sistemas operacionais" />
 		<%@include file="../templates/script-loader.jsp"%>
 	</head>
 	<body>
@@ -11,14 +13,17 @@
 		  	<article class="clearfix">
 		  		<section class="clearfix main-info">
 			  		<p><strong>Sobre o projeto:</strong></p>
-			  		<p class="text">É um aplicativo que simula o comportamento dos principais recursos que são implementados em um Sistema Operacional moderno.
+			  		<p class="text">É um aplicativo que simula o comportamento dos principais recursos que são implementados em um sistema operacional moderno.
 					   Nesta primeira versão foi implementado os simuladores dos principais algoritmos de escalonamento de processos, disco e 
 					   paginação de memória, em ambos são componentes essenciais que trabalham interligados para gerenciar toda demanda de
 					   tarefas solicitadas pelo usuário.
 					</p>
 					<p class="text">O objetivo principal desse projeto é disponibilizar um aplicativo web que se torne uma ferramenta 
-					   de ensino, para servir de base nos estudos da disciplina de Sistema Operacionais, fazendo
-					   com que o projeto seja facilmente integrado a qualquer Sistema de Ensino a Distância (EAD).
+					   de ensino, para servir de base nos estudos da disciplina de sistema operacionais, fazendo
+					   com que o projeto seja facilmente integrado a qualquer sistema de ensino a distância (EAD).
+					</p>
+					<p class="text">Este projeto será o nosso trabalho de conclusão de curso para 2011. 
+						e será contribuído para a <a href="http://www.unisantos.br" target="_blank">Universidade Católica de Santos.</a>
 					</p>
 			  	</section>
 		  		<section class="clearfix main-info">
