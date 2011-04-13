@@ -11,7 +11,7 @@
 			<article class="clearfix">
 				<section class="clearfix">
 					<h3 class="clearfix subtitle">SimulaRSO - Simulador de Recursos de Sistemas Operacionais</h3>
-					<p><small>O objetivo deste trabalho é o desenvolvimento de uma aplicação web
+					<p class="text">O objetivo deste trabalho é o desenvolvimento de uma aplicação web
 					   a ser utilizado como ferramenta de apoio para a disciplina de 
 					   sistemas operacionais ou semelhantes, que simulem o comportamento dos
 					   recursos que são incorporados em um sistema operacional moderno.
@@ -23,7 +23,7 @@
 					   de processos concorrentes presentes, também simular o comportamento
 					   dos algoritmos que escalonam as requisições de entrada e saída <strong>(I/O)</strong> de um 
 					   disco rígido: <strong>(FCFS, SSTF, SCAN, C-SCAN, C-LOOK).</strong> e apresentar o 
-					   comportamento dos algoritmos de substituição de páginas de uma memória virtual <strong>(FIFO, LRU, OPT)</strong>.</small>
+					   comportamento dos algoritmos de substituição de páginas de uma memória virtual <strong>(FIFO, LRU, OPT).</strong>
 					</p>
 					<p class="info-message"><a href="https://github.com/caio-ribeiro-pereira/SimulaRSO" target="_blank"><strong>Clique aqui para visualizar o código-fonte do projeto.</strong></a></p>
 					<hr>
