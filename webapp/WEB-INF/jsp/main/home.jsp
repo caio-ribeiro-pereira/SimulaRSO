@@ -10,6 +10,18 @@
 			<%@ include file="../templates/header.jsp"%>
 		  	<article class="clearfix">
 		  		<section class="clearfix main-info">
+			  		<p><strong>Sobre o projeto:</strong></p>
+			  		<p class="text">É um aplicativo que simula o comportamento dos principais recursos que são implementados em um Sistema Operacional moderno.
+					   Nesta primeira versão foi implementado os simuladores dos principais algoritmos de escalonamento de processos, disco e 
+					   paginação de memória, em ambos são componentes essenciais que trabalham interligados para gerenciar toda demanda de
+					   tarefas solicitadas pelo usuário.
+					</p>
+					<p class="text">O objetivo principal desse projeto é disponibilizar um aplicativo web que se torne uma ferramenta 
+					   de ensino, para servir de base nos estudos da disciplina de Sistema Operacionais, fazendo
+					   com que o projeto seja facilmente integrado a qualquer Sistema de Ensino a Distância (EAD).
+					</p>
+			  	</section>
+		  		<section class="clearfix main-info">
 				  		<p><strong>Últimas atualizações:</strong></p>
 				  		<p><strong>13/04/2011:</strong> Implementado animação nos gráficos de simulação: <a href="<c:url value="/escalonamento-processo" />">Escalonamento de Processos.</a> e <a href="<c:url value="/paginacao-memoria" />">Paginação de Memória.</a></p>
 				  		<p><strong>07/04/2011:</strong> Lançamento da primeira versão de teste do módulo: <a href="<c:url value="/paginacao-memoria" />">Paginação de Memória.</a></p>

@@ -2,7 +2,7 @@ package com.appspot.simularso.paginator.memory.logic.impl;
 
 public enum PaginacaoMemoriaAlgoritmo {
 
-	FIFO("FIFO"), OPT("OPT"), LRU("LRU");
+	FIFO("FIFO"), OPT("OPT"), LRU("LRU"), MRU("MRU");
 
 	private String nome;
 

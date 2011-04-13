@@ -4,9 +4,10 @@ http://simula-rso.appspot.com/
 
 É um aplicativo que simula o comportamento dos principais recursos que são implementados
 em um Sistema Operacional moderno.
-Nesta primeira versão foi implementado os simuladores de algoritmos
-de escalonamento de processos e disco, componentes essenciais que gerenciam os recursos de 
-multi-tarefa entre sistema operacional com o hardware.
+Nesta primeira versão foi implementado os simuladores dos principais algoritmos
+de escalonamento de processos, disco e paginação de memória, em ambos são componentes 
+essenciais que trabalham interligados para gerenciar toda demanda de
+tarefas solicitadas pelo usuário.
 
 O objetivo principal desse projeto é disponibilizar um aplicativo web que se torne uma ferramenta 
 de ensino, para servir de base nos estudos da disciplina de Sistema Operacionais, fazendo
