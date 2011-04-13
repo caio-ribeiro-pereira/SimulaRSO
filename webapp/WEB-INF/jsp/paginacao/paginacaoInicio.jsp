@@ -94,7 +94,7 @@
 						utilizado no processo de paginação da <strong>String de Referência.</strong>
 					</p>
 					<p>
-						4 - Defina o algoritmo de paginação de memória: <strong>(FIFO, LRU, OPT).</strong>
+						4 - Defina o algoritmo de paginação de memória: <strong>(FIFO, LRU, OPT, MRU).</strong>
 					</p>
 					<p>
 						5 - Clique no botão executar para visualizar o comportamento do algoritmo selecionado.
