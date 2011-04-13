@@ -10,41 +10,51 @@
  * @email caio.ribeiro.pereira@gmail.com
  * 
  */
-function ProcessoChart(total, canvas, espaco) {
-	this.ctx = canvas.getContext('2d');
-	this.width = canvas.width;
-	this.height = canvas.height;
-	this.inicio_x = 0;
-	this.inicio_y = 0;
-	this.total = total;
-	this.espaco = espaco;
-	this.ctx.clearRect(0, 0, this.width, this.height);
-};
-
-ProcessoChart.prototype.draw = function(p) {
-	for(var i = 0; i < p.length; i++){
-		this.ctx.fillStyle = p[i].cor;
-		this.ctx.fillRect(p[i].x * this.espaco, p[i].y * this.espaco, p[i].w * this.espaco, p[i].h * this.espaco);
-	}
+function ProcessoChart(total, canvas, espaco, p, time) {
+	var ctx = canvas.getContext('2d');
+	var width = canvas.width;
+	var height = canvas.height;
+	var inicio_x = 0;
+	var inicio_y = 0;
+	ctx.clearRect(inicio_x, inicio_y, width, height);
 	
-	this.ctx.beginPath();
-	this.strokeStyle = '#000000';
+	ctx.beginPath();
+	strokeStyle = '#000000';
 	// linhas
-	for ( var y = this.inicio_y; y < this.height; y += this.espaco) {
-		this.ctx.moveTo(this.inicio_y, y);
-		this.ctx.lineTo((this.width - this.espaco) + 1, y);
+	for ( var y = inicio_y; y < height; y += espaco) {
+		ctx.moveTo(inicio_y, y);
+		ctx.lineTo((width - espaco) + 1, y);
 		// colunas
-		for ( var x = this.inicio_x; x < this.width; x += this.espaco) {
-			this.ctx.moveTo(x, this.inicio_x);
-			this.ctx.lineTo(x, (this.height - this.espaco) + 1);
+		for ( var x = inicio_x; x < width; x += espaco) {
+			ctx.moveTo(x, inicio_x);
+			ctx.lineTo(x, (height - espaco) + 1);
 		}
 	}
 	// Imprimindo Linha do tempo
-	this.ctx.font = "9px Arial";
-	this.ctx.fillStyle = '#000000';
+	ctx.font = "9px Arial";
+	ctx.fillStyle = '#000000';
 	var tempo = 0;
-	for(var t = this.inicio_x; t < (this.width - this.espaco); t += this.espaco){
-		this.ctx.fillText(tempo++, t + 3, 17);
+	for(var t = inicio_x; t < (width - espaco); t += espaco){
+		ctx.fillText(tempo++, t + 3, 17);
 	}
-	this.ctx.stroke();
+	ctx.stroke();
+	
+	var j = 0;
+	var i = 0;
+	var interval = p[i].w;
+	var anim = window.setInterval(function(){
+		// Processos
+		if(i < p.length){
+			ctx.fillStyle = p[i].cor;
+			if(interval > 0){
+				ctx.fillRect((j++ * espaco), (p[i].y * espaco), (1 * espaco), (p[i].h * espaco));
+				interval--;
+			}else{
+				interval = (++i < p.length) ? p[i].w : 0;
+			}
+		}else{
+			window.clearInterval(anim);
+		}
+		ctx.stroke();
+	}, time);
 };

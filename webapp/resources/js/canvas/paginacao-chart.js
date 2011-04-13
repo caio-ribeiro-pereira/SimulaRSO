@@ -10,50 +10,52 @@
  * @email caio.ribeiro.pereira@gmail.com
  * 
  */
-function PaginacaoChart(total, canvas, espaco) {
-	this.ctx = canvas.getContext('2d');
-	this.width = canvas.width;
-	this.height = canvas.height;
-	this.espaco = espaco;
-	this.ctx.clearRect(0, 0, this.width, this.height);
-};
-
-PaginacaoChart.prototype.draw = function(strRef, pg){
-	// Imprimindo String de Referencia
+function PaginacaoChart(total, canvas, espaco, strRef, pg, time) {
+	var ctx = canvas.getContext('2d');
+	var width = canvas.width;
+	var height = canvas.height;
 	var x = 0;
 	var y = 0;
-	this.ctx.beginPath();
-	this.strokeStyle = '#000000';
-	this.ctx.fillStyle = '#000000';
-	this.ctx.font = "14px Arial";
-	this.ctx.fillText('String de Referência:', x, y + 30);
-	
+	var i = 0;
+	ctx.clearRect(x, y, width, height);
 	// String de Referencia
 	var str_x = x + 2;
 	var str_y = y + 45;
-	var str_w = this.espaco;
-	var str_h = this.espaco;
-	for(var i = 0; i < strRef.length; i++){
-		this.ctx.strokeRect(str_x, str_y, str_w, str_h);
-		this.ctx.fillText(strRef[i], (str_x + 2), (str_y + 16));
-		str_x += this.espaco + 10;
-	}
-	//Paginacao
-	this.ctx.fillText('Frames:', x, y + 90);
+	var str_w = espaco;
+	var str_h = espaco;
+	// Paginacao
 	var pg_x = x + 2;
-	var pg_w = this.espaco;
-	var pg_h = this.espaco;
-	for(var i = 0; i < pg.length; i++){
-		var pg_y = y + 105;
-		if(pg[i].pageFault){
-			var palavras = pg[i].palavras;
-			for(var p = 0; p < palavras.length; p++){
-				this.ctx.strokeRect(pg_x, pg_y, pg_w, pg_h);
-				this.ctx.fillText(palavras[p], (pg_x + 2), (pg_y + 16));
-				pg_y += this.espaco + 5;
-			}	
+	var pg_w = espaco;
+	var pg_h = espaco;
+	var pg_y = y + 105;
+	
+	// Imprimindo String de Referencia
+	ctx.beginPath();
+	ctx.strokeStyle = '#000000';
+	ctx.fillStyle = '#000000';
+	ctx.font = "14px Arial";
+	ctx.fillText('String de Referência:', x, y + 30);
+	ctx.fillText('Frames:', x, y + 90);
+	
+	var anim = window.setInterval(function(){
+		if(i < strRef.length && i < pg.length){
+			ctx.strokeRect(str_x, str_y, str_w, str_h);
+			ctx.fillText(strRef[i], (str_x + 7), (str_y + 17));
+			str_x += espaco + 10;
+			if(pg[i].pageFault){
+				var palavras = pg[i].palavras;
+				pg_y = y + 105;
+				for(var p = 0; p < palavras.length; p++){
+					ctx.strokeRect(pg_x, pg_y, pg_w, pg_h);
+					ctx.fillText(palavras[p], (pg_x + 7), (pg_y + 17));
+					pg_y += espaco + 5;
+				}	
+			}
+			pg_x += espaco + 10;
+			i++;
+		}else{
+			window.clearInterval(anim);
 		}
-		pg_x += this.espaco + 10;
-	}
-	this.ctx.stroke();
-};
+		ctx.stroke();
+	}, time);
+}

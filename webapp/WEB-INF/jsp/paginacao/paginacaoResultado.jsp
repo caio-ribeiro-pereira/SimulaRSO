@@ -30,10 +30,10 @@
 									stringRef.push(${strRef});
 									</c:forEach>
 									var espaco = 22;
-									$('#paginacao-chart-${resultList.algoritmoNome}').attr('height', ((${resultList.totalFrames} * espaco) + 140));
+									var time = 700;
+									$('#paginacao-chart-${resultList.algoritmoNome}').attr('height', ((${resultList.totalFrames} * espaco) + 160));
 									var canvas = document.getElementById('paginacao-chart-${resultList.algoritmoNome}');
-									var chart = new PaginacaoChart(10, canvas, espaco);
-									chart.draw(stringRef,paginacao);
+									new PaginacaoChart(10, canvas, espaco,stringRef,paginacao, time);
 								});
 						</script>
 						<canvas id="paginacao-chart-${resultList.algoritmoNome}" width="960">
@@ -41,7 +41,7 @@
 						</canvas>
 						<p class="clearfix"><small>Tamanho da string de referência: ${resultList.totalStringReferencia}</small></p>
 						<p class="clearfix"><small>Total de frames: ${resultList.totalFrames}</small></p>
-						<p class="clearfix"><small>Total de faltas de páginas: ${resultList.totalPageFault}</small></p>
+						<p class="clearfix"><small>Total de falha de páginas: ${resultList.totalPageFault}</small></p>
 						<hr>
 					</c:forEach>
 					<a class="clearfix" href="<c:url value="/paginacao-memoria" />">Realizar nova simulação...</a>

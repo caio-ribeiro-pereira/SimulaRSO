@@ -166,7 +166,7 @@
 						<script id="paginationTemplate" type="text/x-jquery-tmpl">
 							<div class="pagination-input-box">
 								<label for="\${inputStringRef}"><small>\${labelStringRef}:</small></label>
-								<input type="text" class="stringReferencia" name="stringRef[]" id="\${inputStringRef}" value="1" maxlength="1">
+								<input type="text" class="stringReferencia" name="stringRef[]" id="\${inputStringRef}" value="0" maxlength="1">
 							</div>
 						</script>
 						<strong id="error" class="clearfix error-message menu"></strong>

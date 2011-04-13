@@ -24,12 +24,12 @@
 								<c:forEach items="${resultList.resultadoGrafico}" var="pr">
 								processos.push({x : ${pr.x}, y : ${pr.y}, w : ${pr.w}, h : ${pr.h}, cor: '${pr.cor}'});
 								</c:forEach>
-								var espaco = 26;				
+								var espaco = 26;
+								var time = 100;
 								$('#processo-chart-${resultList.algoritmoNome}').attr('width', ((${resultList.tempoTotal} + 1) * espaco));
 								$('#processo-chart-${resultList.algoritmoNome}').attr('height', ((${resultList.totalProcessos} + 2) * espaco));
 								var canvas = document.getElementById('processo-chart-${resultList.algoritmoNome}');
-								var chart = new ProcessoChart(${resultList.totalProcessos}, canvas, espaco);
-								chart.draw(processos);
+								new ProcessoChart(${resultList.totalProcessos}, canvas, espaco, processos, time);
 							});
 						</script>
 						<strong class="clearfix result-message">Algoritmo: ${resultList.algoritmoNome}</strong>
