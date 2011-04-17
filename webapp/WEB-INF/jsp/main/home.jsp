@@ -28,6 +28,7 @@
 			  	</section>
 		  		<section class="clearfix main-info">
 				  		<p><strong>Últimas atualizações:</strong></p>
+				  		<p><strong>17/04/2011:</strong> Implementado módulo de <a href="<c:url value="/escalonamento-processo" />">Escalonamento d.</a> e <a href="<c:url value="/escalonamento-disco" />">Escalonamento de Disco.</a></p>
 				  		<p><strong>13/04/2011:</strong> Implementado animação nos gráficos de simulação: <a href="<c:url value="/escalonamento-processo" />">Escalonamento de Processos.</a> e <a href="<c:url value="/paginacao-memoria" />">Paginação de Memória.</a></p>
 				  		<p><strong>07/04/2011:</strong> Lançamento da primeira versão de teste do módulo: <a href="<c:url value="/paginacao-memoria" />">Paginação de Memória.</a></p>
 				  		<p><strong>15/03/2011:</strong> Lançamento para testes do módulo de <a href="<c:url value="/escalonamento-processo" />">Escalonamento de Processos.</a></p>

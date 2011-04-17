@@ -20,6 +20,8 @@
 					<c:forEach var="resultList" items="${resultadosDosAlgoritmos}">
 						<script type="text/javascript">
 							head.ready(function(){
+								$('#run-${resultList.algoritmoNome}').button({icons : {primary : 'ui-icon-gear'}});
+								$('#simulation-${resultList.algoritmoNome}').hide();
 								var processos = new Array();
 								<c:forEach items="${resultList.resultadoGrafico}" var="pr">
 								processos.push({x : ${pr.x}, y : ${pr.y}, w : ${pr.w}, h : ${pr.h}, cor: '${pr.cor}'});
@@ -29,7 +31,11 @@
 								$('#processo-chart-${resultList.algoritmoNome}').attr('width', ((${resultList.tempoTotal} + 1) * espaco));
 								$('#processo-chart-${resultList.algoritmoNome}').attr('height', ((${resultList.totalProcessos} + 2) * espaco));
 								var canvas = document.getElementById('processo-chart-${resultList.algoritmoNome}');
-								new ProcessoChart(${resultList.totalProcessos}, canvas, espaco, processos, time);
+								$('#run-${resultList.algoritmoNome}').click(function(){
+									$('#run-${resultList.algoritmoNome}').hide();
+									$('#simulation-${resultList.algoritmoNome}').show();
+									new ProcessoChart(${resultList.totalProcessos}, canvas, espaco, processos, time);
+								});
 							});
 						</script>
 						<strong class="clearfix result-message">Algoritmo: ${resultList.algoritmoNome}</strong>
@@ -72,7 +78,10 @@
 							</tfoot>
 						</table>
 						<strong class="clearfix result-message">Simulação gráfica: ${resultList.algoritmoNome}</strong>
-						<div class="graphic-panel clearfix">
+						<p class="clearfix run">
+							<button id="run-${resultList.algoritmoNome}">Ver simulação</button>
+						</p>
+						<div class="graphic-panel clearfix" id="simulation-${resultList.algoritmoNome}">
 							<canvas id="processo-chart-${resultList.algoritmoNome}">
 								O seu navegador não possui suporte HTML 5 para executar o elemento Canvas para renderização dos gráficos, clique no menu Sobre para saber quais versões de browsers utilizar.
 							</canvas>

@@ -2,8 +2,9 @@ package com.appspot.simularso.util;
 
 import br.com.caelum.vraptor.ioc.Component;
 
-import com.appspot.simularso.paginator.memory.logic.impl.PaginacaoMemoriaAlgoritmo;
-import com.appspot.simularso.scheduler.process.logic.impl.EscalonadorProcessoAlgoritmo;
+import com.appspot.simularso.logic.disc.EscalonadorDiscoAlgoritmo;
+import com.appspot.simularso.logic.memory.PaginacaoMemoriaAlgoritmo;
+import com.appspot.simularso.logic.process.EscalonadorProcessoAlgoritmo;
 
 @Component
 public class EnumToClass {
@@ -18,6 +19,12 @@ public class EnumToClass {
 	}
 
 	public String extractClassFromEnum(PaginacaoMemoriaAlgoritmo algoritmo) {
+		String pack = algoritmo.getClass().getName();
+		String algoritmoName = algoritmo.name();
+		return extractClass(pack, algoritmoName);
+	}
+	
+	public String extractClassFromEnum(EscalonadorDiscoAlgoritmo algoritmo) {
 		String pack = algoritmo.getClass().getName();
 		String algoritmoName = algoritmo.name();
 		return extractClass(pack, algoritmoName);

@@ -38,7 +38,7 @@
 				});
 
 				$('#modo').change(function() {
-					if (this.value == 'COMPARATIVO') {
+					if (this.value == 2) {
 						$('#alg2').show();
 					} else {
 						if ($('#algoritmo1').val() != 'RR' && $('#algoritmo2').val() == 'RR') {
@@ -177,12 +177,12 @@
 						</p>
 						<div class="grid_3">
 							<strong>Simulação: </strong> 
-							<select id="modo" tabindex="1">
-								<option value="UNICO">Única</option>
-								<option value="COMPARATIVO">Comparativa</option>
+							<select id="modo" name="modo" tabindex="1">
+								<option value="1">Única</option>
+								<option value="2">Comparativa</option>
 							</select>
 						</div>
-						<div id="alg1" class="grid_3">
+						<div id="alg1" class="grid_4">
 							<strong>Algoritmo 1: </strong> 
 							<select name="algs[0]" id="algoritmo1" tabindex="3">
 								<option value="">Selecione...</option>
@@ -191,7 +191,7 @@
 								</c:forEach>
 							</select>
 						</div>
-						<div id="alg2" class="grid_3">
+						<div id="alg2" class="grid_4">
 							<strong>Algoritmo 2: </strong> 
 							<select name="algs[1]" id="algoritmo2" tabindex="4">
 								<option value="">Selecione...</option>
@@ -200,7 +200,7 @@
 								</c:forEach>
 							</select>
 						</div>
-						<div class="grid_6 menu">
+						<div class="grid_8 menu">
 							<strong>Total de processos: </strong> 
 							<select id="total" tabindex="2">
 								<option value="">Selecione...</option>
@@ -209,7 +209,7 @@
 								</c:forEach>
 							</select>
 						</div>
-						<div id="quantum" class="grid_5 menu">
+						<div id="quantum" class="grid_8 menu">
 							<strong>Tempo de corte: </strong> 
 							<select name="qt" tabindex="5">
 								<option value="">Selecione</option>

@@ -38,7 +38,7 @@ function ProcessoChart(total, canvas, espaco, p, time) {
 		ctx.fillText(tempo++, t + 3, 17);
 	}
 	ctx.stroke();
-	
+	// Animacao
 	var j = 0;
 	var i = 0;
 	var interval = p[i].w;

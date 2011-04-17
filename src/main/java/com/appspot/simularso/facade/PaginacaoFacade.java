@@ -8,32 +8,29 @@ import java.util.List;
 import net.vidageek.mirror.dsl.Mirror;
 import br.com.caelum.vraptor.ioc.Component;
 
-import com.appspot.simularso.paginator.memory.logic.PaginacaoMemoria;
-import com.appspot.simularso.paginator.memory.logic.impl.PaginacaoMemoriaAlgoritmo;
+import com.appspot.simularso.logic.PaginacaoMemoria;
+import com.appspot.simularso.logic.memory.PaginacaoMemoriaAlgoritmo;
 import com.appspot.simularso.util.EnumToClass;
 
 @Component
 public class PaginacaoFacade implements Serializable {
 
-	private static final long serialVersionUID = 2529486308695350506L;
-
+	private static final long serialVersionUID = 3719454176545234285L;
 	private final EnumToClass enumToClass;
 
 	public PaginacaoFacade(EnumToClass enumToClass) {
 		this.enumToClass = enumToClass;
 	}
 
-	public ArrayList<HashMap<String, Object>> executar(final ArrayList<PaginacaoMemoriaAlgoritmo> algs, final List<Integer> stringRef,
-			final Integer frames) {
+	public ArrayList<HashMap<String, Object>> executar(final List<PaginacaoMemoriaAlgoritmo> algs,
+			final List<Integer> stringRef, final Integer frames, final int modo) {
 
-		if (algs != null && !algs.isEmpty()) {
+		if (algs != null && !algs.isEmpty() && algs.size() == modo) {
 			ArrayList<HashMap<String, Object>> resultadosDosAlgoritmos = new ArrayList<HashMap<String, Object>>();
-
 			for (PaginacaoMemoriaAlgoritmo alg : algs) {
 				HashMap<String, Object> resultado = gerarResultado(alg, stringRef, frames);
 				resultadosDosAlgoritmos.add(resultado);
 			}
-
 			resultadosDosAlgoritmos.trimToSize();
 			return resultadosDosAlgoritmos;
 		} else {
@@ -41,9 +38,11 @@ public class PaginacaoFacade implements Serializable {
 		}
 	}
 
-	private HashMap<String, Object> gerarResultado(PaginacaoMemoriaAlgoritmo algoritmo, List<Integer> stringReferencia, Integer frames) {
+	private HashMap<String, Object> gerarResultado(PaginacaoMemoriaAlgoritmo algoritmo, List<Integer> stringReferencia,
+			Integer frames) {
 		Class<?> klass = new Mirror().reflectClass(enumToClass.extractClassFromEnum(algoritmo));
-		PaginacaoMemoria paginacao = (PaginacaoMemoria) new Mirror().on(klass).invoke().constructor().withArgs(stringReferencia, frames);
+		PaginacaoMemoria paginacao = (PaginacaoMemoria) new Mirror().on(klass).invoke().constructor()
+				.withArgs(stringReferencia, frames);
 		return gerarResultadoMap(paginacao);
 	}
 

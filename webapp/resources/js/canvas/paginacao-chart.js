@@ -20,23 +20,23 @@ function PaginacaoChart(total, canvas, espaco, strRef, pg, time) {
 	ctx.clearRect(x, y, width, height);
 	// String de Referencia
 	var str_x = x + 2;
-	var str_y = y + 45;
+	var str_y = y + 30;
 	var str_w = espaco;
 	var str_h = espaco;
 	// Paginacao
 	var pg_x = x + 2;
 	var pg_w = espaco;
 	var pg_h = espaco;
-	var pg_y = y + 105;
+	var pg_y = y + 90;
 	
 	// Imprimindo String de Referencia
 	ctx.beginPath();
 	ctx.strokeStyle = '#000000';
 	ctx.fillStyle = '#000000';
 	ctx.font = "14px Arial";
-	ctx.fillText('String de Referência:', x, y + 30);
-	ctx.fillText('Frames:', x, y + 90);
-	
+	ctx.fillText('String de Referência:', x, y + 15);
+	ctx.fillText('Frames:', x, y + 80);
+	// Animacao
 	var anim = window.setInterval(function(){
 		if(i < strRef.length && i < pg.length){
 			ctx.strokeRect(str_x, str_y, str_w, str_h);
@@ -44,7 +44,7 @@ function PaginacaoChart(total, canvas, espaco, strRef, pg, time) {
 			str_x += espaco + 10;
 			if(pg[i].pageFault){
 				var palavras = pg[i].palavras;
-				pg_y = y + 105;
+				pg_y = y + 95;
 				for(var p = 0; p < palavras.length; p++){
 					ctx.strokeRect(pg_x, pg_y, pg_w, pg_h);
 					ctx.fillText(palavras[p], (pg_x + 7), (pg_y + 17));

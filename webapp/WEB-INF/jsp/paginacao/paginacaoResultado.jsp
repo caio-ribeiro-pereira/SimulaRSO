@@ -21,6 +21,8 @@
 						<p class="clearfix result-message"><strong>Algoritmo: ${resultList.algoritmoNome}</strong></p>
 						<script type="text/javascript">
 								head.ready(function(){
+									$('#run-${resultList.algoritmoNome}').button({icons : {primary : 'ui-icon-gear'}});
+									$('#simulation-${resultList.algoritmoNome}').hide();
 									var paginacao = new Array();
 									<c:forEach items="${resultList.resultadoGrafico}" var="pg">
 									paginacao.push({palavras: ${pg.palavrasToString}, pageFault: ${pg.pageFault}});
@@ -31,14 +33,23 @@
 									</c:forEach>
 									var espaco = 22;
 									var time = 700;
-									$('#paginacao-chart-${resultList.algoritmoNome}').attr('height', ((${resultList.totalFrames} * espaco) + 160));
+									$('#paginacao-chart-${resultList.algoritmoNome}').attr('height', ((${resultList.totalFrames} * espaco) + 120));
 									var canvas = document.getElementById('paginacao-chart-${resultList.algoritmoNome}');
-									new PaginacaoChart(10, canvas, espaco,stringRef,paginacao, time);
+									$('#run-${resultList.algoritmoNome}').click(function(){
+										$('#run-${resultList.algoritmoNome}').hide();
+										$('#simulation-${resultList.algoritmoNome}').show();
+										new PaginacaoChart(10, canvas, espaco,stringRef, paginacao, time);
+									});
 								});
 						</script>
-						<canvas id="paginacao-chart-${resultList.algoritmoNome}" width="960">
-							O seu navegador não possui suporte HTML 5 para executar o elemento Canvas para renderização dos gráficos, clique no menu Sobre para saber quais versões de browsers utilizar.
-						</canvas>
+						<p class="clearfix run">
+							<button id="run-${resultList.algoritmoNome}">Ver simulação</button>
+						</p>
+						<div class="graphic-panel clearfix" id="simulation-${resultList.algoritmoNome}">
+							<canvas id="paginacao-chart-${resultList.algoritmoNome}" width="960">
+								O seu navegador não possui suporte HTML 5 para executar o elemento Canvas para renderização dos gráficos, clique no menu Sobre para saber quais versões de browsers utilizar.
+							</canvas>
+						</div>
 						<p class="clearfix"><small>Tamanho da string de referência: ${resultList.totalStringReferencia}</small></p>
 						<p class="clearfix"><small>Total de frames: ${resultList.totalFrames}</small></p>
 						<p class="clearfix"><small>Total de falha de páginas: ${resultList.totalPageFault}</small></p>

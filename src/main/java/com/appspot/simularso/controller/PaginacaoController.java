@@ -14,7 +14,7 @@ import br.com.caelum.vraptor.validator.ValidationMessage;
 import com.appspot.simularso.exception.FramesInvalidoException;
 import com.appspot.simularso.exception.StringReferenciaInvalidaException;
 import com.appspot.simularso.facade.PaginacaoFacade;
-import com.appspot.simularso.paginator.memory.logic.impl.PaginacaoMemoriaAlgoritmo;
+import com.appspot.simularso.logic.memory.PaginacaoMemoriaAlgoritmo;
 
 @Resource
 public class PaginacaoController {
@@ -35,16 +35,17 @@ public class PaginacaoController {
 	}
 
 	@Post("/executar-paginacao-memoria")
-	public void paginacaoExecutar(ArrayList<PaginacaoMemoriaAlgoritmo> algs, List<Integer> stringRef, Integer frames) {
+	public void paginacaoExecutar(List<PaginacaoMemoriaAlgoritmo> algs, List<Integer> stringRef, Integer frames,
+			int modo) {
 		try {
 
-			ArrayList<HashMap<String, Object>> resultadosDosAlgoritmos = facade.executar(algs, stringRef, frames);
+			ArrayList<HashMap<String, Object>> resultadosDosAlgoritmos = facade.executar(algs, stringRef, frames, modo);
 			result.include("resultadosDosAlgoritmos", resultadosDosAlgoritmos);
 			result.redirectTo(this).paginacaoResultado();
 
 		} catch (IllegalArgumentException e) {
 
-			validator.add(new ValidationMessage("Nenhum algoritmo foi selecionado.", ""));
+			validator.add(new ValidationMessage("Selecione os algoritmos.", ""));
 			validator.onErrorRedirectTo(this).paginacaoInicio();
 
 		} catch (StringReferenciaInvalidaException e) {

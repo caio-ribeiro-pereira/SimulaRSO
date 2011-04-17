@@ -43,17 +43,21 @@ nav a.right {border-radius: 0px 5px 5px 0px; -moz-border-radius: 0px 5px 5px 0px
 .result-message{color: #000; text-align: center; line-height:  1.8em;}
 .main {background-color: #FFF; border-radius: 7px; -moz-border-radius: 7px; -webkit-border-radius: 7px; border: 5px solid #CCC; margin-bottom: 25px;	margin-top: 25px; padding: 25px;}
 .text {text-align: justify; line-height: 1.5em; margin-top: 10px;}
-.graphic-panel {overflow-x: scroll;	overflow-y: hidden;	position: relative; padding: 10px 0px 0px 10px;	width: 950px;}
+.graphic-panel {overflow-x: scroll;	overflow-y: hidden;	position: relative; padding: 10px 0px 0px 10px;	width: 950px; border: 1px solid #000;}
 .menu {margin-top: 20px;}
 .processo-input-box {border-radius: 5px; -moz-border-radius: 5px; -webkit-border-radius: 5px; border: 1px solid #000; float: left; margin: 5px 8px 10px 0px;}
 .processo-input-box p:first-child {text-align: center;}
 .pagination-input-box {border-radius: 5px; -moz-border-radius: 5px; -webkit-border-radius: 5px; border: 1px solid #000; float: left; margin: 5px 8px 10px 0px; padding: 5px 4px 2px 4px; width: 130px;}
 .pagination-input-box input{width: 35px;}
+.disco-input-box {border-radius: 5px; -moz-border-radius: 5px; -webkit-border-radius: 5px; border: 1px solid #000; float: left; margin: 5px 8px 10px 0px; padding: 5px 4px 2px 4px; width: 130px;}
+.disco-input-box input{width: 35px; margin-left: 5px;}
+.cilindro-cabeca input{width: 40px; margin-left: 5px;}
 .execute-panel p{text-align: right; margin: 20px 40px 0px 0px;}
 .result-panel {border-radius: 5px; -moz-border-radius: 5px; -webkit-border-radius: 5px; border: 1px solid #000; margin: 20px 5px;}
 .result-panel td {padding: 5px 14px; text-align: center;}
 .result-line{color:#FFF;}
 .checked{color:#00F;}
+.run{text-align: center; margin-top: 20px; margin-bottom: 20px;}
 
 #odd{background-color: #555;}
 #even{background-color:#000;}

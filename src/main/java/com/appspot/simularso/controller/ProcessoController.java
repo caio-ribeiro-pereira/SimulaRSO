@@ -2,6 +2,7 @@ package com.appspot.simularso.controller;
 
 import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.List;
 
 import br.com.caelum.vraptor.Get;
 import br.com.caelum.vraptor.Post;
@@ -14,8 +15,8 @@ import com.appspot.simularso.exception.ProcessosConfiguracaoException;
 import com.appspot.simularso.exception.ProcessosNaoCarregadosException;
 import com.appspot.simularso.exception.TempoQuantumException;
 import com.appspot.simularso.facade.ProcessoFacade;
+import com.appspot.simularso.logic.process.EscalonadorProcessoAlgoritmo;
 import com.appspot.simularso.model.Processo;
-import com.appspot.simularso.scheduler.process.logic.impl.EscalonadorProcessoAlgoritmo;
 
 @Resource
 public class ProcessoController {
@@ -36,10 +37,10 @@ public class ProcessoController {
 	}
 
 	@Post("/executar-escalonamento-processo")
-	public void processoExecutar(ArrayList<EscalonadorProcessoAlgoritmo> algs, ArrayList<Processo> pr, int qt) {
+	public void processoExecutar(List<EscalonadorProcessoAlgoritmo> algs, ArrayList<Processo> pr, int qt, int modo) {
 		try {
 
-			ArrayList<HashMap<String, Object>> resultadosDosAlgoritmos = facade.executar(algs, pr, qt);
+			ArrayList<HashMap<String, Object>> resultadosDosAlgoritmos = facade.executar(algs, pr, qt, modo);
 			result.include("resultadosDosAlgoritmos", resultadosDosAlgoritmos);
 			result.redirectTo(this).processoResultado();
 
@@ -60,7 +61,7 @@ public class ProcessoController {
 
 		} catch (IllegalArgumentException e) {
 
-			validator.add(new ValidationMessage("Nenhum algoritmo foi selecionado.", ""));
+			validator.add(new ValidationMessage("Selecione os algoritmos.", ""));
 			validator.onErrorRedirectTo(this).processoInicio();
 		} catch (Exception e) {
 

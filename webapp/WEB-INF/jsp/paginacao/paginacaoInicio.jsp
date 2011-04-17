@@ -9,7 +9,7 @@
 		<script type="text/javascript">
 			head.ready(function(){
 				
-				$('button').button();
+				$('button').button({icons : {primary : 'ui-icon-gear'}}).next().button({icons : {primary : 'ui-icon-shuffle'}});
 				$('#alg2').hide();
 				
 				$('#random').click(function() {
@@ -26,7 +26,7 @@
 				});
 				
 				$('#modo').change(function() {
-					if (this.value == 'COMPARATIVO') {
+					if (this.value == 2) {
 						$('#alg2').show();
 					} else {
 						$('#alg2').hide();
@@ -120,12 +120,12 @@
 							</p>
 							<div class="grid_3">
 								<strong>Simulação: </strong>
-								<select id="modo" tabindex="1">
-									<option value="UNICO">Única</option>
-									<option value="COMPARATIVO">Comparativa</option>
+								<select id="modo" name="modo" tabindex="1">
+									<option value="1">Única</option>
+									<option value="2">Comparativa</option>
 								</select>
 							</div>
-							<div id="alg1" class="grid_3">
+							<div id="alg1" class="grid_4">
 								<strong>Algoritmo 1: </strong>
 								<select name="algs[0]" id="algoritmo1" tabindex="2">
 									<option value="">Selecione...</option>
