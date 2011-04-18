@@ -85,7 +85,7 @@
 					</p>
 					<p>
 						2 - Defina o tamanho da <strong>String de Referência</strong> para o algoritmo de paginação:
-						<strong>(Mínino	6 e Máximo 30)</strong>, ao definir o tamanho da <strong>String de Referência</strong> 
+						<strong>(Mínino	2 e Máximo 30)</strong>, ao definir o tamanho da <strong>String de Referência</strong> 
 						automaticamente será apresentado um painel abaixo para configurar cada <strong>palavra hipotética</strong> 
 						que	será agregada na própria <strong>String de Referência.</strong>
 					</p>
@@ -156,7 +156,7 @@
 								<strong>Tamanho da String de Referência: </strong>
 								<select id="stringRefTotal" tabindex="5">
 									<option value="">Selecione...</option>
-									<c:forEach begin="6" end="30" step="1" var="sr">
+									<c:forEach begin="2" end="30" step="1" var="sr">
 										<option value="${sr}">${sr}</option>
 									</c:forEach>
 								</select>

@@ -31,7 +31,7 @@
 					<h3 class="clearfix subtitle">Funcionalidades do projeto</h3>
 					<ul>
 						<li><small class="checked" title="Funcionalidade liberada.">Simular os principais algoritmos de escalonamento de processos com até 20 processos.</small></li>
-						<li><small title="Funcionalidade em desenvolvimento.">Simular os principais algoritmos de escalonamento de disco com até 20 requisições de (I/O) em disco.</small></li>
+						<li><small class="checked" title="Funcionalidade em desenvolvimento.">Simular os principais algoritmos de escalonamento de disco com até 30 requisições de (I/O) em disco.</small></li>
 						<li><small class="checked" title="Funcionalidade liberada.">Simular os principais algoritmos de substituição de página de memória virtual com até 30 palavras de bytes na escrita.</small></li>
 						<li><small class="checked" title="Funcionalidade liberada.">Realizar simulação comparativa para analisar o comportamento de dois algoritmos distintos.</small></li>
 						<li><small class="checked" title="Funcionalidade liberada.">Exibição comportamental dos algoritmos através de gráficos intuitivos.</small></li>

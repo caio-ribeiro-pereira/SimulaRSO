@@ -17,9 +17,7 @@
 					var total = $('#totalRequisicao').val();
 					if(total > 0){
 						for(var i=0;i<total;i++){
-							cilindros.push({cilindroId : "cilindro-"+(i+1),
-											 cilindroName: "requisicoes[].cilindro", 
-											 cilindroLabel: "Cilindro "+(i+1)});
+							cilindros.push({cilindroId : "cilindro-"+(i+1), cilindroName: "requisicoes[].cilindro", cilindroLabel: "Cilindro "+(i+1)});
 						}
 						var template = $("#discoTemplate").tmpl(cilindros);
 						content.append(template).show();
@@ -80,6 +78,41 @@
 				<h2 class="clearfix subtitle">Algoritmos de escalonamento de disco</h2>
 				<%@ include file="../templates/error-message.jsp"%>
 				<section class="clearfix main-info">
+					<p>
+						<strong>Regras para simulação:</strong>
+					</p>
+					<p>
+						1 - Determine o modo de simulação: <strong>(Única ou
+							Comparativa).</strong>
+					</p>
+					<p>
+						2 - *Defina o algoritmo de escalonamento de processos: <strong>(FC-FS,
+							SSTF, LOOK, SCAN ou C-SCAN).</strong>
+					</p>
+					<p>
+						3 - Determine a posição inicial do **cilindro cabeça do disco.
+					</p>
+					<p>
+						4 - Escolha o total de requisições que serão realizados durante a simulação: 
+							<strong>(Mínino	2 e Máximo 30)</strong>, ao escolher o total de requisições de cilindros,
+							será exibido um painel para configurar cada posição do cilindro do disco. 
+					<p>
+						5 - Ao lado do botão <strong>executar</strong> existe a opção: <strong>Configuração
+							automática</strong>, que serve para configurar aleatóriamente os atributos de cada processo.
+					</p>
+					<p>6 - Clique em executar para visualizar o resultado da execução do algoritmo de escalonamento.</p>
+					<p>
+						<strong>Observações:</strong>
+					</p>
+					<p>
+						<strong>*</strong> Caso seja determinado o modo <strong>comparativo</strong>
+						será necessário definir dois algoritmos de escalonamento distintos.
+					</p>
+					<p>
+						<strong>**</strong> Cilindro cabeça é o primeiro cilindro pelo qual o algoritmo inicia sua execução.
+					</p>
+				</section>
+				<section class="clearfix main-info">
 					<form action="<c:url value="/executar-escalonamento-disco" />" method="post" id="disco-form">
 						<div id="main-menu" class="clearfix menu">
 							<p class="painel-config">
@@ -114,7 +147,7 @@
 							    <label>Total de requisições:</label>
 								<select id="totalRequisicao" tabindex="4">
 									<option value="">Selecione...</option>
-									<c:forEach var="p" begin="6" end="30" step="6">
+									<c:forEach var="p" begin="2" end="30" step="1">
 										<option value="${p}">${p} requisições</option>
 									</c:forEach>
 								</select>

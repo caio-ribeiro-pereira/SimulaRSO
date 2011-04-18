@@ -125,17 +125,17 @@
 						Comparativa).</strong>
 				</p>
 				<p>
-					2 - Escolha o total de processos que serão simulados: <strong>(Mínino
+					2 - *Defina o algoritmo de escalonamento de processos: <strong>(FC-FS,
+						SJF, SRT ou **Round Robin).</strong>
+				</p>
+				<p>
+					3 - Escolha o total de processos que serão simulados: <strong>(Mínino
 						2 e Máximo 20)</strong>, ao escolher o total de processos será exibido um painel 
 						para configuração de cada processo definido no total de processos. 
 						Em cada campo será possível configurar as
 						características principais de um processo para ser hipotéticamente
-						executado. Os atributos de um processo são: <strong>(*Burst-CPU,
-						**Tempo de chegada, ***Prioridade).</strong>
-				<p>
-					3 - ****Defina o algoritmo de escalonamento de processos: <strong>(FC-FS,
-						SJF, SRT ou *****Round Robin).</strong>
-				</p>
+						executado. Os atributos de um processo são: <strong>(***Burst-CPU,
+						****Tempo de chegada, *****Prioridade).</strong>
 				<p>4 - Clique em executar para visualizar o resultado da execução do algoritmo de escalonamento.</p>
 				<p>
 					5 - Ao lado do botão <strong>executar</strong> existe a opção: <strong>Configuração
@@ -145,28 +145,28 @@
 					<strong>Observações:</strong>
 				</p>
 				<p>
-					<strong>* Burst-CPU:</strong> É tempo de surto de um processo, é o
+					<strong>*</strong> Caso seja determinado o modo <strong>comparativo</strong>
+					será necessário definir dois algoritmos de escalonamento distintos.
+				</p>
+				<p>
+					<strong>**</strong> Ao escolher o algoritmo <strong>Round Robin</strong> 
+					surgirá um campo chamado <strong>Tempo de corte</strong> que deve ser definido 
+					para o funcionamento deste algoritmo.
+				</p>
+				<p>
+					<strong>*** Burst-CPU:</strong> É tempo de surto de um processo, é o
 					tempo necessário que o processo possui para ser alocado na CPU.
 				</p>
 				<p>
-					<strong>** Tempo de chegada:</strong> É o tempo em que o processo
+					<strong>**** Tempo de chegada:</strong> É o tempo em que o processo
 					será iniciado, ou seja, é o tempo exato que o processo será alocado na
 					CPU ou ficará na fila de processos em espera.
 				</p>
 				<p>
-					<strong>*** Prioridade:</strong> É a prioridade que um processo
+					<strong>***** Prioridade:</strong> É a prioridade que um processo
 					possui em relação aos demais processos. A regra de prioridade
 					definido neste simulador é: <strong>1 (prioridade mais
 						alta)</strong> e <strong>10 (prioridade mais baixa).</strong>
-				</p>
-				<p>
-					<strong>****</strong> Caso seja determinado o modo <strong>comparativo</strong>
-					será necessário definir dois algoritmos de escalonamento distintos.
-				</p>
-				<p>
-					<strong>*****</strong> Ao escolher o algoritmo <strong>Round Robin</strong> 
-					surgirá um campo chamado <strong>Tempo de corte</strong> que deve ser definido 
-					para o funcionamento deste algoritmo.
 				</p>
 			</section>
 			<section class="clearfix main-info">

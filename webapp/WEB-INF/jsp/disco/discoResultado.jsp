@@ -40,13 +40,13 @@
 						</script>
 						<p class="clearfix run">
 							<button id="run-${resultList.algoritmoNome}">Ver simulação</button>
-						</p>	
+						</p>
+						<p class="clearfix"><small>Total de movimentação de cilindros: ${resultList.movimentoTotalCilindros}</small></p>	
 						<div class="graphic-panel clearfix" id="simulation-${resultList.algoritmoNome}">
 							<canvas id="disco-chart-${resultList.algoritmoNome}" width="1520">
 								O seu navegador não possui suporte HTML 5 para executar o elemento Canvas para renderização dos gráficos, clique no menu Sobre para saber quais versões de browsers utilizar.
 							</canvas>
 						</div>
-						<p class="clearfix"><small>Total de movimentação de cilindros: ${resultList.movimentoTotalCilindros}</small></p>
 						<hr>
 					</c:forEach>
 					<a class="clearfix" href="<c:url value="/escalonamento-disco" />">Realizar nova simulação...</a>
