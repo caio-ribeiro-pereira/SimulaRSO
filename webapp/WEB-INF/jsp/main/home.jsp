@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <fmt:setLocale value="pt-BR" />
-<html lang="pt-BR" >
+<fmt:bundle basename="com.appspot.simularso.i18n.messages">
+<html>
 	<head>
 		<title>Bem-vindo ao Projeto SimulaRSO</title>
 		<meta name="keywords" content="sistema operacional, algoritmos, escalonamento, processos, disco, paginação de memória" />
@@ -46,3 +47,4 @@
 		</div>
 	</body>
 </html>
+</fmt:bundle>
