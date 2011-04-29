@@ -35,8 +35,7 @@ public class PaginacaoController {
 	}
 
 	@Post("/executar-paginacao-memoria")
-	public void paginacaoExecutar(List<PaginacaoMemoriaAlgoritmo> algs, List<Integer> stringRef, Integer frames,
-			int modo) {
+	public void paginacaoExecutar(List<PaginacaoMemoriaAlgoritmo> algs, List<Integer> stringRef, Integer frames, int modo) {
 		try {
 
 			ArrayList<HashMap<String, Object>> resultadosDosAlgoritmos = facade.executar(algs, stringRef, frames, modo);

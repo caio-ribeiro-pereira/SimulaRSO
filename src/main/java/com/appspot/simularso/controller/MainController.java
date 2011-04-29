@@ -18,7 +18,7 @@ public class MainController {
 		result.redirectTo(this).home();
 	}
 
-	@Get("/home")
+	@Get("/home/")
 	public void home() {
 	}
 

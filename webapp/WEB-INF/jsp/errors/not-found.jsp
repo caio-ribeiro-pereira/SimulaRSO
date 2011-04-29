@@ -10,7 +10,7 @@
 			<h2 class="clearfix subtitle">Projeto SimulaRSO</h2>
 			<hr>
 			<strong class="clearfix info-message">Página não encontrada.</strong>
-			<strong class="clearfix info-message"><a href="<c:url value="/home" />">Clique aqui para acessar a nossa home page.</a></strong>
+			<strong class="clearfix info-message"><a href="<c:url value="/" />">Clique aqui para acessar a nossa home page.</a></strong>
 		</div>
 	</body>
 </html>

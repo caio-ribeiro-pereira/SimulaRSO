@@ -1,7 +1,7 @@
 <!DOCTYPE html>
-<fmt:requestEncoding value="UTF-8" />
+<%-- <fmt:requestEncoding value="UTF-8" />
 <fmt:setLocale value="pt_BR" scope="session"/>
-<fmt:bundle basename="idioma">
+<fmt:bundle basename="idioma"> --%>
 <html>
 	<head>
 		<title>Bem-vindo ao Projeto SimulaRSO</title>
@@ -47,4 +47,4 @@
 		</div>
 	</body>
 </html>
-</fmt:bundle>
+<%-- </fmt:bundle> --%>
