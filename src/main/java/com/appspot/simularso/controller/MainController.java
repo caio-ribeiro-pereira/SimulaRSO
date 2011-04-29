@@ -15,7 +15,6 @@ public class MainController {
 
 	@Get("/")
 	public void index() {
-
 		result.redirectTo(this).home();
 	}
 

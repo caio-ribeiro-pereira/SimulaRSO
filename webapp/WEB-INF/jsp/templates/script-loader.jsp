@@ -1,11 +1,9 @@
 <%@ page contentType="text/html; charset=UTF-8" %>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<meta name="author" content="Unisantos - Universidade Católica de Santos">
 <meta name="author" content="André de Araújo Rodrigues">
 <meta name="author" content="Caio Ribeiro Pereira">
 <meta name="description" content="SimulaRSO - Simulador de Recursos de Sistemas Operacionais">
-<meta name="keywords" content="Projeto SimulaRSO, Simulador de Recursos de Sistemas Operacionais, Simulador, Sistemas Operacionais">
-<meta name="keywords" content="Unisantos, Universidade Católica de Santos">
+<meta name="keywords" content="Projeto SimulaRSO, Simulador de Recursos de Sistemas Operacionais">
 <meta name="msvalidate.01" content="8E5B78FB688E236FBD4D6659F8089AD6">
 <meta name="y_key" content="3406b834d5e1d184">
 <link rel="shortcut icon" type="image/x-icon" href="<c:url value="/favicon.ico" />" />
@@ -21,10 +19,12 @@
 		head.js('<c:url value="/resources/js/ie/html5.js" />');
 	}
 	head.js('<c:url value="/resources/js/jquery-pack-plugins.min.js" />')
-		.js('<c:url value="/resources/js/google-analytics.js" />');
+		.js('http://connect.facebook.net/pt_BR/all.js')
+		.js('http://www.google-analytics.com/ga.js');
 	head.ready(function(){
 		$('nav a.left').button({icons: {primary: 'ui-icon-home'}});
 		$('nav a.right').button({icons: {primary: 'ui-icon-comment'}});
 		$('nav a.middle').button({icons: {primary: 'ui-icon-triangle-1-e'}});
+	FB.init({appId : '216590681700019', status : true, cookie : true});
 	});
 </script>

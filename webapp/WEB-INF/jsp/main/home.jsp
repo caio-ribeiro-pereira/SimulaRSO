@@ -1,15 +1,15 @@
 <!DOCTYPE html>
-<fmt:setLocale value="pt-BR" />
-<fmt:bundle basename="com.appspot.simularso.i18n.messages">
+<fmt:requestEncoding value="UTF-8" />
+<fmt:setLocale value="pt_BR" scope="session"/>
+<fmt:bundle basename="idioma">
 <html>
 	<head>
 		<title>Bem-vindo ao Projeto SimulaRSO</title>
-		<meta name="keywords" content="sistema operacional, algoritmos, escalonamento, processos, disco, paginação de memória" />
-		<meta name="keywords" content="sistema de ensino a distância, EAD, sistemas operacionais" />
 		<%@include file="../templates/script-loader.jsp"%>
 	</head>
 	<body>
 		<div class="container_12 main">
+			<div id="fb-root"></div>
 			<%@ include file="../templates/header.jsp"%>
 		  	<article class="clearfix">
 		  		<section class="clearfix main-info">

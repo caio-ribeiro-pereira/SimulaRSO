@@ -34,16 +34,6 @@
 		<param-value>UTF-8</param-value>
 	</context-param>
 
-	<context-param>
-		<param-name>javax.servlet.jsp.jstl.fmt.localizationContext</param-name>
-		<param-value>messages</param-value>
-	</context-param>
-
-	<context-param>
-		<param-name>javax.servlet.jsp.jstl.fmt.locale</param-name>
-		<param-value>pt-BR</param-value>
-	</context-param>
-
 	<filter>
 		<filter-name>vraptor</filter-name>
 		<filter-class>br.com.caelum.vraptor.VRaptor</filter-class>
