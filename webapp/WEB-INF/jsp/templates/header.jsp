@@ -8,5 +8,6 @@
 		<a class="middle" href="<c:url value="/paginacao-memoria" />">Paginação de memória</a>
 		<a class="right" href="<c:url value="/sobre" />">Sobre</a>
 	</nav>
+	<div id="fb-root"></div>
 </header>
 <hr>

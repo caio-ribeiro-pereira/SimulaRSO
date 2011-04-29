@@ -9,7 +9,6 @@
 	</head>
 	<body>
 		<div class="container_12 main">
-			<div id="fb-root"></div>
 			<%@ include file="../templates/header.jsp"%>
 		  	<article class="clearfix">
 		  		<section class="clearfix main-info">
