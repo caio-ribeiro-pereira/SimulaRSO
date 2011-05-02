@@ -1,18 +1,24 @@
 <!DOCTYPE html>
-<fmt:setLocale value="pt-BR" />
-<html lang="pt-BR" >
+<fmt:requestEncoding value="UTF-8" />
+<fmt:setLocale value="${param.idioma}" scope="session"/>
+<fmt:bundle basename="idioma">
+<html>
 	<head>
-		<title>Projeto SimulaRSO - Erro de servidor</title>
+		<title><fmt:message key="error.titulo" /></title>
 		<%@include file="../templates/script-loader.jsp"%>
 	</head>
 	<body>
 		<div class="container_12 main">
-			<h2 class="clearfix subtitle">Projeto SimulaRSO</h2>
-			<hr>
-			<strong class="clearfix info-message">Desculpe nos o transtorno, mas ocorreu um erro grave no servidor.</strong>
-			<strong class="clearfix info-message"><a href="<c:url value="/" />">Por favor tente acessar por aqui a nossa home page.</a></strong>
-			<strong class="clearfix info-message">ou</strong>
-			<strong class="clearfix info-message"><a href="https://github.com/caio-ribeiro-pereira/SimulaRSO/issues" target="_blank">Caso não funcione, nos avise este problema clicando aqui.</a></strong>
+			<%@ include file="../templates/header.jsp"%>
+			<article class="clearfix">
+		  		<section class="clearfix main-info">
+					<strong class="clearfix info-message"><fmt:message key="error.msg1" /></strong>
+					<strong class="clearfix info-message"><fmt:message key="error.msg2" /></strong>
+					<strong class="clearfix info-message"><fmt:message key="error.msg3" /></strong>
+				</section>
+			</article>
+			<%@ include file="../templates/footer.jsp"%>
 		</div>
 	</body>
 </html>
+</fmt:bundle>

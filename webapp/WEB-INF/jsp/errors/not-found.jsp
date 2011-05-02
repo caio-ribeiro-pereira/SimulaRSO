@@ -1,16 +1,23 @@
 <!DOCTYPE html>
-<fmt:setLocale value="pt-BR" />
-<html lang="pt-BR" >
+<fmt:requestEncoding value="UTF-8" />
+<fmt:setLocale value="${param.idioma}" scope="session"/>
+<fmt:bundle basename="idioma">
+<html>
 	<head>
-		<title>Projeto SimulaRSO - Página não encontrada</title>
+		<title><fmt:message key="notfound.titulo" /></title>
 		<%@include file="../templates/script-loader.jsp"%>
 	</head>
 	<body>
 		<div class="container_12 main">
-			<h2 class="clearfix subtitle">Projeto SimulaRSO</h2>
-			<hr>
-			<strong class="clearfix info-message">Página não encontrada.</strong>
-			<strong class="clearfix info-message"><a href="<c:url value="/" />">Clique aqui para acessar a nossa home page.</a></strong>
+			<%@ include file="../templates/header.jsp"%>
+				<article class="clearfix">
+			  		<section class="clearfix main-info">
+						<strong class="clearfix info-message"><fmt:message key="notfound.msg1" /></strong>
+						<strong class="clearfix info-message"><fmt:message key="notfound.msg2" /></strong>
+					</section>
+				</article>
+			<%@ include file="../templates/footer.jsp"%>
 		</div>
 	</body>
 </html>
+</fmt:bundle>

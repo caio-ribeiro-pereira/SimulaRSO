@@ -33,6 +33,16 @@
 		<param-name>br.com.caelum.vraptor.encoding</param-name>
 		<param-value>UTF-8</param-value>
 	</context-param>
+	
+	<context-param>
+	    <param-name>javax.servlet.jsp.jstl.fmt.locale</param-name>
+	    <param-value>pt_BR</param-value>
+	</context-param>
+
+	<context-param>
+	    <param-name>javax.servlet.jsp.jstl.fmt.localizationContext</param-name>
+	    <param-value>idioma</param-value>
+	</context-param>
 
 	<filter>
 		<filter-name>vraptor</filter-name>
