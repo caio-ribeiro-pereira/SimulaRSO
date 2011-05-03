@@ -16,6 +16,7 @@ import com.appspot.simularso.exception.CilindroCabecaVaziaException;
 import com.appspot.simularso.exception.RequisicaoCilindroException;
 import com.appspot.simularso.exception.RequisicoesVaziaException;
 import com.appspot.simularso.facade.DiscoFacade;
+import com.appspot.simularso.infra.Idioma;
 import com.appspot.simularso.logic.disc.EscalonadorDiscoAlgoritmo;
 import com.appspot.simularso.model.Disco;
 
@@ -25,24 +26,24 @@ public class DiscoController {
 	private final Result result;
 	private final Validator validator;
 	private final DiscoFacade discoFacade;
+	private final Idioma idioma;
 
-	public DiscoController(Result result, Validator validator, DiscoFacade discoFacade) {
+	public DiscoController(Result result, Validator validator, DiscoFacade discoFacade, Idioma idioma) {
 		this.result = result;
 		this.validator = validator;
 		this.discoFacade = discoFacade;
+		this.idioma = idioma;
 	}
 
-	@Get("/escalonamento-disco")
+	@Get("/escalonamento-disco/")
 	public void discoInicio() {
 		result.include("algoritmoDisco", EscalonadorDiscoAlgoritmo.values());
 	}
 
 	@Post("/executar-escalonamento-disco")
-	public void discoExecutar(List<EscalonadorDiscoAlgoritmo> algDisco, LinkedList<Disco> requisicoes, Disco cabeca,
-			int modo) {
+	public void discoExecutar(List<EscalonadorDiscoAlgoritmo> algDisco, LinkedList<Disco> requisicoes, Disco cabeca, int modo) {
 		try {
-			ArrayList<HashMap<String, Object>> resultadoDosAlgoritmos = discoFacade.executar(algDisco, requisicoes,
-					cabeca, modo);
+			ArrayList<HashMap<String, Object>> resultadoDosAlgoritmos = discoFacade.executar(algDisco, requisicoes, cabeca, modo);
 			result.include("resultadoDosAlgoritmos", resultadoDosAlgoritmos);
 			result.redirectTo(this).discoResultado();
 
@@ -77,4 +78,7 @@ public class DiscoController {
 		}
 	}
 
+	public String getIdioma() {
+		return idioma.getIdioma();
+	}
 }

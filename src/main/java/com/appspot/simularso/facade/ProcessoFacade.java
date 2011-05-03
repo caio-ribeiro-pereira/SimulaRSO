@@ -8,10 +8,10 @@ import java.util.List;
 import net.vidageek.mirror.dsl.Mirror;
 import br.com.caelum.vraptor.ioc.Component;
 
+import com.appspot.simularso.infra.EnumToClass;
 import com.appspot.simularso.logic.EscalonadorProcesso;
 import com.appspot.simularso.logic.process.EscalonadorProcessoAlgoritmo;
 import com.appspot.simularso.model.Processo;
-import com.appspot.simularso.util.EnumToClass;
 
 @Component
 public class ProcessoFacade implements Serializable {

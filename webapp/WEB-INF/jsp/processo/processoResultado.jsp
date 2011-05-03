@@ -1,6 +1,8 @@
 <!DOCTYPE html>
-<fmt:setLocale value="pt-BR" />
-<html lang="pt-BR" >
+<fmt:requestEncoding value="UTF-8" />
+<fmt:setLocale value="${processoController.idioma}" />
+<fmt:bundle basename="idioma">
+<html>
 	<head>
 		<title>Simulação Gráfica de Escalonamento de Processos</title>
 		<%@include file="../templates/script-loader.jsp"%>
@@ -95,3 +97,4 @@
 		</div>
 	</body>
 </html>
+</fmt:bundle>

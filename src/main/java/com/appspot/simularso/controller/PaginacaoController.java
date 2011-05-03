@@ -14,6 +14,7 @@ import br.com.caelum.vraptor.validator.ValidationMessage;
 import com.appspot.simularso.exception.FramesInvalidoException;
 import com.appspot.simularso.exception.StringReferenciaInvalidaException;
 import com.appspot.simularso.facade.PaginacaoFacade;
+import com.appspot.simularso.infra.Idioma;
 import com.appspot.simularso.logic.memory.PaginacaoMemoriaAlgoritmo;
 
 @Resource
@@ -22,14 +23,16 @@ public class PaginacaoController {
 	private final Result result;
 	private final Validator validator;
 	private final PaginacaoFacade facade;
+	private final Idioma idioma;
 
-	public PaginacaoController(Result result, Validator validator, PaginacaoFacade facade) {
+	public PaginacaoController(Result result, Validator validator, PaginacaoFacade facade, Idioma idioma) {
 		this.result = result;
 		this.validator = validator;
 		this.facade = facade;
+		this.idioma = idioma;
 	}
 
-	@Get("/paginacao-memoria")
+	@Get("/paginacao-memoria/")
 	public void paginacaoInicio() {
 		result.include("paginacaoMemoriaAlgoritmo", PaginacaoMemoriaAlgoritmo.values());
 	}
@@ -70,5 +73,9 @@ public class PaginacaoController {
 			validator.add(new ValidationMessage("Selecione um algoritmo para simular uma paginação de memória.", ""));
 			validator.onErrorRedirectTo(this).paginacaoInicio();
 		}
+	}
+
+	public String getIdioma() {
+		return idioma.getIdioma();
 	}
 }

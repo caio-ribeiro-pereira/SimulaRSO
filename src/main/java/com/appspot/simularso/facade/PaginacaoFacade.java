@@ -8,9 +8,9 @@ import java.util.List;
 import net.vidageek.mirror.dsl.Mirror;
 import br.com.caelum.vraptor.ioc.Component;
 
+import com.appspot.simularso.infra.EnumToClass;
 import com.appspot.simularso.logic.PaginacaoMemoria;
 import com.appspot.simularso.logic.memory.PaginacaoMemoriaAlgoritmo;
-import com.appspot.simularso.util.EnumToClass;
 
 @Component
 public class PaginacaoFacade implements Serializable {

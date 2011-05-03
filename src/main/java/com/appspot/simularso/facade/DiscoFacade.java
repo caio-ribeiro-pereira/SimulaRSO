@@ -9,10 +9,10 @@ import java.util.List;
 import net.vidageek.mirror.dsl.Mirror;
 import br.com.caelum.vraptor.ioc.Component;
 
+import com.appspot.simularso.infra.EnumToClass;
 import com.appspot.simularso.logic.EscalonadorDisco;
 import com.appspot.simularso.logic.disc.EscalonadorDiscoAlgoritmo;
 import com.appspot.simularso.model.Disco;
-import com.appspot.simularso.util.EnumToClass;
 
 @Component
 public class DiscoFacade implements Serializable {

@@ -64,7 +64,7 @@ nav a.right {border-radius: 0px 5px 5px 0px; -moz-border-radius: 0px 5px 5px 0px
 #odd:hover{background-color: #CCC; color:#000}
 #even:hover{background-color:#CCC; color:#000}
 
-.tecnologias{margin: -45px 0px 0px 460px;}
+.tecnologias{margin: 20px 0px 20px 240px;}
 .browser{margin: 20px 0px 20px 320px;}
 
 .gae{ background: url('../img/icon_tecnologias.png') no-repeat 0 0; width: 86px; height: 48px; float: left; opacity: 0.85;} 

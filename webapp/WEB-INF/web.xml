@@ -20,15 +20,6 @@
 		</jsp-property-group>
 	</jsp-config>
 
-	<error-page>
-		<error-code>404</error-code>
-		<location>/WEB-INF/jsp/errors/not-found.jsp</location>
-	</error-page>
-	<error-page>
-		<error-code>500</error-code>
-		<location>/WEB-INF/jsp/errors/error.jsp</location>
-	</error-page>
-
 	<context-param>
 		<param-name>br.com.caelum.vraptor.encoding</param-name>
 		<param-value>UTF-8</param-value>
@@ -44,6 +35,15 @@
 	    <param-value>idioma</param-value>
 	</context-param>
 
+	<error-page>
+		<error-code>404</error-code>
+		<location>/WEB-INF/jsp/errors/not-found.jsp</location>
+	</error-page>
+	<error-page>
+		<error-code>500</error-code>
+		<location>/WEB-INF/jsp/errors/error.jsp</location>
+	</error-page>
+	
 	<filter>
 		<filter-name>vraptor</filter-name>
 		<filter-class>br.com.caelum.vraptor.VRaptor</filter-class>

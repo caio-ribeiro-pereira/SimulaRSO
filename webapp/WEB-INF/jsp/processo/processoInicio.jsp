@@ -1,6 +1,8 @@
 <!DOCTYPE html>
-<fmt:setLocale value="pt-BR" />
-<html lang="pt-BR">
+<fmt:requestEncoding value="UTF-8" />
+<fmt:setLocale value="${processoController.idioma}" />
+<fmt:bundle basename="idioma">
+<html>
 <head>
 <title>Algoritmos de escalonamento de processos</title>
 	<meta name="keywords" content="Algoritmos de escalonamento de processos, Processos, Processo" />
@@ -258,3 +260,4 @@
 	</div>
 </body>
 </html>
+</fmt:bundle>

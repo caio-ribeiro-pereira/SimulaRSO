@@ -1,6 +1,8 @@
 <!DOCTYPE html>
-<fmt:setLocale value="pt-BR" />
-<html lang="pt-BR" >
+<fmt:requestEncoding value="UTF-8" />
+<fmt:setLocale value="${discoController.idioma}" />
+<fmt:bundle basename="idioma">
+<html>
 	<head>
 		<title>Algoritmos de escalonamento de disco</title>
 		<meta name="keywords" content="Escalonamento de disco, Algoritmos de escalonamento de disco" />
@@ -178,3 +180,4 @@
 		</div>
 	</body>
 </html>
+</fmt:bundle>

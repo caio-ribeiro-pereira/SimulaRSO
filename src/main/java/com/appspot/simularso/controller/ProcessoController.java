@@ -15,6 +15,7 @@ import com.appspot.simularso.exception.ProcessosConfiguracaoException;
 import com.appspot.simularso.exception.ProcessosNaoCarregadosException;
 import com.appspot.simularso.exception.TempoQuantumException;
 import com.appspot.simularso.facade.ProcessoFacade;
+import com.appspot.simularso.infra.Idioma;
 import com.appspot.simularso.logic.process.EscalonadorProcessoAlgoritmo;
 import com.appspot.simularso.model.Processo;
 
@@ -24,14 +25,16 @@ public class ProcessoController {
 	private final Result result;
 	private final Validator validator;
 	private final ProcessoFacade facade;
+	private final Idioma idioma;
 
-	public ProcessoController(Result result, Validator validator, ProcessoFacade facade) {
+	public ProcessoController(Result result, Validator validator, ProcessoFacade facade, Idioma idioma) {
 		this.result = result;
 		this.validator = validator;
 		this.facade = facade;
+		this.idioma = idioma;
 	}
 
-	@Get("/escalonamento-processo")
+	@Get("/escalonamento-processo/")
 	public void processoInicio() {
 		result.include("escalonadorProcessoAlgoritmo", EscalonadorProcessoAlgoritmo.values());
 	}
@@ -76,5 +79,9 @@ public class ProcessoController {
 			validator.add(new ValidationMessage("Selecione um algoritmo para simular um escalonamento.", ""));
 			validator.onErrorRedirectTo(this).processoInicio();
 		}
+	}
+
+	public String getIdioma() {
+		return idioma.getIdioma();
 	}
 }

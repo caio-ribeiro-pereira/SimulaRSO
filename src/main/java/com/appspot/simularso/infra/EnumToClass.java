@@ -1,4 +1,4 @@
-package com.appspot.simularso.util;
+package com.appspot.simularso.infra;
 
 import br.com.caelum.vraptor.ioc.Component;
 

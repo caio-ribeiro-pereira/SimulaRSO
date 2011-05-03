@@ -1,5 +1,7 @@
 <!DOCTYPE html>
-<fmt:setLocale value="pt-BR" />
+<fmt:requestEncoding value="UTF-8" />
+<fmt:setLocale value="${discoController.idioma}" />
+<fmt:bundle basename="idioma">
 <html>
 	<head>
 		<title>Simulação de Escalonamento de Disco</title>
@@ -56,3 +58,4 @@
 		</div>
 	</body>
 </html>
+</fmt:bundle>

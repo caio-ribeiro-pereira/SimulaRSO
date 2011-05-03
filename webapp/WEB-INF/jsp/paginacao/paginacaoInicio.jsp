@@ -1,8 +1,10 @@
 <!DOCTYPE html>
-<fmt:setLocale value="pt-BR" />
-<html lang="pt-BR" >
+<fmt:requestEncoding value="UTF-8" />
+<fmt:setLocale value="${paginacaoController.idioma}" />
+<fmt:bundle basename="idioma">
+<html>
 	<head>
-		<title>Algoritmos de paginação de memória</title>
+		<title><fmt:message key="paginacao.titulo" /></title>
 		<meta name="keywords" content="Simulação de paginação, algoritmos de substituição de páginas" />
 		<meta name="keywords" content="string de referência, paginação, FIFO, LRU, OPT" />
 		<%@include file="../templates/script-loader.jsp"%>
@@ -183,3 +185,4 @@
 		</div>
 	</body>
 </html>
+</fmt:bundle>

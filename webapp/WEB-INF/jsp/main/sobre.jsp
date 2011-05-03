@@ -1,8 +1,10 @@
 <!DOCTYPE html>
-<fmt:setLocale value="pt-BR" />
-<html lang="pt-BR" >
+<fmt:requestEncoding value="UTF-8" />
+<fmt:setLocale value="${mainController.idioma}" />
+<fmt:bundle basename="idioma">
+<html>
 	<head>
-		<title>Detalhes sobre o projeto</title>
+		<title><fmt:message key="sobre.titulo" /></title>
 		<meta name="keywords" content="FCFS, SJR, SRT, Round Robin, SSTF, SCAN, C-SCAN, C-LOOK, FIFO, LRU, OPT, MRU" />
 		<%@include file="../templates/script-loader.jsp"%>
 	</head>
@@ -11,21 +13,8 @@
 			<%@include file="../templates/header.jsp"%>
 			<article class="clearfix">
 				<section class="clearfix">
-					<h3 class="clearfix subtitle">SimulaRSO - Simulador de Recursos de Sistemas Operacionais</h3>
-					<p class="text">O objetivo deste trabalho é o desenvolvimento de uma aplicação web
-					   a ser utilizado como ferramenta de apoio para a disciplina de 
-					   sistemas operacionais ou semelhantes, que simulem o comportamento dos
-					   recursos que são incorporados em um sistema operacional moderno.
-					   Nesta versão foi implementado os simuladores dos principais algoritmos
-					   de escalonamento de disco, escalonamento de processos e paginação de memória virtual.
-					   O foco principal é simular graficamente e de forma intuitiva
-					   como funcionam os principais algoritmos de escalonadores de processos: 
-					   <strong>(FCFS, SJF, SRT, Round Robin)</strong> que são utilizados no gerenciamento
-					   de processos concorrentes presentes, também simular o comportamento
-					   dos algoritmos que escalonam as requisições de entrada e saída <strong>(I/O)</strong> de um 
-					   disco rígido: <strong>(FCFS, SSTF, SCAN, C-SCAN, C-LOOK).</strong> e apresentar o 
-					   comportamento dos algoritmos de substituição de páginas de uma memória virtual <strong>(FIFO, LRU, OPT, MRU).</strong>
-					</p>
+					<h3 class="clearfix subtitle"><fmt:message key="sobre.titulo" /></h3>
+					<p class="text"><fmt:message key="sobre.msg" /></p>
 					<p class="info-message"><a href="https://github.com/caio-ribeiro-pereira/SimulaRSO" target="_blank"><strong>Clique aqui para visualizar o código-fonte do projeto.</strong></a></p>
 					<hr>
 					<h3 class="clearfix subtitle">Funcionalidades do projeto</h3>
@@ -39,6 +28,7 @@
 					</ul>
 					<hr>
 					<h3 class="clearfix subtitle">Tecnologias utilizadas</h3>
+					<%@include file="../templates/tecnologias.jsp"%>
 					<ul>
 						<li><strong>Infra-estrutura:</strong></li>
 						<li><small style="margin-left: 30px;"><a href="http://code.google.com/appengine/" target="_blank"><strong>Google App Engine</strong></a> - Serviço de hospedagem em Cloud Computing para aplicações Java e Python.</small></li>
@@ -67,3 +57,4 @@
 		</div>
 	</body>
 </html>
+</fmt:bundle>
