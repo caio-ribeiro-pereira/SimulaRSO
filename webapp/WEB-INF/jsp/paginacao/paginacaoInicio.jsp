@@ -40,7 +40,7 @@
 					$('#error').text('');
 					if(this.value == $('#algoritmo2').val() && this.value != ''){
 						$('#execute').attr('disabled','disabled');
-						$('#error').text('Escolha um algoritmo diferente.').show();
+						$('#error').text('<fmt:message key="misc.algoritmo.erro" />').show();
 					}
 				}).trigger('change');
 				
@@ -49,7 +49,7 @@
 					$('#error').text('');
 					if(this.value == $('#algoritmo1').val() && this.value != ''){
 						$('#execute').attr('disabled','disabled');
-						$('#error').text('Escolha um algoritmo diferente.').show();
+						$('#error').text('<fmt:message key="misc.algoritmo.erro" />').show();
 					}
 				}).trigger('change');
 				
@@ -60,13 +60,13 @@
 						var paginator = new Array();
 						for(var i = 0; i < total; i++){
 							paginator.push({inputStringRef:'stringReferencia-'+(i+1), 
-											labelStringRef:'Palavra '+(i+1)});
+											labelStringRef:'<fmt:message key="paginacao.palavra" /> '+(i+1)});
 						}
 						var template = $('#paginationTemplate').tmpl(paginator);
 						content.append(template).show();
 						$('input[type="text"].stringReferencia').spinner({ min: 0, max: 9, showOn: 'always' }).onlyNumeric();
 					}else {
-						$('#pagination-menu').html('<strong class="clearfix info-message">Determine o tamanho da string de referência para simular.</strong>').show();
+						$('#pagination-menu').html('<strong class="clearfix info-message"><fmt:message key="paginacao.determine.tamanho" /></strong>').show();
 					}
 				}).trigger('change');
 			});
@@ -76,88 +76,81 @@
 		<div class="container_12 main">
 			<%@ include file="../templates/header.jsp"%>
 			<article class="clearfix">
-				<h2 class="clearfix subtitle">Algoritmos de paginação de memória</h2>
+				<h2 class="clearfix subtitle"><fmt:message key="paginacao.titulo" /></h2>
 				<%@ include file="../templates/error-message.jsp"%>
 				<section class="clearfix main-info">
 					<p>
-						<strong>Regras para simulação:</strong>
+						<strong><fmt:message key="misc.regra.titulo" />:</strong>
 					</p>
 					<p>
-						1 - *Determine o modo de simulação: <strong>(Única ou Comparativa).</strong>
+						<fmt:message key="paginacao.regra.msg1" />
 					</p>
 					<p>
-						2 - Defina o tamanho da <strong>String de Referência</strong> para o algoritmo de paginação:
-						<strong>(Mínino	2 e Máximo 30)</strong>, ao definir o tamanho da <strong>String de Referência</strong> 
-						automaticamente será apresentado um painel abaixo para configurar cada <strong>palavra hipotética</strong> 
-						que	será agregada na própria <strong>String de Referência.</strong>
+						<fmt:message key="paginacao.regra.msg2" />
 					</p>
 					<p>
-						3 - Configure o total de frames: <strong>(Mínino 2 e Máximo 10)</strong> que será 
-						utilizado no processo de paginação da <strong>String de Referência.</strong>
+						<fmt:message key="paginacao.regra.msg3" />
 					</p>
 					<p>
-						4 - Defina o algoritmo de paginação de memória: <strong>(FIFO, LRU, OPT, MRU).</strong>
+						<fmt:message key="paginacao.regra.msg4" />
 					</p>
 					<p>
-						5 - Clique no botão executar para visualizar o comportamento do algoritmo selecionado.
+						<fmt:message key="paginacao.regra.msg5" />
 					</p>
 					<p>
-						6 - Ao lado do botão <strong>executar</strong> existe a opção: <strong>Configuração
-							automática</strong>, que serve para configurar aleatóriamente os atributos
-							das <strong>palavras hipotéticas</strong> existentes.
+						<fmt:message key="paginacao.regra.msg6" />
 					</p>
 					<p>
-						<strong>Observações:</strong>
+						<strong><fmt:message key="paginacao.regra.msg7" /></strong>
 					</p>
 					<p>
-						<strong>*</strong> Caso seja determinado o modo <strong>comparativo</strong>
-						será necessário definir dois algoritmos distintos para simulação.
+						<fmt:message key="paginacao.regra.msg8" />
 					</p>
 				</section>
 				<section class="clearfix main-info">
 					<form id="pagination-form" action="<c:url value="/executar-paginacao-memoria"/>" method="post">
 						<div id="main-menu" class="clearfix menu">
 							<p class="painel-config">
-								<strong>Painel de configuração</strong>
+								<strong><fmt:message key="misc.painel.titulo" /></strong>
 							</p>
 							<div class="grid_3">
-								<strong>Simulação: </strong>
+								<strong><fmt:message key="misc.simulacao.titulo" />: </strong>
 								<select id="modo" name="modo" tabindex="1">
-									<option value="1">Única</option>
-									<option value="2">Comparativa</option>
+									<option value="1"><fmt:message key="misc.simulacao.unica" /></option>
+									<option value="2"><fmt:message key="misc.simulacao.comparativa" /></option>
 								</select>
 							</div>
 							<div id="alg1" class="grid_4">
-								<strong>Algoritmo 1: </strong>
+								<strong><fmt:message key="misc.algoritmo" /> 1: </strong>
 								<select name="algs[0]" id="algoritmo1" tabindex="2">
-									<option value="">Selecione...</option>
+									<option value=""><fmt:message key="misc.selecione" /></option>
 									<c:forEach var="alg" items="${paginacaoMemoriaAlgoritmo}">
 										<option value="${alg}">${alg.nome}</option>	
 									</c:forEach>
 								</select>
 							</div>
 							<div id="alg2" class="grid_4">
-								<strong>Algoritmo 2: </strong>
+								<strong><fmt:message key="misc.algoritmo" /> 2: </strong>
 								<select name="algs[1]" id="algoritmo2" tabindex="3">
-									<option value="">Selecione...</option>
+									<option value=""><fmt:message key="misc.selecione" /></option>
 									<c:forEach var="alg" items="${paginacaoMemoriaAlgoritmo}">
 										<option value="${alg}">${alg.nome}</option>	
 									</c:forEach>
 								</select>			
 							</div>
 							<div class="grid_8 menu">
-								<strong>Total de Frames: </strong>
+								<strong><fmt:message key="paginacao.total.frames" />: </strong>
 								<select name="frames" tabindex="4">
-									<option value="">Selecione...</option>
+									<option value=""><fmt:message key="misc.selecione" /></option>
 									<c:forEach begin="2" end="10" step="1" var="fr">
 										<option value="${fr}">${fr} frames</option>
 									</c:forEach>
 								</select>
 							</div>
 							<div class="grid_8 menu">
-								<strong>Tamanho da String de Referência: </strong>
+								<strong><fmt:message key="paginacao.tamanho.string.referencia" />: </strong>
 								<select id="stringRefTotal" tabindex="5">
-									<option value="">Selecione...</option>
+									<option value=""><fmt:message key="misc.selecione" /></option>
 									<c:forEach begin="2" end="30" step="1" var="sr">
 										<option value="${sr}">${sr}</option>
 									</c:forEach>
@@ -174,8 +167,8 @@
 						<strong id="error" class="clearfix error-message menu"></strong>
 						<div class="clearfix execute-panel">
 							<p>
-								<button id="random" type="button" tabindex="7">Configuração automática</button>
-								<button id="execute" type="submit" tabindex="8">Executar</button>
+								<button id="random" type="button" tabindex="7"><fmt:message key="misc.configuracao.automatica" /></button>
+								<button id="execute" type="submit" tabindex="8"><fmt:message key="misc.executar" /></button>
 							</p>
 						</div>
 					</form>

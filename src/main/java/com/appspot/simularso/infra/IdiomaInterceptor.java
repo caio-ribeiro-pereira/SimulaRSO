@@ -14,12 +14,12 @@ import br.com.caelum.vraptor.resource.ResourceMethod;
 import com.appspot.simularso.controller.DiscoController;
 import com.appspot.simularso.controller.PaginacaoController;
 import com.appspot.simularso.controller.ProcessoController;
+import com.appspot.simularso.controller.SobreController;
 
 @Intercepts
 @RequestScoped
 public class IdiomaInterceptor implements Interceptor {
 
-	private static final String HOME = "/";
 	private final HttpServletRequest request;
 	private Idioma idioma;
 
@@ -30,16 +30,14 @@ public class IdiomaInterceptor implements Interceptor {
 
 	@Override
 	public boolean accepts(ResourceMethod method) {
-		return !Arrays.asList(ProcessoController.class, DiscoController.class, PaginacaoController.class).contains(
-				method.getMethod().getDeclaringClass());
+		return !Arrays.asList(ProcessoController.class, DiscoController.class, PaginacaoController.class,
+				SobreController.class).contains(method.getMethod().getDeclaringClass());
 	}
 
 	@Override
 	public void intercept(InterceptorStack stack, ResourceMethod method, Object obj) throws InterceptionException {
-		if (request.getServletPath().equals(HOME)) {
-			String locale = request.getParameter("locale");
-			idioma.setIdioma(locale);
-		}
+		String locale = request.getParameter("locale");
+		idioma.setIdioma(locale);
 		stack.next(method, obj);
 	}
 }
