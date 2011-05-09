@@ -14,11 +14,11 @@ public class MainController {
 		this.idioma = idioma;
 	}
 
-	@Get("/")
+	@Get("/home")
 	public void home() {
 	}
 
-	@Get("/sobre/")
+	@Get("/sobre")
 	public void sobre() {
 	}
 

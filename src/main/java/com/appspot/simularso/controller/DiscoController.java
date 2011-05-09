@@ -35,7 +35,7 @@ public class DiscoController {
 		this.idioma = idioma;
 	}
 
-	@Get("/escalonamento-disco/")
+	@Get("/escalonamento-disco")
 	public void discoInicio() {
 		result.include("algoritmoDisco", EscalonadorDiscoAlgoritmo.values());
 	}

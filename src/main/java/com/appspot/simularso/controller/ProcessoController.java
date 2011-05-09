@@ -34,7 +34,7 @@ public class ProcessoController {
 		this.idioma = idioma;
 	}
 
-	@Get("/escalonamento-processo/")
+	@Get("/escalonamento-processo")
 	public void processoInicio() {
 		result.include("escalonadorProcessoAlgoritmo", EscalonadorProcessoAlgoritmo.values());
 	}

@@ -32,7 +32,7 @@ public class PaginacaoController {
 		this.idioma = idioma;
 	}
 
-	@Get("/paginacao-memoria/")
+	@Get("/paginacao-memoria")
 	public void paginacaoInicio() {
 		result.include("paginacaoMemoriaAlgoritmo", PaginacaoMemoriaAlgoritmo.values());
 	}
