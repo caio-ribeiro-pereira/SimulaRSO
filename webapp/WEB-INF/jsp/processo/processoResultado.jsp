@@ -4,7 +4,7 @@
 <fmt:bundle basename="idioma">
 <html>
 	<head>
-		<title>Simulação Gráfica de Escalonamento de Processos</title>
+		<title><fmt:message key="processo.resultado.titulo" /></title>
 		<%@include file="../templates/script-loader.jsp"%>
 		<script type="text/javascript">
 			if(head.browser.ie && head.browser.version !== "9.0"){
@@ -18,7 +18,7 @@
 			<%@include file="../templates/header.jsp"%>
 			<article class="clearfix">
 				<section class="clearfix">
-					<h2 class="clearfix subtitle">Simulação de Escalonamento de Processos</h2>
+					<h2 class="clearfix subtitle"><fmt:message key="processo.resultado.titulo" /></h2>
 					<c:forEach var="resultList" items="${resultadosDosAlgoritmos}">
 						<script type="text/javascript">
 							head.ready(function(){
@@ -40,15 +40,15 @@
 								});
 							});
 						</script>
-						<strong class="clearfix result-message">Algoritmo: ${resultList.algoritmoNome}</strong>
+						<strong class="clearfix result-message"><fmt:message key="misc.algoritmo" />: ${resultList.algoritmoNome}</strong>
 						<table class="clearfix result-panel">
 							<thead>
 								<tr>
-									<td><strong>Processo</strong></td>
-									<td><strong>Burst CPU</strong></td>
-									<td><strong>Tempo de Espera</strong></td>
-									<td><strong>Tempo de Resposta</strong></td>
-									<td><strong>Turn Around</strong></td>
+									<td><strong><fmt:message key="processo.label" /></strong></td>
+									<td><strong><fmt:message key="processo.burst.label" /></strong></td>
+									<td><strong><fmt:message key="processo.tempo.espera.label" /></strong></td>
+									<td><strong><fmt:message key="processo.tempo.resposta.label" /></strong></td>
+									<td><strong><fmt:message key="processo.turnaround.label" /></strong></td>
 								</tr>
 							</thead>
 							<tbody>
@@ -64,11 +64,11 @@
 							</tbody>
 							<tfoot>
 								<tr>
-									<td><strong>Total de Processos</strong></td>
-									<td><strong>Tempo de Execução</strong></td>
-									<td><strong>Tempo de Espera Médio</strong></td>
-									<td><strong>Tempo de Resposta Médio</strong></td>
-									<td><strong>Turn Around Médio</strong></td>
+									<td><strong><fmt:message key="processo.total.processos" /></strong></td>
+									<td><strong><fmt:message key="processo.tempo.execucao" /></strong></td>
+									<td><strong><fmt:message key="processo.tempo.espera.medio" /></strong></td>
+									<td><strong><fmt:message key="processo.tempo.resposta.medio" /></strong></td>
+									<td><strong><fmt:message key="processo.turnaround.medio" /></strong></td>
 								</tr>
 								<tr class="result-line" id="odd">
 									<td>${resultList.totalProcessos}</td>
@@ -79,18 +79,18 @@
 								</tr>
 							</tfoot>
 						</table>
-						<strong class="clearfix result-message">Simulação gráfica: ${resultList.algoritmoNome}</strong>
+						<strong class="clearfix result-message"><fmt:message key="misc.simulacao.grafica" />: ${resultList.algoritmoNome}</strong>
 						<p class="clearfix run">
-							<button id="run-${resultList.algoritmoNome}">Ver simulação</button>
+							<button id="run-${resultList.algoritmoNome}"><fmt:message key="misc.simulacao.ver" /></button>
 						</p>
 						<div class="graphic-panel clearfix" id="simulation-${resultList.algoritmoNome}">
 							<canvas id="processo-chart-${resultList.algoritmoNome}">
-								O seu navegador não possui suporte HTML 5 para executar o elemento Canvas para renderização dos gráficos, clique no menu Sobre para saber quais versões de browsers utilizar.
+								<fmt:message key="misc.canvas.erro" />
 							</canvas>
 						</div>
 						<hr>
 					</c:forEach>
-					<a class="clearfix" href="<c:url value="/escalonamento-processo" />">Realizar nova simulação...</a>
+					<a class="clearfix" href="<c:url value="/escalonamento-processo" />"><fmt:message key="misc.nova.simulacao" /></a>
 				</section>
 			</article>
 			<%@include file="../templates/footer.jsp"%>

@@ -41,7 +41,7 @@ nav a.right {border-radius: 0px 5px 5px 0px; -moz-border-radius: 0px 5px 5px 0px
 .error-message {color: #F00; text-align: center; line-height: 1.8em;}
 .info-message {color: #00F;	text-align: center; line-height: 1.8em;}
 .result-message{color: #000; text-align: center; line-height:  1.8em;}
-.main {background-color: #FFF; border-radius: 7px; -moz-border-radius: 7px; -webkit-border-radius: 7px; border: 5px solid #CCC; margin-bottom: 25px;	margin-top: 25px; padding: 25px;}
+.main {background-color: #FFF; border-radius: 7px; -moz-border-radius: 7px; -webkit-border-radius: 7px; border: 12px solid rgba(0,0,0,0.5); margin-bottom: 25px;	margin-top: 25px; padding: 25px;}
 .text {text-align: justify; line-height: 1.5em; margin-top: 10px;}
 .graphic-panel {overflow-x: scroll;	overflow-y: hidden;	position: relative; padding: 10px 0px 0px 10px;	width: 950px; border: 1px solid #000;}
 .menu {margin-top: 20px;}

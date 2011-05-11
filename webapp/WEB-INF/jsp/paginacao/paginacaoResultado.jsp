@@ -4,7 +4,7 @@
 <fmt:bundle basename="idioma">
 <html>
 	<head>
-		<title>Simulação de Paginação de Memória</title>
+		<title><fmt:message key="paginacao.resultado.titulo" /></title>
 		<%@ include file="../templates/script-loader.jsp"%>
 		<script type="text/javascript">
 			if(head.browser.ie && head.browser.version !== "9.0"){
@@ -18,9 +18,9 @@
 			<%@ include file="../templates/header.jsp"%>
 			<article class="clearfix">
 				<section class="clearfix">
-					<h2 class="clearfix subtitle">Simulação de Paginação de Memória</h2>
+					<h2 class="clearfix subtitle"><fmt:message key="paginacao.resultado.titulo" /></h2>
 					<c:forEach var="resultList" items="${resultadosDosAlgoritmos}">
-						<p class="clearfix result-message"><strong>Algoritmo: ${resultList.algoritmoNome}</strong></p>
+						<p class="clearfix result-message"><strong><fmt:message key="misc.algoritmo" />: ${resultList.algoritmoNome}</strong></p>
 						<script type="text/javascript">
 								head.ready(function(){
 									$('#run-${resultList.algoritmoNome}').button({icons : {primary : 'ui-icon-gear'}});
@@ -45,19 +45,19 @@
 								});
 						</script>
 						<p class="clearfix run">
-							<button id="run-${resultList.algoritmoNome}">Ver simulação</button>
+							<button id="run-${resultList.algoritmoNome}"><fmt:message key="misc.simulacao.ver" /></button>
 						</p>
 						<div class="graphic-panel clearfix" id="simulation-${resultList.algoritmoNome}">
 							<canvas id="paginacao-chart-${resultList.algoritmoNome}" width="960">
-								O seu navegador não possui suporte HTML 5 para executar o elemento Canvas para renderização dos gráficos, clique no menu Sobre para saber quais versões de browsers utilizar.
+								<fmt:message key="misc.canvas.erro" />
 							</canvas>
 						</div>
-						<p class="clearfix"><small>Tamanho da string de referência: ${resultList.totalStringReferencia}</small></p>
-						<p class="clearfix"><small>Total de frames: ${resultList.totalFrames}</small></p>
-						<p class="clearfix"><small>Total de falha de páginas: ${resultList.totalPageFault}</small></p>
+						<p class="clearfix"><small><fmt:message key="paginacao.resultado.string.referencia" />: ${resultList.totalStringReferencia}</small></p>
+						<p class="clearfix"><small><fmt:message key="paginacao.resultado.frames" />: ${resultList.totalFrames}</small></p>
+						<p class="clearfix"><small><fmt:message key="paginacao.resultado.falha.pagina" />: ${resultList.totalPageFault}</small></p>
 						<hr>
 					</c:forEach>
-					<a class="clearfix" href="<c:url value="/paginacao-memoria" />">Realizar nova simulação...</a>
+					<a class="clearfix" href="<c:url value="/paginacao-memoria" />"><fmt:message key="misc.nova.simulacao" /></a>
 				</section>
 			</article>
 			<%@ include file="../templates/footer.jsp"%>

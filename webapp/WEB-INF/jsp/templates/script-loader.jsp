@@ -19,12 +19,10 @@
 		head.js('<c:url value="/resources/js/ie/html5.js" />');
 	}
 	head.js('<c:url value="/resources/js/jquery-pack-plugins.min.js" />')
-		.js('http://connect.facebook.net/pt_BR/all.js')
 		.js('http://www.google-analytics.com/ga.js');
 	head.ready(function(){
 		$('nav a.left').button({icons: {primary: 'ui-icon-home'}});
 		$('nav a.right').button({icons: {primary: 'ui-icon-comment'}});
 		$('nav a.middle').button({icons: {primary: 'ui-icon-triangle-1-e'}});
-	FB.init({appId : '216590681700019', status : true, cookie : true});
 	});
 </script>

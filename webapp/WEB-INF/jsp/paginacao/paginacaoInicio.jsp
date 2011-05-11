@@ -101,10 +101,10 @@
 						<fmt:message key="paginacao.regra.msg6" />
 					</p>
 					<p>
-						<strong><fmt:message key="paginacao.regra.msg7" /></strong>
+						<strong><fmt:message key="misc.observacoes" />:</strong>
 					</p>
 					<p>
-						<fmt:message key="paginacao.regra.msg8" />
+						<fmt:message key="paginacao.regra.msg7" />
 					</p>
 				</section>
 				<section class="clearfix main-info">
