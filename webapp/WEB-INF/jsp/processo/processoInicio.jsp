@@ -191,7 +191,7 @@
 							<select id="total" tabindex="2">
 								<option value=""><fmt:message key="misc.selecione" /></option>
 								<c:forEach begin="2" end="20" step="1" var="p">
-									<option value="${p}">${p} <fmt:message key="processo.label.plural" /></option>
+									<option value="${p}">${p}&nbsp;<fmt:message key="processo.label.plural" /></option>
 								</c:forEach>
 							</select>
 						</div>
