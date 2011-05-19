@@ -76,39 +76,23 @@
 	<body>
 		<div class="container_12 main">
 			<%@ include file="../templates/header.jsp"%>
-			<article class="clearfix">
-				<h2 class="clearfix subtitle"><fmt:message key="paginacao.titulo" /></h2>
-				<%@ include file="../templates/error-message.jsp"%>
-				<%--<section class="clearfix main-info">
-					<p>
-						<strong><fmt:message key="misc.regra.titulo" />:</strong>
-					</p>
-					<p>
-						<fmt:message key="paginacao.regra.msg1" />
-					</p>
-					<p>
-						<fmt:message key="paginacao.regra.msg2" />
-					</p>
-					<p>
-						<fmt:message key="paginacao.regra.msg3" />
-					</p>
-					<p>
-						<fmt:message key="paginacao.regra.msg4" />
-					</p>
-					<p>
-						<fmt:message key="paginacao.regra.msg5" />
-					</p>
-					<p>
-						<fmt:message key="paginacao.regra.msg6" />
-					</p>
-					<p>
-						<strong><fmt:message key="misc.observacoes" />:</strong>
-					</p>
-					<p>
-						<fmt:message key="paginacao.regra.msg7" />
-					</p>
-				</section> --%>
-				<section class="clearfix main-info">
+			<section class="clearfix">
+				<article class="clearfix">
+					<h2 class="clearfix subtitle"><fmt:message key="paginacao.titulo" /></h2>
+					<%@ include file="../templates/error-message.jsp"%>
+				</article>
+				<article class="clearfix main-info">
+					<p><strong><fmt:message key="misc.regra.titulo" />:</strong></p>
+					<p><fmt:message key="paginacao.regra.msg1" /></p>
+					<p><fmt:message key="paginacao.regra.msg2" /></p>
+					<p><fmt:message key="paginacao.regra.msg3" /></p>
+					<p><fmt:message key="paginacao.regra.msg4" /></p>
+					<p><fmt:message key="paginacao.regra.msg5" /></p>
+					<p><fmt:message key="paginacao.regra.msg6" /></p>
+					<p><strong><fmt:message key="misc.observacoes" />:</strong></p>
+					<p><fmt:message key="paginacao.regra.msg7" /></p>
+				</article>
+				<article class="clearfix main-info">
 					<form id="pagination-form" action="<c:url value="/executar-paginacao-memoria"/>" method="post">
 						<div id="main-menu" class="clearfix menu">
 							<p class="painel-config">
@@ -125,20 +109,18 @@
 								<strong><fmt:message key="misc.algoritmo" /> 1: </strong>
 								<select name="algs[0]" id="algoritmo1" tabindex="2">
 									<option value=""><fmt:message key="misc.selecione" /></option>
-									<option value="FIFO">FIFO</option>
-									<%--<c:forEach var="alg" items="${paginacaoMemoriaAlgoritmo}">
+									<c:forEach var="alg" items="${paginacaoMemoriaAlgoritmo}">
 										<option value="${alg}">${alg.nome}</option>	
-									</c:forEach> --%>
+									</c:forEach>
 								</select>
 							</div>
 							<div id="alg2" class="grid_4">
 								<strong><fmt:message key="misc.algoritmo" /> 2: </strong>
 								<select name="algs[1]" id="algoritmo2" tabindex="3">
 									<option value=""><fmt:message key="misc.selecione" /></option>
-									<option value="FIFO">FIFO</option>
-									<%--<c:forEach var="alg" items="${paginacaoMemoriaAlgoritmo}">
+									<c:forEach var="alg" items="${paginacaoMemoriaAlgoritmo}">
 										<option value="${alg}">${alg.nome}</option>	
-									</c:forEach> --%>
+									</c:forEach>
 								</select>			
 							</div>
 							<div class="grid_8 menu">
@@ -175,8 +157,8 @@
 							</p>
 						</div>
 					</form>
-				</section>
-			</article>
+				</article>
+			</section>
 			<%@ include file="../templates/footer.jsp"%>
 		</div>
 	</body>

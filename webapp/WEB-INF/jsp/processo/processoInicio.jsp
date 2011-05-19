@@ -104,6 +104,7 @@
 						$('input[type="text"].chegada').spinner({min : 0,max : 99,showOn : 'always'}).onlyNumeric();
 						$('input[type="text"].prioridade').spinner({min : 1,max : 10,showOn : 'always'}).onlyNumeric();
 					} else {
+						$('button').removeAttr('disabled');
 						$('#process-menu').html('<strong class="clearfix info-message"><fmt:message key="processo.erro" /></strong>').show();
 					}
 				}).trigger('change');
@@ -149,7 +150,6 @@
 							<strong><fmt:message key="misc.algoritmo" /> 1: </strong> 
 							<select name="algs[0]" id="algoritmo1" tabindex="3">
 								<option value=""><fmt:message key="misc.selecione" /></option>
-								<option value="FCFS">FCFS</option>
 								<c:forEach var="alg" items="${escalonadorProcessoAlgoritmo}">
 									<option value="${alg}">${alg.nome}</option>
 								</c:forEach>
@@ -159,7 +159,6 @@
 							<strong><fmt:message key="misc.algoritmo" /> 2: </strong> 
 							<select name="algs[1]" id="algoritmo2" tabindex="4">
 								<option value=""><fmt:message key="misc.selecione" /></option>
-								<option value="FCFS">FCFS</option>
 								<c:forEach var="alg" items="${escalonadorProcessoAlgoritmo}">
 									<option value="${alg}">${alg.nome}</option>
 								</c:forEach>

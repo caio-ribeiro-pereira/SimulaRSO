@@ -13,6 +13,7 @@
 				$("#alg2").hide();
 				$('input[type="text"]#cabeca').spinner({ min: 1, max: 99, showOn: 'always' }).onlyNumeric();
 				$('button').button({icons : {primary : 'ui-icon-gear'}}).next().button({icons : {primary : 'ui-icon-shuffle'}});
+				
 				$('#totalRequisicao').change(function(){
 					var content = $('#disco-menu').empty().hide();
 					var cilindros = new Array();
@@ -25,6 +26,7 @@
 						content.append(template).fadeIn();
 						$('.cilindro-requisicao').spinner({ min: 1, max: 99, showOn: 'always' }).onlyNumeric();
 					}else{
+						$('button').removeAttr('disabled');
 						$('#disco-menu').html('<strong class="clearfix info-message"><fmt:message key="disco.erro" /></strong>').show();
 					}
 				}).trigger('change');
@@ -76,41 +78,24 @@
 	<body>
 		<div class="container_12 main">
 			<%@ include file="../templates/header.jsp"%>
-			<article class="clearfix">
-				<h2 class="clearfix subtitle"><fmt:message key="disco.titulo" /></h2>
-				<%@ include file="../templates/error-message.jsp"%>
-				<%--<section class="clearfix main-info">
-					<p>
-						<strong><fmt:message key="misc.observacoes" />:</strong>
-					</p>
-					<p>
-						<fmt:message key="disco.regra.msg1" />
-					</p>
-					<p>
-						<fmt:message key="disco.regra.msg2" />
-					</p>
-					<p>
-						<fmt:message key="disco.regra.msg3" />
-					</p>
-					<p>
-						<fmt:message key="disco.regra.msg4" />
-					<p>
-						<fmt:message key="disco.regra.msg5" />
-					</p>
-					<p>
-						<fmt:message key="disco.regra.msg6" />
-					</p>
-					<p>
-						<strong><fmt:message key="misc.observacoes" />:</strong>
-					</p>
-					<p>
-						<fmt:message key="disco.regra.msg7" />
-					</p>
-					<p>
-						<fmt:message key="disco.regra.msg8" />
-					</p>
-				</section> --%>
-				<section class="clearfix main-info">
+			<section class="clearfix">
+				<article class="clearfix">
+					<h2 class="clearfix subtitle"><fmt:message key="disco.titulo" /></h2>
+					<%@ include file="../templates/error-message.jsp"%>
+				</article>
+				<article class="clearfix main-info">
+					<p><strong><fmt:message key="misc.observacoes" />:</strong></p>
+					<p><fmt:message key="disco.regra.msg1" /></p>
+					<p><fmt:message key="disco.regra.msg2" /></p>
+					<p><fmt:message key="disco.regra.msg3" /></p>
+					<p><fmt:message key="disco.regra.msg4" /></p>
+					<p><fmt:message key="disco.regra.msg5" /></p>
+					<p><fmt:message key="disco.regra.msg6" /></p>
+					<p><strong><fmt:message key="misc.observacoes" />:</strong></p>
+					<p><fmt:message key="disco.regra.msg7" /></p>
+					<p><fmt:message key="disco.regra.msg8" /></p>
+				</article>
+				<article class="clearfix main-info">
 					<form action="<c:url value="/executar-escalonamento-disco" />" method="post" id="disco-form">
 						<div id="main-menu" class="clearfix menu">
 							<p class="painel-config">
@@ -127,20 +112,18 @@
 								<label><fmt:message key="misc.algoritmo" /> 1:</label>
 								<select id="algoritmo1" name="algDisco[0]" tabindex="2">
 									<option value=""><fmt:message key="misc.selecione" /></option>
-									<option value="FCFS">FCFS</option>
-									<%--<c:forEach items="${algoritmoDisco}" var="alg">
+									<c:forEach items="${algoritmoDisco}" var="alg">
 										<option value="${alg}">${alg.nome}</option>		
-									</c:forEach>--%>
+									</c:forEach>
 								</select> 
 							</div>
 							<div id="alg2" class="grid_4">
 								<label><fmt:message key="misc.algoritmo" /> 2:</label>	
 								<select id="algoritmo2" name="algDisco[1]" tabindex="3">
 									<option value=""><fmt:message key="misc.selecione" /></option>
-									<option value="FCFS">FCFS</option>
-									<%--<c:forEach items="${algoritmoDisco}" var="alg">
+									<c:forEach items="${algoritmoDisco}" var="alg">
 										<option value="${alg}">${alg.nome}</option>		
-									</c:forEach>--%>
+									</c:forEach>
 								</select>
 							</div>
 							<div class="grid_8 menu">
@@ -172,8 +155,8 @@
 							</p>
 						</div>
 					</form>
-				</section>
-			</article>
+				</article>
+			</section>
 			<%@ include file="../templates/footer.jsp"%>
 		</div>
 	</body>
