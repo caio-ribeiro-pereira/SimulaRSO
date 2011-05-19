@@ -63,7 +63,7 @@
 											labelStringRef:'<fmt:message key="paginacao.palavra" /> '+(i+1)});
 						}
 						var template = $('#paginationTemplate').tmpl(paginator);
-						content.append(template).show();
+						content.append(template).fadeIn();
 						$('input[type="text"].stringReferencia').spinner({ min: 0, max: 9, showOn: 'always' }).onlyNumeric();
 					}else {
 						$('#pagination-menu').html('<strong class="clearfix info-message"><fmt:message key="paginacao.determine.tamanho" /></strong>').show();

@@ -4,7 +4,7 @@
 <fmt:bundle basename="idioma">
 <html>
 	<head>
-		<title>Simulação de Escalonamento de Disco</title>
+		<title><fmt:message key="disco.resultado.titulo" /></title>
 		<%@ include file="../templates/script-loader.jsp"%>
 		<script type="text/javascript">
 			if(head.browser.ie && head.browser.version !== "9.0"){
@@ -18,9 +18,9 @@
 			<%@ include file="../templates/header.jsp"%>
 			<article class="clearfix">
 				<section class="clearfix">
-					<h2 class="clearfix subtitle">Simulação de Escalonamento de Disco</h2>
+					<h2 class="clearfix subtitle"><fmt:message key="disco.resultado.titulo" /></h2>
 					<c:forEach var="resultList" items="${resultadoDosAlgoritmos}">
-						<p class="clearfix result-message"><strong>Algoritmo: ${resultList.algoritmoNome}</strong></p>
+						<p class="clearfix result-message"><strong><fmt:message key="misc.algoritmo" />: ${resultList.algoritmoNome}</strong></p>
 						<script type="text/javascript">
 							head.ready(function(){
 								$('#run-${resultList.algoritmoNome}').button({icons : {primary : 'ui-icon-gear'}});
@@ -41,12 +41,12 @@
 							});
 						</script>
 						<p class="clearfix run">
-							<button id="run-${resultList.algoritmoNome}">Ver simulação</button>
+							<button id="run-${resultList.algoritmoNome}"><fmt:message key="misc.simulacao.ver" /></button>
 						</p>
-						<p class="clearfix"><small>Total de movimentação de cilindros: ${resultList.movimentoTotalCilindros}</small></p>	
+						<p class="clearfix"><small><fmt:message key="disco.total.movimentacao.cilindros" />: ${resultList.movimentoTotalCilindros}</small></p>	
 						<div class="graphic-panel clearfix" id="simulation-${resultList.algoritmoNome}">
 							<canvas id="disco-chart-${resultList.algoritmoNome}" width="1520">
-								O seu navegador não possui suporte HTML 5 para executar o elemento Canvas para renderização dos gráficos, clique no menu Sobre para saber quais versões de browsers utilizar.
+								<fmt:message key="misc.canvas.erro" />
 							</canvas>
 						</div>
 						<hr>

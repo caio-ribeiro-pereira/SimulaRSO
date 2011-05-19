@@ -4,7 +4,7 @@
 <fmt:bundle basename="idioma">
 <html>
 	<head>
-		<title>Algoritmos de escalonamento de disco</title>
+		<title><fmt:message key="disco.titulo" /></title>
 		<meta name="keywords" content="Escalonamento de disco, Algoritmos de escalonamento de disco" />
 		<meta name="keywords" content="disco, cilindro cabeça, cilindro, LOOK, FCFS, SCAN, CSCAN, SSTF" />
 		<%@ include file="../templates/script-loader.jsp"%>
@@ -22,10 +22,10 @@
 							cilindros.push({cilindroId : "cilindro-"+(i+1), cilindroName: "requisicoes[].cilindro", cilindroLabel: "Cilindro "+(i+1)});
 						}
 						var template = $("#discoTemplate").tmpl(cilindros);
-						content.append(template).show();
+						content.append(template).fadeIn();
 						$('.cilindro-requisicao').spinner({ min: 1, max: 99, showOn: 'always' }).onlyNumeric();
 					}else{
-						$('#disco-menu').html('<strong class="clearfix info-message">Determine o total de cilindros.</strong>').show();
+						$('#disco-menu').html('<strong class="clearfix info-message"><fmt:message key="disco.erro" /></strong>').show();
 					}
 				}).trigger('change');
 
@@ -57,7 +57,7 @@
 					$('#error').text('');
 					if(this.value == $('#algoritmo2').val() && this.value != ''){
 						$('#execute').attr('disabled','disabled');
-						$('#error').text('Escolha um algoritmo diferente.').show();
+						$('#error').text('<fmt:message key="misc.algoritmo.erro" />').show();
 					}
 				}).trigger('change');
 				
@@ -66,7 +66,7 @@
 					$('#error').text('');
 					if(this.value == $('#algoritmo1').val() && this.value != ''){
 						$('#execute').attr('disabled','disabled');
-						$('#error').text('Escolha um algoritmo diferente.').show();
+						$('#error').text('<fmt:message key="misc.algoritmo.erro" />').show();
 					}
 				}).trigger('change');
 					
@@ -77,85 +77,81 @@
 		<div class="container_12 main">
 			<%@ include file="../templates/header.jsp"%>
 			<article class="clearfix">
-				<h2 class="clearfix subtitle">Algoritmos de escalonamento de disco</h2>
+				<h2 class="clearfix subtitle"><fmt:message key="disco.titulo" /></h2>
 				<%@ include file="../templates/error-message.jsp"%>
 				<section class="clearfix main-info">
 					<p>
-						<strong>Regras para simulação:</strong>
+						<strong><fmt:message key="misc.observacoes" />:</strong>
 					</p>
 					<p>
-						1 - Determine o modo de simulação: <strong>(Única ou
-							Comparativa).</strong>
+						<fmt:message key="disco.regra.msg1" />
 					</p>
 					<p>
-						2 - *Defina o algoritmo de escalonamento de processos: <strong>(FC-FS,
-							SSTF, LOOK, SCAN ou C-SCAN).</strong>
+						<fmt:message key="disco.regra.msg2" />
 					</p>
 					<p>
-						3 - Determine a posição inicial do **cilindro cabeça do disco.
+						<fmt:message key="disco.regra.msg3" />
 					</p>
 					<p>
-						4 - Escolha o total de requisições que serão realizados durante a simulação: 
-							<strong>(Mínino	2 e Máximo 30)</strong>, ao escolher o total de requisições de cilindros,
-							será exibido um painel para configurar cada posição do cilindro do disco. 
+						<fmt:message key="disco.regra.msg4" />
 					<p>
-						5 - Ao lado do botão <strong>executar</strong> existe a opção: <strong>Configuração
-							automática</strong>, que serve para configurar aleatóriamente os atributos de cada processo.
-					</p>
-					<p>6 - Clique em executar para visualizar o resultado da execução do algoritmo de escalonamento.</p>
-					<p>
-						<strong>Observações:</strong>
+						<fmt:message key="disco.regra.msg5" />
 					</p>
 					<p>
-						<strong>*</strong> Caso seja determinado o modo <strong>comparativo</strong>
-						será necessário definir dois algoritmos de escalonamento distintos.
+						<fmt:message key="disco.regra.msg6" />
 					</p>
 					<p>
-						<strong>**</strong> Cilindro cabeça é o primeiro cilindro pelo qual o algoritmo inicia sua execução.
+						<strong><fmt:message key="misc.observacoes" />:</strong>
+					</p>
+					<p>
+						<fmt:message key="disco.regra.msg7" />
+					</p>
+					<p>
+						<fmt:message key="disco.regra.msg8" />
 					</p>
 				</section>
 				<section class="clearfix main-info">
 					<form action="<c:url value="/executar-escalonamento-disco" />" method="post" id="disco-form">
 						<div id="main-menu" class="clearfix menu">
 							<p class="painel-config">
-								<strong>Painel de configuração</strong>
+								<strong><fmt:message key="misc.painel.titulo" /></strong>
 							</p>
 							<div class="grid_3">
-								<label>Simulação</label>
+								<label><fmt:message key="misc.simulacao.titulo" /></label>
 								<select id="modo" name="modo" tabindex="1">
-									<option value="1">Único</option>
-									<option value="2">Comparativo</option>
+									<option value="1"><fmt:message key="misc.simulacao.unica" /></option>
+									<option value="2"><fmt:message key="misc.simulacao.comparativa" /></option>
 								</select>
 							</div>	
 							<div id="alg1" class="grid_4">
-								<label>Algoritmo 1:</label>
+								<label><fmt:message key="misc.algoritmo" /> 1:</label>
 								<select id="algoritmo1" name="algDisco[0]" tabindex="2">
-									<option value="">Selecione...</option>
+									<option value=""><fmt:message key="misc.selecione" /></option>
 									<c:forEach items="${algoritmoDisco}" var="alg">
 										<option value="${alg}">${alg.nome}</option>		
 									</c:forEach>
 								</select> 
 							</div>
 							<div id="alg2" class="grid_4">
-								<label>Algoritmo 2:</label>	
+								<label><fmt:message key="misc.algoritmo" /> 2:</label>	
 								<select id="algoritmo2" name="algDisco[1]" tabindex="3">
-									<option value="">Selecione...</option>
+									<option value=""><fmt:message key="misc.selecione" /></option>
 									<c:forEach items="${algoritmoDisco}" var="alg">
 										<option value="${alg}">${alg.nome}</option>
 									</c:forEach>
 								</select>
 							</div>
 							<div class="grid_8 menu">
-							    <label>Total de requisições:</label>
+							    <label><fmt:message key="disco.total.requisicoes" />:</label>
 								<select id="totalRequisicao" tabindex="4">
-									<option value="">Selecione...</option>
+									<option value=""><fmt:message key="misc.selecione" /></option>
 									<c:forEach var="p" begin="2" end="30" step="1">
-										<option value="${p}">${p} requisições</option>
+										<option value="${p}">${p} <fmt:message key="disco.requisicoes" /></option>
 									</c:forEach>
 								</select>
 							</div>
 							<div class="grid_8 cilindro-cabeca menu">
-								<label for="cabeca">Cilindro cabeça:</label>
+								<label for="cabeca"><fmt:message key="disco.cilindro.cabeca" />:</label>
 							   	<input type="text" id="cabeca" name="cabeca.cilindro" maxlength="2" value="0" tabindex="5">
 							</div>
 						</div>
@@ -169,8 +165,8 @@
 						<strong id="error" class="clearfix error-message menu"></strong>
 						<div class="clearfix execute-panel">
 							<p>
-								<button id="random" type="button" tabindex="8">Configuração automática</button>
-								<button id="execute" type="submit" tabindex="7">Executar</button>
+								<button id="random" type="button" tabindex="8"><fmt:message key="misc.configuracao.automatica" /></button>
+								<button id="execute" type="submit" tabindex="7"><fmt:message key="misc.executar" /></button>
 							</p>
 						</div>
 					</form>

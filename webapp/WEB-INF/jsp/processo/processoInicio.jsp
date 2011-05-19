@@ -99,7 +99,7 @@
 										});
 						}
 						var template = $('#processTemplate').tmpl(processos);
-						content.append(template).show();
+						content.append(template).fadeIn();
 						$('input[type="text"].burst').spinner({min : 1,max : 99,showOn : 'always'}).onlyNumeric();
 						$('input[type="text"].chegada').spinner({min : 0,max : 99,showOn : 'always'}).onlyNumeric();
 						$('input[type="text"].prioridade').spinner({min : 1,max : 10,showOn : 'always'}).onlyNumeric();
