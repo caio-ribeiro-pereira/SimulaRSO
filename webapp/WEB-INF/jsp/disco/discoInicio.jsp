@@ -79,7 +79,7 @@
 			<article class="clearfix">
 				<h2 class="clearfix subtitle"><fmt:message key="disco.titulo" /></h2>
 				<%@ include file="../templates/error-message.jsp"%>
-				<section class="clearfix main-info">
+				<%--<section class="clearfix main-info">
 					<p>
 						<strong><fmt:message key="misc.observacoes" />:</strong>
 					</p>
@@ -109,7 +109,7 @@
 					<p>
 						<fmt:message key="disco.regra.msg8" />
 					</p>
-				</section>
+				</section> --%>
 				<section class="clearfix main-info">
 					<form action="<c:url value="/executar-escalonamento-disco" />" method="post" id="disco-form">
 						<div id="main-menu" class="clearfix menu">
@@ -127,18 +127,20 @@
 								<label><fmt:message key="misc.algoritmo" /> 1:</label>
 								<select id="algoritmo1" name="algDisco[0]" tabindex="2">
 									<option value=""><fmt:message key="misc.selecione" /></option>
-									<c:forEach items="${algoritmoDisco}" var="alg">
+									<option value="FCFS">FCFS</option>
+									<%--<c:forEach items="${algoritmoDisco}" var="alg">
 										<option value="${alg}">${alg.nome}</option>		
-									</c:forEach>
+									</c:forEach>--%>
 								</select> 
 							</div>
 							<div id="alg2" class="grid_4">
 								<label><fmt:message key="misc.algoritmo" /> 2:</label>	
 								<select id="algoritmo2" name="algDisco[1]" tabindex="3">
 									<option value=""><fmt:message key="misc.selecione" /></option>
-									<c:forEach items="${algoritmoDisco}" var="alg">
-										<option value="${alg}">${alg.nome}</option>
-									</c:forEach>
+									<option value="FCFS">FCFS</option>
+									<%--<c:forEach items="${algoritmoDisco}" var="alg">
+										<option value="${alg}">${alg.nome}</option>		
+									</c:forEach>--%>
 								</select>
 							</div>
 							<div class="grid_8 menu">
@@ -146,7 +148,7 @@
 								<select id="totalRequisicao" tabindex="4">
 									<option value=""><fmt:message key="misc.selecione" /></option>
 									<c:forEach var="p" begin="2" end="30" step="1">
-										<option value="${p}">${p} <fmt:message key="disco.requisicoes" /></option>
+										<option value="${p}">${p}&nbsp;<fmt:message key="disco.requisicoes" /></option>
 									</c:forEach>
 								</select>
 							</div>

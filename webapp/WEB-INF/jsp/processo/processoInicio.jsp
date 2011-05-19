@@ -113,49 +113,26 @@
 <body>
 	<div class="container_12 main">
 		<%@ include file="../templates/header.jsp"%>
-		<article class="clearfix">
-			<section class="clearfix">
+		<section class="clearfix">
+			<article class="clearfix">
 				<h2 class="subtitle"><fmt:message key="processo.titulo" /></h2>
 				<%@ include file="../templates/error-message.jsp"%>
-			</section>
-			<section class="clearfix main-info">
-				<p>
-					<strong><fmt:message key="misc.regra.titulo" />:</strong>
-				</p>
-				<p>
-					<fmt:message key="processo.regra.msg1" />
-				</p>
-				<p>
-					<fmt:message key="processo.regra.msg2" />
-				</p>
-				<p>
-					<fmt:message key="processo.regra.msg3" />
-				<p>
-					<fmt:message key="processo.regra.msg4" />
-				</p>
-				<p>
-					<fmt:message key="processo.regra.msg5" />
-				</p>
-				<p>
-					<strong><fmt:message key="misc.observacoes" />:</strong>
-				</p>
-				<p>
-					<fmt:message key="processo.regra.msg6" />
-				</p>
-				<p>
-					<fmt:message key="processo.regra.msg7" />
-				</p>
-				<p>
-					<fmt:message key="processo.regra.msg8" />
-				</p>
-				<p>
-					<fmt:message key="processo.regra.msg9" />
-				</p>
-				<p>
-					<fmt:message key="processo.regra.msg10" />
-				</p>
-			</section>
-			<section class="clearfix main-info">
+			</article>
+			<article class="clearfix main-info">
+				<p><strong><fmt:message key="misc.regra.titulo" />:</strong></p>
+				<p><fmt:message key="processo.regra.msg1" /></p>
+				<p><fmt:message key="processo.regra.msg2" /></p>
+				<p><fmt:message key="processo.regra.msg3" /></p>
+				<p><fmt:message key="processo.regra.msg4" /></p>
+				<p><fmt:message key="processo.regra.msg5" /></p>
+				<p><strong><fmt:message key="misc.observacoes" />:</strong></p>
+				<p><fmt:message key="processo.regra.msg6" /></p>
+				<p><fmt:message key="processo.regra.msg7" /></p>
+				<p><fmt:message key="processo.regra.msg8" /></p>
+				<p><fmt:message key="processo.regra.msg9" /></p>
+				<p><fmt:message key="processo.regra.msg10" /></p>
+			</article>
+			<article class="clearfix main-info">
 				<form id="process-form"	action="<c:url value="/executar-escalonamento-processo"/>" method="post">
 					<div id="main-menu" class="clearfix menu">
 						<p class="painel-config">
@@ -172,6 +149,7 @@
 							<strong><fmt:message key="misc.algoritmo" /> 1: </strong> 
 							<select name="algs[0]" id="algoritmo1" tabindex="3">
 								<option value=""><fmt:message key="misc.selecione" /></option>
+								<option value="FCFS">FCFS</option>
 								<c:forEach var="alg" items="${escalonadorProcessoAlgoritmo}">
 									<option value="${alg}">${alg.nome}</option>
 								</c:forEach>
@@ -181,13 +159,14 @@
 							<strong><fmt:message key="misc.algoritmo" /> 2: </strong> 
 							<select name="algs[1]" id="algoritmo2" tabindex="4">
 								<option value=""><fmt:message key="misc.selecione" /></option>
+								<option value="FCFS">FCFS</option>
 								<c:forEach var="alg" items="${escalonadorProcessoAlgoritmo}">
 									<option value="${alg}">${alg.nome}</option>
 								</c:forEach>
 							</select>
 						</div>
 						<div class="grid_8 menu">
-							<strong><fmt:message key="processo.total.processos" />: </strong> 
+							<strong><fmt:message key="processo.total.processos" />:</strong> 
 							<select id="total" tabindex="2">
 								<option value=""><fmt:message key="misc.selecione" /></option>
 								<c:forEach begin="2" end="20" step="1" var="p">
@@ -196,40 +175,40 @@
 							</select>
 						</div>
 						<div id="quantum" class="grid_8 menu">
-							<strong><fmt:message key="processo.tempo.corte" />: </strong> 
+							<strong><fmt:message key="processo.tempo.corte" />:</strong> 
 							<select name="qt" tabindex="5">
 								<option value=""><fmt:message key="misc.selecione" /></option>
 								<c:forEach begin="1" end="4" step="1" var="qt1">
-									<option value="${qt1}">${qt1} ms</option>
+									<option value="${qt1}">${qt1}&nbsp;<fmt:message key="misc.ms"/></option>
 								</c:forEach>
 								<c:forEach begin="5" end="100" step="5" var="qt2">
-									<option value="${qt2}">${qt2} ms</option>
+									<option value="${qt2}">${qt2}&nbsp;<fmt:message key="misc.ms"/></option>
 								</c:forEach>
 							</select>
 						</div>
 					</div>
 					<div id="process-menu" class="clearfix menu"></div>
 					<script id="processTemplate" type="text/x-jquery-tmpl">
-							<div id="\${prDivId}" class="processo-input-box">
-								<p class="clearfix processo">
-									<strong>\${prLabel}: </strong>
-									<input type="hidden" name="pr[].id" value="\${prId}">
-									<input type="hidden" name="pr[].cor" value="\${prCor}">
-								</p>
-								<p class="clearfix processo">
-									<label class="grid_1" for="\${inputBurst}"><small><fmt:message key="processo.burst" />: </small></label>
-									<input type="text" class="grid_1 burst" name="pr[].burst" id="\${inputBurst}" value="10" maxlength="2">
-								</p>
-								<p class="clearfix processo">
-									<label class="grid_1" for="\${inputChegada}"><small><fmt:message key="processo.tempo.chegada" />: </small></label>
-									<input type="text" class="grid_1 chegada" name="pr[].chegada" id="\${inputChegada}" value="0" maxlength="2">
-								</p>
-								<p class="clearfix processo">
-									<label class="grid_1" for="\${inputPrioridade}"><small><fmt:message key="processo.prioridade" />: </small></label>
-									<input type="text" class="grid_1 prioridade" name="pr[].prioridade" id="\${inputPrioridade}" value="1" maxlength="2">
-								</p>
-							</div>
-						</script>
+						<div id="\${prDivId}" class="processo-input-box">
+							<p class="clearfix processo">
+								<strong>\${prLabel}: </strong>
+								<input type="hidden" name="pr[].id" value="\${prId}">
+								<input type="hidden" name="pr[].cor" value="\${prCor}">
+							</p>
+							<p class="clearfix processo">
+								<label class="grid_1" for="\${inputBurst}"><small><fmt:message key="processo.burst" />: </small></label>
+								<input type="text" class="grid_1 burst" name="pr[].burst" id="\${inputBurst}" value="10" maxlength="2">
+							</p>
+							<p class="clearfix processo">
+								<label class="grid_1" for="\${inputChegada}"><small><fmt:message key="processo.tempo.chegada" />: </small></label>
+								<input type="text" class="grid_1 chegada" name="pr[].chegada" id="\${inputChegada}" value="0" maxlength="2">
+							</p>
+							<p class="clearfix processo">
+								<label class="grid_1" for="\${inputPrioridade}"><small><fmt:message key="processo.prioridade" />: </small></label>
+								<input type="text" class="grid_1 prioridade" name="pr[].prioridade" id="\${inputPrioridade}" value="1" maxlength="2">
+							</p>
+						</div>
+					</script>
 					<strong id="error" class="clearfix error-message"></strong>
 					<div class="clearfix execute-panel">
 						<p>
@@ -238,8 +217,8 @@
 						</p>
 					</div>
 				</form>
-			</section>
-		</article>
+			</article>
+		</section>
 		<%@ include file="../templates/footer.jsp"%>
 	</div>
 </body>

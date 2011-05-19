@@ -51,7 +51,7 @@
 						</div>
 						<hr>
 					</c:forEach>
-					<a class="clearfix" href="<c:url value="/escalonamento-disco" />">Realizar nova simulação...</a>
+					<a class="clearfix" href="<c:url value="/escalonamento-disco" />"><fmt:message key="misc.nova.simulacao" /></a>
 				</section>
 			</article>
 			<%@ include file="../templates/footer.jsp"%>

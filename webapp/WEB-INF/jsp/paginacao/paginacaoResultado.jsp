@@ -54,7 +54,7 @@
 						</div>
 						<p class="clearfix"><small><fmt:message key="paginacao.resultado.string.referencia" />: ${resultList.totalStringReferencia}</small></p>
 						<p class="clearfix"><small><fmt:message key="paginacao.resultado.frames" />: ${resultList.totalFrames}</small></p>
-						<p class="clearfix"><small><fmt:message key="paginacao.resultado.falha.pagina" />: ${resultList.totalPageFault}</small></p>
+						<p class="clearfix"><small><fmt:message key="paginacao.resultado.falhas.pagina" />: ${resultList.totalPageFault}</small></p>
 						<hr>
 					</c:forEach>
 					<a class="clearfix" href="<c:url value="/paginacao-memoria" />"><fmt:message key="misc.nova.simulacao" /></a>

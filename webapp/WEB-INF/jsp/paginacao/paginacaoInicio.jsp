@@ -66,6 +66,7 @@
 						content.append(template).fadeIn();
 						$('input[type="text"].stringReferencia').spinner({ min: 0, max: 9, showOn: 'always' }).onlyNumeric();
 					}else {
+						$('button').removeAttr('disabled');
 						$('#pagination-menu').html('<strong class="clearfix info-message"><fmt:message key="paginacao.determine.tamanho" /></strong>').show();
 					}
 				}).trigger('change');
@@ -78,7 +79,7 @@
 			<article class="clearfix">
 				<h2 class="clearfix subtitle"><fmt:message key="paginacao.titulo" /></h2>
 				<%@ include file="../templates/error-message.jsp"%>
-				<section class="clearfix main-info">
+				<%--<section class="clearfix main-info">
 					<p>
 						<strong><fmt:message key="misc.regra.titulo" />:</strong>
 					</p>
@@ -106,7 +107,7 @@
 					<p>
 						<fmt:message key="paginacao.regra.msg7" />
 					</p>
-				</section>
+				</section> --%>
 				<section class="clearfix main-info">
 					<form id="pagination-form" action="<c:url value="/executar-paginacao-memoria"/>" method="post">
 						<div id="main-menu" class="clearfix menu">
@@ -124,18 +125,20 @@
 								<strong><fmt:message key="misc.algoritmo" /> 1: </strong>
 								<select name="algs[0]" id="algoritmo1" tabindex="2">
 									<option value=""><fmt:message key="misc.selecione" /></option>
-									<c:forEach var="alg" items="${paginacaoMemoriaAlgoritmo}">
+									<option value="FIFO">FIFO</option>
+									<%--<c:forEach var="alg" items="${paginacaoMemoriaAlgoritmo}">
 										<option value="${alg}">${alg.nome}</option>	
-									</c:forEach>
+									</c:forEach> --%>
 								</select>
 							</div>
 							<div id="alg2" class="grid_4">
 								<strong><fmt:message key="misc.algoritmo" /> 2: </strong>
 								<select name="algs[1]" id="algoritmo2" tabindex="3">
 									<option value=""><fmt:message key="misc.selecione" /></option>
-									<c:forEach var="alg" items="${paginacaoMemoriaAlgoritmo}">
+									<option value="FIFO">FIFO</option>
+									<%--<c:forEach var="alg" items="${paginacaoMemoriaAlgoritmo}">
 										<option value="${alg}">${alg.nome}</option>	
-									</c:forEach>
+									</c:forEach> --%>
 								</select>			
 							</div>
 							<div class="grid_8 menu">
@@ -143,7 +146,7 @@
 								<select name="frames" tabindex="4">
 									<option value=""><fmt:message key="misc.selecione" /></option>
 									<c:forEach begin="2" end="10" step="1" var="fr">
-										<option value="${fr}">${fr} frames</option>
+										<option value="${fr}">${fr}&nbsp;<fmt:message key="paginacao.frames" /></option>
 									</c:forEach>
 								</select>
 							</div>

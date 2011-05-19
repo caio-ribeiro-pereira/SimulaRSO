@@ -46,6 +46,8 @@ public class Processo implements Comparable<Processo>, Cloneable, Serializable {
 		this.burst = burst;
 		this.chegada = tempoChegada;
 		this.prioridade = prioridade;
+		// TODO - APAGAR DEPOIS
+		this.burstTotal = burst;
 	}
 
 	public void setId(int id) {
