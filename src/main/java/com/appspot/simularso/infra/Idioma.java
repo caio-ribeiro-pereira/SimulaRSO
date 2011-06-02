@@ -27,5 +27,13 @@ public class Idioma implements Serializable {
 			idioma = DEFAULT;
 		this.idioma = idioma;
 	}
+	
+	public String getLanguage(){
+		return this.idioma.split("(-|_)")[0];
+	}
+	
+	public String getCountry(){
+		return this.idioma.split("(-|_)")[1];
+	}
 
 }

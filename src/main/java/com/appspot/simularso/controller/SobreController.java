@@ -14,10 +14,6 @@ public class SobreController {
 		this.idioma = idioma;
 	}
 
-	@Get("/home")
-	public void home() {
-	}
-
 	@Get("/sobre")
 	public void sobre() {
 	}

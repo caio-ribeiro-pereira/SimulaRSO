@@ -1,11 +1,13 @@
 package com.appspot.simularso.infra;
 
+import br.com.caelum.vraptor.ioc.ApplicationScoped;
 import br.com.caelum.vraptor.ioc.Component;
 
 import com.appspot.simularso.logic.disc.EscalonadorDiscoAlgoritmo;
 import com.appspot.simularso.logic.memory.PaginacaoMemoriaAlgoritmo;
 import com.appspot.simularso.logic.process.EscalonadorProcessoAlgoritmo;
 
+@ApplicationScoped
 @Component
 public class EnumToClass {
 
@@ -23,7 +25,7 @@ public class EnumToClass {
 		String algoritmoName = algoritmo.name();
 		return extractClass(pack, algoritmoName);
 	}
-	
+
 	public String extractClassFromEnum(EscalonadorDiscoAlgoritmo algoritmo) {
 		String pack = algoritmo.getClass().getName();
 		String algoritmoName = algoritmo.name();

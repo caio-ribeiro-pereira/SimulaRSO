@@ -36,8 +36,7 @@ public class IdiomaInterceptor implements Interceptor {
 
 	@Override
 	public void intercept(InterceptorStack stack, ResourceMethod method, Object obj) throws InterceptionException {
-		String locale = request.getParameter("locale");
-		idioma.setIdioma(locale);
+		idioma.setIdioma(request.getParameter("locale"));
 		stack.next(method, obj);
 	}
 }

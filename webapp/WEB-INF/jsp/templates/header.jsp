@@ -10,3 +10,7 @@
 	</nav>
 </header>
 <hr>
+<c:if test="${not empty warning}">
+    <strong class="clearfix error-message">${warning}</strong>
+</c:if>
+<hr>

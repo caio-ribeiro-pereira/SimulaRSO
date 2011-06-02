@@ -79,7 +79,6 @@
 			<section class="clearfix">
 				<article class="clearfix">
 					<h2 class="clearfix subtitle"><fmt:message key="paginacao.titulo" /></h2>
-					<%@ include file="../templates/error-message.jsp"%>
 				</article>
 				<article class="clearfix main-info">
 					<p><strong><fmt:message key="misc.regra.titulo" />:</strong></p>

@@ -117,7 +117,6 @@
 		<section class="clearfix">
 			<article class="clearfix">
 				<h2 class="subtitle"><fmt:message key="processo.titulo" /></h2>
-				<%@ include file="../templates/error-message.jsp"%>
 			</article>
 			<article class="clearfix main-info">
 				<p><strong><fmt:message key="misc.regra.titulo" />:</strong></p>
