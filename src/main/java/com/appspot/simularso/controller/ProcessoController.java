@@ -9,13 +9,13 @@ import br.com.caelum.vraptor.Post;
 import br.com.caelum.vraptor.Resource;
 import br.com.caelum.vraptor.Result;
 import br.com.caelum.vraptor.Validator;
-import br.com.caelum.vraptor.validator.ValidationMessage;
 
 import com.appspot.simularso.exception.ProcessosConfiguracaoException;
 import com.appspot.simularso.exception.ProcessosNaoCarregadosException;
 import com.appspot.simularso.exception.TempoQuantumException;
 import com.appspot.simularso.facade.ProcessoFacade;
 import com.appspot.simularso.infra.Idioma;
+import com.appspot.simularso.infra.Notice;
 import com.appspot.simularso.logic.process.EscalonadorProcessoAlgoritmo;
 import com.appspot.simularso.model.Processo;
 
@@ -26,49 +26,47 @@ public class ProcessoController {
 	private final Validator validator;
 	private final ProcessoFacade facade;
 	private final Idioma idioma;
+	private final Notice notice;
 
-	public ProcessoController(Result result, Validator validator, ProcessoFacade facade, Idioma idioma) {
+	public ProcessoController(Result result, Validator validator,
+			ProcessoFacade facade, Idioma idioma, Notice notice) {
 		this.result = result;
 		this.validator = validator;
 		this.facade = facade;
 		this.idioma = idioma;
+		this.notice = notice;
 	}
 
 	@Get("/escalonamento-processo")
 	public void processoInicio() {
-		result.include("escalonadorProcessoAlgoritmo", EscalonadorProcessoAlgoritmo.values());
+		result.include("escalonadorProcessoAlgoritmo",
+				EscalonadorProcessoAlgoritmo.values());
 	}
 
 	@Post("/executar-escalonamento-processo")
-	public void processoExecutar(List<EscalonadorProcessoAlgoritmo> algs, ArrayList<Processo> pr, int qt, int modo) {
+	public void processoExecutar(List<EscalonadorProcessoAlgoritmo> algs,
+			ArrayList<Processo> pr, int qt, int modo) {
 		try {
 
-			ArrayList<HashMap<String, Object>> resultadosDosAlgoritmos = facade.executar(algs, pr, qt, modo);
+			ArrayList<HashMap<String, Object>> resultadosDosAlgoritmos = facade
+					.executar(algs, pr, qt, modo);
 			result.include("resultadosDosAlgoritmos", resultadosDosAlgoritmos);
 			result.redirectTo(this).processoResultado();
 
 		} catch (ProcessosConfiguracaoException e) {
-
-			validator.add(new ValidationMessage("Alguns processos não foram configurados corretamente.", ""));
+			notice.warning("processo.processos.vazio");
 			validator.onErrorRedirectTo(this).processoInicio();
-
 		} catch (ProcessosNaoCarregadosException e) {
-
-			validator.add(new ValidationMessage("Nenhum processo foi carregado..", ""));
+			notice.warning("processo.nao.carregado");
 			validator.onErrorRedirectTo(this).processoInicio();
-
 		} catch (TempoQuantumException e) {
-
-			validator.add(new ValidationMessage("Não definido um tempo de corte para este algoritmo.", ""));
+			notice.warning("processo.tempo.corte.vazio");
 			validator.onErrorRedirectTo(this).processoInicio();
-
 		} catch (IllegalArgumentException e) {
-
-			validator.add(new ValidationMessage("Selecione os algoritmos.", ""));
+			notice.warning("misc.selecionar.algoritmos");
 			validator.onErrorRedirectTo(this).processoInicio();
 		} catch (Exception e) {
-
-			validator.add(new ValidationMessage("Ocorreu uma falha na execução do algoritmo.", ""));
+			notice.warning("misc.falha");
 			validator.onErrorRedirectTo(this).processoInicio();
 		}
 	}
@@ -76,7 +74,7 @@ public class ProcessoController {
 	@Get("/resultado-escalonamento-processo")
 	public void processoResultado() {
 		if (!result.included().containsKey("resultadosDosAlgoritmos")) {
-			validator.add(new ValidationMessage("Selecione um algoritmo para simular um escalonamento.", ""));
+			notice.warning("processo.selecione");
 			validator.onErrorRedirectTo(this).processoInicio();
 		}
 	}

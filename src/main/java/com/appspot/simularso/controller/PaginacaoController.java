@@ -9,12 +9,12 @@ import br.com.caelum.vraptor.Post;
 import br.com.caelum.vraptor.Resource;
 import br.com.caelum.vraptor.Result;
 import br.com.caelum.vraptor.Validator;
-import br.com.caelum.vraptor.validator.ValidationMessage;
 
 import com.appspot.simularso.exception.FramesInvalidoException;
 import com.appspot.simularso.exception.StringReferenciaInvalidaException;
 import com.appspot.simularso.facade.PaginacaoFacade;
 import com.appspot.simularso.infra.Idioma;
+import com.appspot.simularso.infra.Notice;
 import com.appspot.simularso.logic.memory.PaginacaoMemoriaAlgoritmo;
 
 @Resource
@@ -24,45 +24,44 @@ public class PaginacaoController {
 	private final Validator validator;
 	private final PaginacaoFacade facade;
 	private final Idioma idioma;
+	private final Notice notice;
 
-	public PaginacaoController(Result result, Validator validator, PaginacaoFacade facade, Idioma idioma) {
+	public PaginacaoController(Result result, Validator validator,
+			PaginacaoFacade facade, Idioma idioma, Notice notice) {
 		this.result = result;
 		this.validator = validator;
 		this.facade = facade;
 		this.idioma = idioma;
+		this.notice = notice;
 	}
 
 	@Get("/paginacao-memoria")
 	public void paginacaoInicio() {
-		result.include("paginacaoMemoriaAlgoritmo", PaginacaoMemoriaAlgoritmo.values());
+		result.include("paginacaoMemoriaAlgoritmo",
+				PaginacaoMemoriaAlgoritmo.values());
 	}
 
 	@Post("/executar-paginacao-memoria")
-	public void paginacaoExecutar(List<PaginacaoMemoriaAlgoritmo> algs, List<Integer> stringRef, Integer frames, int modo) {
+	public void paginacaoExecutar(List<PaginacaoMemoriaAlgoritmo> algs,
+			List<Integer> stringRef, Integer frames, int modo) {
 		try {
 
-			ArrayList<HashMap<String, Object>> resultadosDosAlgoritmos = facade.executar(algs, stringRef, frames, modo);
+			ArrayList<HashMap<String, Object>> resultadosDosAlgoritmos = facade
+					.executar(algs, stringRef, frames, modo);
 			result.include("resultadosDosAlgoritmos", resultadosDosAlgoritmos);
 			result.redirectTo(this).paginacaoResultado();
 
-		} catch (IllegalArgumentException e) {
-
-			validator.add(new ValidationMessage("Selecione os algoritmos.", ""));
-			validator.onErrorRedirectTo(this).paginacaoInicio();
-
 		} catch (StringReferenciaInvalidaException e) {
-
-			validator.add(new ValidationMessage("String de Referência inválida.", ""));
+			notice.warning("paginacao.string.referencia.invalida");
 			validator.onErrorRedirectTo(this).paginacaoInicio();
-
 		} catch (FramesInvalidoException e) {
-
-			validator.add(new ValidationMessage("O número de frames de alocação mínimo é 2.", ""));
+			notice.warning("paginacao.frame.minimo");
 			validator.onErrorRedirectTo(this).paginacaoInicio();
-
+		} catch (IllegalArgumentException e) {
+			notice.warning("misc.selecionar.algoritmos");
+			validator.onErrorForwardTo(this).paginacaoInicio();
 		} catch (Exception e) {
-
-			validator.add(new ValidationMessage("Ocorreu uma falha na execução do algoritmo.", ""));
+			notice.warning("misc.falha");
 			validator.onErrorRedirectTo(this).paginacaoInicio();
 		}
 	}
@@ -70,7 +69,7 @@ public class PaginacaoController {
 	@Get("/resultado-paginacao-memoria")
 	public void paginacaoResultado() {
 		if (!result.included().containsKey("resultadosDosAlgoritmos")) {
-			validator.add(new ValidationMessage("Selecione um algoritmo para simular uma paginação de memória.", ""));
+			notice.warning("paginacao.selecione");
 			validator.onErrorRedirectTo(this).paginacaoInicio();
 		}
 	}
