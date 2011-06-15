@@ -44,7 +44,6 @@
 						<li><small style="margin-left: 30px;"><a href="http://developer.mozilla.org/en/Canvas_tutorial" target="_blank"><strong>Canvas</strong></a> - <fmt:message key="sobre.tecnologias.canvas" /></small></li>
 						<li><small style="margin-left: 30px;"><a href="http://jquery.com/" target="_blank"><strong>JQuery 1.6</strong></a> - <fmt:message key="sobre.tecnologias.jquery" /></small></li>
 						<li><small style="margin-left: 30px;"><a href="http://jqueryui.com/" target="_blank"><strong>JQuery-UI 1.8.11</strong></a> - <fmt:message key="sobre.tecnologias.jqueryui" /></small></li>
-						<li><small style="margin-left: 30px;"><a href="http://www.jgeppert.com/jquery-spinner/" target="_blank"><strong>JQuery-UI Spinner Plugin 1.24</strong></a> - <fmt:message key="sobre.tecnologias.jquery.spinner" /></small></li>
 						<li><small style="margin-left: 30px;"><a href="http://headjs.com/" target="_blank"><strong>Head JS 0.9</strong></a> - <fmt:message key="sobre.tecnologias.headjs" /></small>
 						<li><small style="margin-left: 30px;"><a href="http://960.gs/" target="_blank"><strong>960 Grid System</strong></a> - <fmt:message key="sobre.tecnologias.960gs" /></small>
 					</ul>

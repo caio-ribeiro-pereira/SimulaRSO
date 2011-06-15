@@ -12,7 +12,7 @@
 			<%@ include file="../templates/header.jsp"%>
 		  	<article class="clearfix">
 		  		<section class="clearfix main-info">
-		  			<p><a href="<c:url value="/?locale=pt_BR" />">Português</a> - <a href="<c:url value="/?locale=en_US" />">English</a></p>
+		  			<p><a href="<c:url value="/idioma/pt_BR" />">Português</a> - <a href="<c:url value="/idioma/en_US" />">English</a></p>
 					<p><strong><fmt:message key="main.painel.aviso" />:</strong></p>
 					<p><strong class="clearfix info-message"><fmt:message key="main.painel.msg1" /></strong></p>
 					<p><strong class="clearfix info-message"><fmt:message key="main.painel.msg2" /></strong></p>

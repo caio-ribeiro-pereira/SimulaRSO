@@ -3,13 +3,13 @@ package com.appspot.simularso.infra;
 import java.io.Serializable;
 
 import br.com.caelum.vraptor.ioc.Component;
-import br.com.caelum.vraptor.ioc.SessionScoped;
+import br.com.caelum.vraptor.ioc.RequestScoped;
 
-@SessionScoped
+@RequestScoped
 @Component
 public class Idioma implements Serializable {
 
-	private static final long serialVersionUID = -3906282932867802734L;
+	private static final long serialVersionUID = 2177438632064029504L;
 
 	private static final String DEFAULT = "pt_BR";
 	private String idioma;
@@ -27,12 +27,12 @@ public class Idioma implements Serializable {
 			idioma = DEFAULT;
 		this.idioma = idioma;
 	}
-	
-	public String getLanguage(){
+
+	public String getLanguage() {
 		return this.idioma.split("(-|_)")[0];
 	}
-	
-	public String getCountry(){
+
+	public String getCountry() {
 		return this.idioma.split("(-|_)")[1];
 	}
 

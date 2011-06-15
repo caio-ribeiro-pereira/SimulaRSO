@@ -9,7 +9,6 @@
 		<a class="right" href="<c:url value="/sobre" />"><fmt:message key="header.sobre" /></a>
 	</nav>
 </header>
-<hr>
 <c:if test="${not empty warning}">
     <strong class="clearfix error-message">${warning}</strong>
 </c:if>

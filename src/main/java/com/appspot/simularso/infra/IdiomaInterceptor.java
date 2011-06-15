@@ -12,6 +12,7 @@ import br.com.caelum.vraptor.ioc.RequestScoped;
 import br.com.caelum.vraptor.resource.ResourceMethod;
 
 import com.appspot.simularso.controller.DiscoController;
+import com.appspot.simularso.controller.HomeController;
 import com.appspot.simularso.controller.PaginacaoController;
 import com.appspot.simularso.controller.ProcessoController;
 import com.appspot.simularso.controller.SobreController;
@@ -30,8 +31,8 @@ public class IdiomaInterceptor implements Interceptor {
 
 	@Override
 	public boolean accepts(ResourceMethod method) {
-		return !Arrays.asList(ProcessoController.class, DiscoController.class, PaginacaoController.class,
-				SobreController.class).contains(method.getMethod().getDeclaringClass());
+		return !Arrays.asList(ProcessoController.class, DiscoController.class, PaginacaoController.class, SobreController.class,
+				HomeController.class).contains(method.getMethod().getDeclaringClass());
 	}
 
 	@Override
