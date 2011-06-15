@@ -6,12 +6,10 @@ import br.com.caelum.vraptor.Resource;
 import com.appspot.simularso.infra.Idioma;
 
 @Resource
-public class SobreController {
-
-	private Idioma idioma;
+public class SobreController extends ApplicationController {
 
 	public SobreController(Idioma idioma) {
-		this.idioma = idioma;
+		super(idioma);
 	}
 
 	@Get("/sobre")
@@ -19,6 +17,6 @@ public class SobreController {
 	}
 
 	public String getIdioma() {
-		return this.idioma.getIdioma();
+		return super.getIdioma();
 	}
 }

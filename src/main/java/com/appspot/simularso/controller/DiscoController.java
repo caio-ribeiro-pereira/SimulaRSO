@@ -21,20 +21,18 @@ import com.appspot.simularso.logic.disc.EscalonadorDiscoAlgoritmo;
 import com.appspot.simularso.model.Disco;
 
 @Resource
-public class DiscoController {
+public class DiscoController extends ApplicationController {
 
 	private final Result result;
 	private final Validator validator;
 	private final DiscoFacade discoFacade;
-	private final Idioma idioma;
 	private final Notice notice;
 
-	public DiscoController(Result result, Validator validator,
-			DiscoFacade discoFacade, Idioma idioma, Notice notice) {
+	public DiscoController(Result result, Validator validator, DiscoFacade discoFacade, Idioma idioma, Notice notice) {
+		super(idioma);
 		this.result = result;
 		this.validator = validator;
 		this.discoFacade = discoFacade;
-		this.idioma = idioma;
 		this.notice = notice;
 	}
 
@@ -44,11 +42,9 @@ public class DiscoController {
 	}
 
 	@Post("/executar-escalonamento-disco")
-	public void discoExecutar(List<EscalonadorDiscoAlgoritmo> algDisco,
-			LinkedList<Disco> requisicoes, Disco cabeca, int modo) {
+	public void discoExecutar(List<EscalonadorDiscoAlgoritmo> algDisco, LinkedList<Disco> requisicoes, Disco cabeca, int modo) {
 		try {
-			ArrayList<HashMap<String, Object>> resultadoDosAlgoritmos = discoFacade
-					.executar(algDisco, requisicoes, cabeca, modo);
+			ArrayList<HashMap<String, Object>> resultadoDosAlgoritmos = discoFacade.executar(algDisco, requisicoes, cabeca, modo);
 			result.include("resultadoDosAlgoritmos", resultadoDosAlgoritmos);
 			result.redirectTo(this).discoResultado();
 
@@ -79,6 +75,6 @@ public class DiscoController {
 	}
 
 	public String getIdioma() {
-		return idioma.getIdioma();
+		return super.getIdioma();
 	}
 }

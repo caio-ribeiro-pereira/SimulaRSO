@@ -32,6 +32,7 @@ nav a.middle{border-radius: 0px 0px 0px 0px; -moz-border-radius: 0px 0px 0px 0px
 nav a.right {border-radius: 0px 5px 5px 0px; -moz-border-radius: 0px 5px 5px 0px; -webkit-border-radius: 0px 5px 5px 0px;}
 
 .subtitle{line-height: 1.6em; text-align: center;}
+.little{color: blue; line-height: 1.1em; font-size: 0.7em; text-align: center;}
 .main-info{border-radius: 5px; -moz-border-radius: 5px; -webkit-border-radius: 5px; border: 3px solid #999; padding: 10px 20px; margin: 20px 0px 10px 0px;}
 .main-info p{line-height: 1.6em;}
 .painel-config{line-height: 1.4em; font-size: 1.4em; text-align: center; margin-bottom: 10px;}
@@ -49,9 +50,9 @@ nav a.right {border-radius: 0px 5px 5px 0px; -moz-border-radius: 0px 5px 5px 0px
 .processo-input-box p:first-child {text-align: center;}
 .pagination-input-box {border-radius: 5px; -moz-border-radius: 5px; -webkit-border-radius: 5px; border: 1px solid #000; float: left; margin: 5px 8px 10px 0px; padding: 5px 4px 2px 4px; width: 130px;}
 .pagination-input-box input{width: 35px;}
-.disco-input-box {border-radius: 5px; -moz-border-radius: 5px; -webkit-border-radius: 5px; border: 1px solid #000; float: left; margin: 5px 8px 10px 0px; padding: 5px 4px 2px 4px; width: 130px;}
+.disco-input-box {border-radius: 5px; -moz-border-radius: 5px; -webkit-border-radius: 5px; border: 1px solid #000; float: left; margin: 5px 8px 10px 0px; padding: 5px 4px 2px 4px;}
+.disco-input-box p:first-child {text-align: center;}
 .disco-input-box input{width: 35px; margin-left: 5px;}
-.cilindro-cabeca input{width: 40px; margin-left: 5px;}
 .execute-panel p{text-align: right; margin: 20px 40px 0px 0px;}
 .result-panel {border-radius: 5px; -moz-border-radius: 5px; -webkit-border-radius: 5px; border: 1px solid #000; margin: 20px 5px;}
 .result-panel td {padding: 5px 14px; text-align: center;}

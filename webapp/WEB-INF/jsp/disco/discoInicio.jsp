@@ -11,7 +11,7 @@
 		<script type="text/javascript">
 			head.ready(function(){
 				$("#alg2").hide();
-				$('input[type="text"]#cabeca').spinner({ min: 1, max: 99, showOn: 'always' }).onlyNumeric();
+				//$('input[type="text"]#cabeca').spinner({ min: 1, max: 99, showOn: 'always' }).onlyNumeric();
 				$('button').button({icons : {primary : 'ui-icon-gear'}}).next().button({icons : {primary : 'ui-icon-shuffle'}});
 				
 				$('#totalRequisicao').change(function(){
@@ -19,12 +19,15 @@
 					var cilindros = new Array();
 					var total = $('#totalRequisicao').val();
 					if(total > 0){
+						var cilindroLabel = '<fmt:message key="disco.cilindro" />';
 						for(var i=0;i<total;i++){
-							cilindros.push({cilindroId : "cilindro-"+(i+1), cilindroName: "requisicoes[].cilindro", cilindroLabel: "Cilindro "+(i+1)});
+							cilindros.push({cilindroId : "cilindro-"+(i+1), 
+											cilindroName: "requisicoes[].cilindro", 
+											cilindroLabel: cilindroLabel+" "+(i+1)});
 						}
 						var template = $("#discoTemplate").tmpl(cilindros);
 						content.append(template).fadeIn();
-						$('.cilindro-requisicao').spinner({ min: 1, max: 99, showOn: 'always' }).onlyNumeric();
+						//$('.cilindro-requisicao').spinner({ min: 1, max: 99, showOn: 'always' }).onlyNumeric();
 					}else{
 						$('button').removeAttr('disabled');
 						$('#disco-menu').html('<strong class="clearfix info-message"><fmt:message key="disco.erro" /></strong>').show();
@@ -134,16 +137,24 @@
 									</c:forEach>
 								</select>
 							</div>
-							<div class="grid_8 cilindro-cabeca menu">
-								<label for="cabeca"><fmt:message key="disco.cilindro.cabeca" />:</label>
-							   	<input type="text" id="cabeca" name="cabeca.cilindro" maxlength="2" value="0" tabindex="5">
+							<div class="grid_8 menu">
+								<label class="grid_3 alpha" for="cabeca"><fmt:message key="disco.cilindro.cabeca" />:</label>
+								<input class="grid_1 alpha" type="text" id="cabeca" name="cabeca.cilindro" maxlength="2" value="0" tabindex="5">
 							</div>
 						</div>
 						<div id="disco-menu" class="clearfix menu"></div>
 						<script id="discoTemplate" type="text/x-jquery-tmpl">
-							<div class="disco-input-box">
-								<label for="\${cilindroId}"><small>\${cilindroLabel}</small></label>
-								<input type='text' class="cilindro-requisicao" id="\${cilindroId}" maxlength="2" name="\${cilindroName}" value="1">
+							<div class="disco-input-box grid_2">
+								<p class="clearfix">
+									<strong>\${cilindroLabel}:</strong>
+								</p>
+								<p class="clearfix">
+									<span class="little prefix_1 grid_1" style="margin-left:-7px;">(1 - 99)</span>
+								</p>
+								<p class="clearfix">
+									<label class="grid_1" for="\${cilindroId}"><small><fmt:message key="disco.setor" />:</small></label>
+									<input type="text" id="\${cilindroId}" maxlength="2" name="\${cilindroName}" value="1">	
+								</p>
 							</div>
 						</script>
 						<strong id="error" class="clearfix error-message menu"></strong>

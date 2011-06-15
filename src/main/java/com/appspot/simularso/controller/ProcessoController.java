@@ -20,36 +20,31 @@ import com.appspot.simularso.logic.process.EscalonadorProcessoAlgoritmo;
 import com.appspot.simularso.model.Processo;
 
 @Resource
-public class ProcessoController {
+public class ProcessoController extends ApplicationController {
 
 	private final Result result;
 	private final Validator validator;
 	private final ProcessoFacade facade;
-	private final Idioma idioma;
 	private final Notice notice;
 
-	public ProcessoController(Result result, Validator validator,
-			ProcessoFacade facade, Idioma idioma, Notice notice) {
+	public ProcessoController(Result result, Validator validator, ProcessoFacade facade, Idioma idioma, Notice notice) {
+		super(idioma);
 		this.result = result;
 		this.validator = validator;
 		this.facade = facade;
-		this.idioma = idioma;
 		this.notice = notice;
 	}
 
 	@Get("/escalonamento-processo")
 	public void processoInicio() {
-		result.include("escalonadorProcessoAlgoritmo",
-				EscalonadorProcessoAlgoritmo.values());
+		result.include("escalonadorProcessoAlgoritmo", EscalonadorProcessoAlgoritmo.values());
 	}
 
 	@Post("/executar-escalonamento-processo")
-	public void processoExecutar(List<EscalonadorProcessoAlgoritmo> algs,
-			ArrayList<Processo> pr, int qt, int modo) {
+	public void processoExecutar(List<EscalonadorProcessoAlgoritmo> algs, ArrayList<Processo> pr, int qt, int modo) {
 		try {
 
-			ArrayList<HashMap<String, Object>> resultadosDosAlgoritmos = facade
-					.executar(algs, pr, qt, modo);
+			ArrayList<HashMap<String, Object>> resultadosDosAlgoritmos = facade.executar(algs, pr, qt, modo);
 			result.include("resultadosDosAlgoritmos", resultadosDosAlgoritmos);
 			result.redirectTo(this).processoResultado();
 
@@ -80,6 +75,6 @@ public class ProcessoController {
 	}
 
 	public String getIdioma() {
-		return idioma.getIdioma();
+		return super.getIdioma();
 	}
 }

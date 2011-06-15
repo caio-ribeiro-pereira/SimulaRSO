@@ -18,36 +18,31 @@ import com.appspot.simularso.infra.Notice;
 import com.appspot.simularso.logic.memory.PaginacaoMemoriaAlgoritmo;
 
 @Resource
-public class PaginacaoController {
+public class PaginacaoController extends ApplicationController {
 
 	private final Result result;
 	private final Validator validator;
 	private final PaginacaoFacade facade;
-	private final Idioma idioma;
 	private final Notice notice;
 
-	public PaginacaoController(Result result, Validator validator,
-			PaginacaoFacade facade, Idioma idioma, Notice notice) {
+	public PaginacaoController(Result result, Validator validator, PaginacaoFacade facade, Idioma idioma, Notice notice) {
+		super(idioma);
 		this.result = result;
 		this.validator = validator;
 		this.facade = facade;
-		this.idioma = idioma;
 		this.notice = notice;
 	}
 
 	@Get("/paginacao-memoria")
 	public void paginacaoInicio() {
-		result.include("paginacaoMemoriaAlgoritmo",
-				PaginacaoMemoriaAlgoritmo.values());
+		result.include("paginacaoMemoriaAlgoritmo", PaginacaoMemoriaAlgoritmo.values());
 	}
 
 	@Post("/executar-paginacao-memoria")
-	public void paginacaoExecutar(List<PaginacaoMemoriaAlgoritmo> algs,
-			List<Integer> stringRef, Integer frames, int modo) {
+	public void paginacaoExecutar(List<PaginacaoMemoriaAlgoritmo> algs, List<Integer> stringRef, Integer frames, int modo) {
 		try {
 
-			ArrayList<HashMap<String, Object>> resultadosDosAlgoritmos = facade
-					.executar(algs, stringRef, frames, modo);
+			ArrayList<HashMap<String, Object>> resultadosDosAlgoritmos = facade.executar(algs, stringRef, frames, modo);
 			result.include("resultadosDosAlgoritmos", resultadosDosAlgoritmos);
 			result.redirectTo(this).paginacaoResultado();
 
@@ -75,6 +70,7 @@ public class PaginacaoController {
 	}
 
 	public String getIdioma() {
-		return idioma.getIdioma();
+		return super.getIdioma();
 	}
+
 }

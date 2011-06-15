@@ -100,9 +100,9 @@
 						}
 						var template = $('#processTemplate').tmpl(processos);
 						content.append(template).fadeIn();
-						$('input[type="text"].burst').spinner({min : 1,max : 99,showOn : 'always'}).onlyNumeric();
+						/* $('input[type="text"].burst').spinner({min : 1,max : 99,showOn : 'always'}).onlyNumeric();
 						$('input[type="text"].chegada').spinner({min : 0,max : 99,showOn : 'always'}).onlyNumeric();
-						$('input[type="text"].prioridade').spinner({min : 1,max : 10,showOn : 'always'}).onlyNumeric();
+						$('input[type="text"].prioridade').spinner({min : 1,max : 10,showOn : 'always'}).onlyNumeric(); */
 					} else {
 						$('button').removeAttr('disabled');
 						$('#process-menu').html('<strong class="clearfix info-message"><fmt:message key="processo.erro" /></strong>').show();
@@ -193,13 +193,22 @@
 								<input type="hidden" name="pr[].id" value="\${prId}">
 								<input type="hidden" name="pr[].cor" value="\${prCor}">
 							</p>
+							<p class="clearfix">
+								<span class="little prefix_1 grid_1">(1 - 99)</span>
+							</p>
 							<p class="clearfix processo">
 								<label class="grid_1" for="\${inputBurst}"><small><fmt:message key="processo.burst" />: </small></label>
 								<input type="text" class="grid_1 burst" name="pr[].burst" id="\${inputBurst}" value="10" maxlength="2">
 							</p>
+							<p class="clearfix">
+								<span class="little prefix_1 grid_1">(0 - 99)</span>
+							</p>
 							<p class="clearfix processo">
 								<label class="grid_1" for="\${inputChegada}"><small><fmt:message key="processo.tempo.chegada" />: </small></label>
 								<input type="text" class="grid_1 chegada" name="pr[].chegada" id="\${inputChegada}" value="0" maxlength="2">
+							</p>
+							<p class="clearfix">
+								<span class="little prefix_1 grid_1">(1 - 10)</span>
 							</p>
 							<p class="clearfix processo">
 								<label class="grid_1" for="\${inputPrioridade}"><small><fmt:message key="processo.prioridade" />: </small></label>

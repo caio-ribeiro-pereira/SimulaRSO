@@ -12,7 +12,16 @@
 			<%@ include file="../templates/header.jsp"%>
 		  	<article class="clearfix">
 		  		<section class="clearfix main-info">
-		  			<p><a href="<c:url value="/idioma/pt_BR" />">Português</a> - <a href="<c:url value="/idioma/en_US" />">English</a></p>
+		  			<div id="idioma-box">
+		  				<form action="<c:url value="/idioma" />" method="post" id="idioma-form">
+		  					<input type="hidden" name="idioma" id="idioma-val">
+		  				</form>
+						<p>
+							<button type="button" value="pt_BR">Português</button>
+		  			   		<button type="button" value="en_US">English</button>
+		  			   	</p>		  			
+		  			</div>
+		  			<%-- <p><a href="<c:url value="/idioma/pt_BR" />">Português</a> - <a href="<c:url value="/idioma/en_US" />">English</a></p> --%>
 					<p><strong><fmt:message key="main.painel.aviso" />:</strong></p>
 					<p><strong class="clearfix info-message"><fmt:message key="main.painel.msg1" /></strong></p>
 					<p><strong class="clearfix info-message"><fmt:message key="main.painel.msg2" /></strong></p>
@@ -36,6 +45,14 @@
 			</article>
 			<%@ include file="../templates/footer.jsp"%>
 		</div>
+		<script type="text/javascript">
+			head.ready(function(){
+				$('button').button().click(function(){
+					$('#idioma-val').val($(this).val());
+					$('#idioma-form').submit();
+				});
+			});
+		</script>
 	</body>
 </html>
 </fmt:bundle>
