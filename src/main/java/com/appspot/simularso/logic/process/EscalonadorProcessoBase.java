@@ -5,8 +5,6 @@ import java.util.Collections;
 import java.util.LinkedList;
 import java.util.List;
 
-import com.appspot.simularso.exception.ProcessosConfiguracaoException;
-import com.appspot.simularso.exception.ProcessosNaoCarregadosException;
 import com.appspot.simularso.model.Processo;
 import com.appspot.simularso.model.ProcessoDTO;
 import com.appspot.simularso.model.ProcessoVO;
@@ -157,15 +155,4 @@ public abstract class EscalonadorProcessoBase {
 		return new ProcessoVO(id, burst, espera, resposta, turnAround, cor);
 	}
 
-	protected void validarProcessos(List<Processo> processos) {
-		if (processos != null && !processos.isEmpty()) {
-			for (Processo processo : processos) {
-				if (processo.getBurstTotal() <= 0 || processo.getChegada() < 0 || processo.getPrioridade() < 0) {
-					throw new ProcessosConfiguracaoException();
-				}
-			}
-		} else {
-			throw new ProcessosNaoCarregadosException();
-		}
-	}
 }

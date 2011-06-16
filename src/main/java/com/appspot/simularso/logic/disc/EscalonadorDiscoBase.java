@@ -4,15 +4,12 @@ import java.util.ArrayList;
 import java.util.Collections;
 import java.util.LinkedList;
 
-import com.appspot.simularso.exception.CilindroCabecaVaziaException;
-import com.appspot.simularso.exception.RequisicaoCilindroException;
-import com.appspot.simularso.exception.RequisicoesVaziaException;
 import com.appspot.simularso.model.Disco;
 
 public abstract class EscalonadorDiscoBase {
 
 	private static final int PADRAO = 100;
-	protected static final int MIN = 0;
+	public static final int MIN = 0;
 
 	private Integer movimentoTotal;
 	private LinkedList<Disco> requisicoes;
@@ -25,7 +22,6 @@ public abstract class EscalonadorDiscoBase {
 	}
 
 	public EscalonadorDiscoBase(LinkedList<Disco> requisicoes, Disco cabeca, int maxCilindro) {
-		validarParametros(requisicoes, cabeca);
 		this.movimentoTotal = MIN;
 		this.maxCilindro = maxCilindro;
 		this.requisicoes = requisicoes;
@@ -36,20 +32,6 @@ public abstract class EscalonadorDiscoBase {
 
 	private void inserirCilindroCabeca() {
 		this.requisicoes.addFirst(cabeca);
-	}
-
-	private void validarParametros(LinkedList<Disco> requisicoes, Disco cabeca) {
-		if (cabeca == null || cabeca.getCilindro() < MIN) {
-			throw new CilindroCabecaVaziaException();
-		}
-		if (requisicoes == null || requisicoes.isEmpty()) {
-			throw new RequisicoesVaziaException();
-		}
-		for (Disco disco : requisicoes) {
-			if (disco.getCilindro() < MIN) {
-				throw new RequisicaoCilindroException();
-			}
-		}
 	}
 
 	protected void ordenarRequisicoes() {

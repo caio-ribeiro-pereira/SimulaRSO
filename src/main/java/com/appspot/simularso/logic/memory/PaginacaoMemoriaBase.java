@@ -3,13 +3,11 @@ package com.appspot.simularso.logic.memory;
 import java.util.ArrayList;
 import java.util.List;
 
-import com.appspot.simularso.exception.FramesInvalidoException;
-import com.appspot.simularso.exception.StringReferenciaInvalidaException;
 import com.appspot.simularso.model.Pagina;
 
 public abstract class PaginacaoMemoriaBase {
 
-	private static final int MIN_FRAME = 2;
+	public static final int MIN_FRAME = 2;
 
 	private List<Integer> stringRef;
 	private int frames;
@@ -19,22 +17,12 @@ public abstract class PaginacaoMemoriaBase {
 	private int index;
 
 	protected PaginacaoMemoriaBase(List<Integer> stringRef, Integer frames) {
-		validar(stringRef, frames);
 		this.stringRef = stringRef;
 		this.frames = frames;
 		this.pageFaults = 0;
 		this.index = 0;
 		this.pagina = new Pagina();
 		this.resultadoGrafico = new ArrayList<Pagina>();
-	}
-
-	private void validar(List<Integer> stringRef, Integer frames) {
-		if (stringRef == null || stringRef.size() <= 0) {
-			throw new StringReferenciaInvalidaException();
-		}
-		if (frames < MIN_FRAME) {
-			throw new FramesInvalidoException();
-		}
 	}
 
 	protected boolean foiAlocado(Integer palavra) {

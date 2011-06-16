@@ -7,8 +7,6 @@ import org.hamcrest.Matchers;
 import org.junit.Assert;
 import org.junit.Test;
 
-import com.appspot.simularso.exception.ProcessosConfiguracaoException;
-import com.appspot.simularso.exception.ProcessosNaoCarregadosException;
 import com.appspot.simularso.logic.EscalonadorProcesso;
 import com.appspot.simularso.logic.process.SJF;
 import com.appspot.simularso.logic.test.InitialTestCase;
@@ -120,16 +118,6 @@ public class SJFTest extends InitialTestCase {
 		for (ProcessoVO processo : resultado) {
 			Assert.assertTrue(id++ == processo.getId());
 		}
-	}
-
-	@Test(expected = ProcessosNaoCarregadosException.class)
-	public void naoDeveEscalonarSemAntesCarregarOsProcessos() {
-		new SJF(null, 0);
-	}
-
-	@Test(expected = ProcessosConfiguracaoException.class)
-	public void naoDeveEscalonarProcessosComBurstNegativo() {
-		new SJF(gerarListaDeProcessos(3, INVALIDO), 0);
 	}
 
 }

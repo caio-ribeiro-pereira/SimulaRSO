@@ -35,7 +35,7 @@
 								var canvas = document.getElementById('processo-chart-${resultList.algoritmoNome}');
 								$('#run-${resultList.algoritmoNome}').click(function(){
 									$('#run-${resultList.algoritmoNome}').hide();
-									$('#simulation-${resultList.algoritmoNome}').show();
+									$('#simulation-${resultList.algoritmoNome}').fadeIn();
 									new ProcessoChart(${resultList.totalProcessos}, canvas, espaco, processos, time);
 								});
 							});

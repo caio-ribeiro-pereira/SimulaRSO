@@ -17,7 +17,6 @@ public class RR extends EscalonadorProcessoBase implements EscalonadorProcesso {
 	public RR(ArrayList<Processo> processos, int tempoQuantum) {
 		super();
 		definirTempoQuantum(tempoQuantum);
-		validarProcessos(processos);
 		enfileirarProcessos(processos);
 		executar();
 	}

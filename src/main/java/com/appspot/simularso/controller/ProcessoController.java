@@ -8,7 +8,6 @@ import br.com.caelum.vraptor.Get;
 import br.com.caelum.vraptor.Post;
 import br.com.caelum.vraptor.Resource;
 import br.com.caelum.vraptor.Result;
-import br.com.caelum.vraptor.Validator;
 
 import com.appspot.simularso.exception.ProcessosConfiguracaoException;
 import com.appspot.simularso.exception.ProcessosNaoCarregadosException;
@@ -23,21 +22,18 @@ import com.appspot.simularso.model.Processo;
 public class ProcessoController extends ApplicationController {
 
 	private final Result result;
-	private final Validator validator;
 	private final ProcessoFacade facade;
 	private final Notice notice;
 
-	public ProcessoController(Result result, Validator validator, ProcessoFacade facade, Idioma idioma, Notice notice) {
+	public ProcessoController(Result result, ProcessoFacade facade, Idioma idioma, Notice notice) {
 		super(idioma);
 		this.result = result;
-		this.validator = validator;
 		this.facade = facade;
 		this.notice = notice;
 	}
 
 	@Get("/escalonamento-processo")
 	public void processoInicio() {
-		result.include("escalonadorProcessoAlgoritmo", EscalonadorProcessoAlgoritmo.values());
 	}
 
 	@Post("/executar-escalonamento-processo")
@@ -50,19 +46,22 @@ public class ProcessoController extends ApplicationController {
 
 		} catch (ProcessosConfiguracaoException e) {
 			notice.warning("processo.processos.vazio");
-			validator.onErrorRedirectTo(this).processoInicio();
+			result.of(this).processoInicio();
 		} catch (ProcessosNaoCarregadosException e) {
 			notice.warning("processo.nao.carregado");
-			validator.onErrorRedirectTo(this).processoInicio();
+			result.of(this).processoInicio();
 		} catch (TempoQuantumException e) {
 			notice.warning("processo.tempo.corte.vazio");
-			validator.onErrorRedirectTo(this).processoInicio();
+			result.of(this).processoInicio();
 		} catch (IllegalArgumentException e) {
 			notice.warning("misc.selecionar.algoritmos");
-			validator.onErrorRedirectTo(this).processoInicio();
+			result.of(this).processoInicio();
+		} catch (IllegalStateException e) {
+			notice.warning("misc.algoritmo.erro");
+			result.of(this).processoInicio();
 		} catch (Exception e) {
 			notice.warning("misc.falha");
-			validator.onErrorRedirectTo(this).processoInicio();
+			result.of(this).processoInicio();
 		}
 	}
 
@@ -70,8 +69,12 @@ public class ProcessoController extends ApplicationController {
 	public void processoResultado() {
 		if (!result.included().containsKey("resultadosDosAlgoritmos")) {
 			notice.warning("processo.selecione");
-			validator.onErrorRedirectTo(this).processoInicio();
+			result.of(this).processoInicio();
 		}
+	}
+
+	public EscalonadorProcessoAlgoritmo[] getAlgoritmos() {
+		return super.getEscalonadorProcessoAlgoritmo();
 	}
 
 	public String getIdioma() {

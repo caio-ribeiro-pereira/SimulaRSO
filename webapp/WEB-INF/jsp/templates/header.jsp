@@ -8,8 +8,9 @@
 		<a class="middle" href="<c:url value="/paginacao-memoria" />"><fmt:message key="header.paginacao.memoria" /></a>
 		<a class="right" href="<c:url value="/sobre" />"><fmt:message key="header.sobre" /></a>
 	</nav>
+	<br>
+	<c:if test="${not empty warning}">
+    	<strong class="clearfix error-message">${warning}</strong>
+	</c:if>
 </header>
-<c:if test="${not empty warning}">
-    <strong class="clearfix error-message">${warning}</strong>
-</c:if>
 <hr>

@@ -4,28 +4,18 @@ import java.io.Serializable;
 import java.util.Locale;
 import java.util.ResourceBundle;
 
-import javax.annotation.PostConstruct;
-import javax.annotation.PreDestroy;
-
 import br.com.caelum.vraptor.ioc.Component;
-import br.com.caelum.vraptor.ioc.SessionScoped;
+import br.com.caelum.vraptor.ioc.RequestScoped;
 
 @Component
-@SessionScoped
+@RequestScoped
 public class NoticeReader implements Serializable {
 
-	private static final long serialVersionUID = -4051745102251095713L;
-
+	private static final long serialVersionUID = -1922076359850602156L;
 	private static final String PROPERTIES = "idioma";
 	private ResourceBundle bundle;
-	private final Idioma idioma;
 
 	public NoticeReader(Idioma idioma) {
-		this.idioma = idioma;
-	}
-
-	@PostConstruct
-	public void init() {
 		Locale locale = new Locale(idioma.getLanguage(), idioma.getCountry());
 		bundle = ResourceBundle.getBundle(PROPERTIES, locale);
 	}
@@ -37,8 +27,4 @@ public class NoticeReader implements Serializable {
 		return bundle.getString(key);
 	}
 
-	@PreDestroy
-	public void destroy() {
-		bundle = null;
-	}
 }

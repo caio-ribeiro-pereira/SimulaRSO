@@ -6,9 +6,6 @@ import java.util.List;
 import org.junit.Assert;
 import org.junit.Test;
 
-import com.appspot.simularso.exception.CilindroCabecaVaziaException;
-import com.appspot.simularso.exception.RequisicaoCilindroException;
-import com.appspot.simularso.exception.RequisicoesVaziaException;
 import com.appspot.simularso.logic.disc.LOOK;
 import com.appspot.simularso.logic.test.InitialTestCase;
 import com.appspot.simularso.model.Disco;
@@ -23,7 +20,7 @@ public class LOOKTest extends InitialTestCase {
 
 		LinkedList<Disco> requisicoes = gerarListaDeRequisicoes(CILINDROS);
 		Disco cabeca = new Disco(53);
-		LOOK look = new LOOK(requisicoes, cabeca,1000);
+		LOOK look = new LOOK(requisicoes, cabeca, 1000);
 
 		List<Disco> res = look.resultados();
 		Assert.assertNotNull(res);
@@ -33,22 +30,5 @@ public class LOOKTest extends InitialTestCase {
 
 		int movimentoCilindros = look.movimentoTotalCilindros();
 		Assert.assertTrue(MOVIMENTO_TOTAL == movimentoCilindros);
-	}
-
-	@Test(expected = CilindroCabecaVaziaException.class)
-	public void naoDeveEscalonarSemUmCilindroCabeca() {
-		final int[] cilindros = { 98, 183, 37, 122, 14, 124, 65, 67 };
-		new LOOK(gerarListaDeRequisicoes(cilindros), null);
-	}
-
-	@Test(expected = RequisicoesVaziaException.class)
-	public void naoDeveEscalonarComAFilaDeRequisicoesVazia() {
-		new LOOK(null, new Disco(10));
-	}
-
-	@Test(expected = RequisicaoCilindroException.class)
-	public void naoDeveEscalonarComValoresDeCilindrosDaFilaNegativo() {
-		final int[] cilindros = { 98, 183, -37, -122, 14, 124, 65, -67 };
-		new LOOK(gerarListaDeRequisicoes(cilindros), new Disco(100));
 	}
 }

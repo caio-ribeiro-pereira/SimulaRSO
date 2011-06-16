@@ -11,7 +11,6 @@
 		<script type="text/javascript">
 			head.ready(function(){
 				$("#alg2").hide();
-				//$('input[type="text"]#cabeca').spinner({ min: 1, max: 99, showOn: 'always' }).onlyNumeric();
 				$('button').button({icons : {primary : 'ui-icon-gear'}}).next().button({icons : {primary : 'ui-icon-shuffle'}});
 				
 				$('#totalRequisicao').change(function(){
@@ -22,15 +21,10 @@
 						var cilindroLabel = '<fmt:message key="disco.cilindro" />';
 						for(var i=0;i<total;i++){
 							cilindros.push({cilindroId : "cilindro-"+(i+1), 
-											cilindroName: "requisicoes[].cilindro", 
 											cilindroLabel: cilindroLabel+" "+(i+1)});
 						}
 						var template = $("#discoTemplate").tmpl(cilindros);
 						content.append(template).fadeIn();
-						//$('.cilindro-requisicao').spinner({ min: 1, max: 99, showOn: 'always' }).onlyNumeric();
-					}else{
-						$('button').removeAttr('disabled');
-						$('#disco-menu').html('<strong class="clearfix info-message"><fmt:message key="disco.erro" /></strong>').show();
 					}
 				}).trigger('change');
 
@@ -56,25 +50,19 @@
 						$("#alg2").hide();
 					}
 				}).trigger('change');
-
-				$('#algoritmo1').change(function(){
-					$('#execute').removeAttr('disabled');
-					$('#error').text('');
-					if(this.value == $('#algoritmo2').val() && this.value != ''){
-						$('#execute').attr('disabled','disabled');
-						$('#error').text('<fmt:message key="misc.algoritmo.erro" />').show();
-					}
-				}).trigger('change');
-				
-				$('#algoritmo2').change(function(){
-					$('#execute').removeAttr('disabled');
-					$('#error').text('');
-					if(this.value == $('#algoritmo1').val() && this.value != ''){
-						$('#execute').attr('disabled','disabled');
-						$('#error').text('<fmt:message key="misc.algoritmo.erro" />').show();
-					}
-				}).trigger('change');
 					
+				$('#rules-dialog').dialog({
+					autoOpen : false,
+					modal : true,
+					width : 960,
+					closeOnEscape : true,
+					open : function(){ $(this).fadeIn();},
+					close : function(){ $(this).fadeOut(); }
+				});
+				
+				$('#help').click(function(){
+					$('#rules-dialog').dialog('open');	
+				});
 			});
 		</script>
 	</head>
@@ -84,18 +72,6 @@
 			<section class="clearfix">
 				<article class="clearfix">
 					<h2 class="clearfix subtitle"><fmt:message key="disco.titulo" /></h2>
-				</article>
-				<article class="clearfix main-info">
-					<p><strong><fmt:message key="misc.observacoes" />:</strong></p>
-					<p><fmt:message key="disco.regra.msg1" /></p>
-					<p><fmt:message key="disco.regra.msg2" /></p>
-					<p><fmt:message key="disco.regra.msg3" /></p>
-					<p><fmt:message key="disco.regra.msg4" /></p>
-					<p><fmt:message key="disco.regra.msg5" /></p>
-					<p><fmt:message key="disco.regra.msg6" /></p>
-					<p><strong><fmt:message key="misc.observacoes" />:</strong></p>
-					<p><fmt:message key="disco.regra.msg7" /></p>
-					<p><fmt:message key="disco.regra.msg8" /></p>
 				</article>
 				<article class="clearfix main-info">
 					<form action="<c:url value="/executar-escalonamento-disco" />" method="post" id="disco-form">
@@ -114,7 +90,7 @@
 								<label><fmt:message key="misc.algoritmo" /> 1:</label>
 								<select id="algoritmo1" name="algDisco[0]" tabindex="2">
 									<option value=""><fmt:message key="misc.selecione" /></option>
-									<c:forEach items="${algoritmoDisco}" var="alg">
+									<c:forEach items="${discoController.algoritmos}" var="alg">
 										<option value="${alg}">${alg.nome}</option>		
 									</c:forEach>
 								</select> 
@@ -123,7 +99,7 @@
 								<label><fmt:message key="misc.algoritmo" /> 2:</label>	
 								<select id="algoritmo2" name="algDisco[1]" tabindex="3">
 									<option value=""><fmt:message key="misc.selecione" /></option>
-									<c:forEach items="${algoritmoDisco}" var="alg">
+									<c:forEach items="${discoController.algoritmos}" var="alg">
 										<option value="${alg}">${alg.nome}</option>		
 									</c:forEach>
 								</select>
@@ -144,27 +120,37 @@
 						</div>
 						<div id="disco-menu" class="clearfix menu"></div>
 						<script id="discoTemplate" type="text/x-jquery-tmpl">
-							<div class="disco-input-box grid_2">
+							<div class="disco-input-box">
 								<p class="clearfix">
 									<strong>\${cilindroLabel}:</strong>
 								</p>
 								<p class="clearfix">
-									<span class="little prefix_1 grid_1" style="margin-left:-7px;">(1 - 99)</span>
-								</p>
-								<p class="clearfix">
 									<label class="grid_1" for="\${cilindroId}"><small><fmt:message key="disco.setor" />:</small></label>
-									<input type="text" id="\${cilindroId}" maxlength="2" name="\${cilindroName}" value="1">	
+									<input type="text" class="grid_1" name="requisicoes[].cilindro" id="\${cilindroId}" maxlength="2" value="1">
+									<span class="grid_1 info-little" style="margin-left:-7px;">(1 - 99)</span>	
 								</p>
 							</div>
 						</script>
-						<strong id="error" class="clearfix error-message menu"></strong>
 						<div class="clearfix execute-panel">
 							<p>
+								<button id="help" type="button" tabindex="7"><fmt:message key="misc.ajuda" /></button>
 								<button id="random" type="button" tabindex="8"><fmt:message key="misc.configuracao.automatica" /></button>
-								<button id="execute" type="submit" tabindex="7"><fmt:message key="misc.executar" /></button>
+								<button id="execute" type="submit" tabindex="9"><fmt:message key="misc.executar" /></button>
 							</p>
 						</div>
 					</form>
+					<div id="rules-dialog" class="clearfix main-info" title="<fmt:message key="misc.regra.titulo" />">
+						<p><strong><fmt:message key="misc.observacoes" />:</strong></p>
+						<p><fmt:message key="disco.regra.msg1" /></p>
+						<p><fmt:message key="disco.regra.msg2" /></p>
+						<p><fmt:message key="disco.regra.msg3" /></p>
+						<p><fmt:message key="disco.regra.msg4" /></p>
+						<p><fmt:message key="disco.regra.msg5" /></p>
+						<p><fmt:message key="disco.regra.msg6" /></p>
+						<p><strong><fmt:message key="misc.observacoes" />:</strong></p>
+						<p><fmt:message key="disco.regra.msg7" /></p>
+						<p><fmt:message key="disco.regra.msg8" /></p>
+					</div>
 				</article>
 			</section>
 			<%@ include file="../templates/footer.jsp"%>

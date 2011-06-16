@@ -12,7 +12,6 @@ public class FCFS extends EscalonadorProcessoBase implements EscalonadorProcesso
 
 	public FCFS(ArrayList<Processo> processos, int tempoQuantum) {
 		super();
-		validarProcessos(processos);
 		enfileirarProcessos(processos);
 		executar();
 	}

@@ -6,9 +6,6 @@ import java.util.List;
 import org.junit.Assert;
 import org.junit.Test;
 
-import com.appspot.simularso.exception.CilindroCabecaVaziaException;
-import com.appspot.simularso.exception.RequisicaoCilindroException;
-import com.appspot.simularso.exception.RequisicoesVaziaException;
 import com.appspot.simularso.logic.disc.CSCAN;
 import com.appspot.simularso.logic.test.InitialTestCase;
 import com.appspot.simularso.model.Disco;
@@ -33,22 +30,5 @@ public class CSCANTest extends InitialTestCase {
 
 		int movimentoCilindros = cscan.movimentoTotalCilindros();
 		Assert.assertTrue(MOVIMENTO_TOTAL == movimentoCilindros);
-	}
-
-	@Test(expected = CilindroCabecaVaziaException.class)
-	public void naoDeveEscalonarSemUmCilindroCabeca() {
-		final int[] cilindros = { 98, 183, 37, 122, 14, 124, 65, 67 };
-		new CSCAN(gerarListaDeRequisicoes(cilindros), null);
-	}
-
-	@Test(expected = RequisicoesVaziaException.class)
-	public void naoDeveEscalonarComAFilaDeRequisicoesVazia() {
-		new CSCAN(null, new Disco(10));
-	}
-
-	@Test(expected = RequisicaoCilindroException.class)
-	public void naoDeveEscalonarComValoresDeCilindrosDaFilaNegativo() {
-		final int[] cilindros = { 98, 183, -37, -122, 14, 124, 65, -67 };
-		new CSCAN(gerarListaDeRequisicoes(cilindros), new Disco(100));
 	}
 }

@@ -7,8 +7,6 @@ import org.hamcrest.Matchers;
 import org.junit.Assert;
 import org.junit.Test;
 
-import com.appspot.simularso.exception.ProcessosConfiguracaoException;
-import com.appspot.simularso.exception.ProcessosNaoCarregadosException;
 import com.appspot.simularso.logic.EscalonadorProcesso;
 import com.appspot.simularso.logic.process.SRT;
 import com.appspot.simularso.logic.test.InitialTestCase;
@@ -115,13 +113,4 @@ public class SRTTest extends InitialTestCase {
 		}
 	}
 
-	@Test(expected = ProcessosNaoCarregadosException.class)
-	public void naoDeveEscalonarSemAntesCarregarOsProcessos() {
-		new SRT(null, 0);
-	}
-
-	@Test(expected = ProcessosConfiguracaoException.class)
-	public void naoDeveEscalonarProcessosComBurstNegativo() {
-		new SRT(gerarListaDeProcessos(3, INVALIDO), 0);
-	}
 }

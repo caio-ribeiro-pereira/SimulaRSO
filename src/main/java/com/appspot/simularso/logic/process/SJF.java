@@ -12,7 +12,6 @@ public class SJF extends EscalonadorProcessoBase implements EscalonadorProcesso 
 
 	public SJF(ArrayList<Processo> processos, int tempoQuantum) {
 		super();
-		validarProcessos(processos);
 		enfileirarProcessos(processos);
 		ordernarProcessos();
 		executar();

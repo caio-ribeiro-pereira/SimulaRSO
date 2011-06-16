@@ -8,7 +8,6 @@ import br.com.caelum.vraptor.Get;
 import br.com.caelum.vraptor.Post;
 import br.com.caelum.vraptor.Resource;
 import br.com.caelum.vraptor.Result;
-import br.com.caelum.vraptor.Validator;
 
 import com.appspot.simularso.exception.FramesInvalidoException;
 import com.appspot.simularso.exception.StringReferenciaInvalidaException;
@@ -21,21 +20,18 @@ import com.appspot.simularso.logic.memory.PaginacaoMemoriaAlgoritmo;
 public class PaginacaoController extends ApplicationController {
 
 	private final Result result;
-	private final Validator validator;
 	private final PaginacaoFacade facade;
 	private final Notice notice;
 
-	public PaginacaoController(Result result, Validator validator, PaginacaoFacade facade, Idioma idioma, Notice notice) {
+	public PaginacaoController(Result result, PaginacaoFacade facade, Idioma idioma, Notice notice) {
 		super(idioma);
 		this.result = result;
-		this.validator = validator;
 		this.facade = facade;
 		this.notice = notice;
 	}
 
 	@Get("/paginacao-memoria")
 	public void paginacaoInicio() {
-		result.include("paginacaoMemoriaAlgoritmo", PaginacaoMemoriaAlgoritmo.values());
 	}
 
 	@Post("/executar-paginacao-memoria")
@@ -48,16 +44,19 @@ public class PaginacaoController extends ApplicationController {
 
 		} catch (StringReferenciaInvalidaException e) {
 			notice.warning("paginacao.string.referencia.invalida");
-			validator.onErrorRedirectTo(this).paginacaoInicio();
+			result.of(this).paginacaoInicio();
 		} catch (FramesInvalidoException e) {
 			notice.warning("paginacao.frame.minimo");
-			validator.onErrorRedirectTo(this).paginacaoInicio();
+			result.of(this).paginacaoInicio();
 		} catch (IllegalArgumentException e) {
 			notice.warning("misc.selecionar.algoritmos");
-			validator.onErrorForwardTo(this).paginacaoInicio();
+			result.of(this).paginacaoInicio();
+		} catch (IllegalStateException e) {
+			notice.warning("misc.algoritmo.erro");
+			result.of(this).paginacaoInicio();
 		} catch (Exception e) {
 			notice.warning("misc.falha");
-			validator.onErrorRedirectTo(this).paginacaoInicio();
+			result.of(this).paginacaoInicio();
 		}
 	}
 
@@ -65,8 +64,12 @@ public class PaginacaoController extends ApplicationController {
 	public void paginacaoResultado() {
 		if (!result.included().containsKey("resultadosDosAlgoritmos")) {
 			notice.warning("paginacao.selecione");
-			validator.onErrorRedirectTo(this).paginacaoInicio();
+			result.of(this).paginacaoInicio();
 		}
+	}
+
+	public PaginacaoMemoriaAlgoritmo[] getAlgoritmos() {
+		return super.getPaginacaoMemoriaAlgoritmo();
 	}
 
 	public String getIdioma() {

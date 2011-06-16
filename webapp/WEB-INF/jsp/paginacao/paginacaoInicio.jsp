@@ -35,24 +35,6 @@
 					}
 				}).trigger('change');
 				
-				$('#algoritmo1').change(function(){
-					$('#execute').removeAttr('disabled');
-					$('#error').text('');
-					if(this.value == $('#algoritmo2').val() && this.value != ''){
-						$('#execute').attr('disabled','disabled');
-						$('#error').text('<fmt:message key="misc.algoritmo.erro" />').show();
-					}
-				}).trigger('change');
-				
-				$('#algoritmo2').change(function(){
-					$('#execute').removeAttr('disabled');
-					$('#error').text('');
-					if(this.value == $('#algoritmo1').val() && this.value != ''){
-						$('#execute').attr('disabled','disabled');
-						$('#error').text('<fmt:message key="misc.algoritmo.erro" />').show();
-					}
-				}).trigger('change');
-				
 				$('#stringRefTotal').change(function(){
 					var content = $('#pagination-menu').empty().hide();
 					var total = $('#stringRefTotal').val();
@@ -65,11 +47,21 @@
 						var template = $('#paginationTemplate').tmpl(paginator);
 						content.append(template).fadeIn();
 						$('input[type="text"].stringReferencia').spinner({ min: 0, max: 9, showOn: 'always' }).onlyNumeric();
-					}else {
-						$('button').removeAttr('disabled');
-						$('#pagination-menu').html('<strong class="clearfix info-message"><fmt:message key="paginacao.determine.tamanho" /></strong>').show();
 					}
 				}).trigger('change');
+				
+				$('#rules-dialog').dialog({
+					autoOpen : false,
+					modal : true,
+					width : 960,
+					closeOnEscape : true,
+					open : function(){ $(this).fadeIn();},
+					close : function(){ $(this).fadeOut(); }
+				});
+				
+				$('#help').click(function(){
+					$('#rules-dialog').dialog('open');	
+				});
 			});
 		</script>
 	</head>
@@ -79,17 +71,6 @@
 			<section class="clearfix">
 				<article class="clearfix">
 					<h2 class="clearfix subtitle"><fmt:message key="paginacao.titulo" /></h2>
-				</article>
-				<article class="clearfix main-info">
-					<p><strong><fmt:message key="misc.regra.titulo" />:</strong></p>
-					<p><fmt:message key="paginacao.regra.msg1" /></p>
-					<p><fmt:message key="paginacao.regra.msg2" /></p>
-					<p><fmt:message key="paginacao.regra.msg3" /></p>
-					<p><fmt:message key="paginacao.regra.msg4" /></p>
-					<p><fmt:message key="paginacao.regra.msg5" /></p>
-					<p><fmt:message key="paginacao.regra.msg6" /></p>
-					<p><strong><fmt:message key="misc.observacoes" />:</strong></p>
-					<p><fmt:message key="paginacao.regra.msg7" /></p>
 				</article>
 				<article class="clearfix main-info">
 					<form id="pagination-form" action="<c:url value="/executar-paginacao-memoria"/>" method="post">
@@ -108,7 +89,7 @@
 								<strong><fmt:message key="misc.algoritmo" /> 1: </strong>
 								<select name="algs[0]" id="algoritmo1" tabindex="2">
 									<option value=""><fmt:message key="misc.selecione" /></option>
-									<c:forEach var="alg" items="${paginacaoMemoriaAlgoritmo}">
+									<c:forEach var="alg" items="${paginacaoController.algoritmos}">
 										<option value="${alg}">${alg.nome}</option>	
 									</c:forEach>
 								</select>
@@ -117,7 +98,7 @@
 								<strong><fmt:message key="misc.algoritmo" /> 2: </strong>
 								<select name="algs[1]" id="algoritmo2" tabindex="3">
 									<option value=""><fmt:message key="misc.selecione" /></option>
-									<c:forEach var="alg" items="${paginacaoMemoriaAlgoritmo}">
+									<c:forEach var="alg" items="${paginacaoController.algoritmos}">
 										<option value="${alg}">${alg.nome}</option>	
 									</c:forEach>
 								</select>			
@@ -144,18 +125,35 @@
 						<div id="pagination-menu" class="clearfix menu"></div>
 						<script id="paginationTemplate" type="text/x-jquery-tmpl">
 							<div class="pagination-input-box">
-								<label for="\${inputStringRef}"><small>\${labelStringRef}:</small></label>
-								<input type="text" class="stringReferencia" name="stringRef[]" id="\${inputStringRef}" value="0" maxlength="1">
+								<p class="clearfix">
+									<strong>\${labelStringRef}:</strong>
+								</p>
+								<p class="clearfix">
+									<label class="grid_1" for="\${inputStringRef}"><small><fmt:message key="paginacao.valor" />:</small></label>
+									<input type="text" class="grid_1" name="stringRef[]" id="\${inputStringRef}" value="0" maxlength="1">
+									<span class="grid_1 info-little" style="margin-left:-7px;">(0 - 9)</span>
+								</p>
 							</div>
 						</script>
-						<strong id="error" class="clearfix error-message menu"></strong>
 						<div class="clearfix execute-panel">
 							<p>
-								<button id="random" type="button" tabindex="7"><fmt:message key="misc.configuracao.automatica" /></button>
-								<button id="execute" type="submit" tabindex="8"><fmt:message key="misc.executar" /></button>
+								<button id="help" type="button" tabindex="7"><fmt:message key="misc.ajuda" /></button>
+								<button id="random" type="button" tabindex="8"><fmt:message key="misc.configuracao.automatica" /></button>
+								<button id="execute" type="submit" tabindex="9"><fmt:message key="misc.executar" /></button>
 							</p>
 						</div>
 					</form>
+					<div id="rules-dialog" class="clearfix main-info" title="<fmt:message key="misc.regra.titulo" />">
+						<p><strong><fmt:message key="misc.regra.titulo" />:</strong></p>
+						<p><fmt:message key="paginacao.regra.msg1" /></p>
+						<p><fmt:message key="paginacao.regra.msg2" /></p>
+						<p><fmt:message key="paginacao.regra.msg3" /></p>
+						<p><fmt:message key="paginacao.regra.msg4" /></p>
+						<p><fmt:message key="paginacao.regra.msg5" /></p>
+						<p><fmt:message key="paginacao.regra.msg6" /></p>
+						<p><strong><fmt:message key="misc.observacoes" />:</strong></p>
+						<p><fmt:message key="paginacao.regra.msg7" /></p>
+					</div>
 				</article>
 			</section>
 			<%@ include file="../templates/footer.jsp"%>

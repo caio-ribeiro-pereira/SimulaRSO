@@ -7,8 +7,6 @@ import org.hamcrest.Matchers;
 import org.junit.Assert;
 import org.junit.Test;
 
-import com.appspot.simularso.exception.ProcessosConfiguracaoException;
-import com.appspot.simularso.exception.ProcessosNaoCarregadosException;
 import com.appspot.simularso.logic.EscalonadorProcesso;
 import com.appspot.simularso.logic.process.FCFS;
 import com.appspot.simularso.logic.test.InitialTestCase;
@@ -124,16 +122,6 @@ public class FCFSTest extends InitialTestCase {
 			Assert.assertTrue(id++ == processo.getId());
 		}
 
-	}
-
-	@Test(expected = ProcessosConfiguracaoException.class)
-	public void naoDeveEscalonarProcessosComBurstNegativo() {
-		new FCFS(gerarListaDeProcessos(3, INVALIDO), 0);
-	}
-
-	@Test(expected = ProcessosNaoCarregadosException.class)
-	public void naoDeveGerarResultadoSemEscalonarOsProcessosAntes() {
-		new FCFS(null, 0);
 	}
 
 }

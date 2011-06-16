@@ -16,7 +16,6 @@ public class SRT extends EscalonadorProcessoBase implements EscalonadorProcesso 
 
 	public SRT(ArrayList<Processo> processos, int tempoQuantum) {
 		super();
-		validarProcessos(processos);
 		enfileirarProcessos(processos);
 		ordernarProcessos();
 		executar();

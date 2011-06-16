@@ -45,40 +45,28 @@
 					} else {
 						if ($('#algoritmo1').val() != 'RR' && $('#algoritmo2').val() == 'RR') {
 							$('#quantum').hide();
-							$('#quantum select option:first-child').attr('selected','selected');
+							$('#quantum').val('').change();
 						}
 						$('#alg2').hide();
-						$('#alg2 select option:first-child').attr('selected', 'selected');
+						$('#alg2').val('').change();
 					}
 				}).trigger('change');
 
 				$('#algoritmo1').change(function() {
-					$('#error').text('');
-					$('#execute').removeAttr('disabled');
 					if (this.value == 'RR' || $('#algoritmo2').val() == 'RR') {
 						$('#quantum').show();
 					} else {
 						$('#quantum').hide();
-						$('#quantum select option:first-child').attr('selected', 'selected');
-					}
-					if(this.value == $('#algoritmo2').val() && this.value != ''){
-						$('#error').text('<fmt:message key="misc.algoritmo.erro" />').show();
-						$('#execute').attr('disabled', 'disabled');
+						$('#quantum').val('').change();
 					}
 				}).trigger('change');
 
 				$('#algoritmo2').change(function() {
-					$('#error').text('');
-					$('#execute').removeAttr('disabled');
 					if (this.value == 'RR' || $('#algoritmo1').val() == 'RR') {
 						$('#quantum').show();
 					} else {
 						$('#quantum').hide();
-						$('#quantum select option:first-child').attr('selected', 'selected');
-					}
-					if(this.value == $('#algoritmo1').val() && this.value != ''){
-						$('#error').text('<fmt:message key="misc.algoritmo.erro" />').show();
-						$('#execute').attr('disabled', 'disabled');
+						$('#quantum').val('').change();
 					}
 				}).trigger('change');
 
@@ -100,14 +88,21 @@
 						}
 						var template = $('#processTemplate').tmpl(processos);
 						content.append(template).fadeIn();
-						/* $('input[type="text"].burst').spinner({min : 1,max : 99,showOn : 'always'}).onlyNumeric();
-						$('input[type="text"].chegada').spinner({min : 0,max : 99,showOn : 'always'}).onlyNumeric();
-						$('input[type="text"].prioridade').spinner({min : 1,max : 10,showOn : 'always'}).onlyNumeric(); */
-					} else {
-						$('button').removeAttr('disabled');
-						$('#process-menu').html('<strong class="clearfix info-message"><fmt:message key="processo.erro" /></strong>').show();
-					}
+					} 
 				}).trigger('change');
+				
+				$('#rules-dialog').dialog({
+					autoOpen : false,
+					modal : true,
+					width : 960,
+					closeOnEscape : true,
+					open : function(){ $(this).fadeIn();},
+					close : function(){ $(this).fadeOut(); }
+				});
+				
+				$('#help').click(function(){
+					$('#rules-dialog').dialog('open');	
+				});
 			});
 </script>
 </head>
@@ -117,20 +112,6 @@
 		<section class="clearfix">
 			<article class="clearfix">
 				<h2 class="subtitle"><fmt:message key="processo.titulo" /></h2>
-			</article>
-			<article class="clearfix main-info">
-				<p><strong><fmt:message key="misc.regra.titulo" />:</strong></p>
-				<p><fmt:message key="processo.regra.msg1" /></p>
-				<p><fmt:message key="processo.regra.msg2" /></p>
-				<p><fmt:message key="processo.regra.msg3" /></p>
-				<p><fmt:message key="processo.regra.msg4" /></p>
-				<p><fmt:message key="processo.regra.msg5" /></p>
-				<p><strong><fmt:message key="misc.observacoes" />:</strong></p>
-				<p><fmt:message key="processo.regra.msg6" /></p>
-				<p><fmt:message key="processo.regra.msg7" /></p>
-				<p><fmt:message key="processo.regra.msg8" /></p>
-				<p><fmt:message key="processo.regra.msg9" /></p>
-				<p><fmt:message key="processo.regra.msg10" /></p>
 			</article>
 			<article class="clearfix main-info">
 				<form id="process-form"	action="<c:url value="/executar-escalonamento-processo"/>" method="post">
@@ -149,7 +130,7 @@
 							<strong><fmt:message key="misc.algoritmo" /> 1: </strong> 
 							<select name="algs[0]" id="algoritmo1" tabindex="3">
 								<option value=""><fmt:message key="misc.selecione" /></option>
-								<c:forEach var="alg" items="${escalonadorProcessoAlgoritmo}">
+								<c:forEach var="alg" items="${processoController.algoritmos}">
 									<option value="${alg}">${alg.nome}</option>
 								</c:forEach>
 							</select>
@@ -158,7 +139,7 @@
 							<strong><fmt:message key="misc.algoritmo" /> 2: </strong> 
 							<select name="algs[1]" id="algoritmo2" tabindex="4">
 								<option value=""><fmt:message key="misc.selecione" /></option>
-								<c:forEach var="alg" items="${escalonadorProcessoAlgoritmo}">
+								<c:forEach var="alg" items="${processoController.algoritmos}">
 									<option value="${alg}">${alg.nome}</option>
 								</c:forEach>
 							</select>
@@ -167,7 +148,7 @@
 							<strong><fmt:message key="processo.total.processos" />:</strong> 
 							<select id="total" tabindex="2">
 								<option value=""><fmt:message key="misc.selecione" /></option>
-								<c:forEach begin="2" end="20" step="1" var="p">
+								<c:forEach begin="2" end="18" step="1" var="p">
 									<option value="${p}">${p}&nbsp;<fmt:message key="processo.label.plural" /></option>
 								</c:forEach>
 							</select>
@@ -193,37 +174,45 @@
 								<input type="hidden" name="pr[].id" value="\${prId}">
 								<input type="hidden" name="pr[].cor" value="\${prCor}">
 							</p>
-							<p class="clearfix">
-								<span class="little prefix_1 grid_1">(1 - 99)</span>
-							</p>
 							<p class="clearfix processo">
 								<label class="grid_1" for="\${inputBurst}"><small><fmt:message key="processo.burst" />: </small></label>
-								<input type="text" class="grid_1 burst" name="pr[].burst" id="\${inputBurst}" value="10" maxlength="2">
-							</p>
-							<p class="clearfix">
-								<span class="little prefix_1 grid_1">(0 - 99)</span>
+								<input type="text" class="grid_1" name="pr[].burst" id="\${inputBurst}" value="10" maxlength="2">
+								<span class="grid_1 info-little">(1 - 99)</span>
 							</p>
 							<p class="clearfix processo">
 								<label class="grid_1" for="\${inputChegada}"><small><fmt:message key="processo.tempo.chegada" />: </small></label>
-								<input type="text" class="grid_1 chegada" name="pr[].chegada" id="\${inputChegada}" value="0" maxlength="2">
-							</p>
-							<p class="clearfix">
-								<span class="little prefix_1 grid_1">(1 - 10)</span>
+								<input type="text" class="grid_1" name="pr[].chegada" id="\${inputChegada}" value="0" maxlength="2">
+								<span class="grid_1 info-little">(0 - 99)</span>
 							</p>
 							<p class="clearfix processo">
 								<label class="grid_1" for="\${inputPrioridade}"><small><fmt:message key="processo.prioridade" />: </small></label>
-								<input type="text" class="grid_1 prioridade" name="pr[].prioridade" id="\${inputPrioridade}" value="1" maxlength="2">
+								<input type="text" class="grid_1" name="pr[].prioridade" id="\${inputPrioridade}" value="1" maxlength="2">
+								<span class="grid_1 info-little">(1 - 10)</span>
 							</p>
 						</div>
 					</script>
-					<strong id="error" class="clearfix error-message"></strong>
 					<div class="clearfix execute-panel">
 						<p>
-							<button id="random" type="button" tabindex="7"><fmt:message key="misc.configuracao.automatica" /></button>
-							<button id="execute" type="submit" tabindex="8"><fmt:message key="misc.executar" /></button>
+							<button id="help" type="button" tabindex="7"><fmt:message key="misc.ajuda" /></button>
+							<button id="random" type="button" tabindex="8"><fmt:message key="misc.configuracao.automatica" /></button>
+							<button id="execute" type="submit" tabindex="9"><fmt:message key="misc.executar" /></button>
 						</p>
 					</div>
 				</form>
+				<div id="rules-dialog" class="clearfix main-info" title="<fmt:message key="misc.regra.titulo" />">
+					<p><strong><fmt:message key="misc.regra.titulo" />:</strong></p>
+					<p><fmt:message key="processo.regra.msg1" /></p>
+					<p><fmt:message key="processo.regra.msg2" /></p>
+					<p><fmt:message key="processo.regra.msg3" /></p>
+					<p><fmt:message key="processo.regra.msg4" /></p>
+					<p><fmt:message key="processo.regra.msg5" /></p>
+					<p><strong><fmt:message key="misc.observacoes" />:</strong></p>
+					<p><fmt:message key="processo.regra.msg6" /></p>
+					<p><fmt:message key="processo.regra.msg7" /></p>
+					<p><fmt:message key="processo.regra.msg8" /></p>
+					<p><fmt:message key="processo.regra.msg9" /></p>
+					<p><fmt:message key="processo.regra.msg10" /></p>
+				</div>
 			</article>
 		</section>
 		<%@ include file="../templates/footer.jsp"%>

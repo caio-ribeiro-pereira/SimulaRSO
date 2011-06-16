@@ -7,9 +7,6 @@ import org.hamcrest.Matchers;
 import org.junit.Assert;
 import org.junit.Test;
 
-import com.appspot.simularso.exception.ProcessosConfiguracaoException;
-import com.appspot.simularso.exception.ProcessosNaoCarregadosException;
-import com.appspot.simularso.exception.TempoQuantumException;
 import com.appspot.simularso.logic.EscalonadorProcesso;
 import com.appspot.simularso.logic.process.RR;
 import com.appspot.simularso.logic.test.InitialTestCase;
@@ -27,8 +24,7 @@ public class RRTest extends InitialTestCase {
 		final Integer[] TURN_AROUND_COM_BURSTS_SIMPLES = { 150, 40, 120, 130 };
 		final int QUANTUM = 20;
 
-		EscalonadorProcesso roundRobin = new RR(gerarArrayListDeProcessos(BURSTS_SIMPLES.length, BURSTS_SIMPLES, null,
-				null), QUANTUM);
+		EscalonadorProcesso roundRobin = new RR(gerarArrayListDeProcessos(BURSTS_SIMPLES.length, BURSTS_SIMPLES, null, null), QUANTUM);
 
 		List<ProcessoDTO> resultadoGrafico = roundRobin.resultadoGraficoFinal();
 		Assert.assertThat(resultadoGrafico, Matchers.notNullValue());
@@ -67,8 +63,7 @@ public class RRTest extends InitialTestCase {
 		final Integer[] TURN_AROUND_COM_BURSTS_MEDIO = { 134, 37, 162, 121 };
 		final int QUANTUM = 20;
 
-		EscalonadorProcesso roundRobin = new RR(
-				gerarArrayListDeProcessos(BURSTS_MEDIO.length, BURSTS_MEDIO, null, null), QUANTUM);
+		EscalonadorProcesso roundRobin = new RR(gerarArrayListDeProcessos(BURSTS_MEDIO.length, BURSTS_MEDIO, null, null), QUANTUM);
 
 		List<ProcessoDTO> resultadoGrafico = roundRobin.resultadoGraficoFinal();
 		Assert.assertThat(resultadoGrafico, Matchers.notNullValue());
@@ -120,21 +115,4 @@ public class RRTest extends InitialTestCase {
 		}
 	}
 
-	@Test(expected = TempoQuantumException.class)
-	public void naoDeveEscalonarProcessosComTempoQuantumNegativo() {
-		final int QUANTUM_INVALIDO = 0;
-		new RR(gerarListaDeProcessos(3, VALIDO), QUANTUM_INVALIDO);
-	}
-
-	@Test(expected = ProcessosConfiguracaoException.class)
-	public void naoDeveEscalonarProcessosComBurstNegativo() {
-		final int QUANTUM_VALIDO = 20;
-		new RR(gerarListaDeProcessos(3, INVALIDO), QUANTUM_VALIDO);
-	}
-
-	@Test(expected = ProcessosNaoCarregadosException.class)
-	public void naoDeveEscalonarSemAntesCarregarOsProcessos() {
-		final int QUANTUM_VALIDO = 20;
-		new RR(null, QUANTUM_VALIDO);
-	}
 }

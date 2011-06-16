@@ -6,8 +6,6 @@ import java.util.List;
 import org.junit.Assert;
 import org.junit.Test;
 
-import com.appspot.simularso.exception.FramesInvalidoException;
-import com.appspot.simularso.exception.StringReferenciaInvalidaException;
 import com.appspot.simularso.logic.PaginacaoMemoria;
 import com.appspot.simularso.logic.memory.OPT;
 import com.appspot.simularso.model.Pagina;
@@ -54,18 +52,4 @@ public class OPTTest {
 		Assert.assertTrue(STRING_REFERENCIA.length == resultadoGrafico.size());
 	}
 
-	@Test(expected = StringReferenciaInvalidaException.class)
-	public void naoDeveRealizarSubstituicaoPaginaComStringReferenciaNula() {
-		final List<Integer> REFERENCIA_NULA = null;
-		final Integer FRAME_VALIDO = 2;
-		new OPT(REFERENCIA_NULA, FRAME_VALIDO);
-	}
-
-	@Test(expected = FramesInvalidoException.class)
-	public void naoDeveRealizarSubstituicaoPaginaComFrameNegativo() {
-		final Integer[] REFERENCIA_VALIDA = { 1, 2, 3, 4, 5, 6, 7 };
-		final List<Integer> REFERENCIA = Arrays.asList(REFERENCIA_VALIDA);
-		final Integer FRAME_NEGATIVO = -1;
-		new OPT(REFERENCIA, FRAME_NEGATIVO);
-	}
 }

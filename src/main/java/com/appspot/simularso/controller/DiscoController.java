@@ -9,7 +9,6 @@ import br.com.caelum.vraptor.Get;
 import br.com.caelum.vraptor.Post;
 import br.com.caelum.vraptor.Resource;
 import br.com.caelum.vraptor.Result;
-import br.com.caelum.vraptor.Validator;
 
 import com.appspot.simularso.exception.CilindroCabecaVaziaException;
 import com.appspot.simularso.exception.RequisicaoCilindroException;
@@ -24,21 +23,18 @@ import com.appspot.simularso.model.Disco;
 public class DiscoController extends ApplicationController {
 
 	private final Result result;
-	private final Validator validator;
 	private final DiscoFacade discoFacade;
 	private final Notice notice;
 
-	public DiscoController(Result result, Validator validator, DiscoFacade discoFacade, Idioma idioma, Notice notice) {
+	public DiscoController(Result result, DiscoFacade discoFacade, Idioma idioma, Notice notice) {
 		super(idioma);
 		this.result = result;
-		this.validator = validator;
 		this.discoFacade = discoFacade;
 		this.notice = notice;
 	}
 
 	@Get("/escalonamento-disco")
 	public void discoInicio() {
-		result.include("algoritmoDisco", EscalonadorDiscoAlgoritmo.values());
 	}
 
 	@Post("/executar-escalonamento-disco")
@@ -50,19 +46,22 @@ public class DiscoController extends ApplicationController {
 
 		} catch (CilindroCabecaVaziaException e) {
 			notice.warning("disco.cilindro.cabeca.vazio");
-			validator.onErrorForwardTo(this).discoInicio();
+			result.of(this).discoInicio();
 		} catch (RequisicoesVaziaException e) {
 			notice.warning("disco.fila.vazia");
-			validator.onErrorForwardTo(this).discoInicio();
+			result.of(this).discoInicio();
 		} catch (RequisicaoCilindroException e) {
 			notice.warning("disco.cilindros.vazio");
-			validator.onErrorForwardTo(this).discoInicio();
+			result.of(this).discoInicio();
 		} catch (IllegalArgumentException e) {
 			notice.warning("misc.selecionar.algoritmos");
-			validator.onErrorForwardTo(this).discoInicio();
+			result.of(this).discoInicio();
+		} catch (IllegalStateException e) {
+			notice.warning("misc.algoritmo.erro");
+			result.of(this).discoInicio();
 		} catch (Exception e) {
 			notice.warning("misc.falha");
-			validator.onErrorRedirectTo(this).discoInicio();
+			result.of(this).discoInicio();
 		}
 	}
 
@@ -70,8 +69,12 @@ public class DiscoController extends ApplicationController {
 	public void discoResultado() {
 		if (!result.included().containsKey("resultadoDosAlgoritmos")) {
 			notice.warning("disco.selecione");
-			validator.onErrorRedirectTo(this).discoInicio();
+			result.of(this).discoInicio();
 		}
+	}
+
+	public EscalonadorDiscoAlgoritmo[] getAlgoritmos() {
+		return super.getEscalonadorDiscoAlgoritmo();
 	}
 
 	public String getIdioma() {

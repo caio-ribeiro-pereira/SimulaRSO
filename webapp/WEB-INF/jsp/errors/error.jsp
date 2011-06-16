@@ -14,7 +14,9 @@
 		  		<section class="clearfix main-info">
 					<strong class="clearfix info-message"><fmt:message key="error.msg1" /></strong>
 					<strong class="clearfix info-message"><fmt:message key="error.msg2" /></strong>
-					<strong class="clearfix info-message"><fmt:message key="error.msg3" /></strong>
+					<strong class="clearfix info-message">
+						<a href="https://github.com/caio-ribeiro-pereira/SimulaRSO/issues" target="_blank"><fmt:message key="error.msg3" /></a>
+					</strong>
 				</section>
 			</article>
 			<%@ include file="../templates/footer.jsp"%>
