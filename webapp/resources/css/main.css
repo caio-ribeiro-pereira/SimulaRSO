@@ -38,8 +38,6 @@ nav a.right {border-radius: 0px 5px 5px 0px; -moz-border-radius: 0px 5px 5px 0px
 .processo{margin:1px;}
 .processo-cor{width: 26px; height: 20px; border: 1px solid #FFF; margin: 0 auto;}
 .pagination{margin:1px;}
-.error-message {color: #F00; text-align: center; line-height: 1.8em;}
-.info-message {color: #00F;	text-align: center; line-height: 1.8em;}
 .result-message{color: #000; text-align: center; line-height:  1.8em;}
 .main {background-color: #FFF; border-radius: 7px; -moz-border-radius: 7px; -webkit-border-radius: 7px; border: 12px solid rgba(0,0,0,0.5); margin-bottom: 25px;	margin-top: 25px; padding: 25px;}
 .text {text-align: justify; line-height: 1.5em; margin-top: 10px;}
@@ -51,15 +49,16 @@ nav a.right {border-radius: 0px 5px 5px 0px; -moz-border-radius: 0px 5px 5px 0px
 .disco-input-box p:first-child {text-align: center;}
 .disco-input-box input{width: 35px; margin-left: 5px;}
 .execute-panel p{text-align: right; margin: 20px 40px 0px 0px;}
-.result-panel {border-radius: 5px; -moz-border-radius: 5px; -webkit-border-radius: 5px; border: 1px solid #000; margin: 20px 5px;}
+.result-panel {border-radius: 5px; -moz-border-radius: 5px; -webkit-border-radius: 5px; border: 1px solid #000; margin: 0 auto;}
 .result-panel td {padding: 5px 14px; text-align: center;}
 .result-line{color:#FFF;}
-.checked{color:#00F;}
 .run{text-align: center; margin-top: 20px; margin-bottom: 20px;}
 .processo-input-box {border-radius: 5px; -moz-border-radius: 5px; -webkit-border-radius: 5px; border: 1px solid #000; float: left; margin: 5px 8px 10px 0px;}
 .processo-input-box p:first-child {text-align: center;}
 .info-little{color: blue; line-height: 1.1em; font-size: 0.7em; text-align: center;}
 
+.feature{float:left; margin-top:5px; margin-left:5px;}
+.error-message {color: #900; text-align: center; line-height: 1.8em;}
 #pagination-menu{margin-left:90px;}
 #disco-menu{margin-left:90px;}
 #process-menu{margin-left:75px;}

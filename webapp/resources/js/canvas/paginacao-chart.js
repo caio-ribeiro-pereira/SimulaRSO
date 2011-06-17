@@ -10,7 +10,7 @@
  * @email caio.ribeiro.pereira@gmail.com
  * 
  */
-function PaginacaoChart(total, canvas, espaco, strRef, pg, time) {
+function PaginacaoChart(total, canvas, espaco, strRef, pg, time, strRefLabel, frameLabel) {
 	var ctx = canvas.getContext('2d');
 	var width = canvas.width;
 	var height = canvas.height;
@@ -34,8 +34,8 @@ function PaginacaoChart(total, canvas, espaco, strRef, pg, time) {
 	ctx.strokeStyle = '#000000';
 	ctx.fillStyle = '#000000';
 	ctx.font = "14px Arial";
-	ctx.fillText('String de Referência:', x, y + 15);
-	ctx.fillText('Frames:', x, y + 80);
+	ctx.fillText(strRefLabel, x, y + 15);
+	ctx.fillText(frameLabel, x, y + 80);
 	// Animacao
 	var anim = window.setInterval(function(){
 		if(i < strRef.length && i < pg.length){

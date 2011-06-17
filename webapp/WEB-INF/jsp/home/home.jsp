@@ -23,20 +23,17 @@
 		  		</article>
 		  		<article class="clearfix main-info">
 		  			<p><strong><fmt:message key="main.painel.aviso" />:</strong></p>
-					<p><strong class="clearfix info-message"><fmt:message key="main.painel.msg1" /></strong></p>
-					<p><strong class="clearfix info-message"><fmt:message key="main.painel.msg2" /></strong></p>
-					<p><strong class="clearfix info-message"><fmt:message key="main.painel.msg3" /></strong></p>
+					<p class="text"><fmt:message key="main.painel.msg1" /></p>
+					<p class="text"><fmt:message key="main.painel.msg2" /></p>
+					<p class="text"><fmt:message key="main.painel.msg3" /></p>
 					<%@ include file="../templates/browsers.jsp"%>
-					<p><strong class="clearfix info-message">
-							<fmt:message key="main.painel.msg4" /> <a href="https://github.com/caio-ribeiro-pereira/SimulaRSO/issues" target="_blank"><fmt:message key="main.painel.report.bug" /></a>
-						</strong>
-					</p>
+					<p class="text"><fmt:message key="main.painel.msg4" />&nbsp;<a href="https://github.com/caio-ribeiro-pereira/SimulaRSO/issues" target="_blank"><fmt:message key="main.painel.report.bug" /></a></p>
 			  	</article>
 		  		<article class="clearfix main-info">
 			  		<p><strong><fmt:message key="main.sobre.projeto" />:</strong></p>
 			  		<p class="text"><fmt:message key="main.sobre.msg1" /></p>
 					<p class="text"><fmt:message key="main.sobre.msg2" /></p>
-					<p class="text"><fmt:message key="main.sobre.msg3" /></p>
+					<p class="text"><fmt:message key="main.sobre.msg3" />&nbsp;<a href="http://www.unisantos.br" target="_blank">Universidade Católica de Santos.</a></p>
 			  	</article>
 		  		<article class="clearfix main-info">
 				  		<p><strong><fmt:message key="main.atualizacoes" />:</strong></p>

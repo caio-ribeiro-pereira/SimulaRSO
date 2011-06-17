@@ -41,7 +41,7 @@
 							});
 						</script>
 						<strong class="clearfix result-message"><fmt:message key="misc.algoritmo" />: ${resultList.algoritmoNome}</strong>
-						<table class="clearfix result-panel">
+						<table class="result-panel">
 							<thead>
 								<tr>
 									<td><strong><fmt:message key="processo.label" /></strong></td>
