@@ -46,7 +46,7 @@
 						}
 						var template = $('#paginationTemplate').tmpl(paginator);
 						content.append(template).fadeIn();
-						$('input[type="text"].stringReferencia').spinner({ min: 0, max: 9, showOn: 'always' }).onlyNumeric();
+						$('input[type="text"].stringReferencia').onlyNumeric();
 					}
 				}).trigger('change');
 				
@@ -130,7 +130,7 @@
 								</p>
 								<p class="clearfix">
 									<label class="grid_1" for="\${inputStringRef}"><small><fmt:message key="paginacao.valor" />:</small></label>
-									<input type="text" class="grid_1" name="stringRef[]" id="\${inputStringRef}" value="0" maxlength="1">
+									<input type="text" class="grid_1 stringReferencia" name="stringRef[]" id="\${inputStringRef}" value="0" maxlength="1">
 									<span class="grid_1 info-little" style="margin-left:-7px;">(0 - 9)</span>
 								</p>
 							</div>

@@ -25,6 +25,7 @@
 						}
 						var template = $("#discoTemplate").tmpl(cilindros);
 						content.append(template).fadeIn();
+						$('input[type="text"].cilindro').onlyNumeric();
 					}
 				}).trigger('change');
 
@@ -126,7 +127,7 @@
 								</p>
 								<p class="clearfix">
 									<label class="grid_1" for="\${cilindroId}"><small><fmt:message key="disco.setor" />:</small></label>
-									<input type="text" class="grid_1" name="requisicoes[].cilindro" id="\${cilindroId}" maxlength="2" value="1">
+									<input type="text" class="grid_1 cilindro" name="requisicoes[].cilindro" id="\${cilindroId}" maxlength="2" value="1">
 									<span class="grid_1 info-little" style="margin-left:-7px;">(1 - 99)</span>	
 								</p>
 							</div>

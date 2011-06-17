@@ -88,6 +88,9 @@
 						}
 						var template = $('#processTemplate').tmpl(processos);
 						content.append(template).fadeIn();
+						$('input[type="text"].burst').onlyNumeric();
+						$('input[type="text"].chegada').onlyNumeric();
+						$('input[type="text"].prioridade').onlyNumeric();
 					} 
 				}).trigger('change');
 				
@@ -176,17 +179,17 @@
 							</p>
 							<p class="clearfix processo">
 								<label class="grid_1" for="\${inputBurst}"><small><fmt:message key="processo.burst" />: </small></label>
-								<input type="text" class="grid_1" name="pr[].burst" id="\${inputBurst}" value="10" maxlength="2">
+								<input type="text" class="grid_1 burst" name="pr[].burst" id="\${inputBurst}" value="10" maxlength="2">
 								<span class="grid_1 info-little">(1 - 99)</span>
 							</p>
 							<p class="clearfix processo">
 								<label class="grid_1" for="\${inputChegada}"><small><fmt:message key="processo.tempo.chegada" />: </small></label>
-								<input type="text" class="grid_1" name="pr[].chegada" id="\${inputChegada}" value="0" maxlength="2">
+								<input type="text" class="grid_1 chegada" name="pr[].chegada" id="\${inputChegada}" value="0" maxlength="2">
 								<span class="grid_1 info-little">(0 - 99)</span>
 							</p>
 							<p class="clearfix processo">
 								<label class="grid_1" for="\${inputPrioridade}"><small><fmt:message key="processo.prioridade" />: </small></label>
-								<input type="text" class="grid_1" name="pr[].prioridade" id="\${inputPrioridade}" value="1" maxlength="2">
+								<input type="text" class="grid_1 prioridade" name="pr[].prioridade" id="\${inputPrioridade}" value="1" maxlength="2">
 								<span class="grid_1 info-little">(1 - 10)</span>
 							</p>
 						</div>

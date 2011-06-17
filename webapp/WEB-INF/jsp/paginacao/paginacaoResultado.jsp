@@ -40,8 +40,8 @@
 									$('#run-${resultList.algoritmoNome}').click(function(){
 										$('#run-${resultList.algoritmoNome}').hide();
 										$('#simulation-${resultList.algoritmoNome}').show();
-										var strRefLabel = <fmt:message key="paginacao.string.referencia" />
-										var frameLabel = <fmt:message key="paginacao.frames" />
+										var strRefLabel = '<fmt:message key="paginacao.string.referencia" />';
+										var frameLabel = '<fmt:message key="paginacao.frames" />';
 										new PaginacaoChart(10, canvas, espaco,stringRef, paginacao, time, strRefLabel, frameLabel);
 									});
 								});
