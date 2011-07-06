@@ -6,12 +6,6 @@
 	<head>
 		<title><fmt:message key="paginacao.resultado.titulo" /></title>
 		<%@ include file="../templates/script-loader.jsp"%>
-		<script type="text/javascript">
-			if(head.browser.ie && head.browser.version !== "9.0"){
-				head.js('<c:url value="/resources/js/ie/excanvas.min.js" />');	
-			}
-			head.js('<c:url value="/resources/js/canvas/paginacao-chart.js" />');
-		</script>
 	</head>
 	<body>
 		<div class="container_12 main">
@@ -22,6 +16,7 @@
 					<c:forEach var="resultList" items="${resultadosDosAlgoritmos}">
 						<p class="clearfix result-message"><strong><fmt:message key="misc.algoritmo" />: ${resultList.algoritmoNome}</strong></p>
 						<script type="text/javascript">
+								head.js('<c:url value="/resources/js/canvas/paginacao-chart.js" />');	
 								head.ready(function(){
 									$('#run-${resultList.algoritmoNome}').button({icons : {primary : 'ui-icon-gear'}});
 									$('#simulation-${resultList.algoritmoNome}').hide();

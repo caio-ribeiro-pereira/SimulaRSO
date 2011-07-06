@@ -12,14 +12,16 @@
 <link rel="stylesheet" type="text/css" href="<c:url value="/resources/css/dark-hive/jquery-ui.css" />" />
 <script type="text/javascript" src="<c:url value="/resources/js/head.min.js" />"></script>
 <script type="text/javascript">
-	var _gaq = _gaq || [];
-		_gaq.push(['_setAccount', 'UA-7076509-2']);
-		_gaq.push(['_trackPageview']);
-	if(head.browser.ie && head.browser.version !== "9.0"){
-		head.js('<c:url value="/resources/js/ie/html5.js" />');
-	}
-	head.js('<c:url value="/resources/js/jquery-plugins.min.js" />')
+	var _gaq = [];
+	_gaq.push(['_setAccount', 'UA-7076509-2']);
+	_gaq.push(['_trackPageview']);
+	
+	head.js('<c:url value="/resources/js/jquery.min.js" />')
+		.js('<c:url value="/resources/js/jquery-ui.min.js" />')
 		.js('http://www.google-analytics.com/ga.js');
+	if(head.browser.ie && head.browser.version !== "9.0"){
+		head.js('<c:url value="/resources/js/html5.min.js" />');
+	}
 	head.ready(function(){
 		$('nav a.left').button({icons: {primary: 'ui-icon-home'}});
 		$('nav a.right').button({icons: {primary: 'ui-icon-comment'}});
