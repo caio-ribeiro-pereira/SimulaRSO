@@ -10,11 +10,8 @@ import com.appspot.simularso.infra.Idioma;
 @Resource
 public class HomeController extends ApplicationController {
 
-	private final Result result;
-
 	public HomeController(Idioma idioma, Result result) {
-		super(idioma);
-		this.result = result;
+		super(result, null, idioma);
 	}
 
 	@Get("/")
@@ -23,11 +20,11 @@ public class HomeController extends ApplicationController {
 
 	@Post("/idioma")
 	public void idioma(String idioma) {
-		super.setIdioma(idioma);
+		super.idioma.setIdioma(idioma);
 		result.redirectTo(this).home();
 	}
 
 	public String getIdioma() {
-		return super.getIdioma();
+		return super.idioma.getIdioma();
 	}
 }

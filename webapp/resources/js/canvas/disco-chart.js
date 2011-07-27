@@ -37,7 +37,7 @@ function DiscoChart(canvas,spaceX,spaceY,cilindros){
 	var i = 0;
 	var j = 0;
 	var flag = true;
-	var anim = window.setInterval(function(){
+	window.setInterval(function(){
 		if(flag){
 			if(i < pos.length){
 				//Pontos
@@ -59,7 +59,7 @@ function DiscoChart(canvas,spaceX,spaceY,cilindros){
 				j++;
 			}
 		}else{
-			window.clearInterval(anim);
+			window.clearInterval(this);
 		}
 	}, 500);
 };

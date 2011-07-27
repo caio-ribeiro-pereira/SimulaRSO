@@ -9,7 +9,7 @@ import com.appspot.simularso.infra.Idioma;
 public class SobreController extends ApplicationController {
 
 	public SobreController(Idioma idioma) {
-		super(idioma);
+		super(null, null, idioma);
 	}
 
 	@Get("/sobre")
@@ -17,6 +17,6 @@ public class SobreController extends ApplicationController {
 	}
 
 	public String getIdioma() {
-		return super.getIdioma();
+		return super.idioma.getIdioma();
 	}
 }

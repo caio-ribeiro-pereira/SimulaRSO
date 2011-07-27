@@ -9,10 +9,23 @@
 		<a class="right" href="<c:url value="/sobre" />"><fmt:message key="header.sobre" /></a>
 	</nav>
 	<c:if test="${not empty warning}">
-		<hr>
-		<div class="clearfix ui-state-error ui-corner-all">
-			<p class="error-message"><span class="ui-icon ui-icon-alert" style="float:left;"></span><strong>${warning}</strong></p>
+		<div id="warning" class="clearfix">
+			<hr>
+			<div class="clearfix ui-state-error ui-corner-all">
+				<p class="error-message">
+					<a href="javascript:void(0);" class="hide"><fmt:message key="misc.hide" /></a>
+					<span class="ui-icon ui-icon-alert" style="float:left;margin-top:5px;"></span>
+					<strong>${warning}</strong>
+				</p>
+			</div>
 		</div>
+		<script type="text/javascript">
+			head.ready(function(){
+				$('.hide').click(function(){
+					$('#warning').fadeOut();
+				});
+			});
+		</script>
 	</c:if>
 </header>
 <hr>

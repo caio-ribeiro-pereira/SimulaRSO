@@ -14,20 +14,20 @@ import com.appspot.simularso.controller.SobreController;
 
 @Component
 @ApplicationScoped
-public class RoutesConfigurator implements RoutesConfiguration{
+public class RoutesConfigurator implements RoutesConfiguration {
 
 	@Override
 	public void config(Router rota) {
-		new Rules(rota){
-			public void routes(){
+		new Rules(rota) {
+			public void routes() {
 				routeFor("").is(HomeController.class).home();
 				routeFor("/").is(HomeController.class).home();
-				routeFor("/escalonamento-processo").is(ProcessoController.class).processoInicio();
-				routeFor("/escalonamento-processo/").is(ProcessoController.class).processoInicio();
-				routeFor("/escalonamento-disco").is(DiscoController.class).discoInicio();
-				routeFor("/escalonamento-disco/").is(DiscoController.class).discoInicio();
-				routeFor("/paginacao-memoria").is(PaginacaoController.class).paginacaoInicio();
-				routeFor("/paginacao-memoria/").is(PaginacaoController.class).paginacaoInicio();
+				routeFor("/escalonamento-processo").is(ProcessoController.class).processoInicio(null, null, 0, 0, 0);
+				routeFor("/escalonamento-processo/").is(ProcessoController.class).processoInicio(null, null, 0, 0, 0);
+				routeFor("/escalonamento-disco").is(DiscoController.class).discoInicio(null, null, null, 0, 0);
+				routeFor("/escalonamento-disco/").is(DiscoController.class).discoInicio(null, null, null, 0, 0);
+				routeFor("/paginacao-memoria").is(PaginacaoController.class).paginacaoInicio(null, null, null, 0, 0);
+				routeFor("/paginacao-memoria/").is(PaginacaoController.class).paginacaoInicio(null, null, null, 0, 0);
 				routeFor("/sobre").is(SobreController.class).sobre();
 				routeFor("/sobre/").is(SobreController.class).sobre();
 			}

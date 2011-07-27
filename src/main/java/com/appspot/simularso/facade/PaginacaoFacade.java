@@ -9,32 +9,37 @@ import net.vidageek.mirror.dsl.Mirror;
 import br.com.caelum.vraptor.ioc.ApplicationScoped;
 import br.com.caelum.vraptor.ioc.Component;
 
-import com.appspot.simularso.infra.EnumToClass;
 import com.appspot.simularso.logic.PaginacaoMemoria;
 import com.appspot.simularso.logic.memory.PaginacaoMemoriaAlgoritmo;
-import com.appspot.simularso.validator.PaginacaoValidator;
 
-@ApplicationScoped
 @Component
-public class PaginacaoFacade implements Serializable {
+@ApplicationScoped
+public class PaginacaoFacade extends AlgoritmoFacade implements Serializable {
 
-	private static final long serialVersionUID = -4568480667986693551L;
-	private final EnumToClass enumToClass;
-	private final PaginacaoValidator validator;
+	private static final long serialVersionUID = 7997741551032826620L;
 
-	public PaginacaoFacade(EnumToClass enumToClass, PaginacaoValidator validator) {
-		this.validator = validator;
-		this.enumToClass = enumToClass;
+	public PaginacaoFacade() {
+		super();
 	}
 
-	public ArrayList<HashMap<String, Object>> executar(final List<PaginacaoMemoriaAlgoritmo> algs, final List<Integer> stringRef,
+	public ArrayList<HashMap<String, Object>> executar(final List<PaginacaoMemoriaAlgoritmo> algs, final List<Integer> stringReferencia,
 			final Integer frames, final int modo) {
 
-		validator.validarEntrada(algs, stringRef, frames, modo);
-
 		ArrayList<HashMap<String, Object>> resultadosDosAlgoritmos = new ArrayList<HashMap<String, Object>>();
-		for (PaginacaoMemoriaAlgoritmo alg : algs) {
-			HashMap<String, Object> resultado = gerarResultado(alg, stringRef, frames);
+		for (PaginacaoMemoriaAlgoritmo algoritmo : algs) {
+
+			Class<?> klass = new Mirror().reflectClass(super.extrairAlgoritmoNome(algoritmo));
+			PaginacaoMemoria paginacao = (PaginacaoMemoria) new Mirror().on(klass).invoke().constructor()
+					.withArgs(stringReferencia, frames);
+
+			HashMap<String, Object> resultado = new HashMap<String, Object>();
+			resultado.put("resultadoGrafico", paginacao.resultadoGraficoFinal());
+			resultado.put("stringReferencia", paginacao.stringReferencia());
+			resultado.put("totalStringReferencia", paginacao.stringReferencia().size());
+			resultado.put("totalFrames", paginacao.totalFrames());
+			resultado.put("totalPageFault", paginacao.totalPageFault());
+			resultado.put("algoritmoNome", paginacao.algoritmoNome());
+
 			resultadosDosAlgoritmos.add(resultado);
 		}
 
@@ -42,20 +47,4 @@ public class PaginacaoFacade implements Serializable {
 		return resultadosDosAlgoritmos;
 	}
 
-	private HashMap<String, Object> gerarResultado(PaginacaoMemoriaAlgoritmo algoritmo, List<Integer> stringReferencia, Integer frames) {
-		Class<?> klass = new Mirror().reflectClass(enumToClass.extractClassFromEnum(algoritmo));
-		PaginacaoMemoria paginacao = (PaginacaoMemoria) new Mirror().on(klass).invoke().constructor().withArgs(stringReferencia, frames);
-		return gerarResultadoMap(paginacao);
-	}
-
-	private HashMap<String, Object> gerarResultadoMap(PaginacaoMemoria paginacao) {
-		HashMap<String, Object> resultado = new HashMap<String, Object>();
-		resultado.put("resultadoGrafico", paginacao.resultadoGraficoFinal());
-		resultado.put("stringReferencia", paginacao.stringReferencia());
-		resultado.put("totalStringReferencia", paginacao.stringReferencia().size());
-		resultado.put("totalFrames", paginacao.totalFrames());
-		resultado.put("totalPageFault", paginacao.totalPageFault());
-		resultado.put("algoritmoNome", paginacao.algoritmoNome());
-		return resultado;
-	}
 }

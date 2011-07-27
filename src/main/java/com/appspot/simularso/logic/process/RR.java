@@ -3,7 +3,6 @@ package com.appspot.simularso.logic.process;
 import java.util.ArrayList;
 import java.util.List;
 
-import com.appspot.simularso.exception.TempoQuantumException;
 import com.appspot.simularso.logic.EscalonadorProcesso;
 import com.appspot.simularso.model.Processo;
 import com.appspot.simularso.model.ProcessoDTO;
@@ -16,7 +15,7 @@ public class RR extends EscalonadorProcessoBase implements EscalonadorProcesso {
 
 	public RR(ArrayList<Processo> processos, int tempoQuantum) {
 		super();
-		definirTempoQuantum(tempoQuantum);
+		adcionarTempoQuantum(tempoQuantum);
 		enfileirarProcessos(processos);
 		executar();
 	}
@@ -29,14 +28,6 @@ public class RR extends EscalonadorProcessoBase implements EscalonadorProcesso {
 			} else {
 				finalizar();
 			}
-		}
-	}
-
-	private void definirTempoQuantum(int tempoQuantum) {
-		if (tempoQuantum >= MIN_QUANTUM && tempoQuantum <= MAX_QUANTUM) {
-			adcionarTempoQuantum(tempoQuantum);
-		} else {
-			throw new TempoQuantumException();
 		}
 	}
 

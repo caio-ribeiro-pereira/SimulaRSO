@@ -9,9 +9,6 @@ import br.com.caelum.vraptor.Post;
 import br.com.caelum.vraptor.Resource;
 import br.com.caelum.vraptor.Result;
 
-import com.appspot.simularso.exception.ProcessosConfiguracaoException;
-import com.appspot.simularso.exception.ProcessosNaoCarregadosException;
-import com.appspot.simularso.exception.TempoQuantumException;
 import com.appspot.simularso.facade.ProcessoFacade;
 import com.appspot.simularso.infra.Idioma;
 import com.appspot.simularso.infra.Notice;
@@ -21,47 +18,35 @@ import com.appspot.simularso.model.Processo;
 @Resource
 public class ProcessoController extends ApplicationController {
 
-	private final Result result;
 	private final ProcessoFacade facade;
-	private final Notice notice;
 
 	public ProcessoController(Result result, ProcessoFacade facade, Idioma idioma, Notice notice) {
-		super(idioma);
-		this.result = result;
+		super(result, notice, idioma);
 		this.facade = facade;
-		this.notice = notice;
 	}
 
 	@Get("/escalonamento-processo")
-	public void processoInicio() {
+	public void processoInicio(List<EscalonadorProcessoAlgoritmo> algs, ArrayList<Processo> pr, int qt, int modo, int total) {
+		result.include("algs", algs);
+		result.include("pr", pr);
+		result.include("qt", qt);
+		result.include("modo", modo);
+		result.include("total", total);
 	}
 
 	@Post("/executar-escalonamento-processo")
-	public void processoExecutar(List<EscalonadorProcessoAlgoritmo> algs, ArrayList<Processo> pr, int qt, int modo) {
+	public void processoExecutar(List<EscalonadorProcessoAlgoritmo> algs, ArrayList<Processo> pr, int qt, int modo, int total) {
 		try {
-
-			ArrayList<HashMap<String, Object>> resultadosDosAlgoritmos = facade.executar(algs, pr, qt, modo);
-			result.include("resultadosDosAlgoritmos", resultadosDosAlgoritmos);
-			result.redirectTo(this).processoResultado();
-
-		} catch (ProcessosConfiguracaoException e) {
-			notice.warning("processo.processos.vazio");
-			result.of(this).processoInicio();
-		} catch (ProcessosNaoCarregadosException e) {
-			notice.warning("processo.nao.carregado");
-			result.of(this).processoInicio();
-		} catch (TempoQuantumException e) {
-			notice.warning("processo.tempo.corte.vazio");
-			result.of(this).processoInicio();
-		} catch (IllegalArgumentException e) {
-			notice.warning("misc.selecionar.algoritmos");
-			result.of(this).processoInicio();
-		} catch (IllegalStateException e) {
-			notice.warning("misc.algoritmo.erro");
-			result.of(this).processoInicio();
+			if (entradaEstaValida(algs, pr, qt, modo, total)) {
+				ArrayList<HashMap<String, Object>> resultadosDosAlgoritmos = facade.executar(algs, pr, qt, modo);
+				result.include("resultadosDosAlgoritmos", resultadosDosAlgoritmos);
+				result.redirectTo(this).processoResultado();
+			} else {
+				result.forwardTo(this).processoInicio(algs, pr, qt, modo, total);
+			}
 		} catch (Exception e) {
 			notice.warning("misc.falha");
-			result.of(this).processoInicio();
+			result.forwardTo(this).processoInicio(algs, pr, qt, modo, total);
 		}
 	}
 
@@ -69,8 +54,34 @@ public class ProcessoController extends ApplicationController {
 	public void processoResultado() {
 		if (!result.included().containsKey("resultadosDosAlgoritmos")) {
 			notice.warning("processo.selecione");
-			result.of(this).processoInicio();
+			result.forwardTo(this).processoInicio(null, null, 0, 0, 0);
 		}
+	}
+
+	private boolean entradaEstaValida(List<EscalonadorProcessoAlgoritmo> algs, ArrayList<Processo> pr, int qt, int modo, int total) {
+		if (algs == null || algs.isEmpty() || algs.size() != modo) {
+			notice.warning("misc.selecionar.algoritmos");
+			return false;
+		}
+		if (algs.size() == 2 && algs.get(0).equals(algs.get(1))) {
+			notice.warning("misc.algoritmo.erro");
+			return false;
+		}
+		if (pr == null || pr.isEmpty() || total <= 0) {
+			notice.warning("processo.nao.carregado");
+			return false;
+		}
+		if (algs.contains(EscalonadorProcessoAlgoritmo.RR) && qt <= 0) {
+			notice.warning("processo.tempo.corte.vazio");
+			return false;
+		}
+		for (Processo processo : pr) {
+			if (processo.getBurstTotal() <= 0 || processo.getChegada() < 0 || processo.getPrioridade() < 0) {
+				notice.warning("processo.processos.vazio");
+				return false;
+			}
+		}
+		return true;
 	}
 
 	public EscalonadorProcessoAlgoritmo[] getAlgoritmos() {
@@ -78,6 +89,6 @@ public class ProcessoController extends ApplicationController {
 	}
 
 	public String getIdioma() {
-		return super.getIdioma();
+		return super.idioma.getIdioma();
 	}
 }

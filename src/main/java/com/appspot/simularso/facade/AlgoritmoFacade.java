@@ -1,38 +1,33 @@
-package com.appspot.simularso.infra;
-
-import br.com.caelum.vraptor.ioc.ApplicationScoped;
-import br.com.caelum.vraptor.ioc.Component;
+package com.appspot.simularso.facade;
 
 import com.appspot.simularso.logic.disc.EscalonadorDiscoAlgoritmo;
 import com.appspot.simularso.logic.memory.PaginacaoMemoriaAlgoritmo;
 import com.appspot.simularso.logic.process.EscalonadorProcessoAlgoritmo;
 
-@ApplicationScoped
-@Component
-public class EnumToClass {
+public abstract class AlgoritmoFacade {
 
-	public EnumToClass() {
+	public AlgoritmoFacade() {
 	}
 
-	public String extractClassFromEnum(EscalonadorProcessoAlgoritmo algoritmo) {
+	public String extrairAlgoritmoNome(EscalonadorProcessoAlgoritmo algoritmo) {
 		String pack = algoritmo.getClass().getName();
 		String algoritmoName = algoritmo.name();
-		return extractClass(pack, algoritmoName);
+		return classExtractor(pack, algoritmoName);
 	}
 
-	public String extractClassFromEnum(PaginacaoMemoriaAlgoritmo algoritmo) {
+	public String extrairAlgoritmoNome(PaginacaoMemoriaAlgoritmo algoritmo) {
 		String pack = algoritmo.getClass().getName();
 		String algoritmoName = algoritmo.name();
-		return extractClass(pack, algoritmoName);
+		return classExtractor(pack, algoritmoName);
 	}
 
-	public String extractClassFromEnum(EscalonadorDiscoAlgoritmo algoritmo) {
+	public String extrairAlgoritmoNome(EscalonadorDiscoAlgoritmo algoritmo) {
 		String pack = algoritmo.getClass().getName();
 		String algoritmoName = algoritmo.name();
-		return extractClass(pack, algoritmoName);
+		return classExtractor(pack, algoritmoName);
 	}
 
-	private String extractClass(String pack, String algoritmoName) {
+	private String classExtractor(String pack, String algoritmoName) {
 		StringBuilder builder = new StringBuilder(pack);
 		int index = pack.lastIndexOf(".") + 1;
 		int max = pack.length();

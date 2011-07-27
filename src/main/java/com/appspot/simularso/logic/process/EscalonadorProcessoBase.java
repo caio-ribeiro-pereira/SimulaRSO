@@ -11,9 +11,6 @@ import com.appspot.simularso.model.ProcessoVO;
 
 public abstract class EscalonadorProcessoBase {
 
-	protected static final int MIN_QUANTUM = 1;
-	protected static final int MAX_QUANTUM = 100;
-
 	private List<ProcessoVO> resultado;
 	private List<ProcessoDTO> resultadoGrafico;
 	private int tempoTotal;
