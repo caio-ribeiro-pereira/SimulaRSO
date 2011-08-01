@@ -13,10 +13,10 @@ public class RR extends EscalonadorProcessoBase implements EscalonadorProcesso {
 	private int index;
 	private boolean executando;
 
-	public RR(ArrayList<Processo> processos, int tempoQuantum) {
-		super();
-		adcionarTempoQuantum(tempoQuantum);
-		enfileirarProcessos(processos);
+	public RR(ArrayList<Processo> processos, int tempoQuantum, int tempoContexto) {
+		super(processos, tempoQuantum, tempoContexto);
+		utilizarBurstOrder(false);
+		ordernarProcessos();
 		executar();
 	}
 
@@ -45,17 +45,23 @@ public class RR extends EscalonadorProcessoBase implements EscalonadorProcesso {
 	}
 
 	private void executarProcesso() {
-		Processo processo = buscarProcesso(index);
+		Processo processo = clonarProcesso(index);
 		processo.executar();
 		processo.setResposta(atualizarTempoResposta(processo));
 		processo.setBurstAtual(atualizarBurstAtual(processo));
 		processo.setBurstTotal(atualizarBurstTotal(processo));
 
 		adicionarResultadoGrafico(processo);
-		atualizarTempoTotal(processo.getBurstAtual());
 
-		processo.setTurnAround(atualizarTurnAround());
-		processo.setEspera(atualizarTempoEspera(processo));
+		if (totalDeProcessos() > 1) {
+			atualizarTempoTotal(processo.getBurstAtual() + tempoContexto());
+			processo.setTurnAround(tempoTotal() - tempoContexto());
+			processo.setEspera(atualizarTempoEspera(processo) - tempoContexto());
+		} else {
+			atualizarTempoTotal(processo.getBurstAtual());
+			processo.setTurnAround(tempoTotal());
+			processo.setEspera(atualizarTempoEspera(processo));
+		}
 		atualizarProcessos(processo);
 	}
 
@@ -78,10 +84,6 @@ public class RR extends EscalonadorProcessoBase implements EscalonadorProcesso {
 
 	private void avancarIndex() {
 		index = (index + 1 >= totalDeProcessos()) ? (0) : (index + 1);
-	}
-
-	private int atualizarTurnAround() {
-		return tempoTotal();
 	}
 
 	private int atualizarBurstAtual(Processo processo) {

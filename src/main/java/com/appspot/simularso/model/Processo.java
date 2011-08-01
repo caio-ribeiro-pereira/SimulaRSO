@@ -4,7 +4,7 @@ import java.io.Serializable;
 
 public class Processo implements Comparable<Processo>, Cloneable, Serializable {
 
-	private static final long serialVersionUID = 4135991502330565347L;
+	private static final long serialVersionUID = 2537347239529945504L;
 
 	public enum Estado {
 		EM_ESPERA, EXECUTANDO, FINALIZADO
@@ -20,6 +20,7 @@ public class Processo implements Comparable<Processo>, Cloneable, Serializable {
 	private int prioridade;
 	private int turnAround;
 	private boolean firstRun;
+	private boolean burstOrder;
 	private String cor;
 	private Estado estado;
 
@@ -46,8 +47,6 @@ public class Processo implements Comparable<Processo>, Cloneable, Serializable {
 		this.burst = burst;
 		this.chegada = tempoChegada;
 		this.prioridade = prioridade;
-		// TODO - APAGAR DEPOIS
-		this.burstTotal = burst;
 	}
 
 	public void setId(int id) {
@@ -129,6 +128,14 @@ public class Processo implements Comparable<Processo>, Cloneable, Serializable {
 
 	public boolean isFirstRun() {
 		return firstRun;
+	}
+
+	public boolean isBurstOrder() {
+		return burstOrder;
+	}
+
+	public void setBurstOrder(boolean burstOrder) {
+		this.burstOrder = burstOrder;
 	}
 
 	public void setCor(String cor) {
@@ -216,23 +223,24 @@ public class Processo implements Comparable<Processo>, Cloneable, Serializable {
 	}
 
 	public int compareTo(Processo processo) {
-		if (this.getPrioridade() < processo.getPrioridade())
-			return -1;
-		if (this.getPrioridade() > processo.getPrioridade())
-			return 1;
 		if (this.getChegada() < processo.getChegada())
 			return -1;
 		if (this.getChegada() > processo.getChegada())
 			return 1;
-		if (this.getBurst() < processo.getBurst())
+		if (this.getPrioridade() < processo.getPrioridade())
 			return -1;
-		if (this.getBurst() > processo.getBurst())
+		if (this.getPrioridade() > processo.getPrioridade())
 			return 1;
+		if (isBurstOrder()) {
+			if (this.getBurst() < processo.getBurst())
+				return -1;
+			if (this.getBurst() > processo.getBurst())
+				return 1;
+		}
 		if (this.getId() < processo.getId())
 			return -1;
 		if (this.getId() > processo.getId())
 			return 1;
 		return 0;
 	}
-
 }

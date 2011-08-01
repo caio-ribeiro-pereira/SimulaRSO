@@ -23,7 +23,7 @@ public class SJFTest extends InitialTestCase {
 		final Integer[] TEMPO_RESPOSTA_PREVISTA_POR_CHEGADA = { 100, 200, 300, 400, 500 };
 		final Integer[] TURN_AROUND_PREVISTA_POR_CHEGADA = { 100, 200, 300, 400, 500 };
 
-		EscalonadorProcesso sjf = new SJF(gerarArrayListDeProcessos(TEMPOS_CHEGADA.length, null, TEMPOS_CHEGADA, null), 0);
+		EscalonadorProcesso sjf = new SJF(gerarArrayListDeProcessos(TEMPOS_CHEGADA.length, null, TEMPOS_CHEGADA, null), 0, 0);
 
 		List<ProcessoVO> resultado = sjf.resultadoFinal();
 		Assert.assertThat(resultado, Matchers.notNullValue());
@@ -65,7 +65,7 @@ public class SJFTest extends InitialTestCase {
 		final Integer[] TEMPO_RESPOSTA_PREVISTA_POR_BURST = { 10, 30, 70, 120, 220 };
 		final Integer[] TURN_AROUND_PREVISTA_POR_BURST = { 10, 30, 70, 120, 220 };
 
-		EscalonadorProcesso sjf = new SJF(gerarArrayListDeProcessos(BURSTS.length, BURSTS, null, null), 0);
+		EscalonadorProcesso sjf = new SJF(gerarArrayListDeProcessos(BURSTS.length, BURSTS, null, null), 0, 0);
 
 		List<ProcessoVO> resultado = sjf.resultadoFinal();
 		Assert.assertThat(resultado, Matchers.notNullValue());
@@ -103,7 +103,7 @@ public class SJFTest extends InitialTestCase {
 	@Test
 	public void deveEscalonarComDoisACemProcessos() {
 		for (int i = 2; i <= 100; i++) {
-			EscalonadorProcesso sjf = new SJF(gerarListaDeProcessos(i, VALIDO), 0);
+			EscalonadorProcesso sjf = new SJF(gerarArrayListDefault(i), 0, 0);
 			List<ProcessoVO> resultado = sjf.resultadoFinal();
 			Assert.assertThat(resultado, Matchers.notNullValue());
 		}
@@ -112,7 +112,7 @@ public class SJFTest extends InitialTestCase {
 	@Test
 	public void deveRetornarResultadoFinalOrdernadoPorProcessoId() {
 		final int TOTAL = 10;
-		EscalonadorProcesso sjf = new SJF(gerarListaDeProcessos(TOTAL, VALIDO), 0);
+		EscalonadorProcesso sjf = new SJF(gerarArrayListDefault(TOTAL), 0, 0);
 		List<ProcessoVO> resultado = sjf.resultadoFinal();
 		int id = 1;
 		for (ProcessoVO processo : resultado) {

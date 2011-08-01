@@ -16,18 +16,29 @@ public abstract class EscalonadorProcessoBase {
 	private int tempoTotal;
 	private int totalProcessos;
 	private int tempoQuantum;
-	private ArrayList<Processo> processos;
+	private int tempoContexto;
+	protected ArrayList<Processo> processos;
 
-	public EscalonadorProcessoBase() {
+	public EscalonadorProcessoBase(ArrayList<Processo> processos, int tempoQuantum, int tempoContexto) {
+		this.processos = processos;
+		this.totalProcessos = processos.size();
+		this.tempoContexto = tempoContexto;
+		this.tempoQuantum = tempoQuantum;
 		this.resultado = new LinkedList<ProcessoVO>();
 		this.resultadoGrafico = new LinkedList<ProcessoDTO>();
 	}
 
-	public void adcionarTempoQuantum(int tempoQuantum) {
-		this.tempoQuantum = tempoQuantum;
+	protected void utilizarBurstOrder(boolean burstOrder) {
+		for (Processo processo : processos) {
+			processo.setBurstOrder(burstOrder);
+		}
 	}
 
-	public int tempoQuantum() {
+	protected int tempoContexto() {
+		return tempoContexto;
+	}
+
+	protected int tempoQuantum() {
 		return tempoQuantum;
 	}
 
@@ -75,7 +86,7 @@ public abstract class EscalonadorProcessoBase {
 		Collections.sort(processos);
 	}
 
-	protected Processo buscarProcesso(int index) {
+	protected Processo clonarProcesso(int index) {
 		if (index >= processos.size()) {
 			return null;
 		}
@@ -106,21 +117,28 @@ public abstract class EscalonadorProcessoBase {
 		processos.remove(index);
 	}
 
-	protected void enfileirarProcessos(ArrayList<Processo> processos) {
-		this.processos = processos;
-		this.totalProcessos = processos.size();
-	}
-
 	protected int recuperarIndex(Processo processo) {
 		return processos.indexOf(processo);
 	}
 
 	protected void adicionarResultadoFinal(Processo processo) {
-		resultado.add(extrairParaProcessoVO(processo));
+		int id = processo.getId();
+		int burst = processo.getBurst();
+		int espera = processo.getEspera();
+		int resposta = processo.getResposta();
+		int turnAround = processo.getTurnAround();
+		String cor = processo.getCor();
+		resultado.add(new ProcessoVO(id, burst, espera, resposta, turnAround, cor));
 	}
 
 	protected void adicionarResultadoGrafico(Processo processo) {
-		resultadoGrafico.add(extrairParaProcessoDTO(processo));
+		int id = processo.getId();
+		long x = tempoTotal;
+		long y = id;
+		long w = processo.getBurstAtual();
+		long h = 1;
+		String cor = processo.getCor();
+		resultadoGrafico.add(new ProcessoDTO(id, x, y, w, h, cor));
 	}
 
 	protected List<ProcessoVO> resultado() {
@@ -130,26 +148,6 @@ public abstract class EscalonadorProcessoBase {
 
 	protected List<ProcessoDTO> resultadoGrafico() {
 		return resultadoGrafico;
-	}
-
-	private ProcessoDTO extrairParaProcessoDTO(Processo processo) {
-		int id = processo.getId();
-		int x = tempoTotal;
-		int y = id;
-		int w = processo.getBurstAtual();
-		int h = 1;
-		String cor = processo.getCor();
-		return new ProcessoDTO(id, x, y, w, h, cor);
-	}
-
-	private ProcessoVO extrairParaProcessoVO(Processo processo) {
-		int id = processo.getId();
-		int burst = processo.getBurst();
-		int espera = processo.getEspera();
-		int resposta = processo.getResposta();
-		int turnAround = processo.getTurnAround();
-		String cor = processo.getCor();
-		return new ProcessoVO(id, burst, espera, resposta, turnAround, cor);
 	}
 
 }

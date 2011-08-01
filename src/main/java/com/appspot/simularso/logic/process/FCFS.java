@@ -10,15 +10,16 @@ import com.appspot.simularso.model.ProcessoVO;
 
 public class FCFS extends EscalonadorProcessoBase implements EscalonadorProcesso {
 
-	public FCFS(ArrayList<Processo> processos, int tempoQuantum) {
-		super();
-		enfileirarProcessos(processos);
+	public FCFS(ArrayList<Processo> processos, int tempoQuantum, int tempoContexto) {
+		super(processos, tempoQuantum = 0, tempoContexto);
+		utilizarBurstOrder(false);
+		ordernarProcessos();
 		executar();
 	}
 
 	private void executar() {
 		for (int i = 0; i < totalDeProcessos(); i++) {
-			Processo processo = buscarProcesso(i);
+			Processo processo = clonarProcesso(i);
 
 			processo.executar();
 			processo.setEspera(tempoTotal());
@@ -26,10 +27,15 @@ public class FCFS extends EscalonadorProcessoBase implements EscalonadorProcesso
 
 			adicionarResultadoGrafico(processo);
 
-			atualizarTempoTotal(processo.getBurstTotal());
-
-			processo.setResposta(tempoTotal());
-			processo.setTurnAround(tempoTotal());
+			if (i < totalDeProcessos() - 1) {
+				atualizarTempoTotal(processo.getBurstTotal() + tempoContexto());
+				processo.setResposta(tempoTotal() - tempoContexto());
+				processo.setTurnAround(tempoTotal() - tempoContexto());
+			} else {
+				atualizarTempoTotal(processo.getBurstTotal());
+				processo.setResposta(tempoTotal());
+				processo.setTurnAround(tempoTotal());
+			}
 			processo.finalizar();
 
 			adicionarResultadoFinal(processo);

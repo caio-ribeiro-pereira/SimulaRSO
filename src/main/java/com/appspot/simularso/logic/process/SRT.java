@@ -14,9 +14,9 @@ public class SRT extends EscalonadorProcessoBase implements EscalonadorProcesso 
 	private int index;
 	private int tempoDeCorte;
 
-	public SRT(ArrayList<Processo> processos, int tempoQuantum) {
-		super();
-		enfileirarProcessos(processos);
+	public SRT(ArrayList<Processo> processos, int tempoQuantum, int tempoContexto) {
+		super(processos, tempoQuantum = 0, tempoContexto);
+		utilizarBurstOrder(true);
 		ordernarProcessos();
 		executar();
 	}
@@ -34,23 +34,27 @@ public class SRT extends EscalonadorProcessoBase implements EscalonadorProcesso 
 
 	private void executarProcesso() {
 		definirTempoDeCorte();
-		Processo processo = buscarProcesso(index);
+		Processo processo = clonarProcesso(index);
 		processo.executar();
 		processo.setResposta(atualizarTempoResposta(processo));
 		processo.setBurstAtual(atualizarBurstAtual(processo));
 		processo.setBurstTotal(atualizarBurstTotal(processo));
-
 		adicionarResultadoGrafico(processo);
-		atualizarTempoTotal(processo.getBurstAtual());
-
-		processo.setTurnAround(atualizarTurnAround());
-		processo.setEspera(atualizarTempoEspera(processo));
+		if (totalDeProcessos() > 1) {
+			atualizarTempoTotal(processo.getBurstAtual() + tempoContexto());
+			processo.setTurnAround(tempoTotal() - tempoContexto());
+			processo.setEspera(atualizarTempoEspera(processo) - tempoContexto());
+		} else {
+			atualizarTempoTotal(processo.getBurstAtual());
+			processo.setTurnAround(tempoTotal());
+			processo.setEspera(atualizarTempoEspera(processo));
+		}
 		atualizarProcessos(processo);
 	}
 
 	private void definirTempoDeCorte() {
-		Processo processoAtual = buscarProcesso(index);
-		Processo processoFuturo = buscarProcesso(index + 1);
+		Processo processoAtual = clonarProcesso(index);
+		Processo processoFuturo = clonarProcesso(index + 1);
 		int burstAtual = processoAtual.getBurstTotal();
 		atualizarTempoDeCorte(burstAtual);
 		if (processoFuturo != null) {
@@ -76,10 +80,6 @@ public class SRT extends EscalonadorProcessoBase implements EscalonadorProcesso 
 		}
 		removerProcesso(index);
 		atualizarIndex();
-	}
-
-	private int atualizarTurnAround() {
-		return tempoTotal();
 	}
 
 	private int atualizarBurstAtual(Processo processo) {

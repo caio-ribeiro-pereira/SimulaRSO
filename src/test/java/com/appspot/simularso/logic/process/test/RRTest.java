@@ -24,7 +24,7 @@ public class RRTest extends InitialTestCase {
 		final Integer[] TURN_AROUND_COM_BURSTS_SIMPLES = { 150, 40, 120, 130 };
 		final int QUANTUM = 20;
 
-		EscalonadorProcesso roundRobin = new RR(gerarArrayListDeProcessos(BURSTS_SIMPLES.length, BURSTS_SIMPLES, null, null), QUANTUM);
+		EscalonadorProcesso roundRobin = new RR(gerarArrayListDeProcessos(BURSTS_SIMPLES.length, BURSTS_SIMPLES, null, null), QUANTUM, 0);
 
 		List<ProcessoDTO> resultadoGrafico = roundRobin.resultadoGraficoFinal();
 		Assert.assertThat(resultadoGrafico, Matchers.notNullValue());
@@ -63,7 +63,7 @@ public class RRTest extends InitialTestCase {
 		final Integer[] TURN_AROUND_COM_BURSTS_MEDIO = { 134, 37, 162, 121 };
 		final int QUANTUM = 20;
 
-		EscalonadorProcesso roundRobin = new RR(gerarArrayListDeProcessos(BURSTS_MEDIO.length, BURSTS_MEDIO, null, null), QUANTUM);
+		EscalonadorProcesso roundRobin = new RR(gerarArrayListDeProcessos(BURSTS_MEDIO.length, BURSTS_MEDIO, null, null), QUANTUM, 0);
 
 		List<ProcessoDTO> resultadoGrafico = roundRobin.resultadoGraficoFinal();
 		Assert.assertThat(resultadoGrafico, Matchers.notNullValue());
@@ -97,7 +97,7 @@ public class RRTest extends InitialTestCase {
 	public void deveEscalonarComDoisACemProcessos() {
 		final int QUANTUM_VALIDO = 20;
 		for (int i = 2; i <= 100; i++) {
-			EscalonadorProcesso roundRobin = new RR(gerarListaDeProcessos(i, VALIDO), QUANTUM_VALIDO);
+			EscalonadorProcesso roundRobin = new RR(gerarArrayListDefault(i), QUANTUM_VALIDO, 0);
 			List<ProcessoVO> resultado = roundRobin.resultadoFinal();
 			Assert.assertThat(resultado, Matchers.notNullValue());
 		}
@@ -107,7 +107,7 @@ public class RRTest extends InitialTestCase {
 	public void deveRetornarResultadoFinalOrdernadoPorProcessoId() {
 		final int TOTAL = 10;
 		final int QUANTUM_VALIDO = 50;
-		EscalonadorProcesso roundRobin = new RR(gerarListaDeProcessos(TOTAL, VALIDO), QUANTUM_VALIDO);
+		EscalonadorProcesso roundRobin = new RR(gerarArrayListDefault(TOTAL), QUANTUM_VALIDO, 0);
 		List<ProcessoVO> resultado = roundRobin.resultadoFinal();
 		int id = 1;
 		for (ProcessoVO processo : resultado) {
