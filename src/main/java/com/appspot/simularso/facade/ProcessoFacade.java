@@ -17,14 +17,14 @@ import com.appspot.simularso.model.Processo;
 @ApplicationScoped
 public class ProcessoFacade extends AlgoritmoFacade implements Serializable {
 
-	private static final long serialVersionUID = -1790815433538359927L;
+	private static final long serialVersionUID = 240811415179660026L;
 
 	public ProcessoFacade() {
 		super();
 	}
 
 	public ArrayList<HashMap<String, Object>> executar(final List<EscalonadorProcessoAlgoritmo> algs, final ArrayList<Processo> pr,
-			final int quantum, final int modo) {
+			final int quantum, final int contexto, final int modo) {
 
 		ArrayList<HashMap<String, Object>> resultadosDosAlgoritmos = new ArrayList<HashMap<String, Object>>();
 
@@ -33,7 +33,7 @@ public class ProcessoFacade extends AlgoritmoFacade implements Serializable {
 
 			Class<?> klass = new Mirror().reflectClass(super.extrairAlgoritmoNome(algoritmo));
 			EscalonadorProcesso escalonador = (EscalonadorProcesso) new Mirror().on(klass).invoke().constructor()
-					.withArgs(processos, quantum);
+					.withArgs(processos, quantum, contexto);
 
 			HashMap<String, Object> resultado = new HashMap<String, Object>();
 			resultado.put("resultadoFinal", escalonador.resultadoFinal());

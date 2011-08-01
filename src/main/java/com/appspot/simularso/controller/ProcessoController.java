@@ -26,27 +26,28 @@ public class ProcessoController extends ApplicationController {
 	}
 
 	@Get("/escalonamento-processo")
-	public void processoInicio(List<EscalonadorProcessoAlgoritmo> algs, ArrayList<Processo> pr, int qt, int modo, int total) {
+	public void processoInicio(List<EscalonadorProcessoAlgoritmo> algs, ArrayList<Processo> pr, int qt, int contexto, int modo, int total) {
 		result.include("algs", algs);
 		result.include("pr", pr);
 		result.include("qt", qt);
+		result.include("contexto", contexto);
 		result.include("modo", modo);
 		result.include("total", total);
 	}
 
 	@Post("/executar-escalonamento-processo")
-	public void processoExecutar(List<EscalonadorProcessoAlgoritmo> algs, ArrayList<Processo> pr, int qt, int modo, int total) {
+	public void processoExecutar(List<EscalonadorProcessoAlgoritmo> algs, ArrayList<Processo> pr, int qt, int contexto, int modo, int total) {
 		try {
-			if (entradaEstaValida(algs, pr, qt, modo, total)) {
-				ArrayList<HashMap<String, Object>> resultadosDosAlgoritmos = facade.executar(algs, pr, qt, modo);
+			if (entradaEstaValida(algs, pr, qt, contexto, modo, total)) {
+				ArrayList<HashMap<String, Object>> resultadosDosAlgoritmos = facade.executar(algs, pr, qt, contexto, modo);
 				result.include("resultadosDosAlgoritmos", resultadosDosAlgoritmos);
 				result.redirectTo(this).processoResultado();
 			} else {
-				result.forwardTo(this).processoInicio(algs, pr, qt, modo, total);
+				result.forwardTo(this).processoInicio(algs, pr, qt, contexto, modo, total);
 			}
 		} catch (Exception e) {
 			notice.warning("misc.falha");
-			result.forwardTo(this).processoInicio(algs, pr, qt, modo, total);
+			result.forwardTo(this).processoInicio(algs, pr, qt, contexto, modo, total);
 		}
 	}
 
@@ -54,11 +55,12 @@ public class ProcessoController extends ApplicationController {
 	public void processoResultado() {
 		if (!result.included().containsKey("resultadosDosAlgoritmos")) {
 			notice.warning("processo.selecione");
-			result.forwardTo(this).processoInicio(null, null, 0, 0, 0);
+			result.forwardTo(this).processoInicio(null, null, 0, 0, 0, 0);
 		}
 	}
 
-	private boolean entradaEstaValida(List<EscalonadorProcessoAlgoritmo> algs, ArrayList<Processo> pr, int qt, int modo, int total) {
+	private boolean entradaEstaValida(List<EscalonadorProcessoAlgoritmo> algs, ArrayList<Processo> pr, int qt, int contexto, int modo,
+			int total) {
 		if (algs == null || algs.isEmpty() || algs.size() != modo) {
 			notice.warning("misc.selecionar.algoritmos");
 			return false;
@@ -69,6 +71,10 @@ public class ProcessoController extends ApplicationController {
 		}
 		if (pr == null || pr.isEmpty() || total <= 0) {
 			notice.warning("processo.nao.carregado");
+			return false;
+		}
+		if (contexto < 0) {
+			notice.warning("processo.tempo.contexto.negativo");
 			return false;
 		}
 		if (algs.contains(EscalonadorProcessoAlgoritmo.RR) && qt <= 0) {

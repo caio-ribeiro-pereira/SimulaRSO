@@ -25,14 +25,14 @@
 							</p>
 							<div class="grid_3">
 								<label><fmt:message key="misc.simulacao.titulo" /></label>
-								<select id="modo" name="modo" tabindex="1">
+								<select id="modo" name="modo">
 									<option value="1"${modo eq 1 ? ' selected' : ''}><fmt:message key="misc.simulacao.unica" /></option>
 									<option value="2"${modo eq 2 ? ' selected' : ''}><fmt:message key="misc.simulacao.comparativa" /></option>
 								</select>
 							</div>	
 							<div id="alg1" class="grid_4">
 								<label><fmt:message key="misc.algoritmo" /> 1:</label>
-								<select id="algoritmo1" name="algDisco[0]" tabindex="2">
+								<select id="algoritmo1" name="algDisco[0]">
 									<option value=""><fmt:message key="misc.selecione" /></option>
 									<c:forEach items="${discoController.algoritmos}" var="alg">
 										<option value="${alg}"${totalAlgoritmos > 0 and algDisco[0] eq alg ? ' selected' : ''}>${alg.nome}</option>		
@@ -41,7 +41,7 @@
 							</div>
 							<div id="alg2" class="grid_4" style="display:none;">
 								<label><fmt:message key="misc.algoritmo" /> 2:</label>	
-								<select id="algoritmo2" name="algDisco[1]" tabindex="3">
+								<select id="algoritmo2" name="algDisco[1]">
 									<option value=""><fmt:message key="misc.selecione" /></option>
 									<c:forEach items="${discoController.algoritmos}" var="alg">
 										<option value="${alg}"${totalAlgoritmos > 1 and algDisco[1] eq alg ? ' selected' : ''}>${alg.nome}</option>		
@@ -50,7 +50,7 @@
 							</div>
 							<div class="grid_8 menu">
 							    <label><fmt:message key="disco.total.requisicoes" />:</label>
-								<select id="totalRequisicao" name="total" tabindex="4">
+								<select id="totalRequisicao" name="total">
 									<option value=""><fmt:message key="misc.selecione" /></option>
 									<c:forEach var="p" begin="2" end="30" step="1">
 										<option value="${p}"${total eq p ? ' selected' : ''}>${p}&nbsp;<fmt:message key="disco.requisicoes" /></option>
@@ -59,7 +59,7 @@
 							</div>
 							<div class="grid_8 menu">
 								<label class="grid_3 alpha" for="cabeca"><fmt:message key="disco.cilindro.cabeca" />:</label>
-								<input class="grid_1 alpha" type="text" id="cabeca" name="cabeca.cilindro" maxlength="2" value="${not empty cabeca ? cabeca.cilindro : 0}" tabindex="5">
+								<input class="grid_1 alpha" type="text" id="cabeca" name="cabeca.cilindro" maxlength="2" value="${not empty cabeca ? cabeca.cilindro : 0}">
 							</div>
 						</div>
 						<div id="disco-menu" class="clearfix menu">
@@ -92,9 +92,9 @@
 						</script>
 						<div class="clearfix execute-panel">
 							<p>
-								<button id="help" type="button" tabindex="7"><fmt:message key="misc.ajuda" /></button>
-								<button id="random" type="button" tabindex="8"><fmt:message key="misc.configuracao.automatica" /></button>
-								<button id="execute" type="submit" tabindex="9"><fmt:message key="misc.executar" /></button>
+								<button id="help" type="button"><fmt:message key="misc.ajuda" /></button>
+								<button id="random" type="button"><fmt:message key="misc.configuracao.automatica" /></button>
+								<button id="execute" type="submit"><fmt:message key="misc.executar" /></button>
 							</p>
 						</div>
 					</form>

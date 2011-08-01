@@ -22,8 +22,8 @@ public class RoutesConfigurator implements RoutesConfiguration {
 			public void routes() {
 				routeFor("").is(HomeController.class).home();
 				routeFor("/").is(HomeController.class).home();
-				routeFor("/escalonamento-processo").is(ProcessoController.class).processoInicio(null, null, 0, 0, 0);
-				routeFor("/escalonamento-processo/").is(ProcessoController.class).processoInicio(null, null, 0, 0, 0);
+				routeFor("/escalonamento-processo").is(ProcessoController.class).processoInicio(null, null, 0, 0, 0, 0);
+				routeFor("/escalonamento-processo/").is(ProcessoController.class).processoInicio(null, null, 0, 0, 0, 0);
 				routeFor("/escalonamento-disco").is(DiscoController.class).discoInicio(null, null, null, 0, 0);
 				routeFor("/escalonamento-disco/").is(DiscoController.class).discoInicio(null, null, null, 0, 0);
 				routeFor("/paginacao-memoria").is(PaginacaoController.class).paginacaoInicio(null, null, null, 0, 0);

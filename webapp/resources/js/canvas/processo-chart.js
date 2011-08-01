@@ -39,18 +39,23 @@ function ProcessoChart(total, canvas, espaco, p, time) {
 	}
 	ctx.stroke();
 	// Animacao
-	var j = 0;
 	var i = 0;
+	var j = p[i].x;
 	var interval = p[i].w;
 	var anim = window.setInterval(function(){
 		// Processos
 		if(i < p.length){
 			ctx.fillStyle = p[i].cor;
 			if(interval > 0){
-				ctx.fillRect((j++ * espaco), (p[i].y * espaco), (1 * espaco), (p[i].h * espaco));
+				ctx.fillRect((j++ * espaco), (p[i].y * espaco), (espaco), (p[i].h * espaco));
 				interval--;
 			}else{
-				interval = (++i < p.length) ? p[i].w : 0;
+				if(++i < p.length){
+					interval = p[i].w;
+					j = p[i].x;
+				}else{
+					interval = 0;
+				}
 			}
 		}else{
 			window.clearInterval(anim);

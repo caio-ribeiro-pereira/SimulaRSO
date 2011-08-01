@@ -25,14 +25,14 @@
 						</p>
 						<div class="grid_3">
 							<strong><fmt:message key="misc.simulacao.titulo" />: </strong>
-							<select id="modo" name="modo" tabindex="1">
+							<select id="modo" name="modo">
 								<option value="1"${modo eq 1 ? ' selected' : ''}><fmt:message key="misc.simulacao.unica" /></option>
 								<option value="2"${modo eq 2 ? ' selected' : ''}><fmt:message key="misc.simulacao.comparativa" /></option>
 							</select>
 						</div>
 						<div id="alg1" class="grid_4">
 							<strong><fmt:message key="misc.algoritmo" /> 1: </strong> 
-							<select name="algs[0]" id="algoritmo1" tabindex="3">
+							<select name="algs[0]" id="algoritmo1">
 								<option value=""><fmt:message key="misc.selecione" /></option>
 								<c:forEach var="alg" items="${processoController.algoritmos}">
 									<option value="${alg}"${totalAlgoritmos > 0 and algs[0] eq alg ? ' selected' : ''}>${alg.nome}</option>
@@ -41,7 +41,7 @@
 						</div>
 						<div id="alg2" class="grid_4" style="display:none;">
 							<strong><fmt:message key="misc.algoritmo" /> 2: </strong> 
-							<select name="algs[1]" id="algoritmo2" tabindex="4">
+							<select name="algs[1]" id="algoritmo2">
 								<option value=""><fmt:message key="misc.selecione" /></option>
 								<c:forEach var="alg" items="${processoController.algoritmos}">
 									<option value="${alg}"${totalAlgoritmos > 1 and algs[1] eq alg ? ' selected' : ''}>${alg.nome}</option>
@@ -50,16 +50,24 @@
 						</div>
 						<div class="grid_8 menu">
 							<strong><fmt:message key="processo.total.processos" />:</strong> 
-							<select id="total" name="total" tabindex="2">
+							<select id="total" name="total">
 								<option value=""><fmt:message key="misc.selecione" /></option>
 								<c:forEach begin="2" end="18" step="1" var="p">
 									<option value="${p}"${total eq p ? ' selected' : ''}>${p}&nbsp;<fmt:message key="processo.label.plural" /></option>
 								</c:forEach>
 							</select>
 						</div>
+						<div class="grid_8 menu">
+							<strong><fmt:message key="processo.tempo.contexto" />:</strong>
+							<select name="contexto">
+								<c:forEach begin="0" end="10" step="1" var="ctx">
+									<option value="${ctx}"${contexto eq ctx ? ' selected' : ''}>${ctx}&nbsp;<fmt:message key="misc.ms"/></option>
+								</c:forEach>
+							</select>
+						</div>
 						<div id="quantum" class="grid_8 menu" style="display:none;">
 							<strong><fmt:message key="processo.tempo.corte" />:</strong>
-							<select name="qt" tabindex="5">
+							<select name="qt">
 								<option value=""><fmt:message key="misc.selecione" /></option>
 								<c:forEach begin="1" end="4" step="1" var="qt1">
 									<option value="${qt1}"${qt eq qt1 ? ' selected' : ''}>${qt1}&nbsp;<fmt:message key="misc.ms"/></option>
@@ -124,9 +132,9 @@
 					</script>
 					<div class="clearfix execute-panel">
 						<p>
-							<button id="help" type="button" tabindex="7"><fmt:message key="misc.ajuda" /></button>
-							<button id="random" type="button" tabindex="8"><fmt:message key="misc.configuracao.automatica" /></button>
-							<button id="execute" type="submit" tabindex="9"><fmt:message key="misc.executar" /></button>
+							<button id="help" type="button"><fmt:message key="misc.ajuda" /></button>
+							<button id="random" type="button"><fmt:message key="misc.configuracao.automatica" /></button>
+							<button id="execute" type="submit"><fmt:message key="misc.executar" /></button>
 						</p>
 					</div>
 				</form>

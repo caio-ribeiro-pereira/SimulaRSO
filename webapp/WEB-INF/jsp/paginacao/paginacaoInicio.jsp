@@ -25,14 +25,14 @@
 							</p>
 							<div class="grid_3">
 								<strong><fmt:message key="misc.simulacao.titulo" />: </strong>
-								<select id="modo" name="modo" tabindex="1">
+								<select id="modo" name="modo">
 									<option value="1"${modo eq 1 ? ' selected' : ''}><fmt:message key="misc.simulacao.unica" /></option>
 									<option value="2"${modo eq 2 ? ' selected' : ''}><fmt:message key="misc.simulacao.comparativa" /></option>
 								</select>
 							</div>
 							<div id="alg1" class="grid_4">
 								<strong><fmt:message key="misc.algoritmo" /> 1: </strong>
-								<select name="algs[0]" id="algoritmo1" tabindex="2">
+								<select name="algs[0]" id="algoritmo1">
 									<option value=""><fmt:message key="misc.selecione" /></option>
 									<c:forEach var="alg" items="${paginacaoController.algoritmos}">
 										<option value="${alg}"${totalAlgoritmos > 0 and algs[0] eq alg ? ' selected' : ''}>${alg.nome}</option>	
@@ -41,7 +41,7 @@
 							</div>
 							<div id="alg2" class="grid_4" style="display:none;">
 								<strong><fmt:message key="misc.algoritmo" /> 2: </strong>
-								<select name="algs[1]" id="algoritmo2" tabindex="3">
+								<select name="algs[1]" id="algoritmo2">
 									<option value=""><fmt:message key="misc.selecione" /></option>
 									<c:forEach var="alg" items="${paginacaoController.algoritmos}">
 										<option value="${alg}"${totalAlgoritmos > 1 and algs[1] eq alg ? ' selected' : ''}>${alg.nome}</option>	
@@ -50,7 +50,7 @@
 							</div>
 							<div class="grid_8 menu">
 								<strong><fmt:message key="paginacao.total.frames" />: </strong>
-								<select name="frames" tabindex="4">
+								<select name="frames">
 									<option value=""><fmt:message key="misc.selecione" /></option>
 									<c:forEach begin="2" end="10" step="1" var="fr">
 										<option value="${fr}"${frames eq fr ? ' selected' : ''}>${fr}&nbsp;<fmt:message key="paginacao.frames" /></option>
@@ -59,7 +59,7 @@
 							</div>
 							<div class="grid_8 menu">
 								<strong><fmt:message key="paginacao.tamanho.string.referencia" />: </strong>
-								<select id="stringRefTotal" name="total" tabindex="5">
+								<select id="stringRefTotal" name="total">
 									<option value=""><fmt:message key="misc.selecione" /></option>
 									<c:forEach begin="2" end="30" step="1" var="sr">
 										<option value="${sr}"${total eq sr ? ' selected' : ''}>${sr}</option>
@@ -97,9 +97,9 @@
 						</script>
 						<div class="clearfix execute-panel">
 							<p>
-								<button id="help" type="button" tabindex="7"><fmt:message key="misc.ajuda" /></button>
-								<button id="random" type="button" tabindex="8"><fmt:message key="misc.configuracao.automatica" /></button>
-								<button id="execute" type="submit" tabindex="9"><fmt:message key="misc.executar" /></button>
+								<button id="help" type="button"><fmt:message key="misc.ajuda" /></button>
+								<button id="random" type="button"><fmt:message key="misc.configuracao.automatica" /></button>
+								<button id="execute" type="submit"><fmt:message key="misc.executar" /></button>
 							</p>
 						</div>
 					</form>
