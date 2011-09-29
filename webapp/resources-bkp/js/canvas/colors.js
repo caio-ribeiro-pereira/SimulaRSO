@@ -1,0 +1,24 @@
+function Colors() {
+	this.colors = new Array();
+	this.colors[0] = '#FF0000';
+	this.colors[1] = '#00CCCC';
+	this.colors[2] = '#006400';
+	this.colors[3] = '#DC143C';
+	this.colors[4] = '#6495ED';
+	this.colors[5] = '#F6A5F0';
+	this.colors[6] = '#0000FF';
+	this.colors[7] = '#8B008B';
+	this.colors[8] = '#A9A9A9';
+	this.colors[9] = '#FF1493';
+	this.colors[10] = '#FFC600';
+	this.colors[11] = '#E9967A';
+	this.colors[12] = '#000080';
+	this.colors[13] = '#20B2AA';
+	this.colors[14] = '#00CC00';
+	this.colors[15] = '#7B68EE';
+	this.colors[16] = '#333333';
+	this.colors[17] = '#8B4513';
+	this.colors[18] = '#FFBB00';
+	this.colors[19] = '#008080';
+	return this.colors;
+};

@@ -1,29 +1,21 @@
 <%@ page contentType="text/html; charset=UTF-8" %>
-<header class="clearfix">
-	<h1 class="clearfix"><fmt:message key="header.titulo" /></h1>
-	<nav class="clearfix">
-		<a class="left" href="<c:url value="/" />"><fmt:message key="header.home" /></a>
-		<a class="middle" href="<c:url value="/escalonamento-processo" />"><fmt:message key="header.escalonamento.processo" /></a>
-		<a class="middle" href="<c:url value="/escalonamento-disco" />"><fmt:message key="header.escalonamento.disco" /></a>
-		<a class="middle" href="<c:url value="/paginacao-memoria" />"><fmt:message key="header.paginacao.memoria" /></a>
-		<a class="right" href="<c:url value="/sobre" />"><fmt:message key="header.sobre" /></a>
-	</nav>
+<header>
+	<ul class="tabs">
+		<li><a href="<c:url value="/" />"><fmt:message key="header.home" /></a></li>
+		<li><a href="<c:url value="/escalonamento-processo" />"><fmt:message key="header.escalonamento.processo" /></a></li>
+		<li><a href="<c:url value="/escalonamento-disco" />"><fmt:message key="header.escalonamento.disco" /></a></li>
+		<li><a href="<c:url value="/paginacao-memoria" />"><fmt:message key="header.paginacao.memoria" /></a></li>
+		<li><a href="<c:url value="/sobre" />"><fmt:message key="header.sobre" /></a></li>
+	</ul>
+	<h1><fmt:message key="header.titulo" /></h1>
 	<c:if test="${not empty warning}">
-		<div id="warning" class="clearfix">
-			<hr>
-			<div class="clearfix ui-state-error ui-corner-all">
-				<p class="error-message">
-					<a href="javascript:void(0);" class="hide"><fmt:message key="misc.hide" /></a>
-					<span class="ui-icon ui-icon-alert" style="float:left;margin-top:5px;"></span>
-					<strong>${warning}</strong>
-				</p>
-			</div>
+		<div class="alert-message warning">
+			<a href="#" class="close"><fmt:message key="misc.hide" /></a>
+			<p><strong>${warning}</strong></p>
 		</div>
 		<script type="text/javascript">
 			head.ready(function(){
-				$('.hide').click(function(){
-					$('#warning').fadeOut();
-				});
+				$('.alert-message').alert('close');
 			});
 		</script>
 	</c:if>

@@ -1,0 +1,94 @@
+/* ---------------------------------------------------------------------------
+ SimulaRSO
+ Style Sheet
+ http://github.com/caio-ribeiro-pereira/SimulaRSO
+ 
+ Autor: Caio Ribeiro Pereira
+ Twitter: @crp_underground
+
+/* = Template
+--------------------------------------------------------------------------- */
+body {background: url('../img/background.png') repeat scroll 0 0 #000; font-family: Arial, Verdana, sans-serif; font-size: 1.2em;}
+header,section,article,footer {margin-top: 10px;}
+h1,h2,h3 {line-height: 1.6em;}
+h1 {font-size: 1.5em;}
+h2 {font-size: 1.4em;}
+h3 {font-size: 1.3em;}
+hr {border: 1px solid #000;}
+strong {font-size: 0.9em;}
+small {font-size: 0.8em;}
+p {font-size: 0.85em; line-height: 1.2em;}
+input {margin-bottom: 3px;}
+li {line-height: 1.5em;}
+a {	color: #000;}
+a:hover {color: #555;}
+a:active {color: #000;}
+ul {list-style: none; margin-left: 20px;}
+nav {margin-top: 10px; padding: 0px;}
+nav a {float: left;	margin: -2px; padding: 5px;}
+nav a:hover {background-color: #888; color: #FFF; text-decoration: none;}
+nav a.left {border-radius: 5px 0px 0px 5px; -moz-border-radius: 5px 0px 0px 5px; -webkit-border-radius: 5px 0px 0px 5px;}
+nav a.middle{border-radius: 0px 0px 0px 0px; -moz-border-radius: 0px 0px 0px 0px; -webkit-border-radius: 0px 0px 0px 0px;}
+nav a.right {border-radius: 0px 5px 5px 0px; -moz-border-radius: 0px 5px 5px 0px; -webkit-border-radius: 0px 5px 5px 0px;}
+
+.subtitle{line-height: 1.6em; text-align: center;}
+.main-info{border-radius: 5px; -moz-border-radius: 5px; -webkit-border-radius: 5px; border: 3px solid #999; padding: 10px 20px; margin: 20px 0px 10px 0px;}
+.main-info p{line-height: 1.6em;}
+.painel-config{line-height: 1.4em; font-size: 1.4em; text-align: center; margin-bottom: 10px;}
+.processo{margin:1px;}
+.processo-cor{width: 26px; height: 20px; border: 1px solid #FFF; margin: 0 auto;}
+.pagination{margin:1px;}
+.result-message{color: #000; text-align: center; line-height:  1.8em;}
+.main {background-color: #FFF; border-radius: 7px; -moz-border-radius: 7px; -webkit-border-radius: 7px; border: 12px solid rgba(0,0,0,0.5); margin-bottom: 25px;	margin-top: 25px; padding: 25px;}
+.text {text-align: justify; line-height: 1.5em; margin-top: 10px;}
+.graphic-panel {overflow-x: scroll;	overflow-y: hidden;	position: relative; padding: 10px 0px 0px 10px;	width: 950px; border: 1px solid #000;}
+.menu {margin-top: 20px;}
+.pagination-input-box {border-radius: 5px; -moz-border-radius: 5px; -webkit-border-radius: 5px; border: 1px solid #000; float: left; margin: 5px 8px 10px 0px; padding: 5px 4px 2px 4px;}
+.pagination-input-box p:first-child{text-align: center;}
+.disco-input-box {border-radius: 5px; -moz-border-radius: 5px; -webkit-border-radius: 5px; border: 1px solid #000; float: left; margin: 5px 8px 10px 0px; padding: 5px 4px 2px 4px;}
+.disco-input-box p:first-child {text-align: center;}
+.disco-input-box input{width: 35px; margin-left: 5px;}
+.execute-panel p{text-align: right; margin: 20px 40px 0px 0px;}
+.result-panel {border-radius: 5px; -moz-border-radius: 5px; -webkit-border-radius: 5px; border: 1px solid #000; margin: 0 auto;}
+.result-panel td {padding: 5px 14px; text-align: center;}
+.result-line{color:#FFF;}
+.run{text-align: center; margin-top: 20px; margin-bottom: 20px;}
+.processo-input-box {border-radius: 5px; -moz-border-radius: 5px; -webkit-border-radius: 5px; border: 1px solid #000; float: left; margin: 5px 8px 10px 0px;}
+.processo-input-box p:first-child {text-align: center;}
+.info-little{color: blue; line-height: 1.1em; font-size: 0.7em; text-align: center;}
+.hide{float:right;font-size:0.65em;margin-top:-8px;margin-right:7px;}
+
+.feature{float:left; margin-top:5px; margin-left:5px;}
+.error-message {color: #900; text-align: center; line-height: 1.8em;}
+#pagination-menu{margin-left:90px;}
+#disco-menu{margin-left:90px;}
+#process-menu{margin-left:75px;}
+
+#odd{background-color: #555;}
+#even{background-color:#000;}
+#odd:hover{background-color: #CCC; color:#000}
+#even:hover{background-color:#CCC; color:#000}
+
+.tecnologias{margin: 20px 0px 20px 240px;}
+.gae{ background: url('../img/icon_tecnologias.png') no-repeat 0 0; width: 86px; height: 48px; float: left; opacity: 0.85;} 
+.gae:hover{opacity: 1.0;}
+.github{ background: url('../img/icon_tecnologias.png') no-repeat -136px 0; width: 149px; height: 48px; float: left; opacity: 0.85; } 
+.github:hover{opacity: 1.0;}
+.html5{ background: url('../img/icon_tecnologias.png') no-repeat -335px 0; width: 48px; height: 48px; float: left; opacity: 0.85; } 
+.html5:hover{opacity: 1.0;}
+.java{ background: url('../img/icon_tecnologias.png') no-repeat -433px 0; width: 48px; height: 48px; float: left; opacity: 0.85; } 
+.java:hover{opacity: 1.0;}
+.vraptor{ background: url('../img/icon_tecnologias.png') no-repeat -531px 0; width: 165px; height: 48px; float: left; opacity: 0.85; } 
+.vraptor:hover{opacity: 1.0;}
+
+.browser{margin: 20px 0px 20px 320px;}
+.google-chrome{ background: url('../img/icon_browsers.png') no-repeat 0 0; width: 64px; height: 64px; float: left; opacity: 0.85;}
+.google-chrome:hover{opacity: 1.0;}
+.mozilla-firefox{ background: url('../img/icon_browsers.png') no-repeat -128px 0; width: 64px; height: 64px; float: left; opacity: 0.85;}
+.mozilla-firefox:hover{opacity: 1.0;}
+.internet-explorer{ background: url('../img/icon_browsers.png') no-repeat -256px 0; width: 64px; height: 64px; float: left; opacity: 0.85;}
+.internet-explorer:hover{opacity: 1.0;}
+.opera-software{ background: url('../img/icon_browsers.png') no-repeat -384px 0; width: 64px; height: 64px; float: left; opacity: 0.85;}
+.opera-software:hover{opacity: 1.0;}
+.apple-safari{ background: url('../img/icon_browsers.png') no-repeat -512px 0; width: 64px; height: 64px; float: left; opacity: 0.85;}
+.apple-safari:hover{opacity: 1.0;}
