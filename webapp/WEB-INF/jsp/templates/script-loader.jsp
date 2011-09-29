@@ -17,5 +17,5 @@
 	
 	head.js('<c:url value="/resources/js/jquery.min.js" />')
 		.js('<c:url value="/resources/js/bootstrap.min.js" />')
-		.js('http://www.google-analytics.com/ga.js');
+		.js('<c:url value="/resources/js/ga.min.js" />');
 </script>

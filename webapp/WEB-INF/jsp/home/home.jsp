@@ -11,14 +11,14 @@
 		<div class="container">
 			<%@ include file="../templates/header.jsp"%>
 		  	<section class="row">
-		  		<article class="row" id="idioma-box">
+		  		<article id="idioma-box">
 		  			<p><strong><fmt:message key="main.painel.idioma" />:</strong></p>
 					<p>
 						<a class="btn info" href="<c:url value="/idioma/?idioma=pt_BR" />"><fmt:message key="misc.idioma.pt" /></a>
 		  		   		<a class="btn info" href="<c:url value="/idioma/?idioma=en_US" />"><fmt:message key="misc.idioma.en" /></a>
 		  		   	</p>		  			
 		  		</article>
-		  		<article class="row">
+		  		<article>
 		  			<p><strong><fmt:message key="main.painel.aviso" />:</strong></p>
 					<p><fmt:message key="main.painel.msg1" /></p>
 					<p><fmt:message key="main.painel.msg2" /></p>
@@ -26,13 +26,13 @@
 					<%@ include file="../templates/browsers.jsp"%>
 					<p><fmt:message key="main.painel.msg4" />&nbsp;<a href="https://github.com/caio-ribeiro-pereira/SimulaRSO/issues" target="_blank"><fmt:message key="main.painel.report.bug" /></a></p>
 			  	</article>
-		  		<article class="row">
+		  		<article>
 			  		<p><strong><fmt:message key="main.sobre.projeto" />:</strong></p>
 			  		<p><fmt:message key="main.sobre.msg1" /></p>
 					<p><fmt:message key="main.sobre.msg2" /></p>
 					<p><fmt:message key="main.sobre.msg3" />&nbsp;<a href="http://www.unisantos.br" target="_blank">Universidade Católica de Santos.</a></p>
 			  	</article>
-		  		<article class="row">
+		  		<article>
 			  		<p><strong><fmt:message key="main.atualizacoes" />:</strong></p>
 			  		<p><fmt:message key="main.atualizacoes.msg4" /></p>
 			  		<p><fmt:message key="main.atualizacoes.msg3" /></p>

@@ -1,3 +1,12 @@
+.process-item{margin:5px; padding:3px; text-align:center; border:2px #CCC solid; border-radius:5px; -webkit-border-radius:5px; -moz-border-radius:5px; -ms-border-radius:5px;}
+
+.left{text-align:left;}
+.center{text-align:center;margin:0 auto;}
+.right{text-align:right;}
+.top{margin-top:50px;}
+.fluid{width:99%;}
+.hide{display:none;}
+
 .tecnologias{margin: 20px 0px 20px 240px;}
 .gae{ background: url('../img/icon_tecnologias.png') no-repeat 0 0; width: 86px; height: 48px; float: left; opacity: 0.85;} 
 .gae:hover{opacity: 1.0;}
