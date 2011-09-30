@@ -11,9 +11,10 @@
 		<%@ include file="../templates/menu.jsp"%>
 		<div class="container">
 			<%@ include file="../templates/header.jsp"%>
-			<h2><fmt:message key="processo.titulo" /></h2>
+			<hr>
 			<section>
-				<h6><fmt:message key="misc.painel.titulo" /></h6>
+				<h2><fmt:message key="processo.titulo" /></h2>
+				<h5 class="center"><fmt:message key="misc.painel.titulo" /></h5>
 				<form id="process-form"	action="<c:url value="/executar-escalonamento-processo"/>" method="post">
 					<article>
 						<div class="row">
@@ -23,6 +24,23 @@
 								<select class="span2 fluid" id="modo" name="modo">
 									<option value="1"${modo eq 1 ? ' selected' : ''}><fmt:message key="misc.simulacao.unica" /></option>
 									<option value="2"${modo eq 2 ? ' selected' : ''}><fmt:message key="misc.simulacao.comparativa" /></option>
+								</select>
+							</div>
+							<div class="span5">
+								<label class="span3" for="total"><fmt:message key="processo.total.processos" />:&nbsp;&nbsp;</label> 
+								<select class="span2 fluid" id="total" name="total">
+									<option value=""><fmt:message key="misc.selecione" /></option>
+									<c:forEach begin="2" end="20" step="1" var="p">
+										<option value="${p}"${total eq p ? ' selected' : ''}>${p}&nbsp;<fmt:message key="processo.label.plural" /></option>
+									</c:forEach>
+								</select>
+							</div>
+							<div class="span5">
+								<label class="span3" for="contexto"><fmt:message key="processo.tempo.contexto" />:&nbsp;&nbsp;</label>
+								<select class="span2 fluid" name="contexto" id="contexto">
+									<c:forEach begin="0" end="10" step="1" var="ctx">
+										<option value="${ctx}"${contexto eq ctx ? ' selected' : ''}>${ctx}&nbsp;<fmt:message key="misc.ms"/></option>
+									</c:forEach>
 								</select>
 							</div>
 						</div>
@@ -46,29 +64,9 @@
 									</c:forEach>
 								</select>
 							</div>
-						</div>
-						<br>
-						<div class="row">
-							<div class="span5">
-								<label class="span3" for="total"><fmt:message key="processo.total.processos" />:&nbsp;&nbsp;</label> 
-								<select class="span2" id="total" name="total">
-									<option value=""><fmt:message key="misc.selecione" /></option>
-									<c:forEach begin="2" end="20" step="1" var="p">
-										<option value="${p}"${total eq p ? ' selected' : ''}>${p}&nbsp;<fmt:message key="processo.label.plural" /></option>
-									</c:forEach>
-								</select>
-							</div>
-							<div class="span5">
-								<label class="span3" for="contexto"><fmt:message key="processo.tempo.contexto" />:&nbsp;&nbsp;</label>
-								<select class="span2" name="contexto" id="contexto">
-									<c:forEach begin="0" end="10" step="1" var="ctx">
-										<option value="${ctx}"${contexto eq ctx ? ' selected' : ''}>${ctx}&nbsp;<fmt:message key="misc.ms"/></option>
-									</c:forEach>
-								</select>
-							</div>
 							<div class="span5 hide" id="quantum">
 								<label class="span3" for="qt"><fmt:message key="processo.tempo.corte" />:&nbsp;&nbsp;</label>
-								<select class="span2" name="qt" id="qt">
+								<select class="span2 fluid" name="qt" id="qt">
 									<option value=""><fmt:message key="misc.selecione" /></option>
 									<c:forEach begin="1" end="4" step="1" var="qt1">
 										<option value="${qt1}"${qt eq qt1 ? ' selected' : ''}>${qt1}&nbsp;<fmt:message key="misc.ms"/></option>
@@ -83,7 +81,7 @@
 						<div id="process-menu" class="row center">
 							<c:if test="${not empty pr}">
 								<c:forEach var="processo" items="${pr}" varStatus="status">
-									<div id="processo-${status.count}" class="span3 process-item">
+									<div id="processo-${status.count}" class="span3 item">
 										<p>
 											<strong><fmt:message key="processo.label" />&nbsp;${status.count}:</strong>
 											<input type="hidden" name="pr[].id" value="${processo.id}">
@@ -105,8 +103,9 @@
 								</c:forEach>
 							</c:if>
 						</div>
+						<hr>
 						<script id="processTemplate" type="text/x-jquery-tmpl">
-							<div id="\${prDivId}" class="span3 process-item">
+							<div id="\${prDivId}" class="span3 item">
 								<p>
 									<strong><fmt:message key="processo.label" />&nbsp;\${prId}</strong>
 									<input type="hidden" name="pr[].id" value="\${prId}">
@@ -126,7 +125,7 @@
 								</p>
 							</div>
 						</script>
-						<div class="actions right row">
+						<div class="right row">
 							<button class="btn info" data-controls-modal="rules-dialog" data-backdrop="true" data-keyboard="true" type="button"><fmt:message key="misc.ajuda" /></button>
 							<button class="btn" id="random" type="button"><fmt:message key="misc.configuracao.automatica" /></button>
 							<button class="btn primary" id="execute" type="submit"><fmt:message key="misc.executar" /></button>
@@ -151,8 +150,6 @@
 			<%@ include file="../templates/footer.jsp"%>
 		</div>
 		<script type="text/javascript">
-			head.js('<c:url value="/resources/js/canvas/charts.js" />',
-					'<c:url value="/resources/js/jquery-plugins.min.js" />');
 			head.ready(function() {
 					var MAXBURST = 98;
 					var MAXCHEGADA = 100;
@@ -176,7 +173,7 @@
 	
 					$('#modo').change(function() {
 						if (this.value == 2) {
-							$('#alg2').show();
+							$('#alg2').fadeIn();
 						} else {
 							if ($('#algoritmo1').val() != 'RR' && $('#algoritmo2').val() == 'RR') {
 								$('#quantum').val('').change();
@@ -189,7 +186,7 @@
 	
 					$('#algoritmo1').change(function() {
 						if (this.value == 'RR' || $('#algoritmo2').val() == 'RR') {
-							$('#quantum').show();
+							$('#quantum').fadeIn();
 						} else {
 							$('#quantum').val('').change();
 							$('#quantum').hide();
@@ -198,7 +195,7 @@
 	
 					$('#algoritmo2').change(function() {
 						if (this.value == 'RR' || $('#algoritmo1').val() == 'RR') {
-							$('#quantum').show();
+							$('#quantum').fadeIn();
 						} else {
 							$('#quantum').val('').change();
 							$('#quantum').hide();

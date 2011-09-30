@@ -1,4 +1,18 @@
-.process-item{margin:5px; padding:3px; text-align:center; border:2px #CCC solid; border-radius:5px; -webkit-border-radius:5px; -moz-border-radius:5px; -ms-border-radius:5px;}
+body{background-color: #FEFEFE;}
+
+.block{width: 20px; height: 20px; border:1px solid #FFF; text-align:center; color:#FFF;}
+.odd{background-color: #DDD; color:#404040;}
+.even{background-color:#FFF; color:#404040;}
+tr:hover{background-color: #BBB; color:#404040;}
+thead tr, tfoot tr{background-color:#404040;;color:#FFF;}
+
+.menu{background-color:#0069D6;}
+.menu a{color:#FFF;text-shadow:1px 1px 1px #000;}
+.menu a:hover{color:#0069D6;text-shadow:1px 1px 1px #FFF;}
+
+.item{margin:5px; padding:3px; text-align:center; border:2px #CCC solid; border-radius:5px; -webkit-border-radius:5px; -moz-border-radius:5px; -ms-border-radius:5px;}
+
+.chart-panel{overflow-x: scroll; overflow-y: hidden; position: relative; padding: 10px 0px 0px 10px; border: 1px solid #000;}
 
 .left{text-align:left;}
 .center{text-align:center;margin:0 auto;}

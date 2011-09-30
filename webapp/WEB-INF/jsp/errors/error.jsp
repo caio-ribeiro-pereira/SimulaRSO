@@ -8,6 +8,7 @@
 		<%@include file="../templates/script-loader.jsp"%>
 	</head>
 	<body>
+		<%@ include file="../templates/menu.jsp"%>
 		<div class="container_12 main">
 			<%@ include file="../templates/header.jsp"%>
 			<article class="clearfix">

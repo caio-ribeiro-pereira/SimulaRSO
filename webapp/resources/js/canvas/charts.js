@@ -90,6 +90,7 @@
 					}
 					ctx.stroke();
 				}, time);
+				return false;
 			},
 
 			disco : function(canvas, spaceX, spaceY, cilindros) {
@@ -153,6 +154,7 @@
 						window.clearInterval(this);
 					}
 				}, 500);
+				return false;
 			},
 			paginacao : function(total, canvas, espaco, strRef, pg, time,
 					strRefLabel, frameLabel) {
@@ -204,6 +206,7 @@
 					}
 					ctx.stroke();
 				}, time);
+				return false;
 			}
 		}
 	};

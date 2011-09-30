@@ -10,12 +10,3 @@
 <link rel="stylesheet" type="text/css" href="<c:url value="/resources/css/bootstrap.min.css" />" />
 <link rel="stylesheet" type="text/css" href="<c:url value="/resources/css/main.css" />" />
 <script type="text/javascript" src="<c:url value="/resources/js/head.min.js" />"></script>
-<script type="text/javascript">
-	var _gaq = [];
-	_gaq.push(['_setAccount', 'UA-7076509-2']);
-	_gaq.push(['_trackPageview']);
-	
-	head.js('<c:url value="/resources/js/jquery.min.js" />')
-		.js('<c:url value="/resources/js/bootstrap.min.js" />')
-		.js('<c:url value="/resources/js/ga.min.js" />');
-</script>

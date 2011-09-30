@@ -5,61 +5,63 @@
 <html>
 	<head>
 		<title><fmt:message key="paginacao.titulo" /></title>
-		<meta name="keywords" content="Simulação de paginação, algoritmos de substituição de páginas" />
-		<meta name="keywords" content="string de referência, paginação, FIFO, LRU, OPT" />
 		<%@include file="../templates/script-loader.jsp"%>
 	</head>
 	<body>
-		<div class="container_12 main">
+		<%@ include file="../templates/menu.jsp"%>
+		<div class="container">
 			<%@ include file="../templates/header.jsp"%>
-			<section class="clearfix">
-				<article class="clearfix">
-					<h2 class="clearfix subtitle"><fmt:message key="paginacao.titulo" /></h2>
-				</article>
-				<article class="clearfix main-info">
-					<form id="pagination-form" action="<c:url value="/executar-paginacao-memoria"/>" method="post">
-						<div id="main-menu" class="clearfix menu">
+			<hr>
+			<section class="">
+				<h2><fmt:message key="paginacao.titulo" /></h2>
+				<h5 class="center"><fmt:message key="misc.painel.titulo" /></h5>
+				<form id="pagination-form" action="<c:url value="/executar-paginacao-memoria"/>" method="post">
+					<article>
+						<div class="row">
 							<c:set var="totalAlgoritmos" value="${fn:length(algs)}" />
-							<p class="painel-config">
-								<strong><fmt:message key="misc.painel.titulo" /></strong>
-							</p>
-							<div class="grid_3">
-								<strong><fmt:message key="misc.simulacao.titulo" />: </strong>
-								<select id="modo" name="modo">
+							<div class="span5">
+								<label class="span3" for="modo"><fmt:message key="misc.simulacao.titulo" />:&nbsp;&nbsp;</label>
+								<select class="span2 fluid" id="modo" name="modo">
 									<option value="1"${modo eq 1 ? ' selected' : ''}><fmt:message key="misc.simulacao.unica" /></option>
 									<option value="2"${modo eq 2 ? ' selected' : ''}><fmt:message key="misc.simulacao.comparativa" /></option>
 								</select>
 							</div>
-							<div id="alg1" class="grid_4">
-								<strong><fmt:message key="misc.algoritmo" /> 1: </strong>
-								<select name="algs[0]" id="algoritmo1">
+						</div>
+						<br>
+						<div class="row">
+							<div class="span5" id="alg1">
+								<label class="span3" for="algoritmo1"><fmt:message key="misc.algoritmo" />&nbsp;1:&nbsp;&nbsp;</label>
+								<select class="span2 fluid" name="algs[0]" id="algoritmo1">
 									<option value=""><fmt:message key="misc.selecione" /></option>
 									<c:forEach var="alg" items="${paginacaoController.algoritmos}">
 										<option value="${alg}"${totalAlgoritmos > 0 and algs[0] eq alg ? ' selected' : ''}>${alg.nome}</option>	
 									</c:forEach>
 								</select>
 							</div>
-							<div id="alg2" class="grid_4" style="display:none;">
-								<strong><fmt:message key="misc.algoritmo" /> 2: </strong>
-								<select name="algs[1]" id="algoritmo2">
+							<div class="span5 hide" id="alg2">
+								<label class="span3" for="algoritmo2"><fmt:message key="misc.algoritmo" />&nbsp;2:&nbsp;&nbsp;</label>
+								<select class="span2 fluid" name="algs[1]" id="algoritmo2">
 									<option value=""><fmt:message key="misc.selecione" /></option>
 									<c:forEach var="alg" items="${paginacaoController.algoritmos}">
 										<option value="${alg}"${totalAlgoritmos > 1 and algs[1] eq alg ? ' selected' : ''}>${alg.nome}</option>	
 									</c:forEach>
 								</select>			
 							</div>
-							<div class="grid_8 menu">
-								<strong><fmt:message key="paginacao.total.frames" />: </strong>
-								<select name="frames">
+						</div>
+						<br>
+						<div class="row">
+							<div class="span5">
+								<label class="span3" for="frames"><fmt:message key="paginacao.total.frames" />:&nbsp;&nbsp;</label>
+								<select class="span2 fluid" name="frames" id="frames">
 									<option value=""><fmt:message key="misc.selecione" /></option>
 									<c:forEach begin="2" end="10" step="1" var="fr">
 										<option value="${fr}"${frames eq fr ? ' selected' : ''}>${fr}&nbsp;<fmt:message key="paginacao.frames" /></option>
 									</c:forEach>
 								</select>
 							</div>
-							<div class="grid_8 menu">
-								<strong><fmt:message key="paginacao.tamanho.string.referencia" />: </strong>
-								<select id="stringRefTotal" name="total">
+							<div class="span5">
+								<label class="span3" for="stringRefTotal"><fmt:message key="paginacao.string.referencia" />:&nbsp;&nbsp;</label>
+								<select class="span2 fluid" id="stringRefTotal" name="total">
 									<option value=""><fmt:message key="misc.selecione" /></option>
 									<c:forEach begin="2" end="30" step="1" var="sr">
 										<option value="${sr}"${total eq sr ? ' selected' : ''}>${sr}</option>
@@ -67,61 +69,56 @@
 								</select>
 							</div>
 						</div>
-						<div id="pagination-menu" class="clearfix menu">
+						<hr>
+						<div id="pagination-menu" class="row center">
 							<c:if test="${not empty stringRef}">
 								<c:forEach items="${stringRef}" var="strRef" varStatus="status">
-									<div class="pagination-input-box">
-										<p class="clearfix">
+									<div class="span3 item">
+										<p>
 											<strong><fmt:message key="paginacao.palavra" />&nbsp;${status.count}:</strong>
 										</p>
-										<p class="clearfix">
-											<label class="grid_1" for="stringReferencia-${status.count}"><small><fmt:message key="paginacao.valor" />:</small></label>
-											<input type="text" class="grid_1 stringReferencia" name="stringRef[]" id="stringReferencia-${status.count}" value="${strRef}" maxlength="1">
-											<span class="grid_1 info-little" style="margin-left:-7px;">(0 - 9)</span>
+										<p>
+											<label class="span1" for="stringReferencia-${status.count}"><fmt:message key="paginacao.valor" />:&nbsp;&nbsp;</label>
+											<input type="text" class="span1 stringReferencia" name="stringRef[]" id="stringReferencia-${status.count}" value="${strRef}" maxlength="1" placeholder="(0 - 9)">
 										</p>
 									</div>
 								</c:forEach>
 							</c:if>
 						</div>
 						<script id="paginationTemplate" type="text/x-jquery-tmpl">
-							<div class="pagination-input-box">
-								<p class="clearfix">
-									<strong>\${labelStringRef}:</strong>
+							<div class="span3 item">
+								<p>
+									<strong><fmt:message key="paginacao.palavra" />&nbsp;\${stringRefId}:</strong>
 								</p>
-								<p class="clearfix">
-									<label class="grid_1" for="\${inputStringRef}"><small><fmt:message key="paginacao.valor" />:</small></label>
-									<input type="text" class="grid_1 stringReferencia" name="stringRef[]" id="\${inputStringRef}" value="0" maxlength="1">
-									<span class="grid_1 info-little" style="margin-left:-7px;">(0 - 9)</span>
+								<p>
+									<label class="span1" for="\${inputStringRef}"><fmt:message key="paginacao.valor" />:&nbsp;&nbsp;</label>
+									<input type="text" class="span1 stringReferencia" name="stringRef[]" id="\${inputStringRef}" value="0" maxlength="1" placeholder="(0 - 9)">
 								</p>
 							</div>
 						</script>
-						<div class="clearfix execute-panel">
-							<p>
-								<button id="help" type="button"><fmt:message key="misc.ajuda" /></button>
-								<button id="random" type="button"><fmt:message key="misc.configuracao.automatica" /></button>
-								<button id="execute" type="submit"><fmt:message key="misc.executar" /></button>
-							</p>
+						<div class="right row">
+							<button class="btn info" data-controls-modal="rules-dialog" data-backdrop="true" data-keyboard="true" type="button"><fmt:message key="misc.ajuda" /></button>
+							<button class="btn" id="random" type="button"><fmt:message key="misc.configuracao.automatica" /></button>
+							<button class="btn primary" id="execute" type="submit"><fmt:message key="misc.executar" /></button>
 						</div>
-					</form>
-					<div id="rules-dialog" class="clearfix main-info" title="<fmt:message key="misc.regra.titulo" />" style="display:none;">
-						<p><strong><fmt:message key="misc.regra.titulo" />:</strong></p>
-						<p><fmt:message key="paginacao.regra.msg1" /></p>
-						<p><fmt:message key="paginacao.regra.msg2" /></p>
-						<p><fmt:message key="paginacao.regra.msg3" /></p>
-						<p><fmt:message key="paginacao.regra.msg4" /></p>
-						<p><fmt:message key="paginacao.regra.msg5" /></p>
-						<p><fmt:message key="paginacao.regra.msg6" /></p>
-						<p><strong><fmt:message key="misc.observacoes" />:</strong></p>
-						<p><fmt:message key="paginacao.regra.msg7" /></p>
-					</div>
-				</article>
+					</article>
+				</form>
 			</section>
+			<div id="rules-dialog" class="hide" title="<fmt:message key="misc.regra.titulo" />">
+				<p><strong><fmt:message key="misc.regra.titulo" />:</strong></p>
+				<p><fmt:message key="paginacao.regra.msg1" /></p>
+				<p><fmt:message key="paginacao.regra.msg2" /></p>
+				<p><fmt:message key="paginacao.regra.msg3" /></p>
+				<p><fmt:message key="paginacao.regra.msg4" /></p>
+				<p><fmt:message key="paginacao.regra.msg5" /></p>
+				<p><fmt:message key="paginacao.regra.msg6" /></p>
+				<p><strong><fmt:message key="misc.observacoes" />:</strong></p>
+				<p><fmt:message key="paginacao.regra.msg7" /></p>
+			</div>
 			<%@ include file="../templates/footer.jsp"%>
 		</div>
 		<script type="text/javascript">
 			head.ready(function(){
-				
-				$('button').button({icons : {primary : 'ui-icon-gear'}}).next().button({icons : {primary : 'ui-icon-shuffle'}});
 				
 				$('#random').click(function() {
 					var total = $('#stringRefTotal').val();
@@ -138,7 +135,7 @@
 				
 				$('#modo').change(function() {
 					if (this.value == 2) {
-						$('#alg2').show();
+						$('#alg2').fadeIn();
 					} else {
 						$('#algoritmo2').val('').change();
 						$('#alg2').hide();
@@ -151,8 +148,8 @@
 					if(total > 0){
 						var paginator = new Array();
 						for(var i = 0; i < total; i++){
-							paginator.push({inputStringRef:'stringReferencia-'+(i+1), 
-											labelStringRef:'<fmt:message key="paginacao.palavra" /> '+(i+1)});
+							paginator.push({inputStringRef: 'stringReferencia-'+(i+1), 
+											stringRefId: (i+1) });
 						}
 						var template = $('#paginationTemplate').tmpl(paginator);
 						content.append(template).fadeIn();
@@ -160,18 +157,8 @@
 					}
 				});
 				
-				$('#rules-dialog').dialog({
-					autoOpen : false,
-					modal : true,
-					width : 960,
-					closeOnEscape : true,
-					open : function(){ $(this).fadeIn();},
-					close : function(){ $(this).fadeOut(); }
-				});
+				$('#rules-dialog').modal();
 				
-				$('#help').click(function(){
-					$('#rules-dialog').dialog('open');	
-				});
 			});
 		</script>
 	</body>

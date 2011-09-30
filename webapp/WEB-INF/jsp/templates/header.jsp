@@ -1,6 +1,7 @@
 <%@ page contentType="text/html; charset=UTF-8" %>
 <header class="row top">
-	<h1><fmt:message key="header.titulo" /></h1>
+	<h1 class="center">SimulaRSO</h1>
+	<h1 class="center"><fmt:message key="header.titulo" /></h1>
 	<c:if test="${not empty warning}">
 		<div class="alert-message warning">
 			<a href="#" class="close">x</a>

@@ -8,35 +8,34 @@
 		<%@include file="../templates/script-loader.jsp"%>
 	</head>	
 	<body>
-		<div class="container_12 main">
+		<%@ include file="../templates/menu.jsp"%>
+		<div class="container">
 			<%@include file="../templates/header.jsp"%>
-			<article class="clearfix">
-				<section class="clearfix">
-					<h2 class="clearfix subtitle"><fmt:message key="processo.resultado.titulo" /></h2>
+			<hr>
+			<section>
+				<article>
+					<h2><fmt:message key="processo.resultado.titulo" /></h2>
 					<c:forEach var="resultList" items="${resultadosDosAlgoritmos}">
 						<script type="text/javascript">
-							head.js('<c:url value="/resources/js/canvas/processo-chart.js" />');
 							head.ready(function(){
-								$('#run-${resultList.algoritmoNome}').button({icons : {primary : 'ui-icon-gear'}});
-								$('#simulation-${resultList.algoritmoNome}').hide();
-								var processos = new Array();
-								<c:forEach items="${resultList.resultadoGrafico}" var="pr">
-								processos.push({x : ${pr.x}, y : ${pr.y}, w : ${pr.w}, h : ${pr.h}, cor: '${pr.cor}'});
-								</c:forEach>
 								var espaco = 26;
 								var time = 100;
+								var processos = new Array();
+							<c:forEach items="${resultList.resultadoGrafico}" var="pr">
+								processos.push({x : ${pr.x}, y : ${pr.y}, w : ${pr.w}, h : ${pr.h}, cor: '${pr.cor}'});
+							</c:forEach>
 								$('#processo-chart-${resultList.algoritmoNome}').attr('width', ((${resultList.tempoTotal} + 1) * espaco));
 								$('#processo-chart-${resultList.algoritmoNome}').attr('height', ((${resultList.totalProcessos} + 2) * espaco));
 								var canvas = document.getElementById('processo-chart-${resultList.algoritmoNome}');
 								$('#run-${resultList.algoritmoNome}').click(function(){
 									$('#run-${resultList.algoritmoNome}').hide();
 									$('#simulation-${resultList.algoritmoNome}').fadeIn();
-									new ProcessoChart(${resultList.totalProcessos}, canvas, espaco, processos, time);
+									simulaRSO.chart.processo(${resultList.totalProcessos}, canvas, espaco, processos, time);
 								});
 							});
 						</script>
-						<strong class="clearfix result-message"><fmt:message key="misc.algoritmo" />: ${resultList.algoritmoNome}</strong>
-						<table class="result-panel">
+						<h4 class="center"><fmt:message key="misc.algoritmo" />:&nbsp;${resultList.algoritmoNome}</h4>
+						<table>
 							<thead>
 								<tr>
 									<td><strong><fmt:message key="processo.label" /></strong></td>
@@ -48,8 +47,8 @@
 							</thead>
 							<tbody>
 								<c:forEach items="${resultList.resultadoFinal}" var="res">
-									<tr class="result-line" ${res.id % 2 eq 1 ? 'id="even"':'id="odd"'}>
-										<td><div class="processo-cor" style="background-color:${res.cor};">${res.id}</div></td>
+									<tr ${res.id % 2 eq 1 ? 'class="even"':'class="odd"'}>
+										<td><div class="block" style="background-color:${res.cor};">${res.id}</div></td>
 										<td>${res.burst} ms</td>
 										<td>${res.espera} ms</td>
 										<td>${res.resposta} ms</td>
@@ -65,7 +64,7 @@
 									<td><strong><fmt:message key="processo.tempo.resposta.medio" /></strong></td>
 									<td><strong><fmt:message key="processo.turnaround.medio" /></strong></td>
 								</tr>
-								<tr class="result-line" id="odd">
+								<tr class="even">
 									<td>${resultList.totalProcessos}</td>
 									<td>${resultList.tempoTotal} ms</td>
 									<td>${resultList.tempoEsperaMedia} ms</td>
@@ -74,20 +73,20 @@
 								</tr>
 							</tfoot>
 						</table>
-						<strong class="clearfix result-message"><fmt:message key="misc.simulacao.grafica" />: ${resultList.algoritmoNome}</strong>
-						<p class="clearfix run">
-							<button id="run-${resultList.algoritmoNome}"><fmt:message key="misc.simulacao.ver" /></button>
-						</p>
-						<div class="graphic-panel clearfix" id="simulation-${resultList.algoritmoNome}">
+						<hr>
+						<h4 class="center"><fmt:message key="misc.simulacao.grafica" />:&nbsp;${resultList.algoritmoNome}</h4>
+						<div class="center row">
+							<button class="btn success" id="run-${resultList.algoritmoNome}"><fmt:message key="misc.simulacao.ver" /></button>
+						</div>
+						<div class="row center hide chart-panel" id="simulation-${resultList.algoritmoNome}">
 							<canvas id="processo-chart-${resultList.algoritmoNome}">
 								<fmt:message key="misc.canvas.erro" />
 							</canvas>
 						</div>
-						<hr>
+						<br>
 					</c:forEach>
-					<a class="clearfix" href="<c:url value="/escalonamento-processo" />"><fmt:message key="misc.nova.simulacao" /></a>
-				</section>
-			</article>
+				</article>
+			</section>
 			<%@include file="../templates/footer.jsp"%>
 		</div>
 	</body>
