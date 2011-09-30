@@ -33,7 +33,7 @@
 						<script type="text/javascript">
 							head.ready(function(){
 								var espaco = 22;
-								var time = 700;
+								var time = 750;
 								var paginacao = new Array();
 							<c:forEach items="${resultList.resultadoGrafico}" var="pg">
 								paginacao.push({palavras: ${pg.palavrasToString}, pageFault: ${pg.pageFault}});

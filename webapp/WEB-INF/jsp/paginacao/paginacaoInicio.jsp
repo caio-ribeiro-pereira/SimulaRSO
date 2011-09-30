@@ -12,7 +12,7 @@
 		<div class="container">
 			<%@ include file="../templates/header.jsp"%>
 			<hr>
-			<section class="">
+			<section>
 				<h2><fmt:message key="paginacao.titulo" /></h2>
 				<h5 class="center"><fmt:message key="misc.painel.titulo" /></h5>
 				<form id="pagination-form" action="<c:url value="/executar-paginacao-memoria"/>" method="post">
@@ -24,6 +24,24 @@
 								<select class="span2 fluid" id="modo" name="modo">
 									<option value="1"${modo eq 1 ? ' selected' : ''}><fmt:message key="misc.simulacao.unica" /></option>
 									<option value="2"${modo eq 2 ? ' selected' : ''}><fmt:message key="misc.simulacao.comparativa" /></option>
+								</select>
+							</div>
+							<div class="span5">
+								<label class="span3" for="frames"><fmt:message key="paginacao.total.frames" />:&nbsp;&nbsp;</label>
+								<select class="span2 fluid" name="frames" id="frames">
+									<option value=""><fmt:message key="misc.selecione" /></option>
+									<c:forEach begin="2" end="10" step="1" var="fr">
+										<option value="${fr}"${frames eq fr ? ' selected' : ''}>${fr}&nbsp;<fmt:message key="paginacao.frames" /></option>
+									</c:forEach>
+								</select>
+							</div>
+							<div class="span5">
+								<label class="span3" for="stringRefTotal"><fmt:message key="paginacao.string.referencia" />:&nbsp;&nbsp;</label>
+								<select class="span2 fluid" id="stringRefTotal" name="total">
+									<option value=""><fmt:message key="misc.selecione" /></option>
+									<c:forEach begin="2" end="30" step="1" var="sr">
+										<option value="${sr}"${total eq sr ? ' selected' : ''}>${sr}</option>
+									</c:forEach>
 								</select>
 							</div>
 						</div>
@@ -46,27 +64,6 @@
 										<option value="${alg}"${totalAlgoritmos > 1 and algs[1] eq alg ? ' selected' : ''}>${alg.nome}</option>	
 									</c:forEach>
 								</select>			
-							</div>
-						</div>
-						<br>
-						<div class="row">
-							<div class="span5">
-								<label class="span3" for="frames"><fmt:message key="paginacao.total.frames" />:&nbsp;&nbsp;</label>
-								<select class="span2 fluid" name="frames" id="frames">
-									<option value=""><fmt:message key="misc.selecione" /></option>
-									<c:forEach begin="2" end="10" step="1" var="fr">
-										<option value="${fr}"${frames eq fr ? ' selected' : ''}>${fr}&nbsp;<fmt:message key="paginacao.frames" /></option>
-									</c:forEach>
-								</select>
-							</div>
-							<div class="span5">
-								<label class="span3" for="stringRefTotal"><fmt:message key="paginacao.string.referencia" />:&nbsp;&nbsp;</label>
-								<select class="span2 fluid" id="stringRefTotal" name="total">
-									<option value=""><fmt:message key="misc.selecione" /></option>
-									<c:forEach begin="2" end="30" step="1" var="sr">
-										<option value="${sr}"${total eq sr ? ' selected' : ''}>${sr}</option>
-									</c:forEach>
-								</select>
 							</div>
 						</div>
 						<hr>
@@ -104,16 +101,25 @@
 					</article>
 				</form>
 			</section>
-			<div id="rules-dialog" class="hide" title="<fmt:message key="misc.regra.titulo" />">
-				<p><strong><fmt:message key="misc.regra.titulo" />:</strong></p>
-				<p><fmt:message key="paginacao.regra.msg1" /></p>
-				<p><fmt:message key="paginacao.regra.msg2" /></p>
-				<p><fmt:message key="paginacao.regra.msg3" /></p>
-				<p><fmt:message key="paginacao.regra.msg4" /></p>
-				<p><fmt:message key="paginacao.regra.msg5" /></p>
-				<p><fmt:message key="paginacao.regra.msg6" /></p>
-				<p><strong><fmt:message key="misc.observacoes" />:</strong></p>
-				<p><fmt:message key="paginacao.regra.msg7" /></p>
+			<div id="rules-dialog" class="modal fade hide" title="<fmt:message key="misc.regra.titulo" />">
+				<div class="modal-header">
+	            	<a href="#" class="close">x</a>
+	              	<h3><fmt:message key="misc.regra.titulo" /></h3>
+	            </div>
+	            <div class="modal-body">
+					<p><strong><fmt:message key="misc.regra.titulo" />:</strong></p>
+					<p class="justify"><fmt:message key="paginacao.regra.msg1" /></p>
+					<p class="justify"><fmt:message key="paginacao.regra.msg2" /></p>
+					<p class="justify"><fmt:message key="paginacao.regra.msg3" /></p>
+					<p class="justify"><fmt:message key="paginacao.regra.msg4" /></p>
+					<p class="justify"><fmt:message key="paginacao.regra.msg5" /></p>
+					<p class="justify"><fmt:message key="paginacao.regra.msg6" /></p>
+					<p><strong><fmt:message key="misc.observacoes" />:</strong></p>
+					<p class="justify"><fmt:message key="paginacao.regra.msg7" /></p>
+				</div>
+				<div class="modal-footer right">
+					<a href="#" class="btn primary close">ok</a>
+				</div>
 			</div>
 			<%@ include file="../templates/footer.jsp"%>
 		</div>
@@ -157,7 +163,9 @@
 					}
 				});
 				
-				$('#rules-dialog').modal();
+				$('#rules-dialog').modal({
+					closeOnEscape: true
+				});
 				
 			});
 		</script>

@@ -93,7 +93,7 @@
 				return false;
 			},
 
-			disco : function(canvas, spaceX, spaceY, cilindros) {
+			disco : function(canvas, spaceX, spaceY, cilindros, time) {
 				var ctx = canvas.getContext("2d");
 				var width = canvas.width;
 				var height = canvas.height;
@@ -153,7 +153,7 @@
 					} else {
 						window.clearInterval(this);
 					}
-				}, 500);
+				}, time);
 				return false;
 			},
 			paginacao : function(total, canvas, espaco, strRef, pg, time,

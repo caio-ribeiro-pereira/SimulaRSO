@@ -9,17 +9,16 @@
 	</head>
 	<body>
 		<%@ include file="../templates/menu.jsp"%>
-		<div class="container_12 main">
+		<div class="container">
 			<%@ include file="../templates/header.jsp"%>
-			<article class="clearfix">
-		  		<section class="clearfix main-info">
-					<strong class="clearfix info-message"><fmt:message key="error.msg1" /></strong>
-					<strong class="clearfix info-message"><fmt:message key="error.msg2" /></strong>
-					<strong class="clearfix info-message">
-						<a href="https://github.com/caio-ribeiro-pereira/SimulaRSO/issues" target="_blank"><fmt:message key="error.msg3" /></a>
-					</strong>
-				</section>
-			</article>
+	  		<section>
+				<article>
+					<h4 class="center"><fmt:message key="error.titulo" /></h4>
+					<p class="center"><fmt:message key="error.msg1" /></p>
+					<p class="center"><fmt:message key="error.msg2" /></p>
+					<p class="center"><a href="https://github.com/caio-ribeiro-pereira/SimulaRSO/issues" title="GitHub Issues" target="_blank"><fmt:message key="error.msg3" /></a></p>
+				</article>
+			</section>
 			<%@ include file="../templates/footer.jsp"%>
 		</div>
 	</body>

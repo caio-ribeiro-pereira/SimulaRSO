@@ -5,54 +5,59 @@
 <html>
 	<head>
 		<title><fmt:message key="sobre.titulo" /></title>
-		<meta name="keywords" content="FCFS, SJR, SRT, Round Robin, SSTF, SCAN, C-SCAN, C-LOOK, FIFO, LRU, OPT, MRU" />
 		<%@include file="../templates/script-loader.jsp"%>
 	</head>
 	<body>
 		<%@ include file="../templates/menu.jsp"%>
-		<div class="container_12 main">
+		<div class="container">
 			<%@include file="../templates/header.jsp"%>
-			<article class="clearfix">
-				<section class="clearfix">
-					<h3 class="clearfix subtitle"><fmt:message key="sobre.titulo" /></h3>
-					<p class="text"><fmt:message key="sobre.msg" /></p>
-					<p style="text-align:center;"><a href="https://github.com/caio-ribeiro-pereira/SimulaRSO" target="_blank"><strong><fmt:message key="sobre.codigo.fonte" /></strong></a></p>
-					<hr>
-					<h3 class="clearfix subtitle"><fmt:message key="sobre.funcionalidade.titulo" /></h3>
+			<hr>
+			<section>
+				<article>
+					<h3><fmt:message key="sobre.titulo" /></h3>
+					<p class="justify"><fmt:message key="sobre.msg" /></p>
+					<p class="center"><a href="https://github.com/caio-ribeiro-pereira/SimulaRSO" target="_blank"><strong><fmt:message key="sobre.codigo.fonte" /></strong></a></p>
+				</article>
+				<hr>
+				<article>
+					<h3><fmt:message key="sobre.funcionalidade.titulo" /></h3>
 					<ul>
-						<li><span class="feature ui-icon ui-icon-check"></span><small><fmt:message key="sobre.funcionalidade.msg1" /></small></li>
-						<li><span class="feature ui-icon ui-icon-check"></span><small><fmt:message key="sobre.funcionalidade.msg2" /></small></li>
-						<li><span class="feature ui-icon ui-icon-check"></span><small><fmt:message key="sobre.funcionalidade.msg3" /></small></li>
-						<li><span class="feature ui-icon ui-icon-check"></span><small><fmt:message key="sobre.funcionalidade.msg4" /></small></li>
-						<li><span class="feature ui-icon ui-icon-check"></span><small><fmt:message key="sobre.funcionalidade.msg5" /></small></li>
-						<li><span class="feature ui-icon ui-icon-check"></span><small><fmt:message key="sobre.funcionalidade.msg6" /></small></li>
+						<li><fmt:message key="sobre.funcionalidade.msg1" /></li>
+						<li><fmt:message key="sobre.funcionalidade.msg2" /></li>
+						<li><fmt:message key="sobre.funcionalidade.msg3" /></li>
+						<li><fmt:message key="sobre.funcionalidade.msg4" /></li>
+						<li><fmt:message key="sobre.funcionalidade.msg5" /></li>
+						<li><fmt:message key="sobre.funcionalidade.msg6" /></li>
 					</ul>
-					<hr>
-					<h3 class="clearfix subtitle"><fmt:message key="sobre.tecnologias.titulo" /></h3>
+				</article>
+				<hr>
+				<article>
+					<h3><fmt:message key="sobre.tecnologias.titulo" /></h3>
 					<%@include file="../templates/tecnologias.jsp"%>
 					<ul>
 						<li><strong><fmt:message key="sobre.tecnologias.infra" />:</strong></li>
-						<li><small style="margin-left: 30px;"><a href="http://code.google.com/appengine/" target="_blank"><strong>Google App Engine</strong></a> - <fmt:message key="sobre.tecnologias.gae" /></small></li>
-						<li><small style="margin-left: 30px;"><a href="http://www.github.com" target="_blank"><strong>GitHub</strong></a> - <fmt:message key="sobre.tecnologias.github" /></small></li>
+						<li><a href="http://code.google.com/appengine/" title="Google App Engine" rel="no-follow" target="_blank">Google App Engine</a> - <fmt:message key="sobre.tecnologias.gae" /></li>
+						<li><a href="http://www.github.com" title="Github" rel="no-follow" target="_blank">GitHub</a> - <fmt:message key="sobre.tecnologias.github" /></li>
 						<li><strong><fmt:message key="sobre.tecnologias.server" />:</strong>
-						<li><small style="margin-left: 30px;"><a href="http://www.oracle.com/br/technologies/java/index.html" target="_blank"><strong>Java 6</strong></a> - <fmt:message key="sobre.tecnologias.java" /></small></li>
-						<li><small style="margin-left: 30px;"><a href="http://www.junit.org" target="_blank"><strong>JUnit 4.8</strong></a> - <fmt:message key="sobre.tecnologias.junit" /></small></li>
-						<li><small style="margin-left: 30px;"><a href="http://vraptor.caelum.com.br" target="_blank"><strong>VRaptor 3.3.1</strong></a> - <fmt:message key="sobre.tecnologias.vraptor" /><a href="http://www.caelum.com.br" target="_blank">&nbsp;<fmt:message key="sobre.tecnologias.caelum"/></a></small></li>
-						<li><small style="margin-left: 30px;"><a href="http://jstl.java.net" target="_blank"><strong>JSTL 1.2</strong></a> - <fmt:message key="sobre.tecnologias.jstl" /></small></li>
+						<li><a href="http://www.oracle.com/br/technologies/java/index.html" title="Java" rel="no-follow" target="_blank">Java 6</a> - <fmt:message key="sobre.tecnologias.java" /></li>
+						<li><a href="http://www.junit.org" title="JUnit" rel="no-follow" target="_blank">JUnit 4.8</a> - <fmt:message key="sobre.tecnologias.junit" /></li>
+						<li><a href="http://vraptor.caelum.com.br" title="VRaptor" rel="no-follow" target="_blank">VRaptor 3.3.1</a> - <fmt:message key="sobre.tecnologias.vraptor" /><a href="http://www.caelum.com.br" target="_blank">&nbsp;<fmt:message key="sobre.tecnologias.caelum"/></a></li>
+						<li><a href="http://jstl.java.net" title="JSTL" rel="no-follow" target="_blank">JSTL 1.2</a> - <fmt:message key="sobre.tecnologias.jstl" /></li>
 						<li><strong><fmt:message key="sobre.tecnologias.cliente" />:</strong></li>
-						<li><small style="margin-left: 30px;"><a href="http://www.w3schools.com/html5/default.asp" target="_blank"><strong>HTML 5</strong></a> - <fmt:message key="sobre.tecnologias.html5" />&nbsp;<a href="http://www.w3schools.com" target="_blank"><fmt:message key="sobre.tecnologias.w3c"/></a></small></li>
-						<li><small style="margin-left: 30px;"><a href="http://www.w3schools.com/css3/default.asp" target="_blank"><strong>CSS 3</strong></a> - <fmt:message key="sobre.tecnologias.css3" />&nbsp;<a href="http://www.w3schools.com" target="_blank"><fmt:message key="sobre.tecnologias.w3c"/></a></small></li>
-						<li><small style="margin-left: 30px;"><a href="http://developer.mozilla.org/en/Canvas_tutorial" target="_blank"><strong>Canvas</strong></a> - <fmt:message key="sobre.tecnologias.canvas" /></small></li>
-						<li><small style="margin-left: 30px;"><a href="http://jquery.com/" target="_blank"><strong>JQuery 1.6</strong></a> - <fmt:message key="sobre.tecnologias.jquery" /></small></li>
-						<li><small style="margin-left: 30px;"><a href="http://jqueryui.com/" target="_blank"><strong>JQuery-UI 1.8.11</strong></a> - <fmt:message key="sobre.tecnologias.jqueryui" /></small></li>
-						<li><small style="margin-left: 30px;"><a href="http://headjs.com/" target="_blank"><strong>Head JS 0.9</strong></a> - <fmt:message key="sobre.tecnologias.headjs" /></small>
-						<li><small style="margin-left: 30px;"><a href="http://960.gs/" target="_blank"><strong>960 Grid System</strong></a> - <fmt:message key="sobre.tecnologias.960gs" /></small>
+						<li><a href="http://www.w3schools.com/html5/default.asp" title="HTML5" rel="no-follow" target="_blank">HTML 5</a> - <fmt:message key="sobre.tecnologias.html5" />&nbsp;<a href="http://www.w3schools.com" target="_blank"><fmt:message key="sobre.tecnologias.w3c"/></a></li>
+						<li><a href="http://www.w3schools.com/css3/default.asp" title="CSS3" rel="no-follow" target="_blank">CSS 3</a> - <fmt:message key="sobre.tecnologias.css3" />&nbsp;<a href="http://www.w3schools.com" target="_blank"><fmt:message key="sobre.tecnologias.w3c"/></a></li>
+						<li><a href="http://developer.mozilla.org/en/Canvas_tutorial" title="Canvas" rel="no-follow" target="_blank">Canvas</a> - <fmt:message key="sobre.tecnologias.canvas" /></li>
+						<li><a href="http://jquery.com/" title="JQuery" rel="no-follow" target="_blank">JQuery 1.6.4</a> - <fmt:message key="sobre.tecnologias.jquery" /></li>
+						<li><a href="http://twitter.github.com/bootstrap/" title="Bootstrap" rel="no-follow" target="_blank">Bootstrat 1.3.0</a> - <fmt:message key="sobre.tecnologias.bootstrap" /></li>
+						<li><a href="http://headjs.com/" title="HeadJS" rel="no-follow" target="_blank">Head JS 0.9</a> - <fmt:message key="sobre.tecnologias.headjs" />
 					</ul>
-					<hr>
-					<h3 class="clearfix subtitle"><fmt:message key="sobre.browsers.titulo" /></h3>
+				</article>
+				<hr>
+				<article>
+					<h3><fmt:message key="sobre.browsers.titulo" /></h3>
 					<%@include file="../templates/browsers.jsp"%>
-				</section>
-			</article>
+				</article>
+			</section>
 			<%@include file="../templates/footer.jsp"%>
 		</div>
 	</body>

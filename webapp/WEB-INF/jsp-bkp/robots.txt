@@ -1,6 +1,0 @@
-User-agent: *
-Allow: /home
-Allow: /sobre
-Allow: /escalonamento-disco
-Allow: /paginacao-memoria
-Allow: /escalonamento-processo

@@ -9,14 +9,14 @@
 	</head>
 	<body>
 		<%@ include file="../templates/menu.jsp"%>
-		<div class="container_12 main">
+		<div class="container">
 			<%@ include file="../templates/header.jsp"%>
-				<article class="clearfix">
-			  		<section class="clearfix main-info">
-						<strong class="clearfix info-message"><fmt:message key="notfound.msg1" /></strong>
-						<strong class="clearfix info-message"><fmt:message key="notfound.msg2" /></strong>
-					</section>
-				</article>
+		  		<section>
+					<article>
+						<h4 class="center"><fmt:message key="notfound.titulo" /></h4>
+						<p class="center"><fmt:message key="notfound.msg1" /></p>
+					</article>
+				</section>
 			<%@ include file="../templates/footer.jsp"%>
 		</div>
 	</body>

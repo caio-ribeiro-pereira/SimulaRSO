@@ -3,7 +3,7 @@
 	<h1 class="center">SimulaRSO</h1>
 	<h1 class="center"><fmt:message key="header.titulo" /></h1>
 	<c:if test="${not empty warning}">
-		<div class="alert-message warning">
+		<div class="alert-message warning fade">
 			<a href="#" class="close">x</a>
 			<p><strong>${warning}</strong></p>
 		</div>

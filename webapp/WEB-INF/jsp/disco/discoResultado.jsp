@@ -32,6 +32,7 @@
 							head.ready(function(){
 								var espacoX = 15;
 								var espacoY = 35;
+								var time = 500;
 								var requisicoes = new Array();
 							<c:forEach items="${resultList.resultados}" var="disco">
 								requisicoes.push(${disco.cilindro});
@@ -41,7 +42,7 @@
 								$('#run-${resultList.algoritmoNome}').click(function(){
 									$('#run-${resultList.algoritmoNome}').hide();
 									$('#simulation-${resultList.algoritmoNome}').show();
-									simulaRSO.chart.disco(canvas,espacoX,espacoY,requisicoes);
+									simulaRSO.chart.disco(canvas,espacoX,espacoY,requisicoes, time);
 								});
 							});
 						</script>

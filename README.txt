@@ -43,11 +43,8 @@ O projeto utiliza o seguintes frameworks:
 	+ CSS 3 - Para estilizacao do layout do projeto, também seguindo as normas W3C.
 	+ Canvas - Elemento principal do projeto, que permite renderizar elementos gráficos em 2D.
 	+ JQuery 1.5.1 - Biblioteca Javascript Cross-browser para manipulação de elementos DOM HTML.
-	+ JQuery-UI 1.8.11 - Conjunto de interfaces gráficas prontas e totalmente compatível com JQuery.
-	+ JQuery-UI Spinner 1.24 - Plugin JQuery para implementar um componente do tipo spinner control.
+	+ Bootstratp 1.3.0 - Conjunto de interfaces gráficas prontas e totalmente compatível com JQuery.
 	+ Head JS 0.9 - Script para carregamento rápido de arquivos javascript.
-	+ 960 Grid System - Framework CSS para posicionamento de objetos DOM Cross-Browser em formato de grid.
-	
 
 ====================================================================
 Browsers Compatíveis:

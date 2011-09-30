@@ -133,19 +133,28 @@
 					</article>
 				</form>
 			</section>
-			<div id="rules-dialog" class="hide" title="<fmt:message key="misc.regra.titulo" />">
-				<p><strong><fmt:message key="misc.regra.titulo" />:</strong></p>
-				<p><fmt:message key="processo.regra.msg1" /></p>
-				<p><fmt:message key="processo.regra.msg2" /></p>
-				<p><fmt:message key="processo.regra.msg3" /></p>
-				<p><fmt:message key="processo.regra.msg4" /></p>
-				<p><fmt:message key="processo.regra.msg5" /></p>
-				<p><strong><fmt:message key="misc.observacoes" />:</strong></p>
-				<p><fmt:message key="processo.regra.msg6" /></p>
-				<p><fmt:message key="processo.regra.msg7" /></p>
-				<p><fmt:message key="processo.regra.msg8" /></p>
-				<p><fmt:message key="processo.regra.msg9" /></p>
-				<p><fmt:message key="processo.regra.msg10" /></p>
+			<div id="rules-dialog" class="modal fade hide" title="<fmt:message key="misc.regra.titulo" />">
+				<div class="modal-header">
+	              <a href="#" class="close">x</a>
+	              <h3><fmt:message key="misc.regra.titulo" /></h3>
+	            </div>
+	            <div class="modal-body">
+					<p><strong><fmt:message key="misc.regra.titulo" />:</strong></p>
+					<p class="justify"><fmt:message key="processo.regra.msg1" /></p>
+					<p class="justify"><fmt:message key="processo.regra.msg2" /></p>
+					<p class="justify"><fmt:message key="processo.regra.msg3" /></p>
+					<p class="justify"><fmt:message key="processo.regra.msg4" /></p>
+					<p class="justify"><fmt:message key="processo.regra.msg5" /></p>
+					<p><strong><fmt:message key="misc.observacoes" />:</strong></p>
+					<p class="justify"><fmt:message key="processo.regra.msg6" /></p>
+					<p class="justify"><fmt:message key="processo.regra.msg7" /></p>
+					<p class="justify"><fmt:message key="processo.regra.msg8" /></p>
+					<p class="justify"><fmt:message key="processo.regra.msg9" /></p>
+					<p class="justify"><fmt:message key="processo.regra.msg10" /></p>
+				</div>
+				<div class="modal-footer right">
+					<a href="#" class="btn primary close">ok</a>
+				</div>
 			</div>
 			<%@ include file="../templates/footer.jsp"%>
 		</div>
@@ -225,7 +234,9 @@
 						} 
 					});
 					
-					$('#rules-dialog').modal();
+					$('#rules-dialog').modal({
+						closeOnEscape: true
+					});
 				});
 		</script>
 	</body>

@@ -29,7 +29,7 @@
 								var canvas = document.getElementById('processo-chart-${resultList.algoritmoNome}');
 								$('#run-${resultList.algoritmoNome}').click(function(){
 									$('#run-${resultList.algoritmoNome}').hide();
-									$('#simulation-${resultList.algoritmoNome}').fadeIn();
+									$('#simulation-${resultList.algoritmoNome}').show();
 									simulaRSO.chart.processo(${resultList.totalProcessos}, canvas, espaco, processos, time);
 								});
 							});

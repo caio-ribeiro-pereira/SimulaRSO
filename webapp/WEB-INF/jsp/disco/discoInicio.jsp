@@ -26,6 +26,19 @@
 									<option value="2"${modo eq 2 ? ' selected' : ''}><fmt:message key="misc.simulacao.comparativa" /></option>
 								</select>
 							</div>
+							<div class="span5">
+							    <label class="span3" for="totalRequisicao"><fmt:message key="disco.total.requisicoes" />&nbsp;:&nbsp;&nbsp;</label>
+								<select class="span2 fluid" id="totalRequisicao" name="total">
+									<option value=""><fmt:message key="misc.selecione" /></option>
+									<c:forEach var="p" begin="2" end="30" step="1">
+										<option value="${p}"${total eq p ? ' selected' : ''}>${p}&nbsp;<fmt:message key="disco.requisicoes" /></option>
+									</c:forEach>
+								</select>
+							</div>
+							<div class="span5">
+								<label class="span4" for="cabeca"><fmt:message key="disco.cilindro.cabeca" />&nbsp;:&nbsp;&nbsp;</label>
+								<input class="span1 fluid" type="text" id="cabeca" name="cabeca.cilindro" maxlength="2" value="${not empty cabeca ? cabeca.cilindro : 0}">
+							</div>
 						</div>
 						<br>
 						<div class="row">
@@ -46,22 +59,6 @@
 										<option value="${alg}"${totalAlgoritmos > 1 and algDisco[1] eq alg ? ' selected' : ''}>${alg.nome}</option>		
 									</c:forEach>
 								</select>
-							</div>
-						</div>
-						<br>
-						<div class="row">
-							<div class="span5">
-							    <label class="span3" for="totalRequisicao"><fmt:message key="disco.total.requisicoes" />&nbsp;:&nbsp;&nbsp;</label>
-								<select class="span2 fluid" id="totalRequisicao" name="total">
-									<option value=""><fmt:message key="misc.selecione" /></option>
-									<c:forEach var="p" begin="2" end="30" step="1">
-										<option value="${p}"${total eq p ? ' selected' : ''}>${p}&nbsp;<fmt:message key="disco.requisicoes" /></option>
-									</c:forEach>
-								</select>
-							</div>
-							<div class="span5">
-								<label class="span4" for="cabeca"><fmt:message key="disco.cilindro.cabeca" />&nbsp;:&nbsp;&nbsp;</label>
-								<input class="span1 fluid" type="text" id="cabeca" name="cabeca.cilindro" maxlength="2" value="${not empty cabeca ? cabeca.cilindro : 0}">
 							</div>
 						</div>
 						<hr>
@@ -100,17 +97,26 @@
 					</article>
 				</form>
 			</section>
-			<div id="rules-dialog" class="hide" title="<fmt:message key="misc.regra.titulo" />">
-				<p><strong><fmt:message key="misc.observacoes" />:</strong></p>
-				<p><fmt:message key="disco.regra.msg1" /></p>
-				<p><fmt:message key="disco.regra.msg2" /></p>
-				<p><fmt:message key="disco.regra.msg3" /></p>
-				<p><fmt:message key="disco.regra.msg4" /></p>
-				<p><fmt:message key="disco.regra.msg5" /></p>
-				<p><fmt:message key="disco.regra.msg6" /></p>
-				<p><strong><fmt:message key="misc.observacoes" />:</strong></p>
-				<p><fmt:message key="disco.regra.msg7" /></p>
-				<p><fmt:message key="disco.regra.msg8" /></p>
+			<div id="rules-dialog" class="modal fade hide" title="<fmt:message key="misc.regra.titulo" />">
+				<div class="modal-header">
+	            	<a href="#" class="close">x</a>
+	              	<h3><fmt:message key="misc.regra.titulo" /></h3>
+	            </div>
+	            <div class="modal-body">
+					<p><strong><fmt:message key="misc.observacoes" />:</strong></p>
+					<p class="justify"><fmt:message key="disco.regra.msg1" /></p>
+					<p class="justify"><fmt:message key="disco.regra.msg2" /></p>
+					<p class="justify"><fmt:message key="disco.regra.msg3" /></p>
+					<p class="justify"><fmt:message key="disco.regra.msg4" /></p>
+					<p class="justify"><fmt:message key="disco.regra.msg5" /></p>
+					<p class="justify"><fmt:message key="disco.regra.msg6" /></p>
+					<p><strong><fmt:message key="misc.observacoes" />:</strong></p>
+					<p class="justify"><fmt:message key="disco.regra.msg7" /></p>
+					<p class="justify"><fmt:message key="disco.regra.msg8" /></p>
+				</div>
+				<div class="modal-footer right">
+					<a href="#" class="btn primary close">ok</a>
+				</div>	
 			</div>
 			<%@ include file="../templates/footer.jsp"%>
 		</div>
@@ -156,7 +162,9 @@
 					}
 				}).trigger('change');
 					
-				$('#rules-dialog').modal();
+				$('#rules-dialog').modal({
+					closeOnEscape: true
+				});
 			});
 		</script>
 	</body>
