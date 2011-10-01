@@ -55,7 +55,7 @@
 				<hr>
 				<article>
 					<h3><fmt:message key="sobre.browsers.titulo" /></h3>
-					<%@include file="../templates/browsers.jsp"%>
+					<p class="row browser"><%@include file="../templates/browsers.jsp"%></p>
 				</article>
 			</section>
 			<%@include file="../templates/footer.jsp"%>

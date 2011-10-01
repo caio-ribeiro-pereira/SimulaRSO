@@ -32,15 +32,6 @@
 			  	</article>
 		  		<hr>
 		  		<article class="justify">
-		  			<p><strong><fmt:message key="main.painel.aviso" />:</strong></p>
-					<p><fmt:message key="main.painel.msg1" /></p>
-					<p><fmt:message key="main.painel.msg2" /></p>
-					<p><fmt:message key="main.painel.msg4" />&nbsp;<a href="https://github.com/caio-ribeiro-pereira/SimulaRSO/issues" target="_blank" title="Github.com"><fmt:message key="main.painel.report.bug" /></a></p>
-					<p><fmt:message key="main.painel.msg3" /></p>
-					<%@ include file="../templates/browsers.jsp"%>
-			  	</article>
-			  	<hr>
-		  		<article class="justify">
 			  		<p><strong><fmt:message key="main.atualizacoes" />:</strong></p>
 			  		<p><fmt:message key="main.atualizacoes.msg5" /></p>
 			  		<p><fmt:message key="main.atualizacoes.msg4" /></p>
@@ -51,12 +42,38 @@
 			</section>
 			<%@ include file="../templates/footer.jsp"%>
 		</div>
+		<div id="notification-dialog" class="modal fade hide justify" title="<fmt:message key="main.painel.aviso" />">
+  			<div class="modal-header">
+  				<a href="#" class="close">x</a>
+  				<h3><fmt:message key="main.painel.aviso" /></h3>
+  			</div>
+  			<div class="modal-body justify">
+				<p><fmt:message key="main.painel.msg1" /></p>
+				<p><fmt:message key="main.painel.msg2" /></p>
+				<p><fmt:message key="main.painel.msg4" />&nbsp;<a href="https://github.com/caio-ribeiro-pereira/SimulaRSO/issues" target="_blank" title="Github.com"><fmt:message key="main.painel.report.bug" /></a></p>
+				<p><fmt:message key="main.painel.msg3" /></p>
+				<div class="row center"><%@ include file="../templates/browsers.jsp"%></div>
+			</div>
+			<div class="modal-footer right">
+				<button id="close-dialog" class="btn primary">ok</button>
+			</div>
+	  	</div>
 		<script type="text/javascript">
 			head.ready(function(){
 				$('#idioma-box button').click(function(){
 					$('#idioma-val').val($(this).val());
 					$('#idioma-form').submit();
 				});
+				
+				$('#notification-dialog').modal({
+					closeOnEscape: true
+				});
+				$('#close-dialog').click(function(){
+					$('#notification-dialog').modal('hide');
+				});
+				if(head.browser.ie && head.browser.version < parseFloat("9.0")){
+					$('#notification-dialog').modal('show');
+				}
 			});
 		</script>
 	</body>

@@ -17,4 +17,7 @@
 		.js('<c:url value="/resources/js/bootstrap.min.js" />')
 		.js('<c:url value="/resources/js/charts.min.js" />')
 		.js('<c:url value="/resources/js/ga.min.js" />');
+	if(head.browser.ie && head.browser.version < parseFloat("9.0")){
+		head.js('<c:url value="/resources/js/html5.min.js" />');
+	}
 </script>

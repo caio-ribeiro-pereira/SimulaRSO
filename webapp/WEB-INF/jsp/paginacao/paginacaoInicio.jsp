@@ -118,7 +118,7 @@
 					<p class="justify"><fmt:message key="paginacao.regra.msg7" /></p>
 				</div>
 				<div class="modal-footer right">
-					<a href="#" class="btn primary close">ok</a>
+					<button id="close-dialog" class="btn primary">ok</button>
 				</div>
 			</div>
 			<%@ include file="../templates/footer.jsp"%>
@@ -165,6 +165,9 @@
 				
 				$('#rules-dialog').modal({
 					closeOnEscape: true
+				});
+				$('#close-dialog').click(function(){
+					$('#rules-dialog').modal('hide');
 				});
 				
 			});
