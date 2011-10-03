@@ -16,24 +16,6 @@
 				<article>
 					<h2><fmt:message key="processo.resultado.titulo" /></h2>
 					<c:forEach var="resultList" items="${resultadosDosAlgoritmos}">
-						<script type="text/javascript">
-							head.ready(function(){
-								var espaco = 26;
-								var time = 100;
-								var processos = new Array();
-							<c:forEach items="${resultList.resultadoGrafico}" var="pr">
-								processos.push({x : ${pr.x}, y : ${pr.y}, w : ${pr.w}, h : ${pr.h}, cor: '${pr.cor}'});
-							</c:forEach>
-								$('#processo-chart-${resultList.algoritmoNome}').attr('width', ((${resultList.tempoTotal} + 1) * espaco));
-								$('#processo-chart-${resultList.algoritmoNome}').attr('height', ((${resultList.totalProcessos} + 2) * espaco));
-								var canvas = document.getElementById('processo-chart-${resultList.algoritmoNome}');
-								$('#run-${resultList.algoritmoNome}').click(function(){
-									$('#run-${resultList.algoritmoNome}').hide();
-									$('#simulation-${resultList.algoritmoNome}').show();
-									simulaRSO.chart.processo(${resultList.totalProcessos}, canvas, espaco, processos, time);
-								});
-							});
-						</script>
 						<h4 class="center"><fmt:message key="misc.algoritmo" />:&nbsp;${resultList.algoritmoNome}</h4>
 						<table>
 							<thead>
@@ -80,10 +62,28 @@
 						</div>
 						<div class="row center hide chart-panel" id="simulation-${resultList.algoritmoNome}">
 							<canvas id="processo-chart-${resultList.algoritmoNome}">
-								<fmt:message key="misc.canvas.erro" />
+								<strong><fmt:message key="misc.canvas.erro" /></strong>
 							</canvas>
 						</div>
 						<br>
+						<script type="text/javascript">
+							head.ready(function(){
+								var espaco = 26;
+								var time = 100;
+								var processos = new Array();
+							<c:forEach items="${resultList.resultadoGrafico}" var="pr">
+								processos.push({x : ${pr.x}, y : ${pr.y}, w : ${pr.w}, h : ${pr.h}, cor: '${pr.cor}'});
+							</c:forEach>
+								$('#processo-chart-${resultList.algoritmoNome}').attr('width', ((${resultList.tempoTotal} + 1) * espaco));
+								$('#processo-chart-${resultList.algoritmoNome}').attr('height', ((${resultList.totalProcessos} + 2) * espaco));
+								var canvas = document.getElementById('processo-chart-${resultList.algoritmoNome}');
+								$('#run-${resultList.algoritmoNome}').click(function(){
+									$('#run-${resultList.algoritmoNome}').hide();
+									$('#simulation-${resultList.algoritmoNome}').show();
+									simulaRSO.chart.processo(${resultList.totalProcessos}, canvas, espaco, processos, time);
+								});
+							});
+						</script>
 					</c:forEach>
 				</article>
 			</section>

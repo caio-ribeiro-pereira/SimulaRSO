@@ -24,7 +24,7 @@
 						</div>
 						<div class="row center hide chart-panel" id="simulation-${resultList.algoritmoNome}">
 							<canvas id="disco-chart-${resultList.algoritmoNome}" width="1520">
-								<fmt:message key="misc.canvas.erro" />
+								<strong><fmt:message key="misc.canvas.erro" /></strong>
 							</canvas>
 						</div>
 						<br>

@@ -26,7 +26,7 @@
 						</div>
 						<div class="row center hide chart-panel" id="simulation-${resultList.algoritmoNome}">
 							<canvas id="paginacao-chart-${resultList.algoritmoNome}" width="960">
-								<fmt:message key="misc.canvas.erro" />
+								<strong><fmt:message key="misc.canvas.erro" /></strong>
 							</canvas>
 						</div>
 						<br>
@@ -42,7 +42,7 @@
 							<c:forEach items="${resultList.stringReferencia}" var="strRef">
 								stringRef.push(${strRef});
 							</c:forEach>
-								$('#paginacao-chart-${resultList.algoritmoNome}').attr('height', ((${resultList.totalFrames} * espaco) + 120));
+								$('#paginacao-chart-${resultList.algoritmoNome}').attr('height', ((${resultList.totalFrames} * espaco) + 150));
 								var canvas = document.getElementById('paginacao-chart-${resultList.algoritmoNome}');
 								$('#run-${resultList.algoritmoNome}').click(function(){
 									$('#run-${resultList.algoritmoNome}').hide();
