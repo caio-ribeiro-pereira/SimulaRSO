@@ -16,7 +16,11 @@
 				<article>
 					<h3><fmt:message key="sobre.titulo" /></h3>
 					<p class="justify"><fmt:message key="sobre.msg" /></p>
-					<p class="center"><a href="https://github.com/caio-ribeiro-pereira/SimulaRSO" target="_blank"><strong><fmt:message key="sobre.codigo.fonte" /></strong></a></p>
+					<p class="center">
+						<a href="https://github.com/caio-ribeiro-pereira/SimulaRSO" title="<fmt:message key="sobre.codigo.fonte" />" target="_blank" rel="me">
+							<strong><fmt:message key="sobre.codigo.fonte" /></strong>
+						</a>
+					</p>
 				</article>
 				<hr>
 				<article>

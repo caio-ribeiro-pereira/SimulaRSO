@@ -27,20 +27,20 @@
 								</select>
 							</div>
 							<div class="span5">
-								<label class="span3" for="frames"><fmt:message key="paginacao.total.frames" />:&nbsp;&nbsp;</label>
-								<select class="span2 fluid" name="frames" id="frames">
-									<option value=""><fmt:message key="misc.selecione" /></option>
-									<c:forEach begin="2" end="10" step="1" var="fr">
-										<option value="${fr}"${frames eq fr ? ' selected' : ''}>${fr}&nbsp;<fmt:message key="paginacao.frames" /></option>
-									</c:forEach>
-								</select>
-							</div>
-							<div class="span5">
 								<label class="span3" for="stringRefTotal"><fmt:message key="paginacao.string.referencia" />:&nbsp;&nbsp;</label>
 								<select class="span2 fluid" id="stringRefTotal" name="total">
 									<option value=""><fmt:message key="misc.selecione" /></option>
 									<c:forEach begin="2" end="30" step="1" var="sr">
 										<option value="${sr}"${total eq sr ? ' selected' : ''}>${sr}</option>
+									</c:forEach>
+								</select>
+							</div>
+							<div class="span5">
+								<label class="span3" for="frames"><fmt:message key="paginacao.total.frames" />:&nbsp;&nbsp;</label>
+								<select class="span2 fluid" name="frames" id="frames">
+									<option value=""><fmt:message key="misc.selecione" /></option>
+									<c:forEach begin="2" end="10" step="1" var="fr">
+										<option value="${fr}"${frames eq fr ? ' selected' : ''}>${fr}&nbsp;<fmt:message key="paginacao.frames" /></option>
 									</c:forEach>
 								</select>
 							</div>

@@ -19,7 +19,7 @@ e será contribuído para a Universidade Catolica de Santos - www.unisantos.br.
 ====================================================================
 
 Funcionalidades:
-	+ Simular os principais algoritmos de escalonamento de processos com até 18 processos.
+	+ Simular os principais algoritmos de escalonamento de processos com até 20 processos.
 	+ Simular os principais algoritmos de escalonamento de disco com até 30 requisições de (I/O) em disco.
 	+ Simular os principais algoritmos de substituição de página de memória virtual com até 30 palavras de bytes na escrita.
 	+ Realizar simulação comparativa para analisar o comportamento de dois algoritmos distintos.
