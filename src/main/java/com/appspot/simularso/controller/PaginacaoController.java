@@ -10,19 +10,24 @@ import br.com.caelum.vraptor.Resource;
 import br.com.caelum.vraptor.Result;
 
 import com.appspot.simularso.facade.PaginacaoFacade;
-import com.appspot.simularso.infra.Idioma;
+import com.appspot.simularso.infra.ProjectLocale;
 import com.appspot.simularso.infra.Notice;
 import com.appspot.simularso.logic.memory.PaginacaoMemoriaAlgoritmo;
 import com.appspot.simularso.logic.memory.PaginacaoMemoriaBase;
 
 @Resource
-public class PaginacaoController extends ApplicationController {
+public class PaginacaoController {
 
+	private final ProjectLocale locale;
+	private final Notice notice;
+	private final Result result;
 	private final PaginacaoFacade facade;
 
-	public PaginacaoController(Result result, PaginacaoFacade facade, Idioma idioma, Notice notice) {
-		super(result, notice, idioma);
+	public PaginacaoController(Result result, PaginacaoFacade facade, ProjectLocale locale, Notice notice) {
+		this.result = result;
 		this.facade = facade;
+		this.locale = locale;
+		this.notice = notice;
 	}
 
 	@Get("/paginacao-memoria")
@@ -79,11 +84,11 @@ public class PaginacaoController extends ApplicationController {
 	}
 
 	public PaginacaoMemoriaAlgoritmo[] getAlgoritmos() {
-		return super.getPaginacaoMemoriaAlgoritmo();
+		return PaginacaoMemoriaAlgoritmo.values();
 	}
 
 	public String getIdioma() {
-		return super.idioma.getIdioma();
+		return locale.getIdioma();
 	}
 
 }

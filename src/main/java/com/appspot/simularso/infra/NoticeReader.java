@@ -11,12 +11,12 @@ import br.com.caelum.vraptor.ioc.RequestScoped;
 @RequestScoped
 public class NoticeReader implements Serializable {
 
-	private static final long serialVersionUID = -1922076359850602156L;
+	private static final long serialVersionUID = 5529825393451861845L;
 	private static final String PROPERTIES = "idioma";
 	private ResourceBundle bundle;
 
-	public NoticeReader(Idioma idioma) {
-		Locale locale = new Locale(idioma.getLanguage(), idioma.getCountry());
+	public NoticeReader(ProjectLocale projectLocale) {
+		Locale locale = new Locale(projectLocale.getLanguage(), projectLocale.getCountry());
 		bundle = ResourceBundle.getBundle(PROPERTIES, locale);
 	}
 

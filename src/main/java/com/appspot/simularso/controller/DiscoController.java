@@ -11,20 +11,25 @@ import br.com.caelum.vraptor.Resource;
 import br.com.caelum.vraptor.Result;
 
 import com.appspot.simularso.facade.DiscoFacade;
-import com.appspot.simularso.infra.Idioma;
+import com.appspot.simularso.infra.ProjectLocale;
 import com.appspot.simularso.infra.Notice;
 import com.appspot.simularso.logic.disc.EscalonadorDiscoAlgoritmo;
 import com.appspot.simularso.logic.disc.EscalonadorDiscoBase;
 import com.appspot.simularso.model.Disco;
 
 @Resource
-public class DiscoController extends ApplicationController {
+public class DiscoController {
 
+	private final ProjectLocale locale;
+	private final Notice notice;
+	private final Result result;
 	private final DiscoFacade discoFacade;
 
-	public DiscoController(Result result, DiscoFacade discoFacade, Idioma idioma, Notice notice) {
-		super(result, notice, idioma);
+	public DiscoController(Result result, DiscoFacade discoFacade, ProjectLocale locale, Notice notice) {
+		this.result = result;
 		this.discoFacade = discoFacade;
+		this.locale = locale;
+		this.notice = notice;
 	}
 
 	@Get("/escalonamento-disco")
@@ -87,10 +92,10 @@ public class DiscoController extends ApplicationController {
 	}
 
 	public EscalonadorDiscoAlgoritmo[] getAlgoritmos() {
-		return super.getEscalonadorDiscoAlgoritmo();
+		return EscalonadorDiscoAlgoritmo.values();
 	}
 
 	public String getIdioma() {
-		return super.idioma.getIdioma();
+		return locale.getIdioma();
 	}
 }

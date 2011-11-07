@@ -7,14 +7,14 @@ import br.com.caelum.vraptor.ioc.SessionScoped;
 
 @SessionScoped
 @Component
-public class Idioma implements Serializable {
+public class ProjectLocale implements Serializable {
 
 	private static final long serialVersionUID = 2177438632064029504L;
 
 	private static final String DEFAULT = "pt_BR";
 	private String idioma = DEFAULT;
 
-	public Idioma() {
+	public ProjectLocale() {
 	}
 
 	public String getIdioma() {

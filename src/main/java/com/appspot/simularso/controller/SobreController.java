@@ -3,13 +3,15 @@ package com.appspot.simularso.controller;
 import br.com.caelum.vraptor.Get;
 import br.com.caelum.vraptor.Resource;
 
-import com.appspot.simularso.infra.Idioma;
+import com.appspot.simularso.infra.ProjectLocale;
 
 @Resource
-public class SobreController extends ApplicationController {
+public class SobreController {
 
-	public SobreController(Idioma idioma) {
-		super(null, null, idioma);
+	private final ProjectLocale locale;
+
+	public SobreController(ProjectLocale locale) {
+		this.locale = locale;
 	}
 
 	@Get("/sobre")
@@ -17,6 +19,6 @@ public class SobreController extends ApplicationController {
 	}
 
 	public String getIdioma() {
-		return super.idioma.getIdioma();
+		return locale.getIdioma();
 	}
 }

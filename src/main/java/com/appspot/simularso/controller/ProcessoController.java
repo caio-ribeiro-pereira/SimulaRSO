@@ -10,18 +10,23 @@ import br.com.caelum.vraptor.Resource;
 import br.com.caelum.vraptor.Result;
 
 import com.appspot.simularso.facade.ProcessoFacade;
-import com.appspot.simularso.infra.Idioma;
+import com.appspot.simularso.infra.ProjectLocale;
 import com.appspot.simularso.infra.Notice;
 import com.appspot.simularso.logic.process.EscalonadorProcessoAlgoritmo;
 import com.appspot.simularso.model.Processo;
 
 @Resource
-public class ProcessoController extends ApplicationController {
+public class ProcessoController {
 
+	private final ProjectLocale locale;
+	private final Notice notice;
+	private final Result result;
 	private final ProcessoFacade facade;
 
-	public ProcessoController(Result result, ProcessoFacade facade, Idioma idioma, Notice notice) {
-		super(result, notice, idioma);
+	public ProcessoController(Result result, ProcessoFacade facade, ProjectLocale locale, Notice notice) {
+		this.locale = locale;
+		this.notice = notice;
+		this.result = result;
 		this.facade = facade;
 	}
 
@@ -91,10 +96,10 @@ public class ProcessoController extends ApplicationController {
 	}
 
 	public EscalonadorProcessoAlgoritmo[] getAlgoritmos() {
-		return super.getEscalonadorProcessoAlgoritmo();
+		return EscalonadorProcessoAlgoritmo.values();
 	}
 
 	public String getIdioma() {
-		return super.idioma.getIdioma();
+		return locale.getIdioma();
 	}
 }

@@ -24,7 +24,6 @@ public class Notice implements Serializable {
 	}
 
 	public void warning(String key, Object... args) {
-		String msg = MessageFormat.format(reader.find(key), args);
-		result.include(NOTICE, msg);
+		result.include(NOTICE, MessageFormat.format(reader.find(key), args));
 	}
 }
