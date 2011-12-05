@@ -104,43 +104,6 @@ public class FCFSTest extends InitialTestCase {
 	}
 
 	@Test
-	public void deveEscalonarUtilizandoTempoContextoDeUmMilisegundo() {
-		final int CONTEXTO = 1;
-		final Integer[] BURSTS = { 10, 9, 19 };
-		final Integer[] ID = { 1, 2, 3 };
-		final Integer[] TEMPO_ESPERA = { 0, 11, 21 };
-		final Integer[] TEMPO_RESPOSTA = { 10, 20, 40 };
-		final Integer[] TURN_AROUND = { 10, 20, 40 };
-		final Long[] X = { 0L, 11L, 21L };
-
-		EscalonadorProcesso fcfs = new FCFS(gerarArrayListDeProcessos(BURSTS.length, BURSTS, null, null), 0, CONTEXTO);
-
-		List<ProcessoVO> resultado = fcfs.resultadoFinal();
-		Assert.assertThat(resultado, Matchers.notNullValue());
-		Assert.assertThat(resultado.size(), Matchers.is(BURSTS.length));
-
-		Iterator<ProcessoVO> resultArrayList = resultado.iterator();
-		while (resultArrayList.hasNext()) {
-			ProcessoVO proc = resultArrayList.next();
-			Assert.assertThat(TEMPO_ESPERA, Matchers.hasItemInArray(proc.getEspera()));
-			Assert.assertThat(TEMPO_RESPOSTA, Matchers.hasItemInArray(proc.getResposta()));
-			Assert.assertThat(TURN_AROUND, Matchers.hasItemInArray(proc.getTurnAround()));
-		}
-
-		List<ProcessoDTO> resultadoGrafico = fcfs.resultadoGraficoFinal();
-		Assert.assertThat(resultadoGrafico, Matchers.notNullValue());
-		Assert.assertThat(resultadoGrafico.size(), Matchers.is(BURSTS.length));
-
-		Iterator<ProcessoDTO> resultArrayListGraphic = resultadoGrafico.iterator();
-		while (resultArrayListGraphic.hasNext()) {
-			ProcessoDTO proc = resultArrayListGraphic.next();
-			Assert.assertThat(ID, Matchers.hasItemInArray(proc.getId()));
-			Assert.assertThat(X, Matchers.hasItemInArray(proc.getX()));
-		}
-
-	}
-
-	@Test
 	public void deveEscalonarComDoisACemProcessos() {
 		for (int i = 2; i <= 100; i++) {
 			EscalonadorProcesso fcfs = new FCFS(gerarArrayListDefault(i), 0, 0);

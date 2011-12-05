@@ -11,7 +11,7 @@ import com.appspot.simularso.model.ProcessoVO;
 public class SJF extends EscalonadorProcessoBase implements EscalonadorProcesso {
 
 	public SJF(ArrayList<Processo> processos, int tempoQuantum, int tempoContexto) {
-		super(processos, tempoQuantum = 0, tempoContexto);
+		super(processos, tempoQuantum = 0, tempoContexto = 0);
 		utilizarBurstOrder(true);
 		ordernarProcessos();
 		executar();
